@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-23T13:58:01.445Z",
+  "date": "2026-10-23",
+  "snapshotDate": "2026-10-23",
+  "snapshot": "2026-10-23.json",
+  "headline": "firstReply/signups",
+  "method": "median +/- 2 MAD; prior 28 calendar days",
+  "minSamples": 10,
+  "minHistory": 7,
+  "metrics": {
+    "firstReply/signups": {
+      "value": null,
+      "samples": 0,
+      "reason": null,
+      "normal": null,
+      "historySamples": 0,
+      "flags": [
+        "small sample",
+        "insufficient history"
+      ],
+      "outside": false,
+      "state": "measured",
+      "smallSample": true
+    },
+    "signups": {
+      "value": 0,
+      "samples": 0,
+      "reason": null,
+      "normal": {
+        "low": 0,
+        "high": 3,
+        "median": 1,
+        "mad": 1
+      },
+      "historySamples": 28,
+      "flags": [
+        "small sample"
+      ],
+      "outside": false,
+      "state": "measured",
+      "smallSample": true
+    },
+    "dau": {
+      "value": 1,
+      "samples": 1,
+      "reason": null,
+      "normal": {
+        "low": 1,
+        "high": 5,
+        "median": 3,
+        "mad": 1
+      },
+      "historySamples": 28,
+      "flags": [
+        "small sample"
+      ],
+      "outside": false,
+      "state": "measured",
+      "smallSample": true
+    },
+    "wau": {
+      "value": 15,
+      "samples": 15,
+      "reason": null,
+      "normal": {
+        "low": 2,
+        "high": 6,
+        "median": 4,
+        "mad": 1
+      },
+      "historySamples": 28,
+      "flags": [],
+      "outside": true,
+      "state": "measured",
+      "smallSample": false
+    },
+    "retention7": {
+      "value": 0,
+      "samples": 12,
+      "reason": null,
+      "from": "2026-09-25",
+      "through": "2026-10-15",
+      "normal": null,
+      "historySamples": 0,
+      "flags": [
+        "insufficient history"
+      ],
+      "outside": false,
+      "state": "measured",
+      "smallSample": false
+    }
+  },
+  "openBets": []
+}

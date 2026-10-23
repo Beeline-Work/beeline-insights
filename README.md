@@ -7,6 +7,7 @@ redacted: no message text, names, emails or identity IDs.
 | --- | --- | --- |
 | `snapshots/` | One file per Eastern calendar day: the operator dashboard aggregate (`GET /v1/admin/dashboard`). | `Daily snapshot` workflow, 6:30 AM Eastern |
 | `bets/` | One file per bet: the metric, the expected change, the deadline and the grade. | 9 AM brief |
+| `loop/` | [Daily dashboard feed and schema contract](loop/README.md): headline values, normal ranges and open bets. | `Daily snapshot` workflow |
 | `problems/` | One file per problem: people hurt per day, trend, cause tag and stage. | 10 AM triage |
 | `walk/` | The fixed codebook of goals and friction codes, plus redacted daily counts. | 6 AM walk |
 
