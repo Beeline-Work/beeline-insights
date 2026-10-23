@@ -1,0 +1,24 @@
+{
+  "id": "onboarding-workspace",
+  "title": "New users reach a workspace",
+  "problem": "New users drop off before their first workspace",
+  "metric": {
+    "numerator": "workspaces",
+    "denominator": "signups",
+    "windowDays": 14
+  },
+  "baseline": {
+    "value": 0.9523809523809523,
+    "from": "2026-10-10",
+    "through": "2026-10-23"
+  },
+  "target": {
+    "value": 0.9,
+    "direction": "up"
+  },
+  "releasedOn": "2026-10-23",
+  "gradeOn": "2026-11-06",
+  "minSamples": 10,
+  "status": "open",
+  "grade": null
+}
