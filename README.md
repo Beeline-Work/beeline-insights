@@ -5,7 +5,7 @@ redacted: no message text, names, emails or identity IDs.
 
 | Folder | What it holds | Written by |
 | --- | --- | --- |
-| `snapshots/` | One file per Eastern calendar day: the operator dashboard aggregate (`GET /v1/admin/dashboard`). | `Daily snapshot` workflow, 6:30 AM Eastern |
+| `snapshots/` | One file per Eastern calendar day: the operator dashboard aggregate (`GET /v1/admin/dashboard`). | `Daily snapshot` workflow, 10:30 UTC with 12:30 UTC backup |
 | `bets/` | One file per bet: the metric, the expected change, the deadline and the grade. | 9 AM brief |
 | `loop/` | [Daily dashboard feed and schema contract](loop/README.md): headline values, normal ranges and open bets. | `Daily snapshot` workflow |
 | `problems/` | One file per problem: people hurt per day, trend, cause tag and stage. | 10 AM triage |
@@ -22,9 +22,23 @@ the Actions tab.
 
 ## Bets
 
-Copy `test/fixtures/example-bet.json` to `bets/<id>.json` and replace its example
-values. Keep the id equal to the filename without `.json`. Do not store personal
-text or names. Required fields:
+Record a shipped fix with one command (use aggregate descriptions, no names):
+
+```sh
+npm run new-bet -- --id reply-friction --title "Improve first replies" \
+  --problem "Reply friction" --numerator firstReply --denominator signups \
+  --window-days 3 --target 0.5 --direction up --grade-on 2026-11-02
+```
+
+The command measures the baseline with the shared metrics function over the
+window ending on the latest snapshot on or before Eastern today. It saves
+`bets/<id>.json` exclusively and refuses an existing id. Missing or invalid
+measurements and zero denominators fail clearly without creating a bet.
+`--denominator` is optional for count bets; `--min-samples` defaults to 10.
+`--today`, `--bets` and `--snapshots` support offline fixtures. The release date
+is today and the grading date must be on or after it. Validation uses the same
+validator as grading. The saved fields are:
+
 
 | Field | Meaning |
 | --- | --- |

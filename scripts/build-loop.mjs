@@ -1,4 +1,4 @@
-import { mkdir, readdir, rename, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { validateBet } from './grade-bets.mjs';
 import { metricsFromSnapshots } from './metrics.mjs';
@@ -36,7 +36,7 @@ export async function buildLoop({ bets, snapshots, today, output = 'loop/latest.
       smallSample: reading.flags.includes('small sample'),
     }])),
     openBets: entries.filter((bet) => bet.status === 'open' || bet.retryPending).map((bet) => {
-      // Show the current window even when overdue; grading remains a manual step.
+      // Show the current window even when overdue; grading runs separately.
       const reading = measure(latest, bet.metric, today);
       return {
         id: bet.id, title: bet.title, metric: bet.metric, baseline: bet.baseline,
@@ -47,6 +47,14 @@ export async function buildLoop({ bets, snapshots, today, output = 'loop/latest.
       };
     }),
   };
+  // Keep the generation time when the dashboard payload has not changed.
+  try {
+    const previous = JSON.parse(await readFile(output, 'utf8'));
+    if (typeof previous.generatedAt === 'string'
+      && JSON.stringify({ ...previous, generatedAt: feed.generatedAt }) === JSON.stringify(feed)) return previous;
+  } catch (error) {
+    if (error.code !== 'ENOENT' && !(error instanceof SyntaxError)) throw error;
+  }
   await mkdir(dirname(output), { recursive: true });
   const temporary = `${output}.${process.pid}.tmp`;
   try {
