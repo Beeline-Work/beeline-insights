@@ -1,0 +1,17 @@
+{
+  "id": "fix-notices",
+  "title": "Fix notices bring reporters back",
+  "source": { "section": "feedback", "text": "Reporters rarely return after a fix" },
+  "change": "Tell each reporter when their reported problem is fixed",
+  "metric": { "label": "7-day return", "numerator": "feedback:returning-reporters", "denominator": "feedback:reporters" },
+  "before": { "value": 0, "samples": 12, "from": "2026-09-15", "through": "2026-10-14" },
+  "predict": { "value": 0.3, "direction": "up" },
+  "guardrail": "No more than one notice per report",
+  "decideAt": { "samples": 12, "date": "2026-11-11" },
+  "ifUnclear": "keep",
+  "status": "running",
+  "approval": { "messageId": "placeholder-approval-message" },
+  "startedOn": "2026-10-15",
+  "progress": { "value": 0.25, "samples": 4, "asOf": "2026-10-23" },
+  "verdict": null
+}

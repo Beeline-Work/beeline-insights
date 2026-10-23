@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "experiment.schema.json",
+  "title": "experiments/<id>.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "source", "change", "metric", "before", "predict", "guardrail", "decideAt", "ifUnclear", "status", "approval", "startedOn", "progress", "verdict"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "title": { "$ref": "#/$defs/text" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["section", "text"],
+      "properties": {
+        "section": { "enum": ["errors", "feedback", "journey", "velocity"] },
+        "text": { "$ref": "#/$defs/text" }
+      }
+    },
+    "change": { "$ref": "#/$defs/text" },
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "numerator"],
+      "properties": {
+        "label": { "$ref": "#/$defs/text" },
+        "numerator": { "$ref": "#/$defs/series" },
+        "denominator": { "$ref": "#/$defs/series" }
+      }
+    },
+    "before": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "samples", "from", "through"],
+      "properties": {
+        "value": { "type": "number", "minimum": 0 },
+        "samples": { "type": "integer", "minimum": 0 },
+        "from": { "type": "string", "format": "date" },
+        "through": { "type": "string", "format": "date" }
+      }
+    },
+    "predict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "direction"],
+      "properties": {
+        "value": { "type": "number", "minimum": 0 },
+        "direction": { "enum": ["up", "down"] }
+      }
+    },
+    "guardrail": { "$ref": "#/$defs/text" },
+    "decideAt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["samples", "date"],
+      "properties": {
+        "samples": { "type": "integer", "minimum": 10 },
+        "date": { "type": "string", "format": "date" }
+      }
+    },
+    "ifUnclear": { "enum": ["keep", "undo"] },
+    "status": { "enum": ["proposed", "running", "concluded"] },
+    "approval": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["messageId"],
+      "properties": { "messageId": { "type": "string", "minLength": 1, "maxLength": 128 } }
+    },
+    "startedOn": { "type": ["string", "null"], "format": "date" },
+    "progress": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["value", "samples", "asOf"],
+      "properties": {
+        "value": { "type": ["number", "null"], "minimum": 0 },
+        "samples": { "type": "integer", "minimum": 0 },
+        "asOf": { "type": "string", "format": "date" }
+      }
+    },
+    "verdict": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["result", "decision", "value", "samples", "on"],
+      "properties": {
+        "result": { "enum": ["supported", "not_supported", "not_enough_data"] },
+        "decision": { "enum": ["keep", "undo"] },
+        "value": { "type": ["number", "null"], "minimum": 0 },
+        "samples": { "type": "integer", "minimum": 0 },
+        "on": { "type": "string", "format": "date" }
+      }
+    }
+  },
+  "$defs": {
+    "text": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "series": {
+      "description": "A snapshot series (graded by script) or <source>:<name> for an agent-written series (for example feedback:returning-reporters).",
+      "type": "string",
+      "pattern": "^(dau|downloads|firstReply|friendsJoined|signups|wau|workspaces|(sentry|feedback|velocity|walk|reach|usage):[a-z0-9][a-z0-9-]*)$"
+    }
+  }
+}

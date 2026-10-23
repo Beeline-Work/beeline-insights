@@ -1,8 +1,7 @@
-import { mkdir, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
-import { validateBet } from './grade-bets.mjs';
+import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
+import { dirname } from 'node:path';
 import { metricsFromSnapshots } from './metrics.mjs';
-import { cliOptions, isMain, loadSnapshots, measure, readJSON } from './lib/analysis.mjs';
+import { cliOptions, isMain, loadSnapshots } from './lib/analysis.mjs';
 
 function stateOf(snapshot, names, reading) {
   const states = names.map((name) => name === 'retention7'
@@ -11,15 +10,10 @@ function stateOf(snapshot, names, reading) {
   return states.find((state) => state !== 'measured') ?? (reading.reason ? 'unavailable' : 'measured');
 }
 
-export async function buildLoop({ bets, snapshots, today, output = 'loop/latest.json', now = new Date() }) {
+export async function buildLoop({ snapshots, today, output = 'loop/latest.json', now = new Date() }) {
   const archive = await loadSnapshots(snapshots, today, { history: true });
   const latest = archive.at(-1);
   const daily = metricsFromSnapshots(archive, today);
-  const files = (await readdir(bets)).filter((file) => file.endsWith('.json')).sort();
-  const entries = await Promise.all(files.map(async (file) => {
-    const path = join(bets, file);
-    return validateBet(await readJSON(path), path);
-  }));
   const feed = {
     schemaVersion: 1,
     generatedAt: now.toISOString(),
@@ -35,17 +29,8 @@ export async function buildLoop({ bets, snapshots, today, output = 'loop/latest.
       state: stateOf(latest, name.split('/'), reading),
       smallSample: reading.flags.includes('small sample'),
     }])),
-    openBets: entries.filter((bet) => bet.status === 'open' || bet.retryPending).map((bet) => {
-      // Show the current window even when overdue; grading runs separately.
-      const reading = measure(latest, bet.metric, today);
-      return {
-        id: bet.id, title: bet.title, metric: bet.metric, baseline: bet.baseline,
-        target: bet.target, gradeOn: bet.gradeOn, status: bet.status,
-        retryPending: bet.retryPending ?? false,
-        ...reading,
-        state: stateOf(latest, [bet.metric.numerator, bet.metric.denominator].filter(Boolean), reading),
-      };
-    }),
+    // The live Loop tab still reads this field. Remove it once the dashboard drops Loop.
+    openBets: [],
   };
   // Keep the generation time when the dashboard payload has not changed.
   try {

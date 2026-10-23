@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "feed.schema.json",
+  "title": "feed/latest.json",
+  "description": "Built by npm run build-feed. insights and reach are null until their files exist. digests is the index, newest first; fetch one body from its path on open.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["generatedAt", "insights", "experiments", "reach", "digests"],
+  "properties": {
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "insights": { "anyOf": [{ "type": "null" }, { "$ref": "insights.schema.json" }] },
+    "experiments": { "type": "array", "items": { "$ref": "experiment.schema.json" } },
+    "reach": { "anyOf": [{ "type": "null" }, { "$ref": "reach.schema.json" }] },
+    "digests": { "type": "array", "items": { "$ref": "digest.schema.json" } }
+  }
+}

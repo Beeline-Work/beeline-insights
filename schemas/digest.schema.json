@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "digest.schema.json",
+  "title": "digests/index.json entry",
+  "description": "One entry per digests/<YYYY-MM-DD>.md. The Markdown front matter holds title, findings and proposals; date and path come from the filename.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["date", "title", "findings", "proposals", "path"],
+  "properties": {
+    "date": { "type": "string", "format": "date" },
+    "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "findings": { "type": "integer", "minimum": 0 },
+    "proposals": { "type": "integer", "minimum": 0 },
+    "path": { "type": "string", "pattern": "^digests/\\d{4}-\\d{2}-\\d{2}\\.md$" }
+  }
+}

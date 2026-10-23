@@ -1,0 +1,17 @@
+{
+  "id": "free-deepseek-agents",
+  "title": "Free DeepSeek agents raise first replies",
+  "source": { "section": "feedback", "text": "8 onboarding reports" },
+  "change": "Give every new workspace a free DeepSeek agent",
+  "metric": { "label": "Get an agent reply", "numerator": "firstReply", "denominator": "signups" },
+  "before": { "value": 0.3, "samples": 37, "from": "2026-09-24", "through": "2026-10-23" },
+  "predict": { "value": 0.5, "direction": "up" },
+  "guardrail": "cap $25 a day",
+  "decideAt": { "samples": 30, "date": "2026-11-20" },
+  "ifUnclear": "undo",
+  "status": "proposed",
+  "approval": null,
+  "startedOn": null,
+  "progress": null,
+  "verdict": null
+}

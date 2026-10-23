@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reach.schema.json",
+  "title": "reach/latest.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["month", "spent", "cap", "costPerSignup", "recommendations", "posts"],
+  "properties": {
+    "month": { "type": "string", "format": "month" },
+    "spent": { "type": "number", "minimum": 0 },
+    "cap": { "type": "number", "minimum": 0 },
+    "costPerSignup": { "type": ["number", "null"], "minimum": 0 },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "channel", "title", "detail"],
+        "properties": {
+          "kind": { "enum": ["make", "boost", "stop"] },
+          "channel": { "$ref": "#/$defs/channel" },
+          "title": { "$ref": "#/$defs/text" },
+          "detail": { "$ref": "#/$defs/text" }
+        }
+      }
+    },
+    "posts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "channel", "date", "views", "clicks", "spend", "status"],
+        "properties": {
+          "title": { "$ref": "#/$defs/text" },
+          "channel": { "$ref": "#/$defs/channel" },
+          "date": { "type": "string", "format": "date" },
+          "views": { "type": "integer", "minimum": 0 },
+          "clicks": { "type": "integer", "minimum": 0 },
+          "spend": { "type": "number", "minimum": 0 },
+          "status": { "enum": ["organic", "boosting", "stopped"] }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "text": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "channel": { "enum": ["YouTube", "X"] }
+  }
+}

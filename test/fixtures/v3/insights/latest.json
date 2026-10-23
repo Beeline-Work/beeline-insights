@@ -1,0 +1,101 @@
+{
+  "generatedAt": "2026-10-23T13:00:00.000Z",
+  "window": {
+    "from": "2026-10-17",
+    "through": "2026-10-23"
+  },
+  "errors": {
+    "total": 46,
+    "changePct": 38,
+    "areas": [
+      {
+        "area": "Voice",
+        "count": 19
+      },
+      {
+        "area": "Sync",
+        "count": 11
+      },
+      {
+        "area": "Desktop helper",
+        "count": 7
+      },
+      {
+        "area": "Approvals",
+        "count": 5
+      }
+    ],
+    "lead": "One crash on locked screens causes 14 of the 19 voice events."
+  },
+  "feedback": {
+    "total": 23,
+    "people": 9,
+    "agents": 14,
+    "areas": [
+      {
+        "area": "Onboarding",
+        "count": 8
+      },
+      {
+        "area": "Speed",
+        "count": 5
+      },
+      {
+        "area": "Connectors",
+        "count": 4
+      }
+    ],
+    "lead": "People don’t know what to say to their first agent."
+  },
+  "journey": {
+    "steps": [
+      {
+        "label": "Signed up",
+        "count": 37
+      },
+      {
+        "label": "Joined a workspace",
+        "count": 30
+      },
+      {
+        "label": "Messaged their free agent",
+        "count": 11
+      },
+      {
+        "label": "Free agent replied",
+        "count": 11
+      }
+    ],
+    "biggestDrop": {
+      "label": "Messaged their free agent",
+      "lost": 19
+    }
+  },
+  "velocity": {
+    "hoursLost": 31,
+    "items": [
+      {
+        "label": "Flaky checks rerun by hand",
+        "hours": 12
+      },
+      {
+        "label": "Push limits hit on one PR",
+        "hours": 10
+      },
+      {
+        "label": "Reviews woken before checks",
+        "hours": 9
+      }
+    ]
+  },
+  "links": [
+    {
+      "section": "feedback",
+      "experimentId": "free-deepseek-agents"
+    },
+    {
+      "section": "journey",
+      "experimentId": "remove-onboarding-steps"
+    }
+  ]
+}

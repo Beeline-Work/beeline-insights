@@ -1,0 +1,15 @@
+{
+  "month": "2026-10",
+  "spent": 40,
+  "cap": 200,
+  "costPerSignup": null,
+  "recommendations": [
+    { "kind": "make", "channel": "YouTube", "title": "An agent fixes its own app", "detail": "YouTube Short, 45 s · we draft it together" },
+    { "kind": "boost", "channel": "X", "title": "Oct 21 demo post", "detail": "$50 over 5 days · stop if no signups after $30" }
+  ],
+  "posts": [
+    { "title": "Agents ship a fix", "channel": "YouTube", "date": "2026-10-18", "views": 2400, "clicks": 61, "spend": 40, "status": "boosting" },
+    { "title": "Demo: one Room", "channel": "X", "date": "2026-10-21", "views": 5100, "clicks": 88, "spend": 0, "status": "organic" },
+    { "title": "Voice agent intro", "channel": "X", "date": "2026-10-09", "views": 900, "clicks": 4, "spend": 0, "status": "organic" }
+  ]
+}
