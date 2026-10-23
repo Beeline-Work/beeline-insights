@@ -7,20 +7,21 @@ today. The output path is relative to the working directory; the imported
 The CLI prints the saved JSON. Input validation completes before replacement;
 failure leaves the previous feed intact and exits nonzero.
 
-## Contract: schemaVersion 2
+## Contract: schemaVersion 1
 
 All fields below are always present. A breaking change requires a version bump
 and updates to the shape tests and dashboard consumer.
 
 | Field | Meaning |
 | --- | --- |
-| `schemaVersion` | `2` (version 1 also carried `openBets`; bets became [experiments](../README.md#insights-feed-contract)) |
+| `schemaVersion` | `1` |
 | `generatedAt` | UTC ISO generation timestamp |
 | `date` | Requested Eastern calendar day, `YYYY-MM-DD` |
 | `snapshotDate`, `snapshot` | Actual source date and filename; never relabeled when stale |
 | `headline` | `firstReply/signups`, a key in `metrics` |
 | `method`, `minSamples`, `minHistory` | Unchanged range description and thresholds from `metrics.mjs` |
 | `metrics` | Object keyed by `firstReply/signups`, `signups`, `dau`, `wau`, `retention7` |
+| `openBets` | Always `[]`. Bets became [experiments](../README.md#insights-feed-contract); the field stays only so the live Loop tab keeps working, and goes once the dashboard drops Loop. |
 
 Every metric contains the unchanged metrics-script fields `value`, `samples`,
 `reason`, `normal`, `historySamples`, `flags` and `outside`, plus `state` and

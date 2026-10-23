@@ -15,7 +15,7 @@ export async function buildLoop({ snapshots, today, output = 'loop/latest.json',
   const latest = archive.at(-1);
   const daily = metricsFromSnapshots(archive, today);
   const feed = {
-    schemaVersion: 2,
+    schemaVersion: 1,
     generatedAt: now.toISOString(),
     date: today,
     snapshotDate: latest.date,
@@ -29,6 +29,8 @@ export async function buildLoop({ snapshots, today, output = 'loop/latest.json',
       state: stateOf(latest, name.split('/'), reading),
       smallSample: reading.flags.includes('small sample'),
     }])),
+    // The live Loop tab still reads this field. Remove it once the dashboard drops Loop.
+    openBets: [],
   };
   // Keep the generation time when the dashboard payload has not changed.
   try {

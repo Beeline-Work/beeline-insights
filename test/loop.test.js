@@ -43,8 +43,10 @@ test('saved feed locks the full schema and preserves every metrics number from e
   const ws = await workspace(t);
   const feed = await ws.build();
   assert.deepEqual(JSON.parse(await readFile(ws.output)), feed);
-  expectedKeys(feed, ['schemaVersion', 'generatedAt', 'date', 'snapshotDate', 'snapshot', 'headline', 'method', 'minSamples', 'minHistory', 'metrics']);
-  assert.equal(feed.schemaVersion, 2);
+  expectedKeys(feed, ['schemaVersion', 'generatedAt', 'date', 'snapshotDate', 'snapshot', 'headline', 'method', 'minSamples', 'minHistory', 'metrics', 'openBets']);
+  assert.equal(feed.schemaVersion, 1);
+  // The live Loop tab keeps working until the dashboard removes it.
+  assert.deepEqual(feed.openBets, []);
   assert.equal(feed.generatedAt, now.toISOString());
   assert.equal(feed.date, today);
   assert.equal(feed.snapshotDate, today);
