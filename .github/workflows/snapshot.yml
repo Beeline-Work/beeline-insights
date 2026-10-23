@@ -1,0 +1,39 @@
+name: Daily snapshot
+
+on:
+  schedule:
+    # 10:30 UTC is 6:30 AM EDT / 5:30 AM EST, before the 9 AM brief.
+    - cron: '30 10 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - run: npm run snapshot
+        env:
+          BEELINE_DASHBOARD_SECRET: ${{ secrets.BEELINE_DASHBOARD_SECRET }}
+      - name: Commit snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add snapshots
+          if git diff --cached --quiet; then
+            echo "No change"
+            exit 0
+          fi
+          git commit -m "Snapshot $(ls -1 snapshots | tail -n 1 | sed 's/.json$//')"
+          git push

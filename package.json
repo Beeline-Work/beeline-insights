@@ -1,0 +1,9 @@
+{
+  "name": "beeline-insights",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "snapshot": "node scripts/snapshot.mjs"
+  }
+}
