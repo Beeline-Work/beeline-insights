@@ -1,0 +1,17 @@
+{
+  "id": "remove-onboarding-steps",
+  "title": "Removing onboarding steps cuts drop-off",
+  "source": { "section": "journey", "text": "19 people never message an agent" },
+  "change": "Remove the onboarding steps between signup and the first workspace",
+  "metric": { "label": "Reach a workspace", "numerator": "workspaces", "denominator": "signups" },
+  "before": { "value": 0.81, "samples": 37, "from": "2026-09-24", "through": "2026-10-23" },
+  "predict": { "value": 0.9, "direction": "up" },
+  "guardrail": "First replies do not fall",
+  "decideAt": { "samples": 30, "date": "2026-11-20" },
+  "ifUnclear": "undo",
+  "status": "proposed",
+  "approval": null,
+  "startedOn": null,
+  "progress": null,
+  "verdict": null
+}

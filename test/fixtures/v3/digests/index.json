@@ -1,0 +1,30 @@
+[
+  {
+    "date": "2026-10-23",
+    "title": "Voice crash leads errors; onboarding drop is the top pain",
+    "findings": 2,
+    "proposals": 1,
+    "path": "digests/2026-10-23.md"
+  },
+  {
+    "date": "2026-10-22",
+    "title": "Endless-spinner fix merged; Play reports still refused",
+    "findings": 2,
+    "proposals": 0,
+    "path": "digests/2026-10-22.md"
+  },
+  {
+    "date": "2026-10-21",
+    "title": "Turn failures spiked to 10%",
+    "findings": 3,
+    "proposals": 1,
+    "path": "digests/2026-10-21.md"
+  },
+  {
+    "date": "2026-10-20",
+    "title": "First iOS downloads counted",
+    "findings": 1,
+    "proposals": 0,
+    "path": "digests/2026-10-20.md"
+  }
+]

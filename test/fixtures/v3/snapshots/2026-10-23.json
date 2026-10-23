@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "usage": {
+    "state": "measured",
+    "people": [
+      { "stage": "signup", "count": 37 },
+      { "stage": "workspace", "count": 30 },
+      { "stage": "free_agent_messaged", "count": 11 },
+      { "stage": "free_agent_replied", "count": 11 },
+      { "stage": "paired", "count": 14 }
+    ]
+  }
+}

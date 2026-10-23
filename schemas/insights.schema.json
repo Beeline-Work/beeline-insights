@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "insights.schema.json",
+  "title": "insights/latest.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["generatedAt", "window", "errors", "feedback", "journey", "velocity", "links"],
+  "properties": {
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "through"],
+      "properties": {
+        "from": { "type": "string", "format": "date" },
+        "through": { "type": "string", "format": "date" }
+      }
+    },
+    "errors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "changePct", "areas", "lead"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "changePct": { "type": ["number", "null"] },
+        "areas": { "$ref": "#/$defs/areas" },
+        "lead": { "$ref": "#/$defs/text" }
+      }
+    },
+    "feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "people", "agents", "areas", "lead"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "people": { "type": "integer", "minimum": 0 },
+        "agents": { "type": "integer", "minimum": 0 },
+        "areas": { "$ref": "#/$defs/areas" },
+        "lead": { "$ref": "#/$defs/text" }
+      }
+    },
+    "journey": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["steps", "biggestDrop"],
+      "properties": {
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "count"],
+            "properties": {
+              "label": { "$ref": "#/$defs/text" },
+              "count": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "biggestDrop": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["label", "lost"],
+          "properties": {
+            "label": { "$ref": "#/$defs/text" },
+            "lost": { "type": "integer", "minimum": 1 }
+          }
+        }
+      }
+    },
+    "velocity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hoursLost", "items"],
+      "properties": {
+        "hoursLost": { "type": "number", "minimum": 0 },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "hours"],
+            "properties": {
+              "label": { "$ref": "#/$defs/text" },
+              "hours": { "type": "number", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["section", "experimentId"],
+        "properties": {
+          "section": { "$ref": "#/$defs/section" },
+          "experimentId": { "$ref": "#/$defs/slug" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "text": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "slug": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "section": { "enum": ["errors", "feedback", "journey", "velocity"] },
+    "areas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["area", "count"],
+        "properties": {
+          "area": { "type": "string", "minLength": 1, "maxLength": 60 },
+          "count": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

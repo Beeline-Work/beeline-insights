@@ -64,12 +64,12 @@ export function measure(snapshot, metric, through) {
 }
 
 export function cliOptions({ write = false } = {}) {
-  const options = { today: easternDate(), bets: 'bets', snapshots: 'snapshots', write: false };
+  const options = { today: easternDate(), experiments: 'experiments', snapshots: 'snapshots', write: false };
   const args = process.argv.slice(2);
   while (args.length) {
     const flag = args.shift();
     if (flag === '--write' && write) options.write = true;
-    else if (['--today', '--bets', '--snapshots'].includes(flag) && args[0] && !args[0].startsWith('--')) options[flag.slice(2)] = args.shift();
+    else if (['--today', '--experiments', '--snapshots'].includes(flag) && args[0] && !args[0].startsWith('--')) options[flag.slice(2)] = args.shift();
     else throw new Error(`unknown or incomplete option: ${flag}`);
   }
   if (!isDate(options.today)) throw new Error('--today: expected a calendar date YYYY-MM-DD');

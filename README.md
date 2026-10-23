@@ -6,8 +6,13 @@ redacted: no message text, names, emails or identity IDs.
 | Folder | What it holds | Written by |
 | --- | --- | --- |
 | `snapshots/` | One file per Eastern calendar day: the operator dashboard aggregate (`GET /v1/admin/dashboard`). | `Daily snapshot` workflow, 10:30 UTC with 12:30 UTC backup |
-| `bets/` | One file per bet: the metric, the expected change, the deadline and the grade. | 9 AM brief |
-| `loop/` | [Daily dashboard feed and schema contract](loop/README.md): headline values, normal ranges and open bets. | `Daily snapshot` workflow |
+| `insights/` | `latest.json`: errors and feedback by product area, the signup journey and velocity time lost. | Digest run; journey by `npm run build-feed` |
+| `experiments/` | One file per experiment: the insight behind it, the change, the prediction, the decision point and the verdict. | Digest run proposes; grading script |
+| `reach/` | `latest.json`: ad spend against the cap, content and boost recommendations, per-post results. | Ruby, by hand from YouTube Studio and X screens |
+| `digests/` | One Markdown file per digest sent to the owner, plus `index.json`. | Digest run; index by `npm run build-feed` |
+| `feed/` | `latest.json`: the Insights, Experiments, Reach and Digests feed for the dashboard. | `npm run build-feed` |
+| `schemas/` | JSON Schemas for the files above. | By hand; a field change breaks the dashboard |
+| `loop/` | [Daily headline feed](loop/README.md): headline values and normal ranges. | `Daily snapshot` workflow |
 | `problems/` | One file per problem: people hurt per day, trend, cause tag and stage. | 10 AM triage |
 | `walk/` | The fixed codebook of goals and friction codes, plus redacted daily counts. | 6 AM walk |
 
@@ -20,63 +25,77 @@ Git history is the audit trail: it shows how each number and each judgment chang
 `beeline-dashboard-api / production`). The workflow also runs on demand from
 the Actions tab.
 
-## Bets
+## Insights feed contract
 
-Record a shipped fix with one command (use aggregate descriptions, no names):
+The dashboard reads `feed/latest.json` and fetches one digest body from its
+`path` when a person opens it. Every file is checked against `schemas/`; an
+unknown field fails. Keep the feed clean: no per-row tags or extra metrics.
 
-```sh
-npm run new-bet -- --id reply-friction --title "Improve first replies" \
-  --problem "Reply friction" --numerator firstReply --denominator signups \
-  --window-days 3 --target 0.5 --direction up --grade-on 2026-11-02
-```
-
-The command measures the baseline with the shared metrics function over the
-window ending on the latest snapshot on or before Eastern today. It saves
-`bets/<id>.json` exclusively and refuses an existing id. Missing or invalid
-measurements and zero denominators fail clearly without creating a bet.
-`--denominator` is optional for count bets; `--min-samples` defaults to 10.
-`--today`, `--bets` and `--snapshots` support offline fixtures. The release date
-is today and the grading date must be on or after it. Validation uses the same
-validator as grading. The saved fields are:
-
-
-| Field | Meaning |
+| File | Fields |
 | --- | --- |
-| `id`, `title`, `problem` | Slug, short title and aggregate problem description or id. |
-| `metric.numerator`, optional `metric.denominator` | Series names: `dau`, `downloads`, `firstReply`, `friendsJoined`, `signups`, `wau`, `workspaces`. |
-| `metric.windowDays` | Inclusive window ending on the grading date (integer from 1 to 90). |
-| `baseline` | Starting `value`, `from` and `through` dates. |
-| `target` | Numeric `value` and `direction` (`up` means at least, `down` means at most). Rates use fractions, so 50% is `0.5`. |
-| `releasedOn`, `gradeOn` | Release date or `null`, and grading date, as `YYYY-MM-DD`. |
-| `minSamples` | Minimum denominator sum, or numerator sum for a count bet. |
-| `status`, `grade` | Start with `"open"` and `null`; the script fills these. |
+| `insights/latest.json` | `generatedAt`, `window {from, through}`, `errors {total, changePct, areas[{area, count}], lead}`, `feedback {total, people, agents, areas[{area, count}], lead}`, `journey {steps[{label, count}], biggestDrop {label, lost} \| null}`, `velocity {hoursLost, items[{label, hours}]}`, `links[{section, experimentId}]` |
+| `experiments/<id>.json` | `id, title, source {section, text}, change, metric {label, numerator, denominator?}, before {value, samples, from, through}, predict {value, direction}, guardrail, decideAt {samples, date}, ifUnclear, status, approval {messageId} \| null, startedOn, progress {value, samples, asOf} \| null, verdict {result, decision, value, samples, on} \| null` |
+| `reach/latest.json` | `month, spent, cap, costPerSignup \| null, recommendations[{kind, channel, title, detail}], posts[{title, channel, date, views, clicks, spend, status}]` |
+| `digests/<YYYY-MM-DD>.md` | Front matter `title`, `findings`, `proposals`, then the digest text. |
+| `digests/index.json` | `[{date, title, findings, proposals, path}]`, newest first. |
+| `feed/latest.json` | `{generatedAt, insights, experiments[], reach, digests[]}`. `insights` and `reach` are `null` until their files exist. Experiments are sorted proposed, running, concluded. |
+
+`test/fixtures/v3/` holds a complete example tree with the placeholders from
+dashboard mock v3, including the built `feed/latest.json`.
+
+Rules the validator enforces beyond the schemas:
+
+- An experiment is `proposed` until the owner approves it. `running` and
+  `concluded` need a nonempty `approval.messageId` and `startedOn`.
+- `decideAt.samples` is at least 10. A verdict below it is `not_enough_data`,
+  and its decision is `ifUnclear`. `supported` keeps the change; `not_supported` undoes it.
+- `metric.numerator` and `metric.denominator` are snapshot series (`dau`,
+  `downloads`, `firstReply`, `friendsJoined`, `signups`, `wau`, `workspaces`) or
+  name their source, for example `feedback:returning-reporters`. Rates are fractions.
+- Aggregate only: emails, `@handles` and long identifiers fail in insights,
+  experiments, reach and digests.
+- `feedback.total` is `people + agents`; area counts and velocity items do not
+  exceed their totals; every `links[].experimentId` names an experiment file.
+- The journey equals the people funnel in the newest snapshot (signed up, joined
+  a workspace, messaged their free agent, free agent replied). `biggestDrop` is
+  the step with the largest loss.
+
+### Daily digest run
+
+1. Write `insights/latest.json` from that day's Sentry, feedback and velocity
+   reads. Leads and area counts come from the same run; `generatedAt` shows staleness.
+2. Propose experiments as `experiments/<id>.json` with `status: "proposed"`.
+   Experiments are for distinct changes with an uncertain payoff, not small fixes.
+   After the owner approves, set `status: "running"`, `approval.messageId` and `startedOn`.
+   For metrics that are not snapshot series, update `progress` and `verdict` by hand.
+3. Save the sent digest as `digests/<date>.md`.
+4. Run `npm run build-feed`, then `npm run validate`, and commit.
+
+`npm run build-feed` refreshes the journey, the digest index and the feed. It
+validates everything first and writes nothing when any file is invalid.
+`npm run validate` also fails when a built file is stale. CI runs it on every
+pull request and push to `main`. Both accept `--root <directory>` and `--today YYYY-MM-DD`.
+
+### Grading
 
 ```sh
-npm run grade-bets -- --today 2026-09-02
-npm run grade-bets -- --today 2026-09-02 --write
+npm run grade-experiments
+npm run grade-experiments -- --write
 ```
 
-The script prints JSON. Without `--write` it changes nothing. Dates default to
-today in America/New_York. `--bets <directory>` and `--snapshots <directory>`
-override the input directories. The newest snapshot on or before today is used;
-no network or secret is needed. Invalid bets fail with the filename and field
-before any bet is written. An empty `bets/` yields an empty list.
+For each running experiment whose metric is a snapshot series, the script
+measures the window from `startedOn` through today (or `decideAt.date`) with the
+shared metrics function and saves `progress`. When samples reach
+`decideAt.samples`, or on `decideAt.date`, it concludes the experiment with a
+verdict. Missing or stale data leaves the file unchanged. All files are
+validated before any write. `--experiments` and `--snapshots` override the input directories.
 
-Before the deadline, each open bet shows its value over the window ending today
-and `daysLeft`. Due bets use the window ending on `gradeOn`, including when run
-late. Counts are sums; rates are ratios of sums. Equality meets the target in
-either direction. Each result includes the target, measured value, sample size
-and snapshot filename. Missing days, duplicate dates, invalid values and blocks
-without `state: measured` produce a `reason` and leave the bet unchanged.
+### Reach
 
-A zero denominator or samples below `minSamples` grades `unclear`. The script
-moves `gradeOn` forward seven days once and saves `extensionUsed: true` and
-`retryPending: true`. At that deadline it grades the new window and clears
-`retryPending`, even if still unclear. These explicit flags distinguish an
-unclear bet awaiting its retry from a final unclear grade, including late runs.
-`grade` records `value`, `samples`, `snapshot` and `gradedOn`. Hit, miss and final
-unclear files are left unchanged on later runs. Commit written files to preserve
-the previous grade in the audit trail.
+Ruby reads YouTube Studio and X while the owner is signed in, by browser share
+or Trusty Squire, and writes `reach/latest.json` by hand. No API credentials or
+workflows call YouTube or X. Recommendations are proposals only; the owner
+approves every post, boost and dollar before anything goes out.
 
 ## Daily headline metrics
 
@@ -111,5 +130,6 @@ retention history until enough distinct windows exist.
 ## Tests and CI
 
 `npm test` runs the built-in Node test runner, including fixture-driven CLI
-demonstrations, grading arithmetic and range calculations. The `Tests` workflow
-runs it on every pull request and push to `main` with read-only permissions.
+demonstrations, contract checks, grading arithmetic and range calculations. The
+`Tests` workflow runs it and `npm run validate` on every pull request and push
+to `main` with read-only permissions.

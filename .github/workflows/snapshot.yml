@@ -47,23 +47,26 @@ jobs:
           fi
           git commit -m "Snapshot $(ls -1 snapshots | tail -n 1 | sed 's/.json$//')"
           echo "created=true" >> "$GITHUB_OUTPUT"
-      - name: Grade due bets
+      - name: Grade experiments
         continue-on-error: true
-        run: npm run grade-bets -- --write
+        run: npm run grade-experiments -- --write
       - name: Build Loop feed
         continue-on-error: true
         run: npm run build-loop
+      - name: Build insights feed
+        continue-on-error: true
+        run: npm run build-feed
       - name: Save snapshot and feed
         if: ${{ always() && steps.snapshot-commit.outcome == 'success' }}
         env:
           SNAPSHOT_COMMITTED: ${{ steps.snapshot-commit.outputs.created }}
         run: |
-          git add bets loop/latest.json
+          git add experiments insights digests/index.json feed/latest.json loop/latest.json
           if ! git diff --cached --quiet; then
             if [ "$SNAPSHOT_COMMITTED" = "true" ]; then
               git commit --amend --no-edit
             else
-              git commit -m "Refresh bet grades and Loop feed"
+              git commit -m "Refresh experiment grades and feeds"
             fi
           fi
           git push

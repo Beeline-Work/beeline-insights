@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-10-23T15:20:38.015Z",
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T18:47:02.537Z",
   "date": "2026-10-23",
   "snapshotDate": "2026-10-23",
   "snapshot": "2026-10-23.json",
@@ -90,81 +90,5 @@
       "state": "measured",
       "smallSample": false
     }
-  },
-  "openBets": [
-    {
-      "id": "daily-active-growth",
-      "title": "More people use Beeline each day",
-      "metric": {
-        "numerator": "dau",
-        "windowDays": 14
-      },
-      "baseline": {
-        "value": 41,
-        "from": "2026-10-10",
-        "through": "2026-10-23"
-      },
-      "target": {
-        "value": 60,
-        "direction": "up"
-      },
-      "gradeOn": "2026-11-06",
-      "status": "open",
-      "retryPending": false,
-      "value": 41,
-      "samples": 41,
-      "reason": null,
-      "state": "measured"
-    },
-    {
-      "id": "onboarding-first-reply",
-      "title": "New users get a first reply",
-      "metric": {
-        "numerator": "firstReply",
-        "denominator": "signups",
-        "windowDays": 14
-      },
-      "baseline": {
-        "value": 1,
-        "from": "2026-10-10",
-        "through": "2026-10-23"
-      },
-      "target": {
-        "value": 0.9,
-        "direction": "up"
-      },
-      "gradeOn": "2026-11-06",
-      "status": "open",
-      "retryPending": false,
-      "value": 1,
-      "samples": 21,
-      "reason": null,
-      "state": "measured"
-    },
-    {
-      "id": "onboarding-workspace",
-      "title": "New users reach a workspace",
-      "metric": {
-        "numerator": "workspaces",
-        "denominator": "signups",
-        "windowDays": 14
-      },
-      "baseline": {
-        "value": 0.9523809523809523,
-        "from": "2026-10-10",
-        "through": "2026-10-23"
-      },
-      "target": {
-        "value": 0.9,
-        "direction": "up"
-      },
-      "gradeOn": "2026-11-06",
-      "status": "open",
-      "retryPending": false,
-      "value": 0.9523809523809523,
-      "samples": 21,
-      "reason": null,
-      "state": "measured"
-    }
-  ]
+  }
 }

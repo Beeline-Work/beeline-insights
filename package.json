@@ -5,9 +5,10 @@
   "scripts": {
     "test": "node --test",
     "snapshot": "node scripts/snapshot.mjs",
-    "grade-bets": "node scripts/grade-bets.mjs",
     "metrics": "node scripts/metrics.mjs",
     "build-loop": "node scripts/build-loop.mjs",
-    "new-bet": "node scripts/new-bet.mjs"
+    "grade-experiments": "node scripts/grade-experiments.mjs",
+    "build-feed": "node scripts/build-feed.mjs",
+    "validate": "node scripts/validate.mjs"
   }
 }
