@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "test": "node --test",
-    "snapshot": "node scripts/snapshot.mjs"
+    "snapshot": "node scripts/snapshot.mjs",
+    "grade-bets": "node scripts/grade-bets.mjs",
+    "metrics": "node scripts/metrics.mjs"
   }
 }
