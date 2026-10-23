@@ -7,6 +7,7 @@
     "snapshot": "node scripts/snapshot.mjs",
     "grade-bets": "node scripts/grade-bets.mjs",
     "metrics": "node scripts/metrics.mjs",
-    "build-loop": "node scripts/build-loop.mjs"
+    "build-loop": "node scripts/build-loop.mjs",
+    "new-bet": "node scripts/new-bet.mjs"
   }
 }

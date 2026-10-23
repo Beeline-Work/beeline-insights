@@ -165,14 +165,16 @@ test('daily workflow saves snapshot and feed in one commit, and still pushes sna
     const start = workflow.indexOf(`      - name: ${name}\n`);
     assert.notEqual(start, -1);
     const section = workflow.slice(start).split('\n      - ').at(0);
-    const body = section.split('        run: ')[1];
+    const body = section.split('        run: ')[1].split('\n        env:')[0];
     return body.startsWith('|\n') ? body.slice(2).split('\n').filter(Boolean).map((line) => line.slice(10)).join('\n') : body.trim();
   };
   assert.match(workflow, /name: Build Loop feed\n        continue-on-error: true/);
   assert.match(workflow, /if: \$\{\{ always\(\) && steps.snapshot-commit.outcome == 'success' \}\}/);
   assert.match(workflow, /cron: '30 10 \* \* \*'/);
   assert.match(workflow, /BEELINE_DASHBOARD_SECRET: \$\{\{ secrets.BEELINE_DASHBOARD_SECRET \}\}/);
-  assert.doesNotMatch(workflow, /npm run grade-bets|--force/);
+  assert.match(workflow, /npm run grade-bets -- --write/);
+  assert.match(workflow, /cron: '30 12 \* \* \*'/);
+  assert.doesNotMatch(workflow, /--force/);
 
   for (const failFeed of [false, true]) {
     const ws = await workspace(t);
@@ -197,13 +199,16 @@ test('daily workflow saves snapshot and feed in one commit, and still pushes sna
     await writeFile(join(ws.directory, snapshotPath), JSON.stringify(ws.archive.at(-1).body));
     const env = { ...process.env, GITHUB_OUTPUT: join(ws.directory, 'step-output') };
     const shell = (command, extraEnv = {}) => spawnSync('bash', ['-e', '-o', 'pipefail', '-c', command], { cwd: ws.directory, encoding: 'utf8', env: { ...env, ...extraEnv } });
+    assert.equal(shell(script('Capture missing snapshot')).status, 0);
     const committed = shell(script('Commit snapshot'));
     assert.equal(committed.status, 0, committed.stderr);
     assert.match(await readFile(env.GITHUB_OUTPUT, 'utf8'), /created=true/);
     if (failFeed) await writeFile(join(ws.bets, 'bad.json'), '{}');
+    const graded = shell(script('Grade due bets'));
+    assert.equal(graded.status, failFeed ? 1 : 0, graded.stderr);
     const built = shell(script('Build Loop feed'), { SNAPSHOT_COMMITTED: 'true' });
     assert.equal(built.status, failFeed ? 1 : 0, built.stderr);
-    const pushed = shell(script('Save snapshot and feed'));
+    const pushed = shell(script('Save snapshot and feed'), { SNAPSHOT_COMMITTED: 'true' });
     assert.equal(pushed.status, 0, pushed.stderr);
     const remoteGit = (...args) => git('--git-dir', remote, ...args);
     assert.equal(remoteGit('rev-parse', 'main^'), initial);
@@ -217,7 +222,10 @@ test('daily workflow saves snapshot and feed in one commit, and still pushes sna
       const first = git('rev-parse', 'HEAD');
       const rerun = shell(script('Build Loop feed'), { SNAPSHOT_COMMITTED: '' });
       assert.equal(rerun.status, 0, rerun.stderr);
-      assert.equal(git('rev-parse', 'HEAD^'), first);
+      assert.equal(shell(script('Capture missing snapshot')).status, 0);
+      assert.equal(shell(script('Grade due bets')).status, 0);
+      assert.equal(shell(script('Save snapshot and feed')).status, 0);
+      assert.equal(git('rev-parse', 'HEAD'), first);
       assert.equal(shell(script('Save snapshot and feed')).status, 0);
     }
     t.diagnostic(`Workflow path: feed ${failFeed ? 'failed; snapshot pushed, prior feed preserved' : 'saved in snapshot commit; rerun preserved published history'}`);

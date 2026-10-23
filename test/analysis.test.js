@@ -303,3 +303,43 @@ test('PR and main push CI run the existing test command with read-only permissio
   assert.match(workflow, /node-version: 22/);
   assert.match(workflow, /run: npm test/);
 });
+
+
+test('new-bet CLI validates, computes baseline, refuses duplicates, grades and disappears from feed', async (t) => {
+  const ws = await workspace(t);
+  const fields = ['--id', 'new-bet', '--title', 'Better replies', '--problem', 'Reply friction',
+    '--numerator', 'firstReply', '--denominator', 'signups', '--window-days', '3',
+    '--target', '0.5', '--direction', 'up', '--grade-on', '2026-09-02'];
+  const run = (extra = []) => spawnSync(process.execPath, [join(root, 'scripts/new-bet.mjs'), ...ws.args, ...fields, ...extra], { encoding: 'utf8' });
+  for (const extra of [ ['--id', '../escape'], ['--numerator', 'bogus'], ['--window-days', '0'],
+    ['--target', 'NaN'], ['--direction', 'sideways'], ['--grade-on', '2026-02-30'],
+    ['--grade-on', '2026-09-01'], ['--min-samples', '-1'], ['--title', ' '], ['--wat'] ]) {
+    const invalid = run(extra);
+    assert.equal(invalid.status, 1, JSON.stringify(extra));
+    assert.ok(invalid.stderr.trim());
+  }
+  const created = run();
+  assert.equal(created.status, 0, created.stderr);
+  const saved = JSON.parse(created.stdout);
+  assert.deepEqual(saved.baseline, { value: 0.5, from: '2026-08-31', through: '2026-09-02' });
+  assert.equal(saved.minSamples, 10);
+  const path = join(ws.bets, 'new-bet.json');
+  const before = await readFile(path, 'utf8');
+  assert.match(run().stderr, /id already exists/);
+  assert.equal(await readFile(path, 'utf8'), before);
+  const { buildLoop } = await import('../scripts/build-loop.mjs');
+  const options = { today: '2026-09-02', bets: ws.bets, snapshots: ws.snapshots, output: join(ws.directory, 'loop.json') };
+  assert.ok((await buildLoop(options)).openBets.some((b) => b.id === 'new-bet'));
+  ws.run('grade-bets.mjs', ['--write']);
+  const graded = JSON.parse(await readFile(path));
+  assert.equal(graded.status, 'hit');
+  assert.equal(graded.grade.value, 0.5);
+  assert.deepEqual((await buildLoop(options)).openBets, []);
+  const feed = await readFile(options.output, 'utf8');
+  ws.run('grade-bets.mjs', ['--write']);
+  await buildLoop({ ...options, now: new Date('2030-01-01') });
+  assert.equal(await readFile(options.output, 'utf8'), feed);
+  await ws.saveSnapshot(snapshot('2026-09-02', [0, 0, 0], [0, 0, 0]));
+  assert.match(run(['--id', 'zero-baseline']).stderr, /baseline: zero denominator/);
+  t.diagnostic('Reproduction BET-LOOP: CLI creation → baseline 0.5 → persisted hit → absent from feed → repeat unchanged');
+});

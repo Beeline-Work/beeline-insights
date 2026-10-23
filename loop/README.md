@@ -49,11 +49,21 @@ and final unclear bets are excluded. Only aggregate bet titles belong here.
 
 ## Daily workflow
 
-After the snapshot is saved and committed locally, the workflow builds the feed
-and amends that **unpublished** snapshot commit to include it. When the snapshot
-is unchanged, a feed refresh gets its own commit. One final push saves the
-result. Feed generation is allowed to fail; the final push still saves the
-already committed snapshot, leaving the previous feed in place. Consumers can
-detect a stale feed through `date`, `generatedAt` and `snapshotDate`.
-The workflow does not run bet grading. It keeps the existing snapshot capture,
-schedule and secret unchanged.
+The workflow runs at 10:30 UTC with a 12:30 UTC backup, both before 9 AM
+Eastern. The existing `snapshot` concurrency group serializes dispatches.
+If today's Eastern snapshot exists, capture is skipped without accessing the
+API. Snapshot capture and its secret are unchanged.
+
+After committing a new snapshot locally, the workflow runs
+`npm run grade-bets -- --write` for due bets and then builds the feed. It stages
+bet grades and the feed, amends the unpublished snapshot commit (or creates a
+refresh commit if needed), and pushes once. Grading and feed failures do not
+prevent that final push from preserving the snapshot. A grading failure leaves
+bets available for the next run; a feed failure leaves the previous feed.
+Consumers can detect stale feeds through `date`, `generatedAt` and `snapshotDate`.
+
+When feed content is unchanged, its original `generatedAt` and file are retained.
+A same-day backup with a current snapshot, grades and feed creates no commit;
+stale grades or feed are still repaired. Unclear bets awaiting their existing
+one-time retry remain visible until resolved. Create bets with
+[`npm run new-bet`](../README.md#bets).
