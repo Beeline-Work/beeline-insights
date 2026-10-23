@@ -47,7 +47,7 @@
           "count": 4
         }
       ],
-      "lead": "People don’t know what to say to their first agent."
+      "lead": "People don\u2019t know what to say to their first agent."
     },
     "journey": {
       "steps": [
@@ -71,7 +71,8 @@
       "biggestDrop": {
         "label": "Messaged their free agent",
         "lost": 19
-      }
+      },
+      "state": "limited"
     },
     "velocity": {
       "hoursLost": 31,
@@ -224,13 +225,13 @@
         "kind": "make",
         "channel": "YouTube",
         "title": "An agent fixes its own app",
-        "detail": "YouTube Short, 45 s · we draft it together"
+        "detail": "YouTube Short, 45 s \u00b7 we draft it together"
       },
       {
         "kind": "boost",
         "channel": "X",
         "title": "Oct 21 demo post",
-        "detail": "$50 over 5 days · stop if no signups after $30"
+        "detail": "$50 over 5 days \u00b7 stop if no signups after $30"
       }
     ],
     "posts": [

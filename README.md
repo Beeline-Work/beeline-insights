@@ -33,7 +33,7 @@ unknown field fails. Keep the feed clean: no per-row tags or extra metrics.
 
 | File | Fields |
 | --- | --- |
-| `insights/latest.json` | `generatedAt`, `window {from, through}`, `errors {total, changePct, areas[{area, count}], lead}`, `feedback {total, people, agents, areas[{area, count}], lead}`, `journey {steps[{label, count}], biggestDrop {label, lost} \| null}`, `velocity {hoursLost, items[{label, hours}]}`, `links[{section, experimentId}]` |
+| `insights/latest.json` | `generatedAt`, `window {from, through}`, `errors {total, changePct, areas[{area, count}], lead}`, `feedback {total, people, agents, areas[{area, count}], lead}`, `journey {steps[{label, count}], biggestDrop {label, lost} \| null, state?}`, `velocity {hoursLost, items[{label, hours}]}`, `links[{section, experimentId}]` |
 | `experiments/<id>.json` | `id, title, source {section, text}, change, metric {label, numerator, denominator?}, before {value, samples, from, through}, predict {value, direction}, guardrail, decideAt {samples, date}, ifUnclear, status, approval {messageId} \| null, startedOn, progress {value, samples, asOf} \| null, verdict {result, decision, value, samples, on} \| null` |
 | `reach/latest.json` | `month, spent, cap, costPerSignup \| null, recommendations[{kind, channel, title, detail}], posts[{title, channel, date, views, clicks, spend, status}]` |
 | `digests/<YYYY-MM-DD>.md` | Front matter `title`, `findings`, `proposals`, then the digest text. |
@@ -56,9 +56,12 @@ Rules the validator enforces beyond the schemas:
   experiments, reach and digests.
 - `feedback.total` is `people + agents`; area counts and velocity items do not
   exceed their totals; every `links[].experimentId` names an experiment file.
-- The journey equals the people funnel in the newest snapshot (signed up, joined
-  a workspace, messaged their free agent, free agent replied). `biggestDrop` is
-  the step with the largest loss.
+- The journey maps the newest snapshot's `periods["7d"].funnel` steps and
+  server-selected `biggestDrop` (key mapped to its step label), with `state: "measured"`.
+  Without periods, the existing lifetime people funnel is preserved with
+  `state: "limited"`; missing counts stay missing. A malformed period funnel
+  fails the build rather than silently publishing lifetime numbers as weekly.
+  The optional journey state is confined to the journey schema; legacy inputs remain valid.
 
 ### Daily digest run
 

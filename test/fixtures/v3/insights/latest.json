@@ -45,7 +45,7 @@
         "count": 4
       }
     ],
-    "lead": "People don’t know what to say to their first agent."
+    "lead": "People don\u2019t know what to say to their first agent."
   },
   "journey": {
     "steps": [
@@ -69,7 +69,8 @@
     "biggestDrop": {
       "label": "Messaged their free agent",
       "lost": 19
-    }
+    },
+    "state": "limited"
   },
   "velocity": {
     "hoursLost": 31,
