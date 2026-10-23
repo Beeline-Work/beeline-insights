@@ -22,6 +22,16 @@ export async function validate({ root, today }) {
       }
       continue;
     }
+    if (file === 'digests/index.json' && actual !== undefined) {
+      // Check the saved index itself before comparing it with a fresh build.
+      const errors = Array.isArray(actual)
+        ? actual.flatMap((entry, i) => schemaErrors(entry, 'digest.schema.json').map((error) => `[${i}].${error}`))
+        : ['(root): expected array'];
+      if (errors.length) {
+        problems.push(...errors.map((error) => `${file}: ${error}`));
+        continue;
+      }
+    }
     if (file === 'feed/latest.json' && actual) {
       // Check the saved file itself before ignoring its timestamp for the freshness comparison.
       const errors = schemaErrors(actual, 'feed.schema.json');

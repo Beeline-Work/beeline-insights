@@ -164,6 +164,37 @@ test('validate CLI rejects a saved feed with a malformed or missing generatedAt,
   }
 });
 
+test('validate CLI exits non-zero on an invalid date or timestamp in every file type', async (t) => {
+  const json = (path, mutate) => async (directory) => {
+    const value = JSON.parse(await readFile(join(directory, path), 'utf8'));
+    mutate(value);
+    await writeFile(join(directory, path), JSON.stringify(value));
+  };
+  const cases = [
+    ['insights generatedAt', json('insights/latest.json', (v) => { v.generatedAt = 'not-a-timestamp'; }), /insights\/latest.json: generatedAt: expected date-time/],
+    ['insights impossible timestamp', json('insights/latest.json', (v) => { v.generatedAt = '2026-02-30T13:00:00.000Z'; }), /insights\/latest.json: generatedAt: expected date-time/],
+    ['insights window', json('insights/latest.json', (v) => { v.window.from = '2026-02-30'; }), /insights\/latest.json: window.from: expected date/],
+    ['experiment before', json('experiments/fix-notices.json', (v) => { v.before.through = '2026-10-32'; }), /fix-notices.json: before.through: expected date/],
+    ['experiment decideAt', json('experiments/fix-notices.json', (v) => { v.decideAt.date = '11/11/2026'; }), /fix-notices.json: decideAt.date: expected date|does not match/],
+    ['experiment startedOn', json('experiments/fix-notices.json', (v) => { v.startedOn = '2026-13-01'; }), /fix-notices.json: startedOn: expected date/],
+    ['experiment progress', json('experiments/fix-notices.json', (v) => { v.progress.asOf = 'today'; }), /fix-notices.json: progress.asOf: expected date/],
+    ['experiment verdict', json('experiments/fix-notices.json', (v) => { v.status = 'concluded'; v.verdict = { result: 'not_enough_data', decision: 'keep', value: 0.25, samples: 4, on: '2026-02-29' }; }), /fix-notices.json: verdict.on: expected date/],
+    ['reach post date', json('reach/latest.json', (v) => { v.posts[0].date = '2026-10-18T00:00:00Z'; }), /reach\/latest.json: posts\[0\].date: expected date/],
+    ['reach month', json('reach/latest.json', (v) => { v.month = '2026-13'; }), /reach\/latest.json: month: expected month/],
+    ['digest filename date', async (d) => writeFile(join(d, 'digests/2026-02-30.md'), '---\ntitle: Bad day\nfindings: 1\nproposals: 0\n---\nText.\n'), /digests\/2026-02-30.md: filename: expected digests\/YYYY-MM-DD.md/],
+    ['digest index date', json('digests/index.json', (v) => { v[0].date = 'yesterday'; }), /digests\/index.json: \[0\].date: expected date/],
+    ['feed generatedAt', json('feed/latest.json', (v) => { v.generatedAt = 'not-a-timestamp'; }), /feed\/latest.json: generatedAt: expected date-time/],
+  ];
+  for (const [name, mutate, message] of cases) {
+    const directory = await copy(t);
+    await mutate(directory);
+    const result = cli('validate.mjs', directory);
+    assert.notEqual(result.status, 0, name);
+    assert.match(result.stderr, message, name);
+  }
+  t.diagnostic(`Invalid date or timestamp rejected in ${cases.length} cases across insights, experiments, reach, digests, index and feed`);
+});
+
 function seriesSnapshot(through, workspaces, signups) {
   const daily = (values) => values.map((value, i) => ({ date: addDays(through, i - values.length + 1), value }));
   return { date: through, file: `${through}.json`, body: { schemaVersion: 1, overview: { series: {

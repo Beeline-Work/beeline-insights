@@ -10,7 +10,7 @@ const schemas = Object.fromEntries(await Promise.all(SCHEMA_FILES.map(async (fil
 const typeOf = (value) => value === null ? 'null' : Array.isArray(value) ? 'array'
   : Number.isInteger(value) ? 'integer' : typeof value;
 export const isTimestamp = (value) => typeof value === 'string'
-  && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/.test(value) && Number.isFinite(Date.parse(value));
+  && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/.test(value) && isDate(value.slice(0, 10)) && Number.isFinite(Date.parse(value));
 const FORMATS = {
   date: isDate,
   'date-time': isTimestamp,
