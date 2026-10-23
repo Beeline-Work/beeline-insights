@@ -6,6 +6,7 @@
     "test": "node --test",
     "snapshot": "node scripts/snapshot.mjs",
     "grade-bets": "node scripts/grade-bets.mjs",
-    "metrics": "node scripts/metrics.mjs"
+    "metrics": "node scripts/metrics.mjs",
+    "build-loop": "node scripts/build-loop.mjs"
   }
 }

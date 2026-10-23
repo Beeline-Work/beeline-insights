@@ -27,6 +27,7 @@ jobs:
         env:
           BEELINE_DASHBOARD_SECRET: ${{ secrets.BEELINE_DASHBOARD_SECRET }}
       - name: Commit snapshot
+        id: snapshot-commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -36,4 +37,22 @@ jobs:
             exit 0
           fi
           git commit -m "Snapshot $(ls -1 snapshots | tail -n 1 | sed 's/.json$//')"
-          git push
+          echo "created=true" >> "$GITHUB_OUTPUT"
+      - name: Build Loop feed
+        continue-on-error: true
+        env:
+          SNAPSHOT_COMMITTED: ${{ steps.snapshot-commit.outputs.created }}
+        run: |
+          npm run build-loop
+          git add loop/latest.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          if [ "$SNAPSHOT_COMMITTED" = "true" ]; then
+            git commit --amend --no-edit
+          else
+            git commit -m "Refresh Loop feed"
+          fi
+      - name: Save snapshot and feed
+        if: ${{ always() && steps.snapshot-commit.outcome == 'success' }}
+        run: git push
