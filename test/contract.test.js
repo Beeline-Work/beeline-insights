@@ -149,6 +149,21 @@ test('validate CLI fails on any invalid file, unknown link or stale feed and nam
   assert.equal(JSON.parse(await readFile(join(stale, 'digests/index.json'), 'utf8'))[0].date, '2026-10-24');
 });
 
+test('validate CLI rejects a saved feed with a malformed or missing generatedAt, and build-feed repairs it', async (t) => {
+  for (const generatedAt of ['not-a-timestamp', undefined]) {
+    const directory = await copy(t);
+    const path = join(directory, 'feed/latest.json');
+    const feed = JSON.parse(await readFile(path, 'utf8'));
+    await writeFile(path, JSON.stringify({ ...feed, generatedAt }));
+    const result = cli('validate.mjs', directory);
+    assert.equal(result.status, 1, String(generatedAt));
+    assert.match(result.stderr, generatedAt ? /feed\/latest.json: generatedAt: expected date-time/ : /feed\/latest.json: \(root\): missing generatedAt/);
+    assert.equal(cli('build-feed.mjs', directory).status, 0);
+    assert.ok(Number.isFinite(Date.parse(JSON.parse(await readFile(path, 'utf8')).generatedAt)));
+    assert.equal(cli('validate.mjs', directory).status, 0);
+  }
+});
+
 function seriesSnapshot(through, workspaces, signups) {
   const daily = (values) => values.map((value, i) => ({ date: addDays(through, i - values.length + 1), value }));
   return { date: through, file: `${through}.json`, body: { schemaVersion: 1, overview: { series: {

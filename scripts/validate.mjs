@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { feedOptions, planFeed } from './build-feed.mjs';
 import { isMain } from './lib/analysis.mjs';
+import { schemaErrors } from './lib/contract.mjs';
 
 // Every input must match its schema, and every built file must match a fresh build.
 export async function validate({ root, today }) {
@@ -21,7 +22,15 @@ export async function validate({ root, today }) {
       }
       continue;
     }
-    if (file === 'feed/latest.json' && actual) actual = { ...actual, generatedAt: expected.generatedAt };
+    if (file === 'feed/latest.json' && actual) {
+      // Check the saved file itself before ignoring its timestamp for the freshness comparison.
+      const errors = schemaErrors(actual, 'feed.schema.json');
+      if (errors.length) {
+        problems.push(...errors.map((error) => `${file}: ${error}`));
+        continue;
+      }
+      actual = { ...actual, generatedAt: expected.generatedAt };
+    }
     if (JSON.stringify(actual) !== JSON.stringify(expected)) problems.push(`${file}: missing or stale; run npm run build-feed`);
   }
   return problems;

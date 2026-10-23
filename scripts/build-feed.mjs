@@ -1,7 +1,7 @@
 import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { journeyFromSnapshot } from './journey.mjs';
-import { loadContract, schemaErrors, sortExperiments } from './lib/contract.mjs';
+import { isTimestamp, loadContract, schemaErrors, sortExperiments } from './lib/contract.mjs';
 import { isDate, isMain, loadSnapshots } from './lib/analysis.mjs';
 import { easternDate } from './snapshot.mjs';
 
@@ -53,7 +53,7 @@ export async function planFeed({ root, today, now = new Date() }) {
   // Keep the generation time when nothing the dashboard shows has changed.
   try {
     const previous = JSON.parse(await readFile(join(root, 'feed/latest.json'), 'utf8'));
-    if (typeof previous.generatedAt === 'string' && json({ ...previous, generatedAt: feed.generatedAt }) === json(feed)) feed.generatedAt = previous.generatedAt;
+    if (isTimestamp(previous.generatedAt) && json({ ...previous, generatedAt: feed.generatedAt }) === json(feed)) feed.generatedAt = previous.generatedAt;
   } catch (error) {
     if (error.code !== 'ENOENT' && !(error instanceof SyntaxError)) throw error;
   }
