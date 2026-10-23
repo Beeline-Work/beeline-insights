@@ -44,6 +44,7 @@
       "additionalProperties": false,
       "required": ["steps", "biggestDrop"],
       "properties": {
+        "state": { "enum": ["measured", "limited"] },
         "steps": {
           "type": "array",
           "items": {

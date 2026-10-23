@@ -48,7 +48,7 @@ test('mock v3 fixture validates and builds the committed feed with only the cont
 test('journey comes from the newest snapshot, not from typed numbers', async (t) => {
   const snapshot = { body: JSON.parse(await readFile(join(fixture, 'snapshots/2026-10-23.json'), 'utf8')) };
   assert.deepEqual(journeyFromSnapshot(snapshot), insights.journey);
-  assert.deepEqual(journeyFromSnapshot({ body: { usage: { state: 'missing' } } }), { steps: [], biggestDrop: null });
+  assert.deepEqual(journeyFromSnapshot({ body: { usage: { state: 'missing' } } }), { steps: [], biggestDrop: null, state: 'limited' });
   const real = { body: JSON.parse(await readFile(join(root, 'snapshots/2026-10-23.json'), 'utf8')) };
   assert.deepEqual(journeyFromSnapshot(real).biggestDrop, { label: 'Messaged their free agent', lost: 19 });
 
