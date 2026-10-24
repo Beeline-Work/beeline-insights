@@ -71,26 +71,30 @@
     "steps": [
       {
         "label": "Signed up",
-        "count": 37
+        "count": 18
       },
       {
         "label": "Joined a workspace",
-        "count": 30
+        "count": 17
       },
       {
-        "label": "Messaged their free agent",
-        "count": 11
+        "label": "Sent a first message",
+        "count": 10
       },
       {
-        "label": "Free agent replied",
-        "count": 11
+        "label": "Got an agent reply",
+        "count": 10
+      },
+      {
+        "label": "Active in the last 7 days",
+        "count": 10
       }
     ],
     "biggestDrop": {
-      "label": "Messaged their free agent",
-      "lost": 19
+      "label": "Sent a first message",
+      "lost": 7
     },
-    "state": "limited"
+    "state": "measured"
   },
   "velocity": {
     "hoursLost": 22.8,
