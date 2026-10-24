@@ -8,7 +8,9 @@
     "source",
     "day",
     "window",
-    "groups"
+    "groups",
+    "cohort",
+    "retained"
   ],
   "properties": {
     "generatedAt": {
@@ -48,7 +50,8 @@
       "additionalProperties": false,
       "required": [
         "addedOwnAgent",
-        "freeAgent"
+        "freeAgent",
+        "noAgent"
       ],
       "properties": {
         "addedOwnAgent": {
@@ -86,8 +89,34 @@
               "minimum": 0
             }
           }
+        },
+        "noAgent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "cohort",
+            "retained"
+          ],
+          "properties": {
+            "cohort": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "retained": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
         }
       }
+    },
+    "cohort": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "retained": {
+      "type": "integer",
+      "minimum": 0
     }
   }
 }

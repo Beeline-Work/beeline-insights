@@ -9,6 +9,8 @@ export function retentionFromSnapshot(snapshot) {
     source: 'GET /v1/admin/dashboard overview.retention.data.byFirstAgentSource',
     day: block.data.day,
     window: { from: block.data.from, through: block.data.through },
+    cohort: block.data.cohort,
+    retained: block.data.retained,
     groups: block.data.byFirstAgentSource,
   };
   const errors = aggregateErrors(value, 'retention');

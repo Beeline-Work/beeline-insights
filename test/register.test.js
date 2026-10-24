@@ -10,7 +10,7 @@ import { buildFeed } from '../scripts/build-feed.mjs';
 const running = JSON.parse(await readFile(new URL('fixtures/v3/experiments/fix-notices.json', import.meta.url), 'utf8'));
 const problem = { id: 'agent-start', kind: 'regression', rank: 1, date: '2026-10-24', title: 'Agent does not start', peoplePerDay: 3, trend: 'up', cause: 'connection', stage: 'first-reply', source: 'Daily triage aggregate', regression: { causedByPr: 'https://github.com/Beeline-Work/beeline/pull/123', report: 'Repeated connection failures' } };
 const walk = { date: '2026-10-24', source: 'Daily walk aggregate', counts: [{ goal: 'start-agent', friction: 'no-reply', count: 4 }] };
-const retention = { generatedAt: '2026-10-24T12:00:00.000Z', source: 'Admin retention grouped by first agent source', day: 7, window: { from: '2026-10-01', through: '2026-10-07' }, groups: { addedOwnAgent: { cohort: 12, retained: 4 }, freeAgent: { cohort: 20, retained: 3 } } };
+const retention = { generatedAt: '2026-10-24T12:00:00.000Z', source: 'Admin retention grouped by first agent source', day: 7, cohort: 40, retained: 9, window: { from: '2026-10-01', through: '2026-10-07' }, groups: { addedOwnAgent: { cohort: 12, retained: 4 }, freeAgent: { cohort: 20, retained: 3 }, noAgent: { cohort: 8, retained: 2 } } };
 
 test('register cap names the eleventh file; proposed and concluded do not count', () => {
   const ten = Array.from({ length: 10 }, (_, i) => ({ ...running, id: `experiment-${i}` }));
@@ -88,7 +88,7 @@ test('feed derives retention from the newest measured server split without stori
   const root = await mkdtemp(join(tmpdir(), 'retention-'));
   t.after(() => rm(root, { recursive: true, force: true }));
   await mkdir(join(root, 'snapshots'));
-  const body = { schemaVersion: 1, overview: { retention: { state: 'measured', measuredAt: retention.generatedAt, data: { day: 7, ...retention.window, byFirstAgentSource: retention.groups } } } };
+  const body = { schemaVersion: 1, overview: { retention: { state: 'measured', measuredAt: retention.generatedAt, data: { day: 7, cohort: retention.cohort, retained: retention.retained, ...retention.window, byFirstAgentSource: retention.groups } } } };
   const path = join(root, 'snapshots/2026-10-24.json');
   await writeFile(path, JSON.stringify(body));
   const feed = await buildFeed({ root, today: '2026-10-24' });
@@ -123,4 +123,17 @@ test('CLI names the offending filename for capacity and every required experimen
     assert.equal(result.status, 1);
     assert.ok(result.stderr.includes(`experiments/item-0.json: ${parent}: missing ${key}`));
   }
+});
+
+
+test('retention requires the no-agent baseline and reconciles every group to the overall totals', () => {
+  const missing = structuredClone(retention);
+  delete missing.groups.noAgent;
+  assert.match(aggregateErrors(missing, 'retention').join('\n'), /groups: missing noAgent/);
+  for (const field of ['cohort', 'retained']) {
+    const wrong = structuredClone(retention);
+    wrong.groups.noAgent[field]++;
+    assert.match(aggregateErrors(wrong, 'retention').join('\n'), new RegExp(`${field} counts must sum to ${field}`));
+  }
+  assert.deepEqual(aggregateErrors({ ...retention, cohort: 0, retained: 0, groups: { addedOwnAgent: { cohort: 0, retained: 0 }, freeAgent: { cohort: 0, retained: 0 }, noAgent: { cohort: 0, retained: 0 } } }, 'retention'), []);
 });

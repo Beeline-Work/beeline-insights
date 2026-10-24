@@ -153,13 +153,15 @@ include the three fields; missing input folders produce empty arrays/null.
   Goals and friction codes are lowercase slugs. Each pair appears once per day;
   counts are anonymous totals, never individual events or message transcripts.
 - `retention/latest.json`: `generatedAt`, `source`, `day: 7`,
-  `window {from, through}`, `groups {addedOwnAgent, freeAgent}`. Each group has
+  `window {from, through}`, overall `cohort` and `retained`,
+  `groups {addedOwnAgent, freeAgent, noAgent}`. Each group has
   `cohort` and `retained` counts (retained cannot exceed cohort). Consumers can
-  calculate retained/cohort; a zero cohort has no rate.
+  calculate retained/cohort; a zero cohort has no rate. Group cohorts must sum
+  to the overall cohort, and group retained counts to the overall retained count.
 
 The build also accepts the same groups from the newest measured snapshot's
 `overview.retention.data.byFirstAgentSource`, using that block's `measuredAt`,
-`day`, `from` and `through`. These server aggregates take precedence over a
+`day`, `from`, `through`, `cohort` and `retained`. These server aggregates take precedence over a
 manually supplied retention file. A malformed split fails the build. No split
 is inferred from the overall retention or the walk; dates identify staleness.
 
@@ -167,10 +169,10 @@ As checked against the live admin endpoint on 2026-10-24, only combined
 retention is available. The server follow-up must classify each person's
 **earliest agent acquisition** as added-own-agent or free-agent, group the
 existing eligible day-seven cohort query by that classification, and return
-`byFirstAgentSource: {addedOwnAgent: {cohort, retained}, freeAgent: {cohort, retained}}`.
+`byFirstAgentSource: {addedOwnAgent: {cohort, retained}, freeAgent: {cohort, retained}, noAgent: {cohort, retained}}`.
 Keep the existing production exclusions, return activity definition and cohort
-window. People without a known acquisition source must not be silently assigned
-to either group. Only aggregates may be stored here. Until that field exists,
+window. The `noAgent` baseline includes people who have not acquired an agent;
+the three groups must cover the complete cohort without double counting. Only aggregates may be stored here. Until that field exists,
 the live feed reports `retention: null`.
 
 The register permits at most **10 running experiments**, including during

@@ -160,6 +160,9 @@ export function aggregateErrors(value, kind, file) {
   }
   if (kind === 'retention') {
     if (value.window.from > value.window.through) errors.push('window.through: must be on or after window.from');
+    for (const field of ['cohort', 'retained']) {
+      if (sum(Object.values(value.groups), field) !== value[field]) errors.push(`groups: ${field} counts must sum to ${field}`);
+    }
     for (const [key, group] of Object.entries(value.groups)) {
       if (group.retained > group.cohort) errors.push(`groups.${key}.retained: exceeds cohort`);
     }
