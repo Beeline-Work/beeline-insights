@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "date": "2026-10-24",
+    "title": "Three releases shipped; UI review rounds cost the most time",
+    "findings": 3,
+    "proposals": 0,
+    "path": "digests/2026-10-24.md"
+  }
+]

@@ -1,7 +1,127 @@
 {
-  "generatedAt": "2026-10-23T18:47:02.498Z",
-  "insights": null,
+  "generatedAt": "2026-10-24T13:09:07.993Z",
+  "insights": {
+    "generatedAt": "2026-10-24T13:10:00.000Z",
+    "window": {
+      "from": "2026-10-17",
+      "through": "2026-10-23"
+    },
+    "errors": {
+      "total": 68,
+      "changePct": null,
+      "areas": [
+        {
+          "area": "Agents and corners",
+          "count": 22
+        },
+        {
+          "area": "Database",
+          "count": 20
+        },
+        {
+          "area": "GitHub",
+          "count": 10
+        },
+        {
+          "area": "Voice",
+          "count": 8
+        },
+        {
+          "area": "Phone and web app",
+          "count": 8
+        }
+      ],
+      "lead": "Database connection errors cause 20 of 68 events; 10 come from one closed-pool bug."
+    },
+    "feedback": {
+      "total": 1437,
+      "people": 4,
+      "agents": 1433,
+      "areas": [
+        {
+          "area": "Corners and wakes",
+          "count": 411
+        },
+        {
+          "area": "Review and merge",
+          "count": 410
+        },
+        {
+          "area": "Other",
+          "count": 218
+        },
+        {
+          "area": "Android testing",
+          "count": 163
+        },
+        {
+          "area": "Checks",
+          "count": 126
+        },
+        {
+          "area": "Agent shell",
+          "count": 60
+        },
+        {
+          "area": "Voice",
+          "count": 49
+        }
+      ],
+      "lead": "Agents file almost all reports; corner wakes and review hand-offs lead."
+    },
+    "journey": {
+      "steps": [
+        {
+          "label": "Signed up",
+          "count": 37
+        },
+        {
+          "label": "Joined a workspace",
+          "count": 30
+        },
+        {
+          "label": "Messaged their free agent",
+          "count": 11
+        },
+        {
+          "label": "Free agent replied",
+          "count": 11
+        }
+      ],
+      "biggestDrop": {
+        "label": "Messaged their free agent",
+        "lost": 19
+      },
+      "state": "limited"
+    },
+    "velocity": {
+      "hoursLost": 22.8,
+      "items": [
+        {
+          "label": "UI changes need repeated review rounds",
+          "hours": 17.3
+        },
+        {
+          "label": "Android test setup lost between turns",
+          "hours": 2.9
+        },
+        {
+          "label": "Reviewer not woken after green checks",
+          "hours": 2.6
+        }
+      ]
+    },
+    "links": []
+  },
   "experiments": [],
   "reach": null,
-  "digests": []
+  "digests": [
+    {
+      "date": "2026-10-24",
+      "title": "Three releases shipped; UI review rounds cost the most time",
+      "findings": 3,
+      "proposals": 0,
+      "path": "digests/2026-10-24.md"
+    }
+  ]
 }
