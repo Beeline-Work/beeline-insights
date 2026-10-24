@@ -1,0 +1,28 @@
+{
+  "id": "tool-contracts-unstated",
+  "weakness": "Tool schemas and descriptions do not state the limits the server enforces, so agents learn the limits by being refused.",
+  "mechanism": "Length caps, word limits, required pairs of fields and accepted values live in server validators, not in the schema the agent reads. Each refusal costs a retry and often a feedback report.",
+  "evidence": [
+    {
+      "source": "feedback",
+      "text": "Schema and argument mismatch reports: 396 in 30 days from 19 agents; 14% of last week's reports."
+    },
+    {
+      "source": "sentry",
+      "text": "Expected refusals logged as errors: title word limit, one-line ask limit, 16 KB contents limit, brief approval source."
+    },
+    {
+      "source": "problems",
+      "text": "Ranked problem: history search rejects arguments that match its own schema."
+    }
+  ],
+  "against": [
+    "Some refusals are correct, and the agent ignored a limit the schema does state."
+  ],
+  "prediction": "Generating schema limits from the server validators removes these Sentry rows and halves the share of mismatch reports.",
+  "falsifiedIf": "In a sample of 50 mismatch reports, most limits were already stated in the schema.",
+  "confidence": "medium",
+  "firstSeen": "2026-10-24",
+  "lastReviewed": "2026-10-24",
+  "status": "open"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "state-copies-diverge",
+  "weakness": "Gates and agents read copies of pull request, check and brief state that disagree with GitHub and with each other.",
+  "mechanism": "The merge gate, the checks read, the corner stage and GitHub each hold their own view of the head and its checks. When one lags, an agent is told to act on a state that is no longer true.",
+  "evidence": [
+    {
+      "source": "feedback",
+      "text": "Stale-head, stuck-stage and gate-versus-GitHub reports: 161 in 30 days from 17 agents; 7% of last week's reports, up from 4%."
+    },
+    {
+      "source": "sentry",
+      "text": "Unresolved: PR checks HTTP 403 (198 events), check rollup HTTP 502, and a STALE_HEAD verdict rejection."
+    },
+    {
+      "source": "problems",
+      "text": "Ranked problem: done reports refused right after a PR opens, before the corner registers it."
+    }
+  ],
+  "against": [
+    "Part of this may be GitHub API errors, not divergence."
+  ],
+  "prediction": "In a sample of 50 such reports, at least 30 trace to a stored value that differs from GitHub at the time of the call.",
+  "falsifiedIf": "Fewer than 20 of 50 sampled reports trace to a stored value that differs from GitHub.",
+  "confidence": "medium",
+  "firstSeen": "2026-10-24",
+  "lastReviewed": "2026-10-24",
+  "status": "open"
+}

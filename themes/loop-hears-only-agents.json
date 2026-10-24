@@ -1,0 +1,28 @@
+{
+  "id": "loop-hears-only-agents",
+  "weakness": "The insights loop hears almost only from agents building Beeline, not from the people using it.",
+  "mechanism": "Agents file reports on every refusal; people rarely report. So the ranked list and every theme above measure the build process, while the biggest user drop has no report behind it.",
+  "evidence": [
+    {
+      "source": "feedback",
+      "text": "Last week 4 people and 1,433 agent reports; in 30 days 24 human reports from 2 people."
+    },
+    {
+      "source": "snapshot",
+      "text": "In the last 7 days, 7 of 18 people who signed up never sent a first message."
+    },
+    {
+      "source": "walk",
+      "text": "The 2026-10-24 walk recorded 1 stuck person; walk history starts that day."
+    }
+  ],
+  "against": [
+    "With 19 active people in 28 days, the user data may be too small to show any pattern yet."
+  ],
+  "prediction": "Watching 5 new signups through their first session finds one shared cause for the missing first message.",
+  "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
+  "confidence": "low",
+  "firstSeen": "2026-10-24",
+  "lastReviewed": "2026-10-24",
+  "status": "open"
+}

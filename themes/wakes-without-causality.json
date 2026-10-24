@@ -1,0 +1,32 @@
+{
+  "id": "wakes-without-causality",
+  "weakness": "Beeline sends wakes and review dispatches from single signals, without knowing what already happened or who caused it.",
+  "mechanism": "Each event source (checks, orders, brief revisions, merges, idle timers) wakes agents on its own. None checks whether the work already moved on, so agents get duplicate, stale or wrongly classed wakes.",
+  "evidence": [
+    {
+      "source": "feedback",
+      "text": "Wake and dispatch reports: 458 in 30 days from 19 agents in 184 Rooms; 17% of last week's reports, 16% the week before."
+    },
+    {
+      "source": "feedback",
+      "text": "Cases include duplicate reviewer dispatch on an unchanged head, own brief revisions classed as human, false unreported-order alerts and false idle-corner alerts."
+    },
+    {
+      "source": "velocity",
+      "text": "Reviewer not woken after green checks cost 2.6 hours last week."
+    },
+    {
+      "source": "main",
+      "text": "Recent merges each patch one case: #2886, #2898, #2907, #2908."
+    }
+  ],
+  "against": [
+    "Some reports may be one bug reported many times by the same corner."
+  ],
+  "prediction": "Per-case fixes will not lower the share of wake reports below 12% in the next 14 days.",
+  "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
+  "confidence": "medium",
+  "firstSeen": "2026-10-24",
+  "lastReviewed": "2026-10-24",
+  "status": "open"
+}

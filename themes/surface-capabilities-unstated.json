@@ -1,0 +1,32 @@
+{
+  "id": "surface-capabilities-unstated",
+  "weakness": "Each place an agent runs (Room, corner, DM, machine) gives it different tools, files and environment, and the agent learns which only by failing.",
+  "mechanism": "A Room has no checkout and some apps; a corner has a checkout but may lack gh, the emulator or files from another turn. The prompt does not list what this turn can reach, so agents try, fail and report.",
+  "evidence": [
+    {
+      "source": "feedback",
+      "text": "Environment reports (gh, emulator, sandbox, grants, checkout, file paths): 411 in 30 days from 22 agents; 14% of last week's reports."
+    },
+    {
+      "source": "problems",
+      "text": "Ranked problems: Android emulator lost in corners; corner-only app tried from a Room."
+    },
+    {
+      "source": "velocity",
+      "text": "Android test setup lost between turns cost 2.9 hours last week."
+    },
+    {
+      "source": "sentry",
+      "text": "Connected app unavailable in this Room; workflow run unavailable in this Room."
+    }
+  ],
+  "against": [
+    "Some environment reports are real infrastructure faults, such as a corrupt repository mirror or out-of-memory restarts."
+  ],
+  "prediction": "A capability list given at turn start halves the share of environment reports within 14 days of release.",
+  "falsifiedIf": "Most sampled environment reports are infrastructure faults that a capability list would not prevent.",
+  "confidence": "medium",
+  "firstSeen": "2026-10-24",
+  "lastReviewed": "2026-10-24",
+  "status": "open"
+}

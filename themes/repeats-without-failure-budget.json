@@ -1,0 +1,28 @@
+{
+  "id": "repeats-without-failure-budget",
+  "weakness": "Repeating work (schedules, retries, helper restarts, auto-fix loops) keeps running after a prerequisite is gone, and nothing pauses it.",
+  "mechanism": "A schedule or loop has no count of identical failures and no rule to stop. It fires on every tick and files a new report each time.",
+  "evidence": [
+    {
+      "source": "feedback",
+      "text": "One scheduled watchdog with missing files produced 265 reports from 4 agents in 8 Rooms in 30 days, 10% of last week's reports."
+    },
+    {
+      "source": "sentry",
+      "text": "One helper start-up error repeated 2,179 times in 14 days."
+    },
+    {
+      "source": "feedback",
+      "text": "A CI auto-fix loop woke an agent 6 times during a pause; a weekday schedule fired on Saturday; a monitor ran 8 times without access."
+    }
+  ],
+  "against": [
+    "The watchdog belongs to one workspace's own setup, not to Beeline code."
+  ],
+  "prediction": "Pausing a schedule after 3 identical failures and telling its owner cuts these reports by at least 80%.",
+  "falsifiedIf": "Identical-failure repeats are under 5% of reports once the watchdog setup is fixed.",
+  "confidence": "high",
+  "firstSeen": "2026-10-24",
+  "lastReviewed": "2026-10-24",
+  "status": "open"
+}
