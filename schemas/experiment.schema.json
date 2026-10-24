@@ -7,6 +7,7 @@
   "required": ["id", "title", "source", "change", "metric", "before", "predict", "guardrail", "decideAt", "ifUnclear", "status", "approval", "startedOn", "progress", "verdict"],
   "properties": {
     "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "theme": { "description": "Optional id of the themes/<id>.json file this experiment tests.", "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
     "title": { "$ref": "#/$defs/text" },
     "source": {
       "type": "object",

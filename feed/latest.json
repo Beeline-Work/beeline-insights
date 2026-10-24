@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T20:15:52.053Z",
+  "generatedAt": "2026-10-24T22:47:38.249Z",
   "insights": {
     "generatedAt": "2026-10-24T13:10:00.000Z",
     "window": {
@@ -261,6 +261,1156 @@
           "count": 1
         }
       ]
+    }
+  ],
+  "themes": [
+    {
+      "id": "loop-hears-only-agents",
+      "weakness": "The insights loop hears almost only from agents building Beeline, not from the people using it.",
+      "mechanism": "Agents file reports on every refusal; people rarely report. So the ranked list and every theme above measure the build process, while the biggest user drop has no report behind it.",
+      "evidence": [
+        {
+          "source": "feedback",
+          "text": "Last week 4 people and 1,433 agent reports; in 30 days 24 human reports from 2 people."
+        },
+        {
+          "source": "snapshot",
+          "text": "In the last 7 days, 7 of 18 people who signed up never sent a first message."
+        },
+        {
+          "source": "snapshot",
+          "text": "Of 20 people who signed up in the 7 days to 2026-10-22, 10 sent a message within 24 hours and 1 came back the next day."
+        },
+        {
+          "source": "walk",
+          "text": "The 2026-10-24 walk recorded 1 stuck person; walk history starts that day."
+        }
+      ],
+      "against": [
+        "With 19 active people in 28 days, the user data may be too small to show any pattern yet."
+      ],
+      "prediction": "Watching 5 new signups through their first session finds one shared cause for the missing first message.",
+      "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
+      "confidence": "low",
+      "firstSeen": "2026-10-24",
+      "lastReviewed": "2026-10-24",
+      "status": "open",
+      "track": {
+        "label": "New people who send a first message within 24 hours",
+        "unit": "rate",
+        "source": "signup-rate",
+        "definition": "Of people (production cohort, no agents) who signed up in the 7 days before that day, the share who sent a message within 24 hours of signing up.",
+        "target": {
+          "value": 0.75,
+          "direction": "below",
+          "by": "2026-11-07"
+        },
+        "history": [
+          {
+            "date": "2026-09-25",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-26",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-27",
+            "value": 0,
+            "samples": 1
+          },
+          {
+            "date": "2026-09-28",
+            "value": 0.5,
+            "samples": 2
+          },
+          {
+            "date": "2026-09-29",
+            "value": 0.5,
+            "samples": 4
+          },
+          {
+            "date": "2026-09-30",
+            "value": 0.4,
+            "samples": 5
+          },
+          {
+            "date": "2026-10-01",
+            "value": 0.3333,
+            "samples": 6
+          },
+          {
+            "date": "2026-10-02",
+            "value": 0.25,
+            "samples": 8
+          },
+          {
+            "date": "2026-10-03",
+            "value": 0.3333,
+            "samples": 9
+          },
+          {
+            "date": "2026-10-04",
+            "value": 0.375,
+            "samples": 8
+          },
+          {
+            "date": "2026-10-05",
+            "value": 0.2857,
+            "samples": 7
+          },
+          {
+            "date": "2026-10-06",
+            "value": 0.2,
+            "samples": 5
+          },
+          {
+            "date": "2026-10-07",
+            "value": 0.4,
+            "samples": 5
+          },
+          {
+            "date": "2026-10-08",
+            "value": 0.5,
+            "samples": 4
+          },
+          {
+            "date": "2026-10-09",
+            "value": 0.6667,
+            "samples": 3
+          },
+          {
+            "date": "2026-10-10",
+            "value": 0.5,
+            "samples": 2
+          },
+          {
+            "date": "2026-10-11",
+            "value": 0.5,
+            "samples": 2
+          },
+          {
+            "date": "2026-10-12",
+            "value": 0.5,
+            "samples": 2
+          },
+          {
+            "date": "2026-10-13",
+            "value": 0.3333,
+            "samples": 3
+          },
+          {
+            "date": "2026-10-14",
+            "value": 0,
+            "samples": 2
+          },
+          {
+            "date": "2026-10-15",
+            "value": 0,
+            "samples": 2
+          },
+          {
+            "date": "2026-10-16",
+            "value": 0,
+            "samples": 1
+          },
+          {
+            "date": "2026-10-17",
+            "value": 0,
+            "samples": 3
+          },
+          {
+            "date": "2026-10-18",
+            "value": 0.4,
+            "samples": 5
+          },
+          {
+            "date": "2026-10-19",
+            "value": 0.4286,
+            "samples": 7
+          },
+          {
+            "date": "2026-10-20",
+            "value": 0.5714,
+            "samples": 7
+          },
+          {
+            "date": "2026-10-21",
+            "value": 0.5556,
+            "samples": 9
+          },
+          {
+            "date": "2026-10-22",
+            "value": 0.5833,
+            "samples": 12
+          },
+          {
+            "date": "2026-10-23",
+            "value": 0.5,
+            "samples": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "repeats-without-failure-budget",
+      "weakness": "Repeating work (schedules, retries, helper restarts, auto-fix loops) keeps running after a prerequisite is gone, and nothing pauses it.",
+      "mechanism": "A schedule or loop has no count of identical failures and no rule to stop. It fires on every tick and files a new report each time.",
+      "evidence": [
+        {
+          "source": "feedback",
+          "text": "Exact-repeat class: 0.2% of reports in the 7 days to 2026-10-23, 0% the 7 days before. The watchdog words each failure differently, so exact matches miss most of the first-pass repeats."
+        },
+        {
+          "source": "feedback",
+          "text": "First pass: one scheduled watchdog with missing files produced 265 reports from 4 agents in 8 Rooms in 30 days, 10% of last week's reports."
+        },
+        {
+          "source": "sentry",
+          "text": "One helper start-up error repeated 2,179 times in 14 days."
+        },
+        {
+          "source": "feedback",
+          "text": "A CI auto-fix loop woke an agent 6 times during a pause; a weekday schedule fired on Saturday; a monitor ran 8 times without access."
+        }
+      ],
+      "against": [
+        "The watchdog belongs to one workspace's own setup, not to Beeline code."
+      ],
+      "prediction": "Pausing a schedule after 3 identical failures and telling its owner cuts these reports by at least 80%.",
+      "falsifiedIf": "Identical-failure repeats are under 5% of reports once the watchdog setup is fixed.",
+      "confidence": "high",
+      "firstSeen": "2026-10-24",
+      "lastReviewed": "2026-10-24",
+      "status": "open",
+      "track": {
+        "label": "Share of reports that repeat the same failure",
+        "unit": "share",
+        "source": "feedback-share",
+        "definition": "Exact match (scripts/theme-classes.mjs): reports whose identical summary the same reporter filed 3 or more times that Eastern day, as a share of all reports in the 7 days ending that day.",
+        "target": {
+          "value": 0.05,
+          "direction": "above",
+          "by": "2026-11-07"
+        },
+        "history": [
+          {
+            "date": "2026-09-25",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-26",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-27",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-28",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-29",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-30",
+            "value": 0.122,
+            "samples": 41
+          },
+          {
+            "date": "2026-10-01",
+            "value": 0.051,
+            "samples": 98
+          },
+          {
+            "date": "2026-10-02",
+            "value": 0.0273,
+            "samples": 183
+          },
+          {
+            "date": "2026-10-03",
+            "value": 0.0211,
+            "samples": 237
+          },
+          {
+            "date": "2026-10-04",
+            "value": 0.0158,
+            "samples": 316
+          },
+          {
+            "date": "2026-10-05",
+            "value": 0.0125,
+            "samples": 400
+          },
+          {
+            "date": "2026-10-06",
+            "value": 0.0112,
+            "samples": 448
+          },
+          {
+            "date": "2026-10-07",
+            "value": 0,
+            "samples": 468
+          },
+          {
+            "date": "2026-10-08",
+            "value": 0,
+            "samples": 474
+          },
+          {
+            "date": "2026-10-09",
+            "value": 0,
+            "samples": 419
+          },
+          {
+            "date": "2026-10-10",
+            "value": 0,
+            "samples": 424
+          },
+          {
+            "date": "2026-10-11",
+            "value": 0,
+            "samples": 376
+          },
+          {
+            "date": "2026-10-12",
+            "value": 0,
+            "samples": 346
+          },
+          {
+            "date": "2026-10-13",
+            "value": 0,
+            "samples": 371
+          },
+          {
+            "date": "2026-10-14",
+            "value": 0,
+            "samples": 370
+          },
+          {
+            "date": "2026-10-15",
+            "value": 0,
+            "samples": 379
+          },
+          {
+            "date": "2026-10-16",
+            "value": 0,
+            "samples": 468
+          },
+          {
+            "date": "2026-10-17",
+            "value": 0,
+            "samples": 586
+          },
+          {
+            "date": "2026-10-18",
+            "value": 0,
+            "samples": 670
+          },
+          {
+            "date": "2026-10-19",
+            "value": 0,
+            "samples": 802
+          },
+          {
+            "date": "2026-10-20",
+            "value": 0.0032,
+            "samples": 945
+          },
+          {
+            "date": "2026-10-21",
+            "value": 0.0028,
+            "samples": 1067
+          },
+          {
+            "date": "2026-10-22",
+            "value": 0.0025,
+            "samples": 1179
+          },
+          {
+            "date": "2026-10-23",
+            "value": 0.0021,
+            "samples": 1397
+          }
+        ]
+      }
+    },
+    {
+      "id": "state-copies-diverge",
+      "weakness": "Gates and agents read copies of pull request, check and brief state that disagree with GitHub and with each other.",
+      "mechanism": "The merge gate, the checks read, the corner stage and GitHub each hold their own view of the head and its checks. When one lags, an agent is told to act on a state that is no longer true.",
+      "evidence": [
+        {
+          "source": "feedback",
+          "text": "Keyword class: 6% of reports in the 7 days to 2026-10-23, up from 2% the 7 days before."
+        },
+        {
+          "source": "feedback",
+          "text": "First pass: stale-head, stuck-stage and gate-versus-GitHub reports: 161 in 30 days from 17 agents; 7% of last week's reports, up from 4%."
+        },
+        {
+          "source": "sentry",
+          "text": "Unresolved: PR checks HTTP 403 (198 events), check rollup HTTP 502, and a STALE_HEAD verdict rejection."
+        },
+        {
+          "source": "problems",
+          "text": "Ranked problem: done reports refused right after a PR opens, before the corner registers it."
+        }
+      ],
+      "against": [
+        "Part of this may be GitHub API errors, not divergence."
+      ],
+      "prediction": "In a sample of 50 such reports, at least 30 trace to a stored value that differs from GitHub at the time of the call.",
+      "falsifiedIf": "Fewer than 20 of 50 sampled reports trace to a stored value that differs from GitHub.",
+      "confidence": "medium",
+      "firstSeen": "2026-10-24",
+      "lastReviewed": "2026-10-24",
+      "status": "open",
+      "track": {
+        "label": "Share of reports about stale PR and check state",
+        "unit": "share",
+        "source": "feedback-share",
+        "definition": "Keyword match on the report summary (scripts/theme-classes.mjs): reports naming a stale head, check read or summary, merge or review gate, or a corner or PR not found, as a share of all reports in the 7 days ending that day.",
+        "target": {
+          "value": 0.03,
+          "direction": "above",
+          "by": "2026-11-07"
+        },
+        "history": [
+          {
+            "date": "2026-09-25",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-26",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-27",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-28",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-29",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-30",
+            "value": 0,
+            "samples": 41
+          },
+          {
+            "date": "2026-10-01",
+            "value": 0.0204,
+            "samples": 98
+          },
+          {
+            "date": "2026-10-02",
+            "value": 0.0219,
+            "samples": 183
+          },
+          {
+            "date": "2026-10-03",
+            "value": 0.0253,
+            "samples": 237
+          },
+          {
+            "date": "2026-10-04",
+            "value": 0.0285,
+            "samples": 316
+          },
+          {
+            "date": "2026-10-05",
+            "value": 0.0475,
+            "samples": 400
+          },
+          {
+            "date": "2026-10-06",
+            "value": 0.0446,
+            "samples": 448
+          },
+          {
+            "date": "2026-10-07",
+            "value": 0.0449,
+            "samples": 468
+          },
+          {
+            "date": "2026-10-08",
+            "value": 0.0464,
+            "samples": 474
+          },
+          {
+            "date": "2026-10-09",
+            "value": 0.0501,
+            "samples": 419
+          },
+          {
+            "date": "2026-10-10",
+            "value": 0.0448,
+            "samples": 424
+          },
+          {
+            "date": "2026-10-11",
+            "value": 0.0452,
+            "samples": 376
+          },
+          {
+            "date": "2026-10-12",
+            "value": 0.0202,
+            "samples": 346
+          },
+          {
+            "date": "2026-10-13",
+            "value": 0.0243,
+            "samples": 371
+          },
+          {
+            "date": "2026-10-14",
+            "value": 0.0216,
+            "samples": 370
+          },
+          {
+            "date": "2026-10-15",
+            "value": 0.0158,
+            "samples": 379
+          },
+          {
+            "date": "2026-10-16",
+            "value": 0.0171,
+            "samples": 468
+          },
+          {
+            "date": "2026-10-17",
+            "value": 0.0205,
+            "samples": 586
+          },
+          {
+            "date": "2026-10-18",
+            "value": 0.0194,
+            "samples": 670
+          },
+          {
+            "date": "2026-10-19",
+            "value": 0.0324,
+            "samples": 802
+          },
+          {
+            "date": "2026-10-20",
+            "value": 0.0296,
+            "samples": 945
+          },
+          {
+            "date": "2026-10-21",
+            "value": 0.0319,
+            "samples": 1067
+          },
+          {
+            "date": "2026-10-22",
+            "value": 0.0365,
+            "samples": 1179
+          },
+          {
+            "date": "2026-10-23",
+            "value": 0.0594,
+            "samples": 1397
+          }
+        ]
+      }
+    },
+    {
+      "id": "surface-capabilities-unstated",
+      "weakness": "Each place an agent runs (Room, corner, DM, machine) gives it different tools, files and environment, and the agent learns which only by failing.",
+      "mechanism": "A Room has no checkout and some apps; a corner has a checkout but may lack gh, the emulator or files from another turn. The prompt does not list what this turn can reach, so agents try, fail and report.",
+      "evidence": [
+        {
+          "source": "feedback",
+          "text": "Keyword class: 15% of reports in the 7 days to 2026-10-23, 18% the 7 days before."
+        },
+        {
+          "source": "feedback",
+          "text": "First pass: environment reports (gh, emulator, sandbox, grants, checkout, file paths): 411 in 30 days from 22 agents; 14% of last week's reports."
+        },
+        {
+          "source": "problems",
+          "text": "Ranked problems: Android emulator lost in corners; corner-only app tried from a Room."
+        },
+        {
+          "source": "velocity",
+          "text": "Android test setup lost between turns cost 2.9 hours last week."
+        },
+        {
+          "source": "sentry",
+          "text": "Connected app unavailable in this Room; workflow run unavailable in this Room."
+        }
+      ],
+      "against": [
+        "Some environment reports are real infrastructure faults, such as a corrupt repository mirror or out-of-memory restarts."
+      ],
+      "prediction": "A capability list given at turn start halves the share of environment reports within 14 days of release.",
+      "falsifiedIf": "Most sampled environment reports are infrastructure faults that a capability list would not prevent.",
+      "confidence": "medium",
+      "firstSeen": "2026-10-24",
+      "lastReviewed": "2026-10-24",
+      "status": "open",
+      "track": {
+        "label": "Share of reports about what a place allows",
+        "unit": "share",
+        "source": "feedback-share",
+        "definition": "Keyword match on the report summary (scripts/theme-classes.mjs): reports naming an emulator, sandbox, grant, checkout, gh, shell, host or a capability unavailable in a Room, as a share of all reports in the 7 days ending that day.",
+        "target": {
+          "value": 0.1,
+          "direction": "above",
+          "by": "2026-11-07"
+        },
+        "history": [
+          {
+            "date": "2026-09-25",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-26",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-27",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-28",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-29",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-30",
+            "value": 0.2927,
+            "samples": 41
+          },
+          {
+            "date": "2026-10-01",
+            "value": 0.3571,
+            "samples": 98
+          },
+          {
+            "date": "2026-10-02",
+            "value": 0.2787,
+            "samples": 183
+          },
+          {
+            "date": "2026-10-03",
+            "value": 0.3165,
+            "samples": 237
+          },
+          {
+            "date": "2026-10-04",
+            "value": 0.307,
+            "samples": 316
+          },
+          {
+            "date": "2026-10-05",
+            "value": 0.275,
+            "samples": 400
+          },
+          {
+            "date": "2026-10-06",
+            "value": 0.2545,
+            "samples": 448
+          },
+          {
+            "date": "2026-10-07",
+            "value": 0.2372,
+            "samples": 468
+          },
+          {
+            "date": "2026-10-08",
+            "value": 0.2131,
+            "samples": 474
+          },
+          {
+            "date": "2026-10-09",
+            "value": 0.2196,
+            "samples": 419
+          },
+          {
+            "date": "2026-10-10",
+            "value": 0.1934,
+            "samples": 424
+          },
+          {
+            "date": "2026-10-11",
+            "value": 0.1782,
+            "samples": 376
+          },
+          {
+            "date": "2026-10-12",
+            "value": 0.1763,
+            "samples": 346
+          },
+          {
+            "date": "2026-10-13",
+            "value": 0.1968,
+            "samples": 371
+          },
+          {
+            "date": "2026-10-14",
+            "value": 0.2243,
+            "samples": 370
+          },
+          {
+            "date": "2026-10-15",
+            "value": 0.2032,
+            "samples": 379
+          },
+          {
+            "date": "2026-10-16",
+            "value": 0.1816,
+            "samples": 468
+          },
+          {
+            "date": "2026-10-17",
+            "value": 0.1502,
+            "samples": 586
+          },
+          {
+            "date": "2026-10-18",
+            "value": 0.1373,
+            "samples": 670
+          },
+          {
+            "date": "2026-10-19",
+            "value": 0.1347,
+            "samples": 802
+          },
+          {
+            "date": "2026-10-20",
+            "value": 0.1291,
+            "samples": 945
+          },
+          {
+            "date": "2026-10-21",
+            "value": 0.1162,
+            "samples": 1067
+          },
+          {
+            "date": "2026-10-22",
+            "value": 0.1315,
+            "samples": 1179
+          },
+          {
+            "date": "2026-10-23",
+            "value": 0.146,
+            "samples": 1397
+          }
+        ]
+      }
+    },
+    {
+      "id": "tool-contracts-unstated",
+      "weakness": "Tool schemas and descriptions do not state the limits the server enforces, so agents learn the limits by being refused.",
+      "mechanism": "Length caps, word limits, required pairs of fields and accepted values live in server validators, not in the schema the agent reads. Each refusal costs a retry and often a feedback report.",
+      "evidence": [
+        {
+          "source": "feedback",
+          "text": "Keyword class: 14% of reports in the 7 days to 2026-10-23, 14% the 7 days before."
+        },
+        {
+          "source": "feedback",
+          "text": "First pass: schema and argument mismatch reports: 396 in 30 days from 19 agents; 14% of last week's reports."
+        },
+        {
+          "source": "sentry",
+          "text": "Expected refusals logged as errors: title word limit, one-line ask limit, 16 KB contents limit, brief approval source."
+        },
+        {
+          "source": "problems",
+          "text": "Ranked problem: history search rejects arguments that match its own schema."
+        }
+      ],
+      "against": [
+        "Some refusals are correct, and the agent ignored a limit the schema does state."
+      ],
+      "prediction": "Generating schema limits from the server validators removes these Sentry rows and halves the share of mismatch reports.",
+      "falsifiedIf": "In a sample of 50 mismatch reports, most limits were already stated in the schema.",
+      "confidence": "medium",
+      "firstSeen": "2026-10-24",
+      "lastReviewed": "2026-10-24",
+      "status": "open",
+      "track": {
+        "label": "Share of reports about unstated tool limits",
+        "unit": "share",
+        "source": "feedback-share",
+        "definition": "Keyword match on the report summary (scripts/theme-classes.mjs): reports naming a schema, argument, parameter, limit, documented or advertised behavior, or a rejected call, as a share of all reports in the 7 days ending that day.",
+        "target": {
+          "value": 0.1,
+          "direction": "above",
+          "by": "2026-11-07"
+        },
+        "history": [
+          {
+            "date": "2026-09-25",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-26",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-27",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-28",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-29",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-30",
+            "value": 0.0244,
+            "samples": 41
+          },
+          {
+            "date": "2026-10-01",
+            "value": 0.0408,
+            "samples": 98
+          },
+          {
+            "date": "2026-10-02",
+            "value": 0.071,
+            "samples": 183
+          },
+          {
+            "date": "2026-10-03",
+            "value": 0.0633,
+            "samples": 237
+          },
+          {
+            "date": "2026-10-04",
+            "value": 0.0886,
+            "samples": 316
+          },
+          {
+            "date": "2026-10-05",
+            "value": 0.11,
+            "samples": 400
+          },
+          {
+            "date": "2026-10-06",
+            "value": 0.1094,
+            "samples": 448
+          },
+          {
+            "date": "2026-10-07",
+            "value": 0.109,
+            "samples": 468
+          },
+          {
+            "date": "2026-10-08",
+            "value": 0.1224,
+            "samples": 474
+          },
+          {
+            "date": "2026-10-09",
+            "value": 0.1193,
+            "samples": 419
+          },
+          {
+            "date": "2026-10-10",
+            "value": 0.125,
+            "samples": 424
+          },
+          {
+            "date": "2026-10-11",
+            "value": 0.109,
+            "samples": 376
+          },
+          {
+            "date": "2026-10-12",
+            "value": 0.0838,
+            "samples": 346
+          },
+          {
+            "date": "2026-10-13",
+            "value": 0.0809,
+            "samples": 371
+          },
+          {
+            "date": "2026-10-14",
+            "value": 0.0892,
+            "samples": 370
+          },
+          {
+            "date": "2026-10-15",
+            "value": 0.1029,
+            "samples": 379
+          },
+          {
+            "date": "2026-10-16",
+            "value": 0.1432,
+            "samples": 468
+          },
+          {
+            "date": "2026-10-17",
+            "value": 0.1485,
+            "samples": 586
+          },
+          {
+            "date": "2026-10-18",
+            "value": 0.1537,
+            "samples": 670
+          },
+          {
+            "date": "2026-10-19",
+            "value": 0.1771,
+            "samples": 802
+          },
+          {
+            "date": "2026-10-20",
+            "value": 0.1831,
+            "samples": 945
+          },
+          {
+            "date": "2026-10-21",
+            "value": 0.1743,
+            "samples": 1067
+          },
+          {
+            "date": "2026-10-22",
+            "value": 0.1679,
+            "samples": 1179
+          },
+          {
+            "date": "2026-10-23",
+            "value": 0.1374,
+            "samples": 1397
+          }
+        ]
+      }
+    },
+    {
+      "id": "wakes-without-causality",
+      "weakness": "Beeline sends wakes and review dispatches from single signals, without knowing what already happened or who caused it.",
+      "mechanism": "Each event source (checks, orders, brief revisions, merges, idle timers) wakes agents on its own. None checks whether the work already moved on, so agents get duplicate, stale or wrongly classed wakes.",
+      "evidence": [
+        {
+          "source": "feedback",
+          "text": "Keyword class: 24% of reports in the 7 days to 2026-10-23, up from 16% the 7 days before."
+        },
+        {
+          "source": "feedback",
+          "text": "First pass: wake and dispatch reports: 458 in 30 days from 19 agents in 184 Rooms; 17% of last week's reports, 16% the week before."
+        },
+        {
+          "source": "feedback",
+          "text": "Cases include duplicate reviewer dispatch on an unchanged head, own brief revisions classed as human, false unreported-order alerts and false idle-corner alerts."
+        },
+        {
+          "source": "velocity",
+          "text": "Reviewer not woken after green checks cost 2.6 hours last week."
+        },
+        {
+          "source": "main",
+          "text": "Recent merges each patch one case: #2886, #2898, #2907, #2908."
+        }
+      ],
+      "against": [
+        "Some reports may be one bug reported many times by the same corner."
+      ],
+      "prediction": "Per-case fixes will not lower the share of wake reports below 12% in the next 14 days.",
+      "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
+      "confidence": "medium",
+      "firstSeen": "2026-10-24",
+      "lastReviewed": "2026-10-24",
+      "status": "open",
+      "track": {
+        "label": "Share of reports about wakes and dispatch",
+        "unit": "share",
+        "source": "feedback-share",
+        "definition": "Keyword match on the report summary (scripts/theme-classes.mjs): reports naming a wake, dispatch, idle-corner alert or unreported order, as a share of all reports in the 7 days ending that day.",
+        "target": {
+          "value": 0.12,
+          "direction": "above",
+          "by": "2026-11-07"
+        },
+        "history": [
+          {
+            "date": "2026-09-25",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-26",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-27",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-28",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-29",
+            "value": null,
+            "samples": 0
+          },
+          {
+            "date": "2026-09-30",
+            "value": 0.0488,
+            "samples": 41
+          },
+          {
+            "date": "2026-10-01",
+            "value": 0.0408,
+            "samples": 98
+          },
+          {
+            "date": "2026-10-02",
+            "value": 0.0601,
+            "samples": 183
+          },
+          {
+            "date": "2026-10-03",
+            "value": 0.0675,
+            "samples": 237
+          },
+          {
+            "date": "2026-10-04",
+            "value": 0.0918,
+            "samples": 316
+          },
+          {
+            "date": "2026-10-05",
+            "value": 0.105,
+            "samples": 400
+          },
+          {
+            "date": "2026-10-06",
+            "value": 0.1116,
+            "samples": 448
+          },
+          {
+            "date": "2026-10-07",
+            "value": 0.1154,
+            "samples": 468
+          },
+          {
+            "date": "2026-10-08",
+            "value": 0.1329,
+            "samples": 474
+          },
+          {
+            "date": "2026-10-09",
+            "value": 0.1432,
+            "samples": 419
+          },
+          {
+            "date": "2026-10-10",
+            "value": 0.1533,
+            "samples": 424
+          },
+          {
+            "date": "2026-10-11",
+            "value": 0.141,
+            "samples": 376
+          },
+          {
+            "date": "2026-10-12",
+            "value": 0.1445,
+            "samples": 346
+          },
+          {
+            "date": "2026-10-13",
+            "value": 0.1509,
+            "samples": 371
+          },
+          {
+            "date": "2026-10-14",
+            "value": 0.1622,
+            "samples": 370
+          },
+          {
+            "date": "2026-10-15",
+            "value": 0.1451,
+            "samples": 379
+          },
+          {
+            "date": "2026-10-16",
+            "value": 0.156,
+            "samples": 468
+          },
+          {
+            "date": "2026-10-17",
+            "value": 0.1877,
+            "samples": 586
+          },
+          {
+            "date": "2026-10-18",
+            "value": 0.209,
+            "samples": 670
+          },
+          {
+            "date": "2026-10-19",
+            "value": 0.2095,
+            "samples": 802
+          },
+          {
+            "date": "2026-10-20",
+            "value": 0.2085,
+            "samples": 945
+          },
+          {
+            "date": "2026-10-21",
+            "value": 0.224,
+            "samples": 1067
+          },
+          {
+            "date": "2026-10-22",
+            "value": 0.2316,
+            "samples": 1179
+          },
+          {
+            "date": "2026-10-23",
+            "value": 0.2419,
+            "samples": 1397
+          }
+        ]
+      }
     }
   ],
   "retention": null

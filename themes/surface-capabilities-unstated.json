@@ -5,7 +5,11 @@
   "evidence": [
     {
       "source": "feedback",
-      "text": "Environment reports (gh, emulator, sandbox, grants, checkout, file paths): 411 in 30 days from 22 agents; 14% of last week's reports."
+      "text": "Keyword class: 15% of reports in the 7 days to 2026-10-23, 18% the 7 days before."
+    },
+    {
+      "source": "feedback",
+      "text": "First pass: environment reports (gh, emulator, sandbox, grants, checkout, file paths): 411 in 30 days from 22 agents; 14% of last week's reports."
     },
     {
       "source": "problems",
@@ -28,5 +32,163 @@
   "confidence": "medium",
   "firstSeen": "2026-10-24",
   "lastReviewed": "2026-10-24",
-  "status": "open"
+  "status": "open",
+  "track": {
+    "label": "Share of reports about what a place allows",
+    "unit": "share",
+    "source": "feedback-share",
+    "definition": "Keyword match on the report summary (scripts/theme-classes.mjs): reports naming an emulator, sandbox, grant, checkout, gh, shell, host or a capability unavailable in a Room, as a share of all reports in the 7 days ending that day.",
+    "target": {
+      "value": 0.1,
+      "direction": "above",
+      "by": "2026-11-07"
+    },
+    "history": [
+      {
+        "date": "2026-09-25",
+        "value": null,
+        "samples": 0
+      },
+      {
+        "date": "2026-09-26",
+        "value": null,
+        "samples": 0
+      },
+      {
+        "date": "2026-09-27",
+        "value": null,
+        "samples": 0
+      },
+      {
+        "date": "2026-09-28",
+        "value": null,
+        "samples": 0
+      },
+      {
+        "date": "2026-09-29",
+        "value": null,
+        "samples": 0
+      },
+      {
+        "date": "2026-09-30",
+        "value": 0.2927,
+        "samples": 41
+      },
+      {
+        "date": "2026-10-01",
+        "value": 0.3571,
+        "samples": 98
+      },
+      {
+        "date": "2026-10-02",
+        "value": 0.2787,
+        "samples": 183
+      },
+      {
+        "date": "2026-10-03",
+        "value": 0.3165,
+        "samples": 237
+      },
+      {
+        "date": "2026-10-04",
+        "value": 0.307,
+        "samples": 316
+      },
+      {
+        "date": "2026-10-05",
+        "value": 0.275,
+        "samples": 400
+      },
+      {
+        "date": "2026-10-06",
+        "value": 0.2545,
+        "samples": 448
+      },
+      {
+        "date": "2026-10-07",
+        "value": 0.2372,
+        "samples": 468
+      },
+      {
+        "date": "2026-10-08",
+        "value": 0.2131,
+        "samples": 474
+      },
+      {
+        "date": "2026-10-09",
+        "value": 0.2196,
+        "samples": 419
+      },
+      {
+        "date": "2026-10-10",
+        "value": 0.1934,
+        "samples": 424
+      },
+      {
+        "date": "2026-10-11",
+        "value": 0.1782,
+        "samples": 376
+      },
+      {
+        "date": "2026-10-12",
+        "value": 0.1763,
+        "samples": 346
+      },
+      {
+        "date": "2026-10-13",
+        "value": 0.1968,
+        "samples": 371
+      },
+      {
+        "date": "2026-10-14",
+        "value": 0.2243,
+        "samples": 370
+      },
+      {
+        "date": "2026-10-15",
+        "value": 0.2032,
+        "samples": 379
+      },
+      {
+        "date": "2026-10-16",
+        "value": 0.1816,
+        "samples": 468
+      },
+      {
+        "date": "2026-10-17",
+        "value": 0.1502,
+        "samples": 586
+      },
+      {
+        "date": "2026-10-18",
+        "value": 0.1373,
+        "samples": 670
+      },
+      {
+        "date": "2026-10-19",
+        "value": 0.1347,
+        "samples": 802
+      },
+      {
+        "date": "2026-10-20",
+        "value": 0.1291,
+        "samples": 945
+      },
+      {
+        "date": "2026-10-21",
+        "value": 0.1162,
+        "samples": 1067
+      },
+      {
+        "date": "2026-10-22",
+        "value": 0.1315,
+        "samples": 1179
+      },
+      {
+        "date": "2026-10-23",
+        "value": 0.146,
+        "samples": 1397
+      }
+    ]
+  }
 }

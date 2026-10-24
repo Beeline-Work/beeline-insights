@@ -13,6 +13,7 @@
     "reach": { "anyOf": [{ "type": "null" }, { "$ref": "reach.schema.json" }] },
     "problems": { "type": "array", "items": { "$ref": "problem.schema.json" } },
     "walk": { "type": "array", "items": { "$ref": "walk.schema.json" } },
+    "themes": { "description": "Every themes/<id>.json, open first, then merged, then retired.", "type": "array", "items": { "$ref": "theme.schema.json" } },
     "retention": { "anyOf": [{ "type": "null" }, { "$ref": "retention.schema.json" }] },
     "digests": { "type": "array", "items": { "$ref": "digest.schema.json" } }
   }

@@ -16,6 +16,7 @@ redacted: no message text, names, emails or identity IDs.
 | `loop/` | [Daily headline feed](loop/README.md): headline values and normal ranges. | `Daily snapshot` workflow |
 | `problems/` | One file per problem: people hurt per day, trend, cause tag and stage. | 10 AM triage |
 | `walk/` | The fixed codebook of goals and friction codes, plus redacted daily counts. | 6 AM walk |
+| `themes/` | One file per underlying weakness, with one tracked number and its daily history. | Daily weakness step; history by `npm run track-themes` |
 
 Git history is the audit trail: it shows how each number and each judgment changed.
 
@@ -35,11 +36,11 @@ unknown field fails. Keep the feed clean: no per-row tags or extra metrics.
 | File | Fields |
 | --- | --- |
 | `insights/latest.json` | `generatedAt`, `window {from, through}`, `errors {total, changePct, areas[{area, count}], lead}`, `feedback {total, people, agents, areas[{area, count}], lead}`, `journey {steps[{label, count}], biggestDrop {label, lost} \| null, state?}`, `velocity {hoursLost, items[{label, hours}]}`, `links[{section, experimentId}]` |
-| `experiments/<id>.json` | `id, title, source {section, text}, change, metric {label, numerator, denominator?}, before {value, samples, from, through}, predict {value, direction}, guardrail, decideAt {samples, date}, ifUnclear, status, approval {messageId} \| null, startedOn, progress {value, samples, asOf} \| null, verdict {result, decision, value, samples, on} \| null` |
+| `experiments/<id>.json` | `id, title, source {section, text}, change, metric {label, numerator, denominator?}, before {value, samples, from, through}, predict {value, direction}, guardrail, decideAt {samples, date}, ifUnclear, status, approval {messageId} \| null, startedOn, progress {value, samples, asOf} \| null, verdict {result, decision, value, samples, on} \| null`, optional `theme` (a theme id) |
 | `reach/latest.json` | `month, spent, cap, costPerSignup \| null, recommendations[{kind, channel, title, detail}], posts[{title, channel, date, views, clicks, spend, status}]` |
 | `digests/<YYYY-MM-DD>.md` | Front matter `title`, `findings`, `proposals`, then the digest text. |
 | `digests/index.json` | `[{date, title, findings, proposals, path}]`, newest first. |
-| `feed/latest.json` | `{generatedAt, insights, experiments[], reach, digests[], problems[], walk[], retention}`. `insights` and `reach` are `null` until their files exist. Experiments are sorted proposed, running, concluded. |
+| `feed/latest.json` | `{generatedAt, insights, experiments[], reach, digests[], problems[], walk[], themes[], retention}`. `insights` and `reach` are `null` until their files exist. Experiments are sorted proposed, running, concluded. |
 
 `test/fixtures/v3/` holds a complete example tree with the placeholders from
 dashboard mock v3, including the built `feed/latest.json`.
@@ -190,3 +191,36 @@ it once: keep it `running`, move `decideAt.date` forward, and add
 check date. A second array entry fails. Omitted `extensions` means no extension,
 keeping existing records compatible. Preserve the original baseline and
 prediction. These are experiment records, never records per autonomous fix.
+
+### Themes
+
+The feed adds `themes[]`: every `themes/<id>.json`, open first, then merged, then
+retired. Fields are in [themes/README.md](themes/README.md). Each theme has one
+`track {label, unit, source, definition, target {value, direction, by}, history[{date, value, samples}]}`.
+`unit` is `share`, `count` or `rate`; shares and rates are fractions. History is
+one point per Eastern day, oldest first; `value` is null only when `samples` is 0.
+`target` is the theme's claim as a number: while the weakness stands, the value
+stays `direction` `value` through `by`. A value on the other side weakens the theme.
+
+Validation applies the schema (unknown fields fail) and the aggregate-only check
+to every text field. An experiment's optional `theme` must name a theme file.
+`npm run validate` also fails when a theme's newest point is more than 2 days
+before `--today`. `npm run build-feed` and `npm test` do not check that, so a
+missed day never blocks the daily snapshot.
+
+Daily step, for yesterday's Eastern date `D`:
+
+```sh
+npm run theme-sql -- --from D            # prints read-only SQL
+# Run it through the vaulted read-only beeline-prod-db (Neon-Batch-Read-Only: true).
+# Save the row's "values" column as values.json.
+npm run track-themes -- --date D --values values.json
+npm run build-feed && npm run validate
+```
+
+`scripts/theme-classes.mjs` holds the keyword classes and the SQL. Feedback
+shares cover reports on `D-6` through `D`; the signup rate covers people who
+signed up on `D-7` through `D-1`, so each 24-hour window has closed. The SQL
+returns only counts and fractions; the `evidence` column holds numbers for
+theme evidence, such as the returned-next-day rate. `--through` prints a range
+for backfill; run `track-themes` once per day. Rerunning a day replaces its point.
