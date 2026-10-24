@@ -1,0 +1,12 @@
+{
+  "id": "github-card-padding",
+  "kind": "problem",
+  "rank": 3,
+  "date": "2026-10-24",
+  "title": "The GitHub connect card has no bottom padding",
+  "peoplePerDay": 1,
+  "trend": "flat",
+  "cause": "client",
+  "stage": "connect-service",
+  "source": "feedback"
+}

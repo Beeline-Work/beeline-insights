@@ -1,0 +1,12 @@
+{
+  "id": "corner-app-from-room",
+  "kind": "problem",
+  "rank": 7,
+  "date": "2026-10-24",
+  "title": "Agents try a corner-only app from a Room because the skill does not say it is corner-only",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "skill",
+  "stage": "corner-work",
+  "source": "feedback"
+}

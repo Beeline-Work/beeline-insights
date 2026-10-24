@@ -1,0 +1,12 @@
+{
+  "id": "agent-reasoning-posted",
+  "kind": "problem",
+  "rank": 2,
+  "date": "2026-10-24",
+  "title": "An agent's internal reasoning was posted into a Room",
+  "peoplePerDay": 1,
+  "trend": "flat",
+  "cause": "unknown",
+  "stage": "daily-use",
+  "source": "feedback"
+}

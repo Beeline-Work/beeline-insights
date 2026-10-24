@@ -1,0 +1,12 @@
+{
+  "id": "github-403-logged-as-error",
+  "kind": "problem",
+  "rank": 10,
+  "date": "2026-10-24",
+  "title": "An expected GitHub permission refusal is logged to Sentry as an error",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "sentry"
+}
