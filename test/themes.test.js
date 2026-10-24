@@ -141,6 +141,8 @@ test('the theme SQL is read-only, covers every theme and holds no ids or row tex
   assert.doesNotMatch(sql, /\b[0-9a-f]{24,}\b|[0-9a-f]{8}-[0-9a-f]{4}-/i);
   for (const id of THEME_IDS) assert.ok(sql.includes(`'${id}'`), id);
   for (const pattern of Object.values(FEEDBACK_CLASSES)) assert.ok(sql.includes(pattern));
+  // Repeats are identical summaries from one reporter, 3 or more on one Eastern day; similar wording does not count.
+  assert.match(sql, /repeats AS \(\n  SELECT id FROM \(SELECT id, count\(\*\) OVER \(PARTITION BY r, d, summary\) n FROM f\) same WHERE n >= 3\n\)/);
   assert.throws(() => themeSQL({ from: '2026-10-23', through: '2026-10-01' }), /from on or before through/);
   const printed = spawnSync(process.execPath, [join(root, 'scripts/theme-classes.mjs'), '--from', '2026-10-23'], { encoding: 'utf8' });
   assert.equal(printed.status, 0, printed.stderr);

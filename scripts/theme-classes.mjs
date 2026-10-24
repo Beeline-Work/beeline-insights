@@ -9,10 +9,9 @@ export const FEEDBACK_CLASSES = {
   'tool-contracts-unstated': String.raw`(schema|invalid.?arguments|unknown field|\mlimit\M|argument|parameter|advertis|documented|tool description|one sentence|characters|rejects?\M|rejected)`,
 };
 
-// A repeat is a report whose summary shares at least this fraction of its words
-// (Jaccard over distinct words of 3+ letters) with 2 or more other reports
-// from the same reporter on the same Eastern day.
-export const REPEAT = { theme: 'repeats-without-failure-budget', overlap: 0.4, others: 2 };
+// A repeat is a report whose exact summary the same reporter filed at least
+// this many times on the same Eastern day (the report itself included).
+export const REPEAT = { theme: 'repeats-without-failure-budget', times: 3 };
 export const SIGNUP_THEME = 'loop-hears-only-agents';
 export const THEME_IDS = [...Object.keys(FEEDBACK_CLASSES), REPEAT.theme, SIGNUP_THEME].sort();
 
@@ -37,13 +36,8 @@ export function themeSQL({ from, through }) {
 ), f AS (
   SELECT id, reporter_identity_id r, summary, (created_at AT TIME ZONE '${TZ}')::date d FROM feedback_items
   WHERE created_at >= ${start(addDays(from, -6))} AND created_at < ${start(addDays(through, 1))}
-), words AS (
-  SELECT id, r, d, ARRAY(SELECT DISTINCT w FROM unnest(regexp_split_to_array(lower(summary), '[^a-z0-9]+')) w WHERE length(w) > 2) ws FROM f
 ), repeats AS (
-  SELECT a.id FROM words a JOIN words b ON a.r = b.r AND a.d = b.d AND a.id <> b.id
-  WHERE cardinality(ARRAY(SELECT unnest(a.ws) INTERSECT SELECT unnest(b.ws)))::float
-    / greatest(1, cardinality(ARRAY(SELECT unnest(a.ws) UNION SELECT unnest(b.ws)))) >= ${REPEAT.overlap}
-  GROUP BY a.id HAVING count(*) >= ${REPEAT.others}
+  SELECT id FROM (SELECT id, count(*) OVER (PARTITION BY r, d, summary) n FROM f) same WHERE n >= ${REPEAT.times}
 ), tagged AS (
   SELECT f.d, ${ids.map((id) => `f.summary ~* ${literal(FEEDBACK_CLASSES[id])} ${column(id)}`).join(',\n    ')},
     rp.id IS NOT NULL ${column(REPEAT.theme)}

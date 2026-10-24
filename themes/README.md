@@ -9,7 +9,7 @@ Fields: `id`, `weakness` (one sentence), `mechanism` (how it causes the symptoms
 `status` (`open`, `merged`, `retired`), `track` (one number tracked daily; see the
 root README, Themes).
 
-Feedback tracks are keyword or word-overlap matches on report summaries, not a
+Feedback tracks are keyword or exact-summary matches on report summaries, not a
 reading of each report; `track.definition` says so. Feedback history before
 2026-09-30 has `samples: 0` because no reports were recorded then.
 
