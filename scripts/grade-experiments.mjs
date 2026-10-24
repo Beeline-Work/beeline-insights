@@ -1,6 +1,6 @@
 import { readdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { experimentErrors, snapshotSeries } from './lib/contract.mjs';
+import { experimentErrors, registerErrors, snapshotSeries } from './lib/contract.mjs';
 import { cliOptions, isMain, loadSnapshots, measure, readJSON } from './lib/analysis.mjs';
 
 const days = (from, through) => Math.round((Date.parse(through) - Date.parse(from)) / 86400000) + 1;
@@ -41,6 +41,8 @@ export async function gradeExperiments({ experiments, snapshots, today, write = 
     if (errors.length) throw new Error(`${path}: ${errors[0]}`);
     return { path, experiment };
   }));
+  const register = registerErrors(entries.map(({ experiment }) => experiment));
+  if (register.length) throw new Error(register.join('\n'));
   const snapshot = (await loadSnapshots(snapshots, today)).at(-1);
   const grades = entries.map(({ experiment }) => gradeExperiment(experiment, snapshot, today));
   for (const grade of grades) {

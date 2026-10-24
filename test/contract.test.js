@@ -35,7 +35,7 @@ test('mock v3 fixture validates and builds the committed feed with only the cont
   const committed = await load('feed/latest.json');
   const feed = await buildFeed({ root: directory, today, now: new Date('2030-01-01T00:00:00.000Z') });
   assert.deepEqual(feed, committed);
-  assert.deepEqual(Object.keys(feed), ['generatedAt', 'insights', 'experiments', 'reach', 'digests']);
+  assert.deepEqual(Object.keys(feed), ['generatedAt', 'insights', 'experiments', 'reach', 'digests', 'problems', 'walk', 'retention']);
   assert.deepEqual(feed.experiments.map((e) => [e.id, e.status]), [
     ['free-deepseek-agents', 'proposed'], ['remove-onboarding-steps', 'proposed'], ['fix-notices', 'running']]);
   assert.deepEqual(feed.digests.map((d) => d.date), ['2026-10-23', '2026-10-22', '2026-10-21', '2026-10-20']);

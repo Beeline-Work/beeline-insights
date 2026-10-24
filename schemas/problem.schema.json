@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "problem.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "rank",
+    "date",
+    "title",
+    "peoplePerDay",
+    "trend",
+    "cause",
+    "stage",
+    "source",
+    "kind"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "rank": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "peoplePerDay": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "trend": {
+      "enum": [
+        "up",
+        "flat",
+        "down"
+      ]
+    },
+    "cause": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "stage": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "regression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "causedByPr",
+        "report"
+      ],
+      "properties": {
+        "causedByPr": {
+          "type": "string",
+          "pattern": "^https://github\\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/pull/[1-9][0-9]*$"
+        },
+        "report": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      }
+    },
+    "kind": {
+      "enum": [
+        "problem",
+        "regression"
+      ]
+    }
+  }
+}

@@ -10,7 +10,8 @@ redacted: no message text, names, emails or identity IDs.
 | `experiments/` | One file per experiment: the insight behind it, the change, the prediction, the decision point and the verdict. | Digest run proposes; grading script |
 | `reach/` | `latest.json`: ad spend against the cap, content and boost recommendations, per-post results. | Ruby, by hand from YouTube Studio and X screens |
 | `digests/` | One Markdown file per digest sent to the owner, plus `index.json`. | Digest run; index by `npm run build-feed` |
-| `feed/` | `latest.json`: the Insights, Experiments, Reach and Digests feed for the dashboard. | `npm run build-feed` |
+| `feed/` | `latest.json`: the validated dashboard feed, including problems, walk counts and retention. | `npm run build-feed` |
+| `retention/` | Optional `latest.json`: measured day-seven cohorts grouped by first agent acquisition. | Aggregate admin data |
 | `schemas/` | JSON Schemas for the files above. | By hand; a field change breaks the dashboard |
 | `loop/` | [Daily headline feed](loop/README.md): headline values and normal ranges. | `Daily snapshot` workflow |
 | `problems/` | One file per problem: people hurt per day, trend, cause tag and stage. | 10 AM triage |
@@ -38,7 +39,7 @@ unknown field fails. Keep the feed clean: no per-row tags or extra metrics.
 | `reach/latest.json` | `month, spent, cap, costPerSignup \| null, recommendations[{kind, channel, title, detail}], posts[{title, channel, date, views, clicks, spend, status}]` |
 | `digests/<YYYY-MM-DD>.md` | Front matter `title`, `findings`, `proposals`, then the digest text. |
 | `digests/index.json` | `[{date, title, findings, proposals, path}]`, newest first. |
-| `feed/latest.json` | `{generatedAt, insights, experiments[], reach, digests[]}`. `insights` and `reach` are `null` until their files exist. Experiments are sorted proposed, running, concluded. |
+| `feed/latest.json` | `{generatedAt, insights, experiments[], reach, digests[], problems[], walk[], retention}`. `insights` and `reach` are `null` until their files exist. Experiments are sorted proposed, running, concluded. |
 
 `test/fixtures/v3/` holds a complete example tree with the placeholders from
 dashboard mock v3, including the built `feed/latest.json`.
@@ -136,3 +137,54 @@ retention history until enough distinct windows exist.
 demonstrations, contract checks, grading arithmetic and range calculations. The
 `Tests` workflow runs it and `npm run validate` on every pull request and push
 to `main` with read-only permissions.
+
+### Ranked problems, walk counts and retention
+
+The feed adds `problems[]` (rank ascending), `walk[]` (newest date first) and
+`retention` (null until measured). Existing feed fields keep their meanings.
+Legacy feeds without these additions remain schema-valid. New builds always
+include the three fields; missing input folders produce empty arrays/null.
+
+- `problems/<id>.json`: `id`, `kind` (`problem` or `regression`), `rank`, `date`,
+  `title`, `peoplePerDay`, `trend` (`up`, `flat`, `down`), `cause`, `stage`,
+  `source`. A regression also requires `regression {causedByPr, report}`;
+  `causedByPr` is the full GitHub pull request URL that caused it.
+- `walk/<YYYY-MM-DD>.json`: `date`, `source`, `counts[{goal, friction, count}]`.
+  Goals and friction codes are lowercase slugs. Each pair appears once per day;
+  counts are anonymous totals, never individual events or message transcripts.
+- `retention/latest.json`: `generatedAt`, `source`, `day: 7`,
+  `window {from, through}`, `groups {addedOwnAgent, freeAgent}`. Each group has
+  `cohort` and `retained` counts (retained cannot exceed cohort). Consumers can
+  calculate retained/cohort; a zero cohort has no rate.
+
+The build also accepts the same groups from the newest measured snapshot's
+`overview.retention.data.byFirstAgentSource`, using that block's `measuredAt`,
+`day`, `from` and `through`. These server aggregates take precedence over a
+manually supplied retention file. A malformed split fails the build. No split
+is inferred from the overall retention or the walk; dates identify staleness.
+
+As checked against the live admin endpoint on 2026-10-24, only combined
+retention is available. The server follow-up must classify each person's
+**earliest agent acquisition** as added-own-agent or free-agent, group the
+existing eligible day-seven cohort query by that classification, and return
+`byFirstAgentSource: {addedOwnAgent: {cohort, retained}, freeAgent: {cohort, retained}}`.
+Keep the existing production exclusions, return activity definition and cohort
+window. People without a known acquisition source must not be silently assigned
+to either group. Only aggregates may be stored here. Until that field exists,
+the live feed reports `retention: null`.
+
+The register permits at most **10 running experiments**, including during
+grading. Validation names each excess experiment file; proposals and concluded
+experiments do not consume slots. The morning card must propose retiring one
+before seeking approval for a replacement when all slots are occupied.
+
+Verdicts keep their existing wire values for dashboard compatibility:
+`supported` means **worked**, `not_supported` means **didn't work**, and
+`not_enough_data` means **too little data**. No other verdict is accepted.
+After too little data, triage can retire the experiment (`concluded`) or extend
+it once: keep it `running`, move `decideAt.date` forward, and add
+`extensions: [{previousDate, date, on, result: "not_enough_data"}]`.
+`on` must be at or after the original check date, and `date` must equal the new
+check date. A second array entry fails. Omitted `extensions` means no extension,
+keeping existing records compatible. Preserve the original baseline and
+prediction. These are experiment records, never records per autonomous fix.

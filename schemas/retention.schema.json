@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "retention.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "generatedAt",
+    "source",
+    "day",
+    "window",
+    "groups"
+  ],
+  "properties": {
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "day": {
+      "enum": [
+        7
+      ]
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "from",
+        "through"
+      ],
+      "properties": {
+        "from": {
+          "type": "string",
+          "format": "date"
+        },
+        "through": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "groups": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "addedOwnAgent",
+        "freeAgent"
+      ],
+      "properties": {
+        "addedOwnAgent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "cohort",
+            "retained"
+          ],
+          "properties": {
+            "cohort": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "retained": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "freeAgent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "cohort",
+            "retained"
+          ],
+          "properties": {
+            "cohort": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "retained": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    }
+  }
+}

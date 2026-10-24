@@ -1,5 +1,6 @@
 import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
+import { retentionFromSnapshot } from './retention.mjs';
 import { journeyFromSnapshot } from './journey.mjs';
 import { isTimestamp, loadContract, schemaErrors, sortExperiments } from './lib/contract.mjs';
 import { isDate, isMain, loadSnapshots } from './lib/analysis.mjs';
@@ -40,15 +41,22 @@ export async function planFeed({ root, today, now = new Date() }) {
   const contract = await loadContract(root);
   const { problems } = contract;
   let insights = contract.insights;
+  let snapshot;
+  try {
+    snapshot = (await loadSnapshots(join(root, 'snapshots'), today)).at(-1);
+    const retention = retentionFromSnapshot(snapshot);
+    if (retention !== null) contract.additions.retention = retention;
+  } catch (error) {
+    if (error.code !== 'ENOENT') problems.push(`snapshots: ${error.message}`);
+  }
   if (insights !== null) {
     try {
-      const snapshot = (await loadSnapshots(join(root, 'snapshots'), today)).at(-1);
       insights = { ...insights, journey: journeyFromSnapshot(snapshot) };
     } catch (error) {
       problems.push(`insights/latest.json: journey: ${error.message}`);
     }
   }
-  const feed = { generatedAt: now.toISOString(), insights, experiments: sortExperiments(contract.experiments), reach: contract.reach, digests: contract.digests };
+  const feed = { generatedAt: now.toISOString(), insights, experiments: sortExperiments(contract.experiments), reach: contract.reach, digests: contract.digests, ...contract.additions };
   problems.push(...schemaErrors(feed, 'feed.schema.json').map((error) => `feed/latest.json: ${error}`));
   // Keep the generation time when nothing the dashboard shows has changed.
   try {

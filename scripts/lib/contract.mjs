@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { SERIES, isDate, readJSON } from './analysis.mjs';
 
 const SCHEMA_DIR = fileURLToPath(new URL('../../schemas/', import.meta.url));
-export const SCHEMA_FILES = ['insights', 'experiment', 'reach', 'digest', 'feed'].map((name) => `${name}.schema.json`);
+export const SCHEMA_FILES = ['insights', 'experiment', 'reach', 'digest', 'problem', 'walk', 'retention', 'feed'].map((name) => `${name}.schema.json`);
 const schemas = Object.fromEntries(await Promise.all(SCHEMA_FILES.map(async (file) => [file, JSON.parse(await readFile(join(SCHEMA_DIR, file), 'utf8'))])));
 
 const typeOf = (value) => value === null ? 'null' : Array.isArray(value) ? 'array'
@@ -51,6 +51,7 @@ function check(value, schema, root, path, errors) {
     if (!Number.isFinite(value)) return fail('expected a finite number');
     if (schema.minimum !== undefined && value < schema.minimum) return fail(`expected at least ${schema.minimum}`);
   }
+  if (Array.isArray(value) && schema.maxItems !== undefined && value.length > schema.maxItems) fail(`expected at most ${schema.maxItems} items`);
   if (Array.isArray(value) && schema.items) value.forEach((item, i) => check(item, schema.items, root, `${path}[${i}]`, errors));
   if (typeOf(value) === 'object' && schema.properties) {
     for (const key of schema.required ?? []) if (!(key in value)) fail(`missing ${key}`);
@@ -133,8 +134,42 @@ export function experimentErrors(experiment, file) {
       if (e.startedOn !== null && e.verdict.on < e.startedOn) errors.push('verdict.on: must be on or after startedOn');
     }
   }
+  for (const extension of e.extensions ?? []) {
+    if (extension.date <= extension.previousDate) errors.push('extensions.date: must be after previousDate');
+    if (extension.on < extension.previousDate) errors.push('extensions.on: cannot extend before the check date');
+    if (e.decideAt.date !== extension.date) errors.push('decideAt.date: must match the extension date');
+    if (e.status === 'proposed') errors.push('extensions: cannot extend a proposed experiment');
+  }
   if (e.progress && e.startedOn && e.progress.asOf < e.startedOn) errors.push('progress.asOf: must be on or after startedOn');
   return [...errors, ...privacy(e, ['approval'])];
+}
+
+export function aggregateErrors(value, kind, file) {
+  const errors = schemaErrors(value, `${kind}.schema.json`);
+  if (errors.length) return errors;
+  if (file && kind === 'problem' && basename(file) !== `${value.id}.json`) errors.push('id: must match the filename');
+  if (file && kind === 'walk' && basename(file) !== `${value.date}.json`) errors.push('date: must match the filename');
+  if (kind === 'problem' && value.kind === 'regression' && !value.regression) errors.push('regression: requires causedByPr and report');
+  if (kind === 'walk') {
+    const seen = new Set();
+    for (const row of value.counts) {
+      const key = `${row.goal}:${row.friction}`;
+      if (seen.has(key)) errors.push('counts: duplicate goal/friction pair');
+      seen.add(key);
+    }
+  }
+  if (kind === 'retention') {
+    if (value.window.from > value.window.through) errors.push('window.through: must be on or after window.from');
+    for (const [key, group] of Object.entries(value.groups)) {
+      if (group.retained > group.cohort) errors.push(`groups.${key}.retained: exceeds cohort`);
+    }
+  }
+  return [...errors, ...privacy(value)];
+}
+
+export function registerErrors(experiments) {
+  return experiments.filter((e) => e.status === 'running').slice(10)
+    .map((e) => `experiments/${e.id}.json: status: at most 10 running experiments; retire one first`);
 }
 
 export function reachErrors(reach) {
@@ -199,6 +234,20 @@ export async function loadContract(root) {
     add(`experiments/${file}`, errors);
     experiments.push(experiment);
   }
+  problems.push(...registerErrors(experiments));
+  const additions = {};
+  for (const [folder, kind] of [['problems', 'problem'], ['walk', 'walk']]) {
+    additions[folder] = [];
+    for (const file of await list(join(root, folder), '.json')) {
+      const value = await readJSON(join(root, folder, file));
+      add(`${folder}/${file}`, aggregateErrors(value, kind, file));
+      additions[folder].push(value);
+    }
+  }
+  additions.problems.sort((a, b) => a.rank - b.rank || String(a.id).localeCompare(String(b.id)));
+  additions.walk.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  additions.retention = await optionalJSON(join(root, 'retention/latest.json')) ?? null;
+  if (additions.retention !== null) add('retention/latest.json', aggregateErrors(additions.retention, 'retention'));
   const reachFile = join(root, 'reach/latest.json');
   const reach = await optionalJSON(reachFile) ?? null;
   if (reach !== null) add('reach/latest.json', reachErrors(reach));
@@ -215,7 +264,7 @@ export async function loadContract(root) {
       if (!ids.has(link.experimentId)) problems.push(`insights/latest.json: links[${i}].experimentId: no experiments/${link.experimentId}.json`);
     });
   }
-  return { insights, experiments, reach, digests, problems };
+  return { insights, experiments, reach, digests, problems, additions };
 }
 
 const STATUS_ORDER = ['proposed', 'running', 'concluded'];
