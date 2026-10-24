@@ -66,6 +66,20 @@
       "required": ["messageId"],
       "properties": { "messageId": { "type": "string", "minLength": 1, "maxLength": 128 } }
     },
+    "extensions": {
+      "description": "At most one extension after too little data on the original check date.",
+      "type": "array", "maxItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["previousDate", "date", "on", "result"],
+        "properties": {
+          "previousDate": { "type": "string", "format": "date" },
+          "date": { "type": "string", "format": "date" },
+          "on": { "type": "string", "format": "date" },
+          "result": { "enum": ["not_enough_data"] }
+        }
+      }
+    },
     "startedOn": { "type": ["string", "null"], "format": "date" },
     "progress": {
       "type": ["object", "null"],

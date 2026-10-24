@@ -293,5 +293,8 @@
       "proposals": 0,
       "path": "digests/2026-10-20.md"
     }
-  ]
+  ],
+  "problems": [],
+  "walk": [],
+  "retention": null
 }

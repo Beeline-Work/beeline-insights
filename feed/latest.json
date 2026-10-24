@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T13:10:34.378Z",
+  "generatedAt": "2026-10-24T14:16:00.946Z",
   "insights": {
     "generatedAt": "2026-10-24T13:10:00.000Z",
     "window": {
@@ -127,5 +127,8 @@
       "proposals": 0,
       "path": "digests/2026-10-24.md"
     }
-  ]
+  ],
+  "problems": [],
+  "walk": [],
+  "retention": null
 }
