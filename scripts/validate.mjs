@@ -2,12 +2,15 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { feedOptions, planFeed } from './build-feed.mjs';
 import { isMain } from './lib/analysis.mjs';
-import { schemaErrors } from './lib/contract.mjs';
+import { schemaErrors, staleThemeErrors } from './lib/contract.mjs';
 
 // Every input must match its schema, and every built file must match a fresh build.
-export async function validate({ root, today }) {
+// fresh also requires each theme's tracked number to have a point from the last 2 days;
+// build-feed and the daily snapshot job do not check it, so a missed day never blocks them.
+export async function validate({ root, today, fresh = true }) {
   const plan = await planFeed({ root, today });
   const problems = [...plan.problems];
+  if (fresh) problems.push(...staleThemeErrors(plan.feed.themes ?? [], today));
   for (const [file, text] of plan.files) {
     const expected = JSON.parse(text);
     let actual;
@@ -52,7 +55,7 @@ if (isMain(import.meta.url)) {
     if (problems.length) {
       console.error(problems.join('\n'));
       process.exitCode = 1;
-    } else console.log('All insights, experiments, reach, digest and feed files are valid.');
+    } else console.log('All insights, experiments, reach, digest, theme and feed files are valid.');
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;

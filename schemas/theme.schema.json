@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "theme.schema.json",
+  "title": "themes/<id>.json",
+  "description": "One underlying weakness, its evidence and one tracked number with daily history.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "weakness", "mechanism", "evidence", "against", "prediction", "falsifiedIf", "confidence", "firstSeen", "lastReviewed", "status", "track"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "weakness": { "$ref": "#/$defs/text" },
+    "mechanism": { "$ref": "#/$defs/text" },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source", "text"],
+        "properties": {
+          "source": { "enum": ["feedback", "sentry", "walk", "snapshot", "velocity", "problems", "main", "experiments"] },
+          "text": { "$ref": "#/$defs/text" }
+        }
+      }
+    },
+    "against": { "type": "array", "items": { "$ref": "#/$defs/text" } },
+    "prediction": { "$ref": "#/$defs/text" },
+    "falsifiedIf": { "$ref": "#/$defs/text" },
+    "confidence": { "enum": ["low", "medium", "high"] },
+    "firstSeen": { "type": "string", "format": "date" },
+    "lastReviewed": { "type": "string", "format": "date" },
+    "status": { "enum": ["open", "merged", "retired"] },
+    "track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "unit", "source", "definition", "target", "history"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "unit": { "enum": ["share", "count", "rate"] },
+        "source": { "enum": ["feedback-share", "sentry-count", "signup-rate"] },
+        "definition": { "$ref": "#/$defs/text" },
+        "target": {
+          "description": "The theme's claim as a number: while the weakness stands, the value stays on the direction side of value through by.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "direction", "by"],
+          "properties": {
+            "value": { "type": "number", "minimum": 0 },
+            "direction": { "enum": ["below", "above"] },
+            "by": { "type": "string", "format": "date" }
+          }
+        },
+        "history": {
+          "description": "One point per Eastern day, oldest first. value is null only when samples is 0.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["date", "value", "samples"],
+            "properties": {
+              "date": { "type": "string", "format": "date" },
+              "value": { "type": ["number", "null"], "minimum": 0 },
+              "samples": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "text": { "type": "string", "minLength": 1, "maxLength": 300 }
+  }
+}

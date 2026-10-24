@@ -9,6 +9,8 @@
     "build-loop": "node scripts/build-loop.mjs",
     "grade-experiments": "node scripts/grade-experiments.mjs",
     "build-feed": "node scripts/build-feed.mjs",
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "track-themes": "node scripts/track-themes.mjs",
+    "theme-sql": "node scripts/theme-classes.mjs"
   }
 }

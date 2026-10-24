@@ -5,7 +5,11 @@
   "evidence": [
     {
       "source": "feedback",
-      "text": "Wake and dispatch reports: 458 in 30 days from 19 agents in 184 Rooms; 17% of last week's reports, 16% the week before."
+      "text": "Keyword class: 24% of reports in the 7 days to 2026-10-23, up from 16% the 7 days before."
+    },
+    {
+      "source": "feedback",
+      "text": "First pass: wake and dispatch reports: 458 in 30 days from 19 agents in 184 Rooms; 17% of last week's reports, 16% the week before."
     },
     {
       "source": "feedback",
@@ -28,5 +32,163 @@
   "confidence": "medium",
   "firstSeen": "2026-10-24",
   "lastReviewed": "2026-10-24",
-  "status": "open"
+  "status": "open",
+  "track": {
+    "label": "Share of reports about wakes and dispatch",
+    "unit": "share",
+    "source": "feedback-share",
+    "definition": "Keyword match on the report summary (scripts/theme-classes.mjs): reports naming a wake, dispatch, idle-corner alert or unreported order, as a share of all reports in the 7 days ending that day.",
+    "target": {
+      "value": 0.12,
+      "direction": "above",
+      "by": "2026-11-07"
+    },
+    "history": [
+      {
+        "date": "2026-09-25",
+        "value": null,
+        "samples": 0
+      },
+      {
+        "date": "2026-09-26",
+        "value": null,
+        "samples": 0
+      },
+      {
+        "date": "2026-09-27",
+        "value": null,
+        "samples": 0
+      },
+      {
+        "date": "2026-09-28",
+        "value": null,
+        "samples": 0
+      },
+      {
+        "date": "2026-09-29",
+        "value": null,
+        "samples": 0
+      },
+      {
+        "date": "2026-09-30",
+        "value": 0.0488,
+        "samples": 41
+      },
+      {
+        "date": "2026-10-01",
+        "value": 0.0408,
+        "samples": 98
+      },
+      {
+        "date": "2026-10-02",
+        "value": 0.0601,
+        "samples": 183
+      },
+      {
+        "date": "2026-10-03",
+        "value": 0.0675,
+        "samples": 237
+      },
+      {
+        "date": "2026-10-04",
+        "value": 0.0918,
+        "samples": 316
+      },
+      {
+        "date": "2026-10-05",
+        "value": 0.105,
+        "samples": 400
+      },
+      {
+        "date": "2026-10-06",
+        "value": 0.1116,
+        "samples": 448
+      },
+      {
+        "date": "2026-10-07",
+        "value": 0.1154,
+        "samples": 468
+      },
+      {
+        "date": "2026-10-08",
+        "value": 0.1329,
+        "samples": 474
+      },
+      {
+        "date": "2026-10-09",
+        "value": 0.1432,
+        "samples": 419
+      },
+      {
+        "date": "2026-10-10",
+        "value": 0.1533,
+        "samples": 424
+      },
+      {
+        "date": "2026-10-11",
+        "value": 0.141,
+        "samples": 376
+      },
+      {
+        "date": "2026-10-12",
+        "value": 0.1445,
+        "samples": 346
+      },
+      {
+        "date": "2026-10-13",
+        "value": 0.1509,
+        "samples": 371
+      },
+      {
+        "date": "2026-10-14",
+        "value": 0.1622,
+        "samples": 370
+      },
+      {
+        "date": "2026-10-15",
+        "value": 0.1451,
+        "samples": 379
+      },
+      {
+        "date": "2026-10-16",
+        "value": 0.156,
+        "samples": 468
+      },
+      {
+        "date": "2026-10-17",
+        "value": 0.1877,
+        "samples": 586
+      },
+      {
+        "date": "2026-10-18",
+        "value": 0.209,
+        "samples": 670
+      },
+      {
+        "date": "2026-10-19",
+        "value": 0.2095,
+        "samples": 802
+      },
+      {
+        "date": "2026-10-20",
+        "value": 0.2085,
+        "samples": 945
+      },
+      {
+        "date": "2026-10-21",
+        "value": 0.224,
+        "samples": 1067
+      },
+      {
+        "date": "2026-10-22",
+        "value": 0.2316,
+        "samples": 1179
+      },
+      {
+        "date": "2026-10-23",
+        "value": 0.2419,
+        "samples": 1397
+      }
+    ]
+  }
 }

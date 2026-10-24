@@ -1,10 +1,10 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { basename, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { SERIES, isDate, readJSON } from './analysis.mjs';
+import { SERIES, addDays, isDate, readJSON } from './analysis.mjs';
 
 const SCHEMA_DIR = fileURLToPath(new URL('../../schemas/', import.meta.url));
-export const SCHEMA_FILES = ['insights', 'experiment', 'reach', 'digest', 'problem', 'walk', 'retention', 'feed'].map((name) => `${name}.schema.json`);
+export const SCHEMA_FILES = ['insights', 'experiment', 'reach', 'digest', 'problem', 'walk', 'retention', 'theme', 'feed'].map((name) => `${name}.schema.json`);
 const schemas = Object.fromEntries(await Promise.all(SCHEMA_FILES.map(async (file) => [file, JSON.parse(await readFile(join(SCHEMA_DIR, file), 'utf8'))])));
 
 const typeOf = (value) => value === null ? 'null' : Array.isArray(value) ? 'array'
@@ -51,6 +51,7 @@ function check(value, schema, root, path, errors) {
     if (!Number.isFinite(value)) return fail('expected a finite number');
     if (schema.minimum !== undefined && value < schema.minimum) return fail(`expected at least ${schema.minimum}`);
   }
+  if (Array.isArray(value) && schema.minItems !== undefined && value.length < schema.minItems) fail(`expected at least ${schema.minItems} items`);
   if (Array.isArray(value) && schema.maxItems !== undefined && value.length > schema.maxItems) fail(`expected at most ${schema.maxItems} items`);
   if (Array.isArray(value) && schema.items) value.forEach((item, i) => check(item, schema.items, root, `${path}[${i}]`, errors));
   if (typeOf(value) === 'object' && schema.properties) {
@@ -170,6 +171,35 @@ export function aggregateErrors(value, kind, file) {
   return [...errors, ...privacy(value)];
 }
 
+// History is one point per day, oldest first; shares and rates are fractions.
+export function themeErrors(theme, file) {
+  const errors = schemaErrors(theme, 'theme.schema.json');
+  if (errors.length) return errors;
+  if (file && basename(file) !== `${theme.id}.json`) errors.push('id: must match the filename');
+  if (theme.firstSeen > theme.lastReviewed) errors.push('lastReviewed: must be on or after firstSeen');
+  const { unit, history } = theme.track;
+  history.forEach((point, i) => {
+    if (i > 0 && point.date <= history[i - 1].date) errors.push(`track.history[${i}].date: must be after the previous day`);
+    if (point.value === null && point.samples !== 0) errors.push(`track.history[${i}].value: null only when samples is 0`);
+    if (point.value !== null && unit !== 'count' && point.value > 1) errors.push(`track.history[${i}].value: a ${unit} is a fraction from 0 to 1`);
+    if (point.value !== null && unit === 'count' && !Number.isInteger(point.value)) errors.push(`track.history[${i}].value: a count is a whole number`);
+  });
+  if (unit !== 'count' && theme.track.target.value > 1) errors.push(`track.target.value: a ${unit} is a fraction from 0 to 1`);
+  return [...errors, ...privacy(theme)];
+}
+
+// A tracked number must be appended daily; validate fails when the newest point is too old.
+export function staleThemeErrors(themes, today, days = 2) {
+  const oldest = addDays(today, -days);
+  return themes.filter((theme) => theme.track?.history?.length && theme.track.history.at(-1).date < oldest)
+    .map((theme) => `themes/${theme.id}.json: track.history: newest point ${theme.track.history.at(-1).date} is more than ${days} days before ${today}; run npm run track-themes`);
+}
+
+const THEME_ORDER = ['open', 'merged', 'retired'];
+export function sortThemes(themes) {
+  return [...themes].sort((a, b) => THEME_ORDER.indexOf(a.status) - THEME_ORDER.indexOf(b.status) || String(a.id).localeCompare(String(b.id)));
+}
+
 export function registerErrors(experiments) {
   return experiments.filter((e) => e.status === 'running').slice(10)
     .map((e) => `experiments/${e.id}.json: status: at most 10 running experiments; retire one first`);
@@ -231,7 +261,8 @@ export async function loadContract(root) {
   const insights = await optionalJSON(insightsFile) ?? null;
   if (insights !== null) add('insights/latest.json', insightsErrors(insights));
   const experiments = [];
-  for (const file of await list(join(root, 'experiments'), '.json')) {
+  const experimentFiles = await list(join(root, 'experiments'), '.json');
+  for (const file of experimentFiles) {
     const experiment = await readJSON(join(root, 'experiments', file));
     const errors = experimentErrors(experiment, file);
     add(`experiments/${file}`, errors);
@@ -249,6 +280,19 @@ export async function loadContract(root) {
   }
   additions.problems.sort((a, b) => a.rank - b.rank || String(a.id).localeCompare(String(b.id)));
   additions.walk.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  additions.themes = [];
+  for (const file of await list(join(root, 'themes'), '.json')) {
+    const theme = await readJSON(join(root, 'themes', file));
+    add(`themes/${file}`, themeErrors(theme, file));
+    additions.themes.push(theme);
+  }
+  additions.themes = sortThemes(additions.themes);
+  const themeIds = new Set(additions.themes.map((theme) => theme.id));
+  experiments.forEach((experiment, i) => {
+    if (typeof experiment?.theme === 'string' && !themeIds.has(experiment.theme)) {
+      problems.push(`experiments/${experimentFiles[i]}: theme: no themes/${experiment.theme}.json`);
+    }
+  });
   additions.retention = await optionalJSON(join(root, 'retention/latest.json')) ?? null;
   if (additions.retention !== null) add('retention/latest.json', aggregateErrors(additions.retention, 'retention'));
   const reachFile = join(root, 'reach/latest.json');

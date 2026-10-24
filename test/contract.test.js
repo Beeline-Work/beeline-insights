@@ -35,7 +35,7 @@ test('mock v3 fixture validates and builds the committed feed with only the cont
   const committed = await load('feed/latest.json');
   const feed = await buildFeed({ root: directory, today, now: new Date('2030-01-01T00:00:00.000Z') });
   assert.deepEqual(feed, committed);
-  assert.deepEqual(Object.keys(feed), ['generatedAt', 'insights', 'experiments', 'reach', 'digests', 'problems', 'walk', 'retention']);
+  assert.deepEqual(Object.keys(feed), ['generatedAt', 'insights', 'experiments', 'reach', 'digests', 'problems', 'walk', 'themes', 'retention']);
   assert.deepEqual(feed.experiments.map((e) => [e.id, e.status]), [
     ['free-deepseek-agents', 'proposed'], ['remove-onboarding-steps', 'proposed'], ['fix-notices', 'running']]);
   assert.deepEqual(feed.digests.map((d) => d.date), ['2026-10-23', '2026-10-22', '2026-10-21', '2026-10-20']);
@@ -259,5 +259,6 @@ test('no workflow calls YouTube or X, and no new secrets appear', async () => {
 
 test('the repository files pass validation', async () => {
   const { easternDate } = await import('../scripts/snapshot.mjs');
-  assert.deepEqual(await validate({ root, today: easternDate() }), []);
+  // Theme freshness is checked by npm run validate, not here: the daily snapshot job runs npm test first.
+  assert.deepEqual(await validate({ root, today: easternDate(), fresh: false }), []);
 });
