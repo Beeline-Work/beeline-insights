@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T14:16:00.946Z",
+  "generatedAt": "2026-10-24T20:06:56.759Z",
   "insights": {
     "generatedAt": "2026-10-24T13:10:00.000Z",
     "window": {
@@ -129,6 +129,18 @@
     }
   ],
   "problems": [],
-  "walk": [],
+  "walk": [
+    {
+      "date": "2026-10-24",
+      "source": "workspace walk 733607c3",
+      "counts": [
+        {
+          "goal": "run-task",
+          "friction": "crash",
+          "count": 1
+        }
+      ]
+    }
+  ],
   "retention": null
 }
