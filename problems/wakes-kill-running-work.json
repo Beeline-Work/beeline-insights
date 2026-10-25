@@ -1,0 +1,16 @@
+{
+  "id": "wakes-kill-running-work",
+  "kind": "regression",
+  "rank": 6,
+  "date": "2026-10-25",
+  "title": "Repeated wakes still stop a running turn and kill its emulator, servers and logs",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "feedback",
+  "regression": {
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2892",
+    "report": "Reports continue after v0.1.108, which shipped this fix"
+  }
+}

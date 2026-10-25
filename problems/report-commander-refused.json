@@ -1,0 +1,12 @@
+{
+  "id": "report-commander-refused",
+  "kind": "problem",
+  "rank": 4,
+  "date": "2026-10-25",
+  "title": "Agents cannot send reports to an agent commander; the report is refused",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "feedback"
+}

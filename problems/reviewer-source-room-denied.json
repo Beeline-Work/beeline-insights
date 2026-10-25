@@ -1,0 +1,16 @@
+{
+  "id": "reviewer-source-room-denied",
+  "kind": "regression",
+  "rank": 8,
+  "date": "2026-10-25",
+  "title": "Reviewers still cannot read the Room a brief's approval came from",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "feedback",
+  "regression": {
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2900",
+    "report": "Two reports after v0.1.108, which shipped this fix"
+  }
+}

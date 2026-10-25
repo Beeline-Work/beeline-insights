@@ -1,0 +1,16 @@
+{
+  "id": "review-repeats-after-fail",
+  "kind": "regression",
+  "rank": 5,
+  "date": "2026-10-25",
+  "title": "Review handoff re-sends an unchanged head after a failed review and cannot wake the implementer",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "feedback",
+  "regression": {
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2907",
+    "report": "The stale-head fix missed the repeat after a failed review; reports continue after v0.1.108"
+  }
+}

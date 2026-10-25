@@ -1,11 +1,11 @@
 {
   "id": "done-report-before-pr",
   "kind": "problem",
-  "rank": 4,
-  "date": "2026-10-24",
+  "rank": 7,
+  "date": "2026-10-25",
   "title": "Done reports are refused right after a PR opens, before the corner registers it",
   "peoplePerDay": 0,
-  "trend": "up",
+  "trend": "flat",
   "cause": "server",
   "stage": "corner-work",
   "source": "feedback"

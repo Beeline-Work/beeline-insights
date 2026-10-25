@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T10:05:59.114Z",
+  "generatedAt": "2026-10-25T11:06:28.705Z",
   "insights": {
     "generatedAt": "2026-10-24T13:10:00.000Z",
     "window": {
@@ -133,10 +133,10 @@
       "id": "booking-outside-limits",
       "kind": "problem",
       "rank": 1,
-      "date": "2026-10-24",
+      "date": "2026-10-25",
       "title": "An agent booked outside the person's time and price limits and could not cancel",
       "peoplePerDay": 1,
-      "trend": "up",
+      "trend": "flat",
       "cause": "prompt",
       "stage": "daily-use",
       "source": "walk"
@@ -145,8 +145,8 @@
       "id": "agent-reasoning-posted",
       "kind": "problem",
       "rank": 2,
-      "date": "2026-10-24",
-      "title": "An agent's internal reasoning was posted into a Room",
+      "date": "2026-10-25",
+      "title": "A person saw an agent's internal reasoning posted into a Room",
       "peoplePerDay": 1,
       "trend": "flat",
       "cause": "unknown",
@@ -157,97 +157,109 @@
       "id": "github-card-padding",
       "kind": "problem",
       "rank": 3,
-      "date": "2026-10-24",
-      "title": "The GitHub connect card has no bottom padding",
+      "date": "2026-10-25",
+      "title": "The GitHub connect card has no bottom padding on the phone",
       "peoplePerDay": 1,
       "trend": "flat",
       "cause": "client",
-      "stage": "connect-service",
+      "stage": "add-own-agent",
       "source": "feedback"
+    },
+    {
+      "id": "report-commander-refused",
+      "kind": "problem",
+      "rank": 4,
+      "date": "2026-10-25",
+      "title": "Agents cannot send reports to an agent commander; the report is refused",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback"
+    },
+    {
+      "id": "review-repeats-after-fail",
+      "kind": "regression",
+      "rank": 5,
+      "date": "2026-10-25",
+      "title": "Review handoff re-sends an unchanged head after a failed review and cannot wake the implementer",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback",
+      "regression": {
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2907",
+        "report": "The stale-head fix missed the repeat after a failed review; reports continue after v0.1.108"
+      }
+    },
+    {
+      "id": "wakes-kill-running-work",
+      "kind": "regression",
+      "rank": 6,
+      "date": "2026-10-25",
+      "title": "Repeated wakes still stop a running turn and kill its emulator, servers and logs",
+      "peoplePerDay": 0,
+      "trend": "flat",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback",
+      "regression": {
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2892",
+        "report": "Reports continue after v0.1.108, which shipped this fix"
+      }
     },
     {
       "id": "done-report-before-pr",
       "kind": "problem",
-      "rank": 4,
-      "date": "2026-10-24",
+      "rank": 7,
+      "date": "2026-10-25",
       "title": "Done reports are refused right after a PR opens, before the corner registers it",
       "peoplePerDay": 0,
-      "trend": "up",
+      "trend": "flat",
       "cause": "server",
       "stage": "corner-work",
       "source": "feedback"
     },
     {
-      "id": "emulator-access-in-corners",
-      "kind": "problem",
-      "rank": 5,
-      "date": "2026-10-24",
-      "title": "Agents lose or cannot reach the Android emulator in corners",
+      "id": "reviewer-source-room-denied",
+      "kind": "regression",
+      "rank": 8,
+      "date": "2026-10-25",
+      "title": "Reviewers still cannot read the Room a brief's approval came from",
       "peoplePerDay": 0,
-      "trend": "up",
+      "trend": "flat",
       "cause": "server",
       "stage": "corner-work",
-      "source": "feedback"
+      "source": "feedback",
+      "regression": {
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2900",
+        "report": "Two reports after v0.1.108, which shipped this fix"
+      }
     },
     {
       "id": "history-search-arguments",
       "kind": "problem",
-      "rank": 6,
-      "date": "2026-10-24",
-      "title": "History search rejects arguments that match its own schema",
-      "peoplePerDay": 0,
-      "trend": "up",
-      "cause": "server",
-      "stage": "daily-use",
-      "source": "feedback"
-    },
-    {
-      "id": "corner-app-from-room",
-      "kind": "problem",
-      "rank": 7,
-      "date": "2026-10-24",
-      "title": "Agents try a corner-only app from a Room because the skill does not say it is corner-only",
-      "peoplePerDay": 0,
-      "trend": "flat",
-      "cause": "skill",
-      "stage": "corner-work",
-      "source": "feedback"
-    },
-    {
-      "id": "ci-browser-test-flakes",
-      "kind": "problem",
-      "rank": 8,
-      "date": "2026-10-24",
-      "title": "CI browser tests time out and a fixture port collides, failing unrelated PRs",
-      "peoplePerDay": 0,
-      "trend": "up",
-      "cause": "server",
-      "stage": "corner-work",
-      "source": "feedback"
-    },
-    {
-      "id": "push-outbox-backlog",
-      "kind": "problem",
       "rank": 9,
-      "date": "2026-10-24",
-      "title": "The push delivery queue backed up past 1000 due messages",
+      "date": "2026-10-25",
+      "title": "History search rejects arguments that match its advertised schema",
       "peoplePerDay": 0,
-      "trend": "flat",
+      "trend": "up",
       "cause": "server",
-      "stage": "daily-use",
-      "source": "sentry"
+      "stage": "corner-work",
+      "source": "feedback"
     },
     {
-      "id": "github-403-logged-as-error",
+      "id": "revise-corner-approval-citations",
       "kind": "problem",
       "rank": 10,
-      "date": "2026-10-24",
-      "title": "An expected GitHub permission refusal is logged to Sentry as an error",
+      "date": "2026-10-25",
+      "title": "Brief revisions refuse agent-commander orders and parent-Room approvals as approval",
       "peoplePerDay": 0,
-      "trend": "flat",
+      "trend": "up",
       "cause": "server",
       "stage": "corner-work",
-      "source": "sentry"
+      "source": "feedback"
     }
   ],
   "walk": [
