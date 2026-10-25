@@ -22,6 +22,14 @@
     {
       "source": "sentry",
       "text": "Connected app unavailable in this Room; workflow run unavailable in this Room."
+    },
+    {
+      "source": "feedback",
+      "text": "Keyword class: 18% of reports in the 7 days to 2026-10-24, up from 15% the day before."
+    },
+    {
+      "source": "feedback",
+      "text": "The 2026-10-25 Sunday pass found two related weaknesses: work environments that do not survive between turns, and ids and approvals that do not resolve across places. Both are candidates that may split from this theme."
     }
   ],
   "against": [
@@ -31,7 +39,7 @@
   "falsifiedIf": "Most sampled environment reports are infrastructure faults that a capability list would not prevent.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-24",
+  "lastReviewed": "2026-10-25",
   "status": "open",
   "track": {
     "label": "Share of reports about what a place allows",
@@ -188,6 +196,11 @@
         "date": "2026-10-23",
         "value": 0.146,
         "samples": 1397
+      },
+      {
+        "date": "2026-10-24",
+        "value": 0.1818,
+        "samples": 1502
       }
     ]
   }

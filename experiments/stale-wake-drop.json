@@ -1,0 +1,36 @@
+{
+  "id": "stale-wake-drop",
+  "theme": "wakes-without-causality",
+  "title": "Drop wakes whose cause has already changed",
+  "source": {
+    "section": "feedback",
+    "text": "23% of agent reports in the 7 days to 2026-10-24 are about wakes and dispatch; two wake fixes did not hold."
+  },
+  "change": "Before delivering a wake, check the state it was sent for (PR head, brief revision, step already reported) and drop it if that state changed.",
+  "metric": {
+    "label": "Share of reports about wakes and dispatch",
+    "numerator": "feedback:wake-reports",
+    "denominator": "feedback:all-reports"
+  },
+  "before": {
+    "value": 0.2297,
+    "samples": 1502,
+    "from": "2026-10-18",
+    "through": "2026-10-24"
+  },
+  "predict": {
+    "value": 0.12,
+    "direction": "down"
+  },
+  "guardrail": "Corners left with no next step for more than 24 hours do not rise above the week before.",
+  "decideAt": {
+    "samples": 1000,
+    "date": "2026-11-08"
+  },
+  "ifUnclear": "undo",
+  "status": "proposed",
+  "approval": null,
+  "startedOn": null,
+  "progress": null,
+  "verdict": null
+}

@@ -18,16 +18,25 @@
     {
       "source": "problems",
       "text": "Ranked problem: done reports refused right after a PR opens, before the corner registers it."
+    },
+    {
+      "source": "feedback",
+      "text": "The 2026-10-25 Sunday pass found the same weakness on its own: about 111 gate-versus-GitHub reports in 30 days, 71 of them last week."
+    },
+    {
+      "source": "velocity",
+      "text": "On 2026-10-23, 11 merged PRs waited 0.8 to 2.7 hours after all checks were green; after the 2026-10-24 gate fixes the wait fell to minutes."
     }
   ],
   "against": [
-    "Part of this may be GitHub API errors, not divergence."
+    "Part of this may be GitHub API errors, not divergence.",
+    "The 198-event PR checks 403 burst was one night (2026-10-21) and has not recurred."
   ],
   "prediction": "In a sample of 50 such reports, at least 30 trace to a stored value that differs from GitHub at the time of the call.",
   "falsifiedIf": "Fewer than 20 of 50 sampled reports trace to a stored value that differs from GitHub.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-24",
+  "lastReviewed": "2026-10-25",
   "status": "open",
   "track": {
     "label": "Share of reports about stale PR and check state",
@@ -184,6 +193,11 @@
         "date": "2026-10-23",
         "value": 0.0594,
         "samples": 1397
+      },
+      {
+        "date": "2026-10-24",
+        "value": 0.0599,
+        "samples": 1502
       }
     ]
   }

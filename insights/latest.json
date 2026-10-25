@@ -1,71 +1,71 @@
 {
-  "generatedAt": "2026-10-24T13:10:00.000Z",
+  "generatedAt": "2026-10-25T13:20:00.000Z",
   "window": {
-    "from": "2026-10-17",
-    "through": "2026-10-23"
+    "from": "2026-10-18",
+    "through": "2026-10-24"
   },
   "errors": {
-    "total": 68,
+    "total": 4095,
     "changePct": null,
     "areas": [
       {
-        "area": "Agents and corners",
-        "count": 22
+        "area": "Agent machines",
+        "count": 2192
       },
       {
-        "area": "Database",
-        "count": 20
+        "area": "Agents and corners",
+        "count": 1601
       },
       {
         "area": "GitHub",
-        "count": 10
+        "count": 211
       },
       {
-        "area": "Voice",
-        "count": 8
+        "area": "Database",
+        "count": 44
       },
       {
         "area": "Phone and web app",
-        "count": 8
-      }
-    ],
-    "lead": "Database connection errors cause 20 of 68 events; 10 come from one closed-pool bug."
-  },
-  "feedback": {
-    "total": 1437,
-    "people": 4,
-    "agents": 1433,
-    "areas": [
-      {
-        "area": "Corners and wakes",
-        "count": 411
-      },
-      {
-        "area": "Review and merge",
-        "count": 410
-      },
-      {
-        "area": "Other",
-        "count": 218
-      },
-      {
-        "area": "Android testing",
-        "count": 163
-      },
-      {
-        "area": "Checks",
-        "count": 126
-      },
-      {
-        "area": "Agent shell",
-        "count": 60
+        "count": 24
       },
       {
         "area": "Voice",
-        "count": 49
+        "count": 14
+      },
+      {
+        "area": "Notifications",
+        "count": 9
       }
     ],
-    "lead": "Agents file almost all reports; corner wakes and review hand-offs lead."
+    "lead": "Two bursts that have stopped caused 3,634 of 4,095 events: a helper restart loop and one mention-matching error."
+  },
+  "feedback": {
+    "total": 1502,
+    "people": 9,
+    "agents": 1493,
+    "areas": [
+      {
+        "area": "Corners and wakes",
+        "count": 345
+      },
+      {
+        "area": "Agent environment",
+        "count": 273
+      },
+      {
+        "area": "Tool limits",
+        "count": 210
+      },
+      {
+        "area": "PR and check state",
+        "count": 90
+      },
+      {
+        "area": "Other",
+        "count": 584
+      }
+    ],
+    "lead": "Agents file almost all reports; wakes lead, and environment reports rose to 18%."
   },
   "journey": {
     "steps": [
@@ -97,21 +97,26 @@
     "state": "measured"
   },
   "velocity": {
-    "hoursLost": 22.8,
+    "hoursLost": 279.1,
     "items": [
       {
-        "label": "UI changes need repeated review rounds",
-        "hours": 17.3
+        "label": "Large PRs (8+ commits) stay open 5 times longer",
+        "hours": 233.8
       },
       {
-        "label": "Android test setup lost between turns",
-        "hours": 2.9
+        "label": "Server test shards queue for runners",
+        "hours": 25.8
       },
       {
-        "label": "Reviewer not woken after green checks",
-        "hours": 2.6
+        "label": "PRs wait after checks pass",
+        "hours": 19.5
       }
     ]
   },
-  "links": []
+  "links": [
+    {
+      "section": "feedback",
+      "experimentId": "stale-wake-drop"
+    }
+  ]
 }

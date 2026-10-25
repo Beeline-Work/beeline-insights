@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-10-25",
+    "title": "Everything merged before 08:00 is live; three fixes did not hold",
+    "findings": 3,
+    "proposals": 1,
+    "path": "digests/2026-10-25.md"
+  },
+  {
     "date": "2026-10-24",
     "title": "Three releases shipped; UI review rounds cost the most time",
     "findings": 3,

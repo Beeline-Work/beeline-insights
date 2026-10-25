@@ -18,6 +18,14 @@
     {
       "source": "problems",
       "text": "Ranked problem: history search rejects arguments that match its own schema."
+    },
+    {
+      "source": "problems",
+      "text": "Four ranked problems on 2026-10-25 fit: history search arguments, reports to an agent commander, done reports before the PR registers, and brief approval citations."
+    },
+    {
+      "source": "feedback",
+      "text": "The 2026-10-25 Sunday pass found the same weakness on its own."
     }
   ],
   "against": [
@@ -27,7 +35,7 @@
   "falsifiedIf": "In a sample of 50 mismatch reports, most limits were already stated in the schema.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-24",
+  "lastReviewed": "2026-10-25",
   "status": "open",
   "track": {
     "label": "Share of reports about unstated tool limits",
@@ -184,6 +192,11 @@
         "date": "2026-10-23",
         "value": 0.1374,
         "samples": 1397
+      },
+      {
+        "date": "2026-10-24",
+        "value": 0.1398,
+        "samples": 1502
       }
     ]
   }

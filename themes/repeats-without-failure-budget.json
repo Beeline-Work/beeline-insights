@@ -18,16 +18,25 @@
     {
       "source": "feedback",
       "text": "A CI auto-fix loop woke an agent 6 times during a pause; a weekday schedule fired on Saturday; a monitor ran 8 times without access."
+    },
+    {
+      "source": "feedback",
+      "text": "Watchdog reports fell from about 25 a day (2026-10-18 to 2026-10-21) to 1 to 3 a day since 2026-10-23."
+    },
+    {
+      "source": "sentry",
+      "text": "The helper start-up repeat stopped after 2026-10-22; no events since."
     }
   ],
   "against": [
-    "The watchdog belongs to one workspace's own setup, not to Beeline code."
+    "The watchdog belongs to one workspace's own setup, not to Beeline code.",
+    "The 2026-10-25 Sunday pass did not find this as a separate weakness, and both large repeat sources stopped without a general failure budget."
   ],
   "prediction": "Pausing a schedule after 3 identical failures and telling its owner cuts these reports by at least 80%.",
   "falsifiedIf": "Identical-failure repeats are under 5% of reports once the watchdog setup is fixed.",
-  "confidence": "high",
+  "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-24",
+  "lastReviewed": "2026-10-25",
   "status": "open",
   "track": {
     "label": "Share of reports that repeat the same failure",
@@ -184,6 +193,11 @@
         "date": "2026-10-23",
         "value": 0.0021,
         "samples": 1397
+      },
+      {
+        "date": "2026-10-24",
+        "value": 0.002,
+        "samples": 1502
       }
     ]
   }

@@ -18,6 +18,14 @@
     {
       "source": "walk",
       "text": "The 2026-10-24 walk recorded 1 stuck person; walk history starts that day."
+    },
+    {
+      "source": "snapshot",
+      "text": "Of 19 people who signed up in the 7 days to 2026-10-23, 11 sent a message within 24 hours and 1 came back the next day (5%)."
+    },
+    {
+      "source": "feedback",
+      "text": "No human reports since 2026-10-22, against 691 agent reports in the same 3 days."
     }
   ],
   "against": [
@@ -27,7 +35,7 @@
   "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
   "confidence": "low",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-24",
+  "lastReviewed": "2026-10-25",
   "status": "open",
   "track": {
     "label": "New people who send a first message within 24 hours",
@@ -184,6 +192,11 @@
         "date": "2026-10-23",
         "value": 0.5,
         "samples": 20
+      },
+      {
+        "date": "2026-10-24",
+        "value": 0.5789,
+        "samples": 19
       }
     ]
   }

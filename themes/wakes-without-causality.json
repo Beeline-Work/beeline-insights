@@ -22,6 +22,18 @@
     {
       "source": "main",
       "text": "Recent merges each patch one case: #2886, #2898, #2907, #2908."
+    },
+    {
+      "source": "feedback",
+      "text": "Keyword class: 23% of reports in the 7 days to 2026-10-24, still about twice the target."
+    },
+    {
+      "source": "problems",
+      "text": "Two fixes did not hold after release: wakes still stop running turns (after #2892) and review handoffs still repeat on an unchanged head (after #2907)."
+    },
+    {
+      "source": "feedback",
+      "text": "The 2026-10-25 Sunday pass, without this folder, found the same weakness on its own and rated it high."
     }
   ],
   "against": [
@@ -29,9 +41,9 @@
   ],
   "prediction": "Per-case fixes will not lower the share of wake reports below 12% in the next 14 days.",
   "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
-  "confidence": "medium",
+  "confidence": "high",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-24",
+  "lastReviewed": "2026-10-25",
   "status": "open",
   "track": {
     "label": "Share of reports about wakes and dispatch",
@@ -188,6 +200,11 @@
         "date": "2026-10-23",
         "value": 0.2419,
         "samples": 1397
+      },
+      {
+        "date": "2026-10-24",
+        "value": 0.2297,
+        "samples": 1502
       }
     ]
   }
