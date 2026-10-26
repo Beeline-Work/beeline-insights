@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T14:34:17.005Z",
+  "generatedAt": "2026-10-26T10:04:52.626Z",
   "insights": {
     "generatedAt": "2026-10-25T13:20:00.000Z",
     "window": {
@@ -312,6 +312,22 @@
     }
   ],
   "walk": [
+    {
+      "date": "2026-10-26",
+      "source": "workspace walk 2e7089f0",
+      "counts": [
+        {
+          "goal": "run-task",
+          "friction": "wrong-answer",
+          "count": 1
+        },
+        {
+          "goal": "connect-service",
+          "friction": "wrong-answer",
+          "count": 1
+        }
+      ]
+    },
     {
       "date": "2026-10-25",
       "source": "workspace walk 87f677ac",
