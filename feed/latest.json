@@ -1,73 +1,73 @@
 {
-  "generatedAt": "2026-10-26T11:06:35.970Z",
+  "generatedAt": "2026-10-26T13:08:07.855Z",
   "insights": {
-    "generatedAt": "2026-10-25T13:20:00.000Z",
+    "generatedAt": "2026-10-26T13:10:00.000Z",
     "window": {
-      "from": "2026-10-18",
-      "through": "2026-10-24"
+      "from": "2026-10-19",
+      "through": "2026-10-25"
     },
     "errors": {
-      "total": 4095,
+      "total": 2429,
       "changePct": null,
       "areas": [
         {
           "area": "Agent machines",
-          "count": 2192
-        },
-        {
-          "area": "Agents and corners",
-          "count": 1601
+          "count": 2179
         },
         {
           "area": "GitHub",
-          "count": 211
-        },
-        {
-          "area": "Database",
-          "count": 44
+          "count": 210
         },
         {
           "area": "Phone and web app",
-          "count": 24
+          "count": 13
         },
         {
-          "area": "Voice",
-          "count": 14
+          "area": "Agents and corners",
+          "count": 10
         },
         {
           "area": "Notifications",
           "count": 9
+        },
+        {
+          "area": "Voice",
+          "count": 7
+        },
+        {
+          "area": "Database",
+          "count": 1
         }
       ],
-      "lead": "Two bursts that have stopped caused 3,634 of 4,095 events: a helper restart loop and one mention-matching error."
+      "lead": "A helper restart loop that stopped on 2026-10-22 caused 2,179 of 2,429 events; no errors at all in the last 24 hours."
     },
     "feedback": {
-      "total": 1502,
+      "total": 1585,
       "people": 9,
-      "agents": 1493,
+      "agents": 1576,
       "areas": [
         {
           "area": "Corners and wakes",
-          "count": 345
+          "count": 342
         },
         {
           "area": "Agent environment",
-          "count": 273
+          "count": 317
         },
         {
           "area": "Tool limits",
-          "count": 210
+          "count": 225
         },
         {
           "area": "PR and check state",
-          "count": 90
+          "count": 103
         },
         {
           "area": "Other",
-          "count": 584
+          "count": 598
         }
       ],
-      "lead": "Agents file almost all reports; wakes lead, and environment reports rose to 18%."
+      "lead": "Agents file almost all reports; environment reports rose to 20% and PR-state reports doubled in 4 days."
     },
     "journey": {
       "steps": [
@@ -99,19 +99,15 @@
       "state": "measured"
     },
     "velocity": {
-      "hoursLost": 279.1,
+      "hoursLost": 16,
       "items": [
         {
-          "label": "Large PRs (8+ commits) stay open 5 times longer",
-          "hours": 233.8
+          "label": "Fix PR held after approval",
+          "hours": 8
         },
         {
-          "label": "Server test shards queue for runners",
-          "hours": 25.8
-        },
-        {
-          "label": "PRs wait after checks pass",
-          "hours": 19.5
+          "label": "PRs queued together for test runners",
+          "hours": 8
         }
       ]
     },
@@ -153,15 +149,24 @@
         "date": "2026-11-08"
       },
       "ifUnclear": "undo",
-      "status": "proposed",
-      "approval": null,
-      "startedOn": null,
+      "status": "running",
+      "approval": {
+        "messageId": "597c1fa4f5c75351e973571ab7f64ee9dd999eafd4557e32e82214aedbe13110"
+      },
+      "startedOn": "2026-10-26",
       "progress": null,
       "verdict": null
     }
   ],
   "reach": null,
   "digests": [
+    {
+      "date": "2026-10-26",
+      "title": "Two releases shipped; three fixes did not hold; first experiment is live",
+      "findings": 2,
+      "proposals": 0,
+      "path": "digests/2026-10-26.md"
+    },
     {
       "date": "2026-10-25",
       "title": "Everything merged before 08:00 is live; three fixes did not hold",
@@ -380,6 +385,18 @@
         {
           "source": "feedback",
           "text": "No human reports since 2026-10-22, against 691 agent reports in the same 3 days."
+        },
+        {
+          "source": "snapshot",
+          "text": "Of 17 people who signed up in the 7 days to 2026-10-24, 9 sent a message within 24 hours and 1 came back the next day (6%)."
+        },
+        {
+          "source": "feedback",
+          "text": "No human reports for 4 days (since 2026-10-22), against 1,573 agent reports in the last 7 days."
+        },
+        {
+          "source": "snapshot",
+          "text": "Paid X ads drew 1,962 link clicks on 2026-10-25, yet Beeline recorded 2 signups in the 24 hours to 09:00 2026-10-26 and no ad-attributed signup. The drop has no report behind it."
         }
       ],
       "against": [
@@ -387,9 +404,9 @@
       ],
       "prediction": "Watching 5 new signups through their first session finds one shared cause for the missing first message.",
       "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
-      "confidence": "low",
+      "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-25",
+      "lastReviewed": "2026-10-26",
       "status": "open",
       "track": {
         "label": "New people who send a first message within 24 hours",
@@ -551,6 +568,11 @@
             "date": "2026-10-24",
             "value": 0.5789,
             "samples": 19
+          },
+          {
+            "date": "2026-10-25",
+            "value": 0.5294,
+            "samples": 17
           }
         ]
       }
@@ -583,6 +605,10 @@
         {
           "source": "sentry",
           "text": "The helper start-up repeat stopped after 2026-10-22; no events since."
+        },
+        {
+          "source": "feedback",
+          "text": "In a random sample of 250 agent reports (30 days), about 10 are one workspace watchdog failing on the same missing files, each worded differently. The exact-summary track counts none of them, so it undercounts repeats."
         }
       ],
       "against": [
@@ -593,7 +619,7 @@
       "falsifiedIf": "Identical-failure repeats are under 5% of reports once the watchdog setup is fixed.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-25",
+      "lastReviewed": "2026-10-26",
       "status": "open",
       "track": {
         "label": "Share of reports that repeat the same failure",
@@ -755,6 +781,11 @@
             "date": "2026-10-24",
             "value": 0.002,
             "samples": 1502
+          },
+          {
+            "date": "2026-10-25",
+            "value": 0.0019,
+            "samples": 1585
           }
         ]
       }
@@ -787,6 +818,14 @@
         {
           "source": "velocity",
           "text": "On 2026-10-23, 11 merged PRs waited 0.8 to 2.7 hours after all checks were green; after the 2026-10-24 gate fixes the wait fell to minutes."
+        },
+        {
+          "source": "feedback",
+          "text": "Keyword class rose to 6.5% of reports in the 7 days to 2026-10-25, from 3.2% on 2026-10-21, more than double the 3% target."
+        },
+        {
+          "source": "problems",
+          "text": "New ranked problem on 2026-10-26: grant approval cards and wakes name old grants while the current one stays pending, 15 reports from 3 agents, continuing after the 2026-10-25 card fix."
         }
       ],
       "against": [
@@ -795,9 +834,9 @@
       ],
       "prediction": "In a sample of 50 such reports, at least 30 trace to a stored value that differs from GitHub at the time of the call.",
       "falsifiedIf": "Fewer than 20 of 50 sampled reports trace to a stored value that differs from GitHub.",
-      "confidence": "medium",
+      "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-25",
+      "lastReviewed": "2026-10-26",
       "status": "open",
       "track": {
         "label": "Share of reports about stale PR and check state",
@@ -959,6 +998,11 @@
             "date": "2026-10-24",
             "value": 0.0599,
             "samples": 1502
+          },
+          {
+            "date": "2026-10-25",
+            "value": 0.065,
+            "samples": 1585
           }
         ]
       }
@@ -995,16 +1039,25 @@
         {
           "source": "feedback",
           "text": "The 2026-10-25 Sunday pass found two related weaknesses: work environments that do not survive between turns, and ids and approvals that do not resolve across places. Both are candidates that may split from this theme."
+        },
+        {
+          "source": "feedback",
+          "text": "Keyword class reached 20% of reports in the 7 days to 2026-10-25, from 11.6% on 2026-10-21, twice the 10% target."
+        },
+        {
+          "source": "problems",
+          "text": "New ranked problem on 2026-10-26: grant requests are refused without naming the missing field, and the approval card size limit has no route from a corner."
         }
       ],
       "against": [
-        "Some environment reports are real infrastructure faults, such as a corrupt repository mirror or out-of-memory restarts."
+        "Some environment reports are real infrastructure faults, such as a corrupt repository mirror or out-of-memory restarts.",
+        "Part of the rise is one workspace watchdog on another machine repeating the same missing-file failure."
       ],
       "prediction": "A capability list given at turn start halves the share of environment reports within 14 days of release.",
       "falsifiedIf": "Most sampled environment reports are infrastructure faults that a capability list would not prevent.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-25",
+      "lastReviewed": "2026-10-26",
       "status": "open",
       "track": {
         "label": "Share of reports about what a place allows",
@@ -1166,6 +1219,11 @@
             "date": "2026-10-24",
             "value": 0.1818,
             "samples": 1502
+          },
+          {
+            "date": "2026-10-25",
+            "value": 0.2,
+            "samples": 1585
           }
         ]
       }
@@ -1198,6 +1256,14 @@
         {
           "source": "feedback",
           "text": "The 2026-10-25 Sunday pass found the same weakness on its own."
+        },
+        {
+          "source": "feedback",
+          "text": "Keyword class flat at 14.2% in the 7 days to 2026-10-25."
+        },
+        {
+          "source": "problems",
+          "text": "Regression on 2026-10-26: the history search fix covered only the limit field; text search and the paging cursor are still refused."
         }
       ],
       "against": [
@@ -1207,7 +1273,7 @@
       "falsifiedIf": "In a sample of 50 mismatch reports, most limits were already stated in the schema.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-25",
+      "lastReviewed": "2026-10-26",
       "status": "open",
       "track": {
         "label": "Share of reports about unstated tool limits",
@@ -1369,6 +1435,11 @@
             "date": "2026-10-24",
             "value": 0.1398,
             "samples": 1502
+          },
+          {
+            "date": "2026-10-25",
+            "value": 0.142,
+            "samples": 1585
           }
         ]
       }
@@ -1409,6 +1480,14 @@
         {
           "source": "feedback",
           "text": "The 2026-10-25 Sunday pass, without this folder, found the same weakness on its own and rated it high."
+        },
+        {
+          "source": "feedback",
+          "text": "Keyword class at 21.6% in the 7 days to 2026-10-25, down from 23.0%; the stale-wake-drop experiment went live on 2026-10-26."
+        },
+        {
+          "source": "problems",
+          "text": "The repeated-review handoff came back 6 hours after its second fix shipped on 2026-10-25."
         }
       ],
       "against": [
@@ -1418,7 +1497,7 @@
       "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-25",
+      "lastReviewed": "2026-10-26",
       "status": "open",
       "track": {
         "label": "Share of reports about wakes and dispatch",
@@ -1580,6 +1659,11 @@
             "date": "2026-10-24",
             "value": 0.2297,
             "samples": 1502
+          },
+          {
+            "date": "2026-10-25",
+            "value": 0.2158,
+            "samples": 1585
           }
         ]
       }

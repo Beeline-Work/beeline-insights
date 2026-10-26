@@ -26,6 +26,14 @@
     {
       "source": "feedback",
       "text": "The 2026-10-25 Sunday pass found the same weakness on its own."
+    },
+    {
+      "source": "feedback",
+      "text": "Keyword class flat at 14.2% in the 7 days to 2026-10-25."
+    },
+    {
+      "source": "problems",
+      "text": "Regression on 2026-10-26: the history search fix covered only the limit field; text search and the paging cursor are still refused."
     }
   ],
   "against": [
@@ -35,7 +43,7 @@
   "falsifiedIf": "In a sample of 50 mismatch reports, most limits were already stated in the schema.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-25",
+  "lastReviewed": "2026-10-26",
   "status": "open",
   "track": {
     "label": "Share of reports about unstated tool limits",
@@ -197,6 +205,11 @@
         "date": "2026-10-24",
         "value": 0.1398,
         "samples": 1502
+      },
+      {
+        "date": "2026-10-25",
+        "value": 0.142,
+        "samples": 1585
       }
     ]
   }

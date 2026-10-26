@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-10-26",
+    "title": "Two releases shipped; three fixes did not hold; first experiment is live",
+    "findings": 2,
+    "proposals": 0,
+    "path": "digests/2026-10-26.md"
+  },
+  {
     "date": "2026-10-25",
     "title": "Everything merged before 08:00 is live; three fixes did not hold",
     "findings": 3,

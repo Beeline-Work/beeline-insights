@@ -26,6 +26,14 @@
     {
       "source": "velocity",
       "text": "On 2026-10-23, 11 merged PRs waited 0.8 to 2.7 hours after all checks were green; after the 2026-10-24 gate fixes the wait fell to minutes."
+    },
+    {
+      "source": "feedback",
+      "text": "Keyword class rose to 6.5% of reports in the 7 days to 2026-10-25, from 3.2% on 2026-10-21, more than double the 3% target."
+    },
+    {
+      "source": "problems",
+      "text": "New ranked problem on 2026-10-26: grant approval cards and wakes name old grants while the current one stays pending, 15 reports from 3 agents, continuing after the 2026-10-25 card fix."
     }
   ],
   "against": [
@@ -34,9 +42,9 @@
   ],
   "prediction": "In a sample of 50 such reports, at least 30 trace to a stored value that differs from GitHub at the time of the call.",
   "falsifiedIf": "Fewer than 20 of 50 sampled reports trace to a stored value that differs from GitHub.",
-  "confidence": "medium",
+  "confidence": "high",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-25",
+  "lastReviewed": "2026-10-26",
   "status": "open",
   "track": {
     "label": "Share of reports about stale PR and check state",
@@ -198,6 +206,11 @@
         "date": "2026-10-24",
         "value": 0.0599,
         "samples": 1502
+      },
+      {
+        "date": "2026-10-25",
+        "value": 0.065,
+        "samples": 1585
       }
     ]
   }

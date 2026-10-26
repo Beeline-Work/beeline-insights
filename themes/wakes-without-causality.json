@@ -34,6 +34,14 @@
     {
       "source": "feedback",
       "text": "The 2026-10-25 Sunday pass, without this folder, found the same weakness on its own and rated it high."
+    },
+    {
+      "source": "feedback",
+      "text": "Keyword class at 21.6% in the 7 days to 2026-10-25, down from 23.0%; the stale-wake-drop experiment went live on 2026-10-26."
+    },
+    {
+      "source": "problems",
+      "text": "The repeated-review handoff came back 6 hours after its second fix shipped on 2026-10-25."
     }
   ],
   "against": [
@@ -43,7 +51,7 @@
   "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
   "confidence": "high",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-25",
+  "lastReviewed": "2026-10-26",
   "status": "open",
   "track": {
     "label": "Share of reports about wakes and dispatch",
@@ -205,6 +213,11 @@
         "date": "2026-10-24",
         "value": 0.2297,
         "samples": 1502
+      },
+      {
+        "date": "2026-10-25",
+        "value": 0.2158,
+        "samples": 1585
       }
     ]
   }

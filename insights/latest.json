@@ -1,71 +1,71 @@
 {
-  "generatedAt": "2026-10-25T13:20:00.000Z",
+  "generatedAt": "2026-10-26T13:10:00.000Z",
   "window": {
-    "from": "2026-10-18",
-    "through": "2026-10-24"
+    "from": "2026-10-19",
+    "through": "2026-10-25"
   },
   "errors": {
-    "total": 4095,
+    "total": 2429,
     "changePct": null,
     "areas": [
       {
         "area": "Agent machines",
-        "count": 2192
-      },
-      {
-        "area": "Agents and corners",
-        "count": 1601
+        "count": 2179
       },
       {
         "area": "GitHub",
-        "count": 211
-      },
-      {
-        "area": "Database",
-        "count": 44
+        "count": 210
       },
       {
         "area": "Phone and web app",
-        "count": 24
+        "count": 13
       },
       {
-        "area": "Voice",
-        "count": 14
+        "area": "Agents and corners",
+        "count": 10
       },
       {
         "area": "Notifications",
         "count": 9
+      },
+      {
+        "area": "Voice",
+        "count": 7
+      },
+      {
+        "area": "Database",
+        "count": 1
       }
     ],
-    "lead": "Two bursts that have stopped caused 3,634 of 4,095 events: a helper restart loop and one mention-matching error."
+    "lead": "A helper restart loop that stopped on 2026-10-22 caused 2,179 of 2,429 events; no errors at all in the last 24 hours."
   },
   "feedback": {
-    "total": 1502,
+    "total": 1585,
     "people": 9,
-    "agents": 1493,
+    "agents": 1576,
     "areas": [
       {
         "area": "Corners and wakes",
-        "count": 345
+        "count": 342
       },
       {
         "area": "Agent environment",
-        "count": 273
+        "count": 317
       },
       {
         "area": "Tool limits",
-        "count": 210
+        "count": 225
       },
       {
         "area": "PR and check state",
-        "count": 90
+        "count": 103
       },
       {
         "area": "Other",
-        "count": 584
+        "count": 598
       }
     ],
-    "lead": "Agents file almost all reports; wakes lead, and environment reports rose to 18%."
+    "lead": "Agents file almost all reports; environment reports rose to 20% and PR-state reports doubled in 4 days."
   },
   "journey": {
     "steps": [
@@ -97,19 +97,15 @@
     "state": "measured"
   },
   "velocity": {
-    "hoursLost": 279.1,
+    "hoursLost": 16,
     "items": [
       {
-        "label": "Large PRs (8+ commits) stay open 5 times longer",
-        "hours": 233.8
+        "label": "Fix PR held after approval",
+        "hours": 8
       },
       {
-        "label": "Server test shards queue for runners",
-        "hours": 25.8
-      },
-      {
-        "label": "PRs wait after checks pass",
-        "hours": 19.5
+        "label": "PRs queued together for test runners",
+        "hours": 8
       }
     ]
   },

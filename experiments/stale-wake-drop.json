@@ -28,9 +28,11 @@
     "date": "2026-11-08"
   },
   "ifUnclear": "undo",
-  "status": "proposed",
-  "approval": null,
-  "startedOn": null,
+  "status": "running",
+  "approval": {
+    "messageId": "597c1fa4f5c75351e973571ab7f64ee9dd999eafd4557e32e82214aedbe13110"
+  },
+  "startedOn": "2026-10-26",
   "progress": null,
   "verdict": null
 }

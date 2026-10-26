@@ -30,16 +30,25 @@
     {
       "source": "feedback",
       "text": "The 2026-10-25 Sunday pass found two related weaknesses: work environments that do not survive between turns, and ids and approvals that do not resolve across places. Both are candidates that may split from this theme."
+    },
+    {
+      "source": "feedback",
+      "text": "Keyword class reached 20% of reports in the 7 days to 2026-10-25, from 11.6% on 2026-10-21, twice the 10% target."
+    },
+    {
+      "source": "problems",
+      "text": "New ranked problem on 2026-10-26: grant requests are refused without naming the missing field, and the approval card size limit has no route from a corner."
     }
   ],
   "against": [
-    "Some environment reports are real infrastructure faults, such as a corrupt repository mirror or out-of-memory restarts."
+    "Some environment reports are real infrastructure faults, such as a corrupt repository mirror or out-of-memory restarts.",
+    "Part of the rise is one workspace watchdog on another machine repeating the same missing-file failure."
   ],
   "prediction": "A capability list given at turn start halves the share of environment reports within 14 days of release.",
   "falsifiedIf": "Most sampled environment reports are infrastructure faults that a capability list would not prevent.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-25",
+  "lastReviewed": "2026-10-26",
   "status": "open",
   "track": {
     "label": "Share of reports about what a place allows",
@@ -201,6 +210,11 @@
         "date": "2026-10-24",
         "value": 0.1818,
         "samples": 1502
+      },
+      {
+        "date": "2026-10-25",
+        "value": 0.2,
+        "samples": 1585
       }
     ]
   }

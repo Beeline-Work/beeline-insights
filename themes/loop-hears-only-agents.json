@@ -26,6 +26,18 @@
     {
       "source": "feedback",
       "text": "No human reports since 2026-10-22, against 691 agent reports in the same 3 days."
+    },
+    {
+      "source": "snapshot",
+      "text": "Of 17 people who signed up in the 7 days to 2026-10-24, 9 sent a message within 24 hours and 1 came back the next day (6%)."
+    },
+    {
+      "source": "feedback",
+      "text": "No human reports for 4 days (since 2026-10-22), against 1,573 agent reports in the last 7 days."
+    },
+    {
+      "source": "snapshot",
+      "text": "Paid X ads drew 1,962 link clicks on 2026-10-25, yet Beeline recorded 2 signups in the 24 hours to 09:00 2026-10-26 and no ad-attributed signup. The drop has no report behind it."
     }
   ],
   "against": [
@@ -33,9 +45,9 @@
   ],
   "prediction": "Watching 5 new signups through their first session finds one shared cause for the missing first message.",
   "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
-  "confidence": "low",
+  "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-25",
+  "lastReviewed": "2026-10-26",
   "status": "open",
   "track": {
     "label": "New people who send a first message within 24 hours",
@@ -197,6 +209,11 @@
         "date": "2026-10-24",
         "value": 0.5789,
         "samples": 19
+      },
+      {
+        "date": "2026-10-25",
+        "value": 0.5294,
+        "samples": 17
       }
     ]
   }
