@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T10:04:52.626Z",
+  "generatedAt": "2026-10-26T11:06:35.970Z",
   "insights": {
     "generatedAt": "2026-10-25T13:20:00.000Z",
     "window": {
@@ -182,7 +182,7 @@
       "id": "booking-outside-limits",
       "kind": "problem",
       "rank": 1,
-      "date": "2026-10-25",
+      "date": "2026-10-26",
       "title": "An agent booked outside the person's time and price limits and could not cancel",
       "peoplePerDay": 1,
       "trend": "flat",
@@ -194,104 +194,104 @@
       "id": "agent-reasoning-posted",
       "kind": "problem",
       "rank": 2,
-      "date": "2026-10-25",
+      "date": "2026-10-26",
       "title": "A person saw an agent's internal reasoning posted into a Room",
       "peoplePerDay": 1,
       "trend": "flat",
-      "cause": "unknown",
-      "stage": "daily-use",
-      "source": "feedback"
-    },
-    {
-      "id": "github-card-padding",
-      "kind": "problem",
-      "rank": 3,
-      "date": "2026-10-25",
-      "title": "The GitHub connect card has no bottom padding on the phone",
-      "peoplePerDay": 1,
-      "trend": "flat",
-      "cause": "client",
-      "stage": "add-own-agent",
-      "source": "feedback"
-    },
-    {
-      "id": "report-commander-refused",
-      "kind": "problem",
-      "rank": 4,
-      "date": "2026-10-25",
-      "title": "Agents cannot send reports to an agent commander; the report is refused",
-      "peoplePerDay": 0,
-      "trend": "up",
       "cause": "server",
-      "stage": "corner-work",
+      "stage": "daily-use",
       "source": "feedback"
     },
     {
       "id": "review-repeats-after-fail",
       "kind": "regression",
+      "rank": 3,
+      "date": "2026-10-26",
+      "title": "Reviewer gets the same unchanged head again after its verdict, and the implementer is called unreachable",
+      "peoplePerDay": 0,
+      "trend": "flat",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback",
+      "regression": {
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2944",
+        "report": "The second fix for repeated reviews missed a path; a repeat came after it shipped"
+      }
+    },
+    {
+      "id": "grant-approvals-out-of-sync",
+      "kind": "problem",
+      "rank": 4,
+      "date": "2026-10-26",
+      "title": "Command grant approvals drift: cards and wakes name old grants while the current one stays pending",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback"
+    },
+    {
+      "id": "grant-request-validation",
+      "kind": "problem",
       "rank": 5,
-      "date": "2026-10-25",
-      "title": "Review handoff re-sends an unchanged head after a failed review and cannot wake the implementer",
+      "date": "2026-10-26",
+      "title": "Grant requests are refused without naming the missing field, and the card size limit has no route from a corner",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback"
+    },
+    {
+      "id": "orders-miss-running-turn",
+      "kind": "problem",
+      "rank": 6,
+      "date": "2026-10-26",
+      "title": "Newer orders and brief revisions do not reach an implementer that is already working",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback"
+    },
+    {
+      "id": "missing-attachments",
+      "kind": "regression",
+      "rank": 7,
+      "date": "2026-10-26",
+      "title": "Files named in a completion or report never arrive as readable attachments",
       "peoplePerDay": 0,
       "trend": "up",
       "cause": "server",
       "stage": "corner-work",
       "source": "feedback",
       "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2907",
-        "report": "The stale-head fix missed the repeat after a failed review; reports continue after v0.1.108"
-      }
-    },
-    {
-      "id": "wakes-kill-running-work",
-      "kind": "regression",
-      "rank": 6,
-      "date": "2026-10-25",
-      "title": "Repeated wakes still stop a running turn and kill its emulator, servers and logs",
-      "peoplePerDay": 0,
-      "trend": "flat",
-      "cause": "server",
-      "stage": "corner-work",
-      "source": "feedback",
-      "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2892",
-        "report": "Reports continue after v0.1.108, which shipped this fix"
-      }
-    },
-    {
-      "id": "done-report-before-pr",
-      "kind": "problem",
-      "rank": 7,
-      "date": "2026-10-25",
-      "title": "Done reports are refused right after a PR opens, before the corner registers it",
-      "peoplePerDay": 0,
-      "trend": "flat",
-      "cause": "server",
-      "stage": "corner-work",
-      "source": "feedback"
-    },
-    {
-      "id": "reviewer-source-room-denied",
-      "kind": "regression",
-      "rank": 8,
-      "date": "2026-10-25",
-      "title": "Reviewers still cannot read the Room a brief's approval came from",
-      "peoplePerDay": 0,
-      "trend": "flat",
-      "cause": "server",
-      "stage": "corner-work",
-      "source": "feedback",
-      "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2900",
-        "report": "Two reports after v0.1.108, which shipped this fix"
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2905",
+        "report": "The attachment fix missed completion messages and report attachments; reports came after it shipped"
       }
     },
     {
       "id": "history-search-arguments",
+      "kind": "regression",
+      "rank": 8,
+      "date": "2026-10-26",
+      "title": "History reads have no text search and refuse a paging cursor",
+      "peoplePerDay": 0,
+      "trend": "flat",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback",
+      "regression": {
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2951",
+        "report": "The schema fix covered the limit field only; other refused fields came after it shipped"
+      }
+    },
+    {
+      "id": "draft-merge-gate",
       "kind": "problem",
       "rank": 9,
-      "date": "2026-10-25",
-      "title": "History search rejects arguments that match its advertised schema",
+      "date": "2026-10-26",
+      "title": "The merge gate lets a draft pull request reach GitHub, then the corner stalls as working",
       "peoplePerDay": 0,
       "trend": "up",
       "cause": "server",
@@ -299,15 +299,15 @@
       "source": "feedback"
     },
     {
-      "id": "revise-corner-approval-citations",
+      "id": "agent-stopped-mid-task",
       "kind": "problem",
       "rank": 10,
-      "date": "2026-10-25",
-      "title": "Brief revisions refuse agent-commander orders and parent-Room approvals as approval",
-      "peoplePerDay": 0,
-      "trend": "up",
+      "date": "2026-10-26",
+      "title": "A person saw an agent stop mid-task with no reason",
+      "peoplePerDay": 1,
+      "trend": "flat",
       "cause": "server",
-      "stage": "corner-work",
+      "stage": "daily-use",
       "source": "feedback"
     }
   ],

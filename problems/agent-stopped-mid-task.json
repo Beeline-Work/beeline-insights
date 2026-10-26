@@ -1,0 +1,12 @@
+{
+  "id": "agent-stopped-mid-task",
+  "kind": "problem",
+  "rank": 10,
+  "date": "2026-10-26",
+  "title": "A person saw an agent stop mid-task with no reason",
+  "peoplePerDay": 1,
+  "trend": "flat",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "feedback"
+}

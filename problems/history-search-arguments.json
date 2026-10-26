@@ -1,12 +1,16 @@
 {
   "id": "history-search-arguments",
-  "kind": "problem",
-  "rank": 9,
-  "date": "2026-10-25",
-  "title": "History search rejects arguments that match its advertised schema",
+  "kind": "regression",
+  "rank": 8,
+  "date": "2026-10-26",
+  "title": "History reads have no text search and refuse a paging cursor",
   "peoplePerDay": 0,
-  "trend": "up",
+  "trend": "flat",
   "cause": "server",
   "stage": "corner-work",
-  "source": "feedback"
+  "source": "feedback",
+  "regression": {
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2951",
+    "report": "The schema fix covered the limit field only; other refused fields came after it shipped"
+  }
 }

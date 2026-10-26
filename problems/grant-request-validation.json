@@ -1,0 +1,12 @@
+{
+  "id": "grant-request-validation",
+  "kind": "problem",
+  "rank": 5,
+  "date": "2026-10-26",
+  "title": "Grant requests are refused without naming the missing field, and the card size limit has no route from a corner",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "feedback"
+}

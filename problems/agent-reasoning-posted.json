@@ -2,11 +2,11 @@
   "id": "agent-reasoning-posted",
   "kind": "problem",
   "rank": 2,
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "title": "A person saw an agent's internal reasoning posted into a Room",
   "peoplePerDay": 1,
   "trend": "flat",
-  "cause": "unknown",
+  "cause": "server",
   "stage": "daily-use",
   "source": "feedback"
 }

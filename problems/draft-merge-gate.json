@@ -1,0 +1,12 @@
+{
+  "id": "draft-merge-gate",
+  "kind": "problem",
+  "rank": 9,
+  "date": "2026-10-26",
+  "title": "The merge gate lets a draft pull request reach GitHub, then the corner stalls as working",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "feedback"
+}
