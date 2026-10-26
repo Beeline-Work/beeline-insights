@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-26",
+  "source": "workspace walk 2e7089f0",
+  "counts": [
+    {
+      "goal": "run-task",
+      "friction": "wrong-answer",
+      "count": 1
+    },
+    {
+      "goal": "connect-service",
+      "friction": "wrong-answer",
+      "count": 1
+    }
+  ]
+}
