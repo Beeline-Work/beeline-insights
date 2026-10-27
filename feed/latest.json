@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T13:08:17.331Z",
+  "generatedAt": "2026-10-27T23:08:27.783Z",
   "insights": {
     "generatedAt": "2026-10-27T13:15:00.000Z",
     "window": {
@@ -161,9 +161,11 @@
         "date": "2026-11-10"
       },
       "ifUnclear": "undo",
-      "status": "proposed",
-      "approval": null,
-      "startedOn": null,
+      "status": "running",
+      "approval": {
+        "messageId": "ffe1644c6d995c86daa64ae0bd179b0652c4924679fd5a70e00b85dfe8014d90"
+      },
+      "startedOn": "2026-10-27",
       "progress": null,
       "verdict": null
     },
@@ -422,6 +424,18 @@
       "source": "feedback",
       "title": "The merge tool says the gate is closed while the checks read says the merge is allowed",
       "rank": 10,
+      "date": "2026-10-27"
+    },
+    {
+      "id": "friction-wake-storm",
+      "kind": "problem",
+      "peoplePerDay": 1,
+      "trend": "flat",
+      "cause": "server",
+      "stage": "daily-use",
+      "source": "friction",
+      "title": "Agent turns failed in a two-hour wake storm, so 15 messages got no answer; the start fix is released, the storm backoff ships tonight",
+      "rank": 11,
       "date": "2026-10-27"
     }
   ],
