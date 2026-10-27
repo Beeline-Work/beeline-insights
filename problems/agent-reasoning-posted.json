@@ -1,12 +1,12 @@
 {
   "id": "agent-reasoning-posted",
   "kind": "problem",
-  "rank": 2,
-  "date": "2026-10-26",
-  "title": "A person saw an agent's internal reasoning posted into a Room",
   "peoplePerDay": 1,
   "trend": "flat",
   "cause": "server",
   "stage": "daily-use",
-  "source": "feedback"
+  "source": "feedback",
+  "title": "A person saw an agent's internal reasoning posted into a Room; a fix is merged but not released",
+  "rank": 2,
+  "date": "2026-10-27"
 }

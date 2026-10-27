@@ -33,6 +33,10 @@
     "messageId": "597c1fa4f5c75351e973571ab7f64ee9dd999eafd4557e32e82214aedbe13110"
   },
   "startedOn": "2026-10-26",
-  "progress": null,
+  "progress": {
+    "value": 0.0654,
+    "samples": 107,
+    "asOf": "2026-10-27"
+  },
   "verdict": null
 }

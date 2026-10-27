@@ -1,0 +1,12 @@
+{
+  "id": "corner-brief-files",
+  "kind": "problem",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "feedback",
+  "title": "A commander cannot hand working files to a corner, so briefs point at files the worker cannot read",
+  "rank": 8,
+  "date": "2026-10-27"
+}

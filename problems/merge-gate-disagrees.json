@@ -1,0 +1,12 @@
+{
+  "id": "merge-gate-disagrees",
+  "kind": "problem",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "feedback",
+  "title": "The merge tool says the gate is closed while the checks read says the merge is allowed",
+  "rank": 10,
+  "date": "2026-10-27"
+}

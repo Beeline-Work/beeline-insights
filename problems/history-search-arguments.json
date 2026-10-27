@@ -1,16 +1,16 @@
 {
   "id": "history-search-arguments",
   "kind": "regression",
-  "rank": 8,
-  "date": "2026-10-26",
-  "title": "History reads have no text search and refuse a paging cursor",
   "peoplePerDay": 0,
-  "trend": "flat",
+  "trend": "up",
   "cause": "server",
   "stage": "corner-work",
   "source": "feedback",
+  "title": "History and memory search refuse arguments without naming the allowed values",
   "regression": {
     "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2951",
-    "report": "The schema fix covered the limit field only; other refused fields came after it shipped"
-  }
+    "report": "The fix covered the limit field only; scope, cursor and memory limits are still refused without the allowed values"
+  },
+  "rank": 7,
+  "date": "2026-10-27"
 }

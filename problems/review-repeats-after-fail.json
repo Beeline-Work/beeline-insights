@@ -1,16 +1,16 @@
 {
   "id": "review-repeats-after-fail",
   "kind": "regression",
-  "rank": 3,
-  "date": "2026-10-26",
-  "title": "Reviewer gets the same unchanged head again after its verdict, and the implementer is called unreachable",
   "peoplePerDay": 0,
   "trend": "flat",
   "cause": "server",
   "stage": "corner-work",
   "source": "feedback",
+  "title": "A reviewer is woken again for the same unchanged head after its verdict",
   "regression": {
     "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2944",
-    "report": "The second fix for repeated reviews missed a path; a repeat came after it shipped"
-  }
+    "report": "The second fix for repeated reviews missed a path; a reviewer was re-woken by its own report after release"
+  },
+  "rank": 6,
+  "date": "2026-10-27"
 }
