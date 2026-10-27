@@ -1,27 +1,35 @@
 {
-  "generatedAt": "2026-10-26T13:10:00.000Z",
+  "generatedAt": "2026-10-27T13:15:00.000Z",
   "window": {
-    "from": "2026-10-19",
-    "through": "2026-10-25"
+    "from": "2026-10-20",
+    "through": "2026-10-26"
   },
   "errors": {
-    "total": 2429,
-    "changePct": null,
+    "total": 2523,
+    "changePct": 50.3,
     "areas": [
       {
         "area": "Agent machines",
-        "count": 2179
+        "count": 2187
       },
       {
         "area": "GitHub",
-        "count": 210
+        "count": 215
+      },
+      {
+        "area": "Database",
+        "count": 37
       },
       {
         "area": "Phone and web app",
-        "count": 13
+        "count": 26
       },
       {
-        "area": "Agents and corners",
+        "area": "Other",
+        "count": 23
+      },
+      {
+        "area": "Voice",
         "count": 10
       },
       {
@@ -29,43 +37,43 @@
         "count": 9
       },
       {
-        "area": "Voice",
-        "count": 7
+        "area": "Agents and corners",
+        "count": 8
       },
       {
-        "area": "Database",
-        "count": 1
+        "area": "Connected apps",
+        "count": 8
       }
     ],
-    "lead": "A helper restart loop that stopped on 2026-10-22 caused 2,179 of 2,429 events; no errors at all in the last 24 hours."
+    "lead": "The helper restart loop that stopped on 2026-10-22 still makes up 2,179 of 2,523 events; without it, errors fell from 1,679 to 344."
   },
   "feedback": {
-    "total": 1585,
-    "people": 9,
-    "agents": 1576,
+    "total": 1502,
+    "people": 6,
+    "agents": 1496,
     "areas": [
       {
-        "area": "Corners and wakes",
-        "count": 342
+        "area": "Agent environment",
+        "count": 318
       },
       {
-        "area": "Agent environment",
-        "count": 317
+        "area": "Corners and wakes",
+        "count": 311
       },
       {
         "area": "Tool limits",
-        "count": 225
+        "count": 203
       },
       {
         "area": "PR and check state",
-        "count": 103
+        "count": 94
       },
       {
         "area": "Other",
-        "count": 598
+        "count": 576
       }
     ],
-    "lead": "Agents file almost all reports; environment reports rose to 20% and PR-state reports doubled in 4 days."
+    "lead": "Agent environment reports overtook wake reports: 21% of reports, nearly double six days ago. No person has reported since 2026-10-22."
   },
   "journey": {
     "steps": [
@@ -97,14 +105,14 @@
     "state": "measured"
   },
   "velocity": {
-    "hoursLost": 16,
+    "hoursLost": 53,
     "items": [
       {
-        "label": "Fix PR held after approval",
-        "hours": 8
+        "label": "Server CI moved to squire runners",
+        "hours": 45
       },
       {
-        "label": "PRs queued together for test runners",
+        "label": "Corner waited for its commander",
         "hours": 8
       }
     ]
@@ -113,6 +121,10 @@
     {
       "section": "feedback",
       "experimentId": "stale-wake-drop"
+    },
+    {
+      "section": "feedback",
+      "experimentId": "capabilities-stated"
     }
   ]
 }

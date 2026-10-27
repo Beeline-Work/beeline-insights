@@ -34,6 +34,10 @@
     {
       "source": "problems",
       "text": "New ranked problem on 2026-10-26: grant approval cards and wakes name old grants while the current one stays pending, 15 reports from 3 agents, continuing after the 2026-10-25 card fix."
+    },
+    {
+      "source": "problems",
+      "text": "New on 2026-10-27: the merge tool reports a closed gate while the checks read reports the merge allowed. Keyword class at 6.3% in the 7 days to 2026-10-26, still about twice the 3% target."
     }
   ],
   "against": [
@@ -44,7 +48,7 @@
   "falsifiedIf": "Fewer than 20 of 50 sampled reports trace to a stored value that differs from GitHub.",
   "confidence": "high",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-26",
+  "lastReviewed": "2026-10-27",
   "status": "open",
   "track": {
     "label": "Share of reports about stale PR and check state",
@@ -211,6 +215,11 @@
         "date": "2026-10-25",
         "value": 0.065,
         "samples": 1585
+      },
+      {
+        "date": "2026-10-26",
+        "value": 0.0626,
+        "samples": 1502
       }
     ]
   }

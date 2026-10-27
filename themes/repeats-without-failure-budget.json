@@ -30,6 +30,14 @@
     {
       "source": "feedback",
       "text": "In a random sample of 250 agent reports (30 days), about 10 are one workspace watchdog failing on the same missing files, each worded differently. The exact-summary track counts none of them, so it undercounts repeats."
+    },
+    {
+      "source": "feedback",
+      "text": "A random sample of 250 reports from 30 days shows one scheduled job firing again and again while its required files are missing, filed as a new report each time."
+    },
+    {
+      "source": "walk",
+      "text": "One new person's request hit the free agent time limit 3 times in a row on 2026-10-26 with no result and no change between tries."
     }
   ],
   "against": [
@@ -40,7 +48,7 @@
   "falsifiedIf": "Identical-failure repeats are under 5% of reports once the watchdog setup is fixed.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-26",
+  "lastReviewed": "2026-10-27",
   "status": "open",
   "track": {
     "label": "Share of reports that repeat the same failure",
@@ -207,6 +215,11 @@
         "date": "2026-10-25",
         "value": 0.0019,
         "samples": 1585
+      },
+      {
+        "date": "2026-10-26",
+        "value": 0.002,
+        "samples": 1502
       }
     ]
   }

@@ -38,6 +38,10 @@
     {
       "source": "snapshot",
       "text": "Paid X ads drew 1,962 link clicks on 2026-10-25, yet Beeline recorded 2 signups in the 24 hours to 09:00 2026-10-26 and no ad-attributed signup. The drop has no report behind it."
+    },
+    {
+      "source": "snapshot",
+      "text": "Of 17 people who signed up in the 7 days to 2026-10-25, 10 sent a message within 24 hours and 2 came back the next day (12%, up from 6%). Still no human reports since 2026-10-22, against about 1,500 agent reports in 7 days."
     }
   ],
   "against": [
@@ -47,7 +51,7 @@
   "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-26",
+  "lastReviewed": "2026-10-27",
   "status": "open",
   "track": {
     "label": "New people who send a first message within 24 hours",
@@ -213,6 +217,11 @@
       {
         "date": "2026-10-25",
         "value": 0.5294,
+        "samples": 17
+      },
+      {
+        "date": "2026-10-26",
+        "value": 0.5882,
         "samples": 17
       }
     ]

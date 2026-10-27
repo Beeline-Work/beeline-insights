@@ -1,29 +1,37 @@
 {
-  "generatedAt": "2026-10-27T12:52:43.947Z",
+  "generatedAt": "2026-10-27T13:08:17.331Z",
   "insights": {
-    "generatedAt": "2026-10-26T13:10:00.000Z",
+    "generatedAt": "2026-10-27T13:15:00.000Z",
     "window": {
-      "from": "2026-10-19",
-      "through": "2026-10-25"
+      "from": "2026-10-20",
+      "through": "2026-10-26"
     },
     "errors": {
-      "total": 2429,
-      "changePct": null,
+      "total": 2523,
+      "changePct": 50.3,
       "areas": [
         {
           "area": "Agent machines",
-          "count": 2179
+          "count": 2187
         },
         {
           "area": "GitHub",
-          "count": 210
+          "count": 215
+        },
+        {
+          "area": "Database",
+          "count": 37
         },
         {
           "area": "Phone and web app",
-          "count": 13
+          "count": 26
         },
         {
-          "area": "Agents and corners",
+          "area": "Other",
+          "count": 23
+        },
+        {
+          "area": "Voice",
           "count": 10
         },
         {
@@ -31,43 +39,43 @@
           "count": 9
         },
         {
-          "area": "Voice",
-          "count": 7
+          "area": "Agents and corners",
+          "count": 8
         },
         {
-          "area": "Database",
-          "count": 1
+          "area": "Connected apps",
+          "count": 8
         }
       ],
-      "lead": "A helper restart loop that stopped on 2026-10-22 caused 2,179 of 2,429 events; no errors at all in the last 24 hours."
+      "lead": "The helper restart loop that stopped on 2026-10-22 still makes up 2,179 of 2,523 events; without it, errors fell from 1,679 to 344."
     },
     "feedback": {
-      "total": 1585,
-      "people": 9,
-      "agents": 1576,
+      "total": 1502,
+      "people": 6,
+      "agents": 1496,
       "areas": [
         {
-          "area": "Corners and wakes",
-          "count": 342
+          "area": "Agent environment",
+          "count": 318
         },
         {
-          "area": "Agent environment",
-          "count": 317
+          "area": "Corners and wakes",
+          "count": 311
         },
         {
           "area": "Tool limits",
-          "count": 225
+          "count": 203
         },
         {
           "area": "PR and check state",
-          "count": 103
+          "count": 94
         },
         {
           "area": "Other",
-          "count": 598
+          "count": 576
         }
       ],
-      "lead": "Agents file almost all reports; environment reports rose to 20% and PR-state reports doubled in 4 days."
+      "lead": "Agent environment reports overtook wake reports: 21% of reports, nearly double six days ago. No person has reported since 2026-10-22."
     },
     "journey": {
       "steps": [
@@ -99,14 +107,14 @@
       "state": "measured"
     },
     "velocity": {
-      "hoursLost": 16,
+      "hoursLost": 53,
       "items": [
         {
-          "label": "Fix PR held after approval",
-          "hours": 8
+          "label": "Server CI moved to squire runners",
+          "hours": 45
         },
         {
-          "label": "PRs queued together for test runners",
+          "label": "Corner waited for its commander",
           "hours": 8
         }
       ]
@@ -115,10 +123,50 @@
       {
         "section": "feedback",
         "experimentId": "stale-wake-drop"
+      },
+      {
+        "section": "feedback",
+        "experimentId": "capabilities-stated"
       }
     ]
   },
   "experiments": [
+    {
+      "id": "capabilities-stated",
+      "theme": "surface-capabilities-unstated",
+      "title": "Tell each agent what works in the place it is in",
+      "source": {
+        "section": "feedback",
+        "text": "Reports about tools, hosts or commands that are offered but unavailable in the current place rose from 11.6% to 21.2% of reports between 2026-10-21 and 2026-10-26."
+      },
+      "change": "Each turn's prompt states in one short block which tools, hosts and commands work in the current place (Room, corner or schedule), and tool discovery stops listing tools that answer unavailable there.",
+      "metric": {
+        "label": "Share of reports about the agent environment",
+        "numerator": "feedback:environment-reports",
+        "denominator": "feedback:all-reports"
+      },
+      "before": {
+        "value": 0.2117,
+        "samples": 1502,
+        "from": "2026-10-20",
+        "through": "2026-10-26"
+      },
+      "predict": {
+        "value": 0.12,
+        "direction": "down"
+      },
+      "guardrail": "Median prompt tokens per turn rise no more than 3%.",
+      "decideAt": {
+        "samples": 1000,
+        "date": "2026-11-10"
+      },
+      "ifUnclear": "undo",
+      "status": "proposed",
+      "approval": null,
+      "startedOn": null,
+      "progress": null,
+      "verdict": null
+    },
     {
       "id": "stale-wake-drop",
       "theme": "wakes-without-causality",
@@ -218,6 +266,13 @@
     ]
   },
   "digests": [
+    {
+      "date": "2026-10-27",
+      "title": "No release since Monday; CI runner switch halved Monday's merges",
+      "findings": 2,
+      "proposals": 1,
+      "path": "digests/2026-10-27.md"
+    },
     {
       "date": "2026-10-26",
       "title": "Two releases shipped; three fixes did not hold; first experiment is live",
@@ -462,6 +517,10 @@
         {
           "source": "snapshot",
           "text": "Paid X ads drew 1,962 link clicks on 2026-10-25, yet Beeline recorded 2 signups in the 24 hours to 09:00 2026-10-26 and no ad-attributed signup. The drop has no report behind it."
+        },
+        {
+          "source": "snapshot",
+          "text": "Of 17 people who signed up in the 7 days to 2026-10-25, 10 sent a message within 24 hours and 2 came back the next day (12%, up from 6%). Still no human reports since 2026-10-22, against about 1,500 agent reports in 7 days."
         }
       ],
       "against": [
@@ -471,7 +530,7 @@
       "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-26",
+      "lastReviewed": "2026-10-27",
       "status": "open",
       "track": {
         "label": "New people who send a first message within 24 hours",
@@ -638,6 +697,11 @@
             "date": "2026-10-25",
             "value": 0.5294,
             "samples": 17
+          },
+          {
+            "date": "2026-10-26",
+            "value": 0.5882,
+            "samples": 17
           }
         ]
       }
@@ -674,6 +738,14 @@
         {
           "source": "feedback",
           "text": "In a random sample of 250 agent reports (30 days), about 10 are one workspace watchdog failing on the same missing files, each worded differently. The exact-summary track counts none of them, so it undercounts repeats."
+        },
+        {
+          "source": "feedback",
+          "text": "A random sample of 250 reports from 30 days shows one scheduled job firing again and again while its required files are missing, filed as a new report each time."
+        },
+        {
+          "source": "walk",
+          "text": "One new person's request hit the free agent time limit 3 times in a row on 2026-10-26 with no result and no change between tries."
         }
       ],
       "against": [
@@ -684,7 +756,7 @@
       "falsifiedIf": "Identical-failure repeats are under 5% of reports once the watchdog setup is fixed.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-26",
+      "lastReviewed": "2026-10-27",
       "status": "open",
       "track": {
         "label": "Share of reports that repeat the same failure",
@@ -851,6 +923,11 @@
             "date": "2026-10-25",
             "value": 0.0019,
             "samples": 1585
+          },
+          {
+            "date": "2026-10-26",
+            "value": 0.002,
+            "samples": 1502
           }
         ]
       }
@@ -891,6 +968,10 @@
         {
           "source": "problems",
           "text": "New ranked problem on 2026-10-26: grant approval cards and wakes name old grants while the current one stays pending, 15 reports from 3 agents, continuing after the 2026-10-25 card fix."
+        },
+        {
+          "source": "problems",
+          "text": "New on 2026-10-27: the merge tool reports a closed gate while the checks read reports the merge allowed. Keyword class at 6.3% in the 7 days to 2026-10-26, still about twice the 3% target."
         }
       ],
       "against": [
@@ -901,7 +982,7 @@
       "falsifiedIf": "Fewer than 20 of 50 sampled reports trace to a stored value that differs from GitHub.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-26",
+      "lastReviewed": "2026-10-27",
       "status": "open",
       "track": {
         "label": "Share of reports about stale PR and check state",
@@ -1068,6 +1149,11 @@
             "date": "2026-10-25",
             "value": 0.065,
             "samples": 1585
+          },
+          {
+            "date": "2026-10-26",
+            "value": 0.0626,
+            "samples": 1502
           }
         ]
       }
@@ -1112,6 +1198,14 @@
         {
           "source": "problems",
           "text": "New ranked problem on 2026-10-26: grant requests are refused without naming the missing field, and the approval card size limit has no route from a corner."
+        },
+        {
+          "source": "feedback",
+          "text": "Keyword class rose to 21.2% in the 7 days to 2026-10-26, from 11.6% on 2026-10-21; it has risen 5 of the last 6 days."
+        },
+        {
+          "source": "problems",
+          "text": "Two new problems on 2026-10-27 fit it: Room discovery offers corner and app tools that then answer unavailable, and a corner cannot read the working files its brief names."
         }
       ],
       "against": [
@@ -1120,9 +1214,9 @@
       ],
       "prediction": "A capability list given at turn start halves the share of environment reports within 14 days of release.",
       "falsifiedIf": "Most sampled environment reports are infrastructure faults that a capability list would not prevent.",
-      "confidence": "medium",
+      "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-26",
+      "lastReviewed": "2026-10-27",
       "status": "open",
       "track": {
         "label": "Share of reports about what a place allows",
@@ -1289,6 +1383,11 @@
             "date": "2026-10-25",
             "value": 0.2,
             "samples": 1585
+          },
+          {
+            "date": "2026-10-26",
+            "value": 0.2117,
+            "samples": 1502
           }
         ]
       }
@@ -1329,6 +1428,10 @@
         {
           "source": "problems",
           "text": "Regression on 2026-10-26: the history search fix covered only the limit field; text search and the paging cursor are still refused."
+        },
+        {
+          "source": "problems",
+          "text": "History and memory search still refuse arguments without naming the allowed values: 7 reports from 3 agents, after a fix that covered only one field. Keyword class at 13.5% in the 7 days to 2026-10-26, flat."
         }
       ],
       "against": [
@@ -1338,7 +1441,7 @@
       "falsifiedIf": "In a sample of 50 mismatch reports, most limits were already stated in the schema.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-26",
+      "lastReviewed": "2026-10-27",
       "status": "open",
       "track": {
         "label": "Share of reports about unstated tool limits",
@@ -1505,6 +1608,11 @@
             "date": "2026-10-25",
             "value": 0.142,
             "samples": 1585
+          },
+          {
+            "date": "2026-10-26",
+            "value": 0.1352,
+            "samples": 1502
           }
         ]
       }
@@ -1553,6 +1661,10 @@
         {
           "source": "problems",
           "text": "The repeated-review handoff came back 6 hours after its second fix shipped on 2026-10-25."
+        },
+        {
+          "source": "feedback",
+          "text": "Keyword class at 20.7% in the 7 days to 2026-10-26, down from 21.6%. Since the stale-wake-drop change went live, 6.5% of 107 reports are about wakes; the review handoff on an unchanged head came back again on 2026-10-27 after its third per-case fix."
         }
       ],
       "against": [
@@ -1562,7 +1674,7 @@
       "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-26",
+      "lastReviewed": "2026-10-27",
       "status": "open",
       "track": {
         "label": "Share of reports about wakes and dispatch",
@@ -1729,6 +1841,11 @@
             "date": "2026-10-25",
             "value": 0.2158,
             "samples": 1585
+          },
+          {
+            "date": "2026-10-26",
+            "value": 0.2071,
+            "samples": 1502
           }
         ]
       }

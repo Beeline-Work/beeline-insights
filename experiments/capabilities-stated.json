@@ -1,0 +1,36 @@
+{
+  "id": "capabilities-stated",
+  "theme": "surface-capabilities-unstated",
+  "title": "Tell each agent what works in the place it is in",
+  "source": {
+    "section": "feedback",
+    "text": "Reports about tools, hosts or commands that are offered but unavailable in the current place rose from 11.6% to 21.2% of reports between 2026-10-21 and 2026-10-26."
+  },
+  "change": "Each turn's prompt states in one short block which tools, hosts and commands work in the current place (Room, corner or schedule), and tool discovery stops listing tools that answer unavailable there.",
+  "metric": {
+    "label": "Share of reports about the agent environment",
+    "numerator": "feedback:environment-reports",
+    "denominator": "feedback:all-reports"
+  },
+  "before": {
+    "value": 0.2117,
+    "samples": 1502,
+    "from": "2026-10-20",
+    "through": "2026-10-26"
+  },
+  "predict": {
+    "value": 0.12,
+    "direction": "down"
+  },
+  "guardrail": "Median prompt tokens per turn rise no more than 3%.",
+  "decideAt": {
+    "samples": 1000,
+    "date": "2026-11-10"
+  },
+  "ifUnclear": "undo",
+  "status": "proposed",
+  "approval": null,
+  "startedOn": null,
+  "progress": null,
+  "verdict": null
+}

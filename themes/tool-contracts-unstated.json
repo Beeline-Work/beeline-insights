@@ -34,6 +34,10 @@
     {
       "source": "problems",
       "text": "Regression on 2026-10-26: the history search fix covered only the limit field; text search and the paging cursor are still refused."
+    },
+    {
+      "source": "problems",
+      "text": "History and memory search still refuse arguments without naming the allowed values: 7 reports from 3 agents, after a fix that covered only one field. Keyword class at 13.5% in the 7 days to 2026-10-26, flat."
     }
   ],
   "against": [
@@ -43,7 +47,7 @@
   "falsifiedIf": "In a sample of 50 mismatch reports, most limits were already stated in the schema.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-26",
+  "lastReviewed": "2026-10-27",
   "status": "open",
   "track": {
     "label": "Share of reports about unstated tool limits",
@@ -210,6 +214,11 @@
         "date": "2026-10-25",
         "value": 0.142,
         "samples": 1585
+      },
+      {
+        "date": "2026-10-26",
+        "value": 0.1352,
+        "samples": 1502
       }
     ]
   }

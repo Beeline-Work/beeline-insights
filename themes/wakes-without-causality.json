@@ -42,6 +42,10 @@
     {
       "source": "problems",
       "text": "The repeated-review handoff came back 6 hours after its second fix shipped on 2026-10-25."
+    },
+    {
+      "source": "feedback",
+      "text": "Keyword class at 20.7% in the 7 days to 2026-10-26, down from 21.6%. Since the stale-wake-drop change went live, 6.5% of 107 reports are about wakes; the review handoff on an unchanged head came back again on 2026-10-27 after its third per-case fix."
     }
   ],
   "against": [
@@ -51,7 +55,7 @@
   "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
   "confidence": "high",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-26",
+  "lastReviewed": "2026-10-27",
   "status": "open",
   "track": {
     "label": "Share of reports about wakes and dispatch",
@@ -218,6 +222,11 @@
         "date": "2026-10-25",
         "value": 0.2158,
         "samples": 1585
+      },
+      {
+        "date": "2026-10-26",
+        "value": 0.2071,
+        "samples": 1502
       }
     ]
   }

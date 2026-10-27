@@ -38,6 +38,14 @@
     {
       "source": "problems",
       "text": "New ranked problem on 2026-10-26: grant requests are refused without naming the missing field, and the approval card size limit has no route from a corner."
+    },
+    {
+      "source": "feedback",
+      "text": "Keyword class rose to 21.2% in the 7 days to 2026-10-26, from 11.6% on 2026-10-21; it has risen 5 of the last 6 days."
+    },
+    {
+      "source": "problems",
+      "text": "Two new problems on 2026-10-27 fit it: Room discovery offers corner and app tools that then answer unavailable, and a corner cannot read the working files its brief names."
     }
   ],
   "against": [
@@ -46,9 +54,9 @@
   ],
   "prediction": "A capability list given at turn start halves the share of environment reports within 14 days of release.",
   "falsifiedIf": "Most sampled environment reports are infrastructure faults that a capability list would not prevent.",
-  "confidence": "medium",
+  "confidence": "high",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-26",
+  "lastReviewed": "2026-10-27",
   "status": "open",
   "track": {
     "label": "Share of reports about what a place allows",
@@ -215,6 +223,11 @@
         "date": "2026-10-25",
         "value": 0.2,
         "samples": 1585
+      },
+      {
+        "date": "2026-10-26",
+        "value": 0.2117,
+        "samples": 1502
       }
     ]
   }
