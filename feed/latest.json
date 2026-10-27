@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T11:05:48.377Z",
+  "generatedAt": "2026-10-27T12:52:43.947Z",
   "insights": {
     "generatedAt": "2026-10-26T13:10:00.000Z",
     "window": {
@@ -162,7 +162,61 @@
       "verdict": null
     }
   ],
-  "reach": null,
+  "reach": {
+    "month": "2026-10",
+    "spent": 1338.49,
+    "cap": 3100,
+    "costPerSignup": null,
+    "recommendations": [
+      {
+        "kind": "boost",
+        "channel": "X",
+        "title": "Move budget to the Grok demo",
+        "detail": "2.6x the click rate of Ad 1 (0.43% vs 0.17%) at about 5 cents a click"
+      },
+      {
+        "kind": "stop",
+        "channel": "X",
+        "title": "Ad 1 stop pasting, paid copy",
+        "detail": "3,530 clicks, 0 signups traced. Cut its share once the Grok demo has 2 days"
+      },
+      {
+        "kind": "make",
+        "channel": "X",
+        "title": "A second 90 s demo in the Grok style",
+        "detail": "Demos out-click the slogan ad. Film Claude building in a Room"
+      }
+    ],
+    "posts": [
+      {
+        "title": "Grok works inside Rooms, 90 s demo",
+        "channel": "X",
+        "date": "2026-10-26",
+        "views": 247700,
+        "clicks": 726,
+        "spend": 33.84,
+        "status": "boosting"
+      },
+      {
+        "title": "Ad 1 stop pasting, paid copy",
+        "channel": "X",
+        "date": "2026-10-25",
+        "views": 2119324,
+        "clicks": 3530,
+        "spend": 160.46,
+        "status": "boosting"
+      },
+      {
+        "title": "Stop pasting 9 pages, organic post",
+        "channel": "X",
+        "date": "2026-10-25",
+        "views": 289300,
+        "clicks": 114,
+        "spend": 35.89,
+        "status": "stopped"
+      }
+    ]
+  },
   "digests": [
     {
       "date": "2026-10-26",
