@@ -1,0 +1,12 @@
+{
+  "id": "emulator-no-kvm",
+  "kind": "problem",
+  "rank": 8,
+  "date": "2026-10-28",
+  "title": "The Android emulator cannot start on one team machine because corners there have no access to the hardware it needs",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "feedback"
+}

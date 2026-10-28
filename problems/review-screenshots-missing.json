@@ -1,0 +1,16 @@
+{
+  "id": "review-screenshots-missing",
+  "kind": "regression",
+  "rank": 7,
+  "date": "2026-10-28",
+  "title": "A reviewer passes work and says screenshots are attached when none exist, and the merge gate accepts it",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "prompt",
+  "stage": "daily-use",
+  "source": "feedback",
+  "regression": {
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2971",
+    "report": "The attachment fix did not cover review verdicts"
+  }
+}

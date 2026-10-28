@@ -1,0 +1,12 @@
+{
+  "id": "onboarding-peer-check",
+  "kind": "problem",
+  "rank": 1,
+  "date": "2026-10-28",
+  "title": "Onboarding promised two agents would check each other's work, but the first agent built an app alone and a button did not work",
+  "peoplePerDay": 1,
+  "trend": "up",
+  "cause": "prompt",
+  "stage": "first-reply",
+  "source": "feedback"
+}

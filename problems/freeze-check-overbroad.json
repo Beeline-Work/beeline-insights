@@ -1,0 +1,12 @@
+{
+  "id": "freeze-check-overbroad",
+  "kind": "problem",
+  "rank": 10,
+  "date": "2026-10-28",
+  "title": "A check on system message wording fails on unrelated changes",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "ci",
+  "stage": "daily-use",
+  "source": "feedback"
+}

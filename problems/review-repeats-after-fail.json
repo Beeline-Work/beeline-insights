@@ -1,16 +1,16 @@
 {
   "id": "review-repeats-after-fail",
   "kind": "regression",
+  "rank": 6,
+  "date": "2026-10-28",
+  "title": "A reviewer is woken again for the same unchanged head after its verdict",
   "peoplePerDay": 0,
   "trend": "flat",
   "cause": "server",
-  "stage": "corner-work",
+  "stage": "daily-use",
   "source": "feedback",
-  "title": "A reviewer is woken again for the same unchanged head after its verdict",
   "regression": {
     "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2944",
-    "report": "The second fix for repeated reviews missed a path; a reviewer was re-woken by its own report after release"
-  },
-  "rank": 6,
-  "date": "2026-10-27"
+    "report": "Repeats continued after the first fix shipped; a second fix shipped last night and is under watch"
+  }
 }

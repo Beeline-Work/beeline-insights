@@ -1,0 +1,12 @@
+{
+  "id": "reviewer-no-verdict",
+  "kind": "problem",
+  "rank": 5,
+  "date": "2026-10-28",
+  "title": "A reviewer's turn is marked finished with no verdict, and tagging it again says it is unavailable",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "feedback"
+}
