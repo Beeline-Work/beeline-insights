@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T13:07:17.344Z",
+  "generatedAt": "2026-10-28T13:21:40.502Z",
   "insights": {
     "generatedAt": "2026-10-28T13:10:00.000Z",
     "window": {
@@ -301,7 +301,7 @@
   "digests": [
     {
       "date": "2026-10-28",
-      "title": "Release with an Android store build is running; banter onboarding goes live",
+      "title": "Banter onboarding and 7 more fixes are live; 9 open problems now have fix work",
       "findings": 1,
       "proposals": 0,
       "path": "digests/2026-10-28.md"
