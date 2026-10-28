@@ -224,3 +224,39 @@ signed up on `D-7` through `D-1`, so each 24-hour window has closed. The SQL
 returns only counts and fractions; the `evidence` column holds numbers for
 theme evidence, such as the returned-next-day rate. `--through` prints a range
 for backfill; run `track-themes` once per day. Rerunning a day replaces its point.
+
+### Value numbers
+
+The 15:00 value loop measures three numbers with one fixed SQL, so a before
+window and an after window are always measured the same way:
+
+```sh
+npm run value-sql -- --through D         # D is today's Eastern date; prints read-only SQL
+# Run it through the vaulted read-only beeline-prod-db (Neon-Batch-Read-Only: true).
+```
+
+`scripts/value-numbers.mjs` holds the definitions and the SQL. Each row is one
+metric and one window (`last7`, `prior7`, `last28`) with `numerator`,
+`denominator` and, for workspace events, `median_hours`. Windows hold cohorts
+whose follow-up time has closed by the end of `D`, so a 7-day metric's `last7` is
+`D-13` through `D-7`. The SQL returns counts only.
+
+| Metric | Counts |
+| --- | --- |
+| `return1`, `return7`, `return28` | People who wrote at least once, counted by the day of their first message, who wrote again on a later Eastern day at least 6 hours later, within 1, 7 or 28 days |
+| `active` | Outside people who wrote at least one message (no denominator) |
+| `secondHuman` | New workspaces that added a second human within 7 days |
+| `extraAgent` | New workspaces that added an agent after their first hour within 7 days; free agents excluded |
+| `invitesUsed` | Single-use invites created that were used. Creation time is `expires_at` minus 7 days, since older invites have no creation time |
+| `repoLinked` | New workspaces that linked a repository within 7 days |
+| `repoCardLinked` | Workspaces shown a repository card that linked in the same window |
+| `funnelWrote` … `funnelRepo` | Signup → wrote → agent replied → came back → invited → repository; each step's denominator is the step before |
+
+Outside only: workspaces that are not internal and never had a team member, and
+people who are not team. Team is every human in an internal workspace plus any
+human whose handle or name contains a team handle, which catches test accounts.
+
+An experiment on one of these numbers names `value:<metric>` as
+`metric.numerator`, records `before` from the same metric and window length,
+and is graded only from this SQL. Changing a definition in this file starts a
+new series: grade running experiments on the definition they started with.
