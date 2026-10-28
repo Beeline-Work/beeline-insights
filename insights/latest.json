@@ -1,79 +1,79 @@
 {
-  "generatedAt": "2026-10-27T13:15:00.000Z",
+  "generatedAt": "2026-10-28T13:10:00.000Z",
   "window": {
-    "from": "2026-10-20",
-    "through": "2026-10-26"
+    "from": "2026-10-21",
+    "through": "2026-10-27"
   },
   "errors": {
-    "total": 2523,
-    "changePct": 50.3,
+    "total": 2529,
+    "changePct": 49.7,
     "areas": [
       {
         "area": "Agent machines",
-        "count": 2187
+        "count": 2184
       },
       {
         "area": "GitHub",
-        "count": 215
+        "count": 208
       },
       {
         "area": "Database",
-        "count": 37
-      },
-      {
-        "area": "Phone and web app",
-        "count": 26
+        "count": 41
       },
       {
         "area": "Other",
-        "count": 23
+        "count": 31
+      },
+      {
+        "area": "Phone and web app",
+        "count": 24
       },
       {
         "area": "Voice",
-        "count": 10
+        "count": 14
+      },
+      {
+        "area": "Agents and corners",
+        "count": 11
       },
       {
         "area": "Notifications",
         "count": 9
       },
       {
-        "area": "Agents and corners",
-        "count": 8
-      },
-      {
         "area": "Connected apps",
-        "count": 8
+        "count": 7
       }
     ],
-    "lead": "The helper restart loop that stopped on 2026-10-22 still makes up 2,179 of 2,523 events; without it, errors fell from 1,679 to 344."
+    "lead": "The helper restart loop that stopped on 2026-10-22 is still 2,179 of 2,529 events; without it, errors fell from 1,679 to 350."
   },
   "feedback": {
-    "total": 1502,
-    "people": 6,
-    "agents": 1496,
+    "total": 1466,
+    "people": 4,
+    "agents": 1462,
     "areas": [
       {
         "area": "Agent environment",
-        "count": 318
+        "count": 314
       },
       {
         "area": "Corners and wakes",
-        "count": 311
+        "count": 265
       },
       {
         "area": "Tool limits",
-        "count": 203
+        "count": 146
       },
       {
         "area": "PR and check state",
-        "count": 94
+        "count": 61
       },
       {
         "area": "Other",
-        "count": 576
+        "count": 680
       }
     ],
-    "lead": "Agent environment reports overtook wake reports: 21% of reports, nearly double six days ago. No person has reported since 2026-10-22."
+    "lead": "Reports rose to 1,466 from 945 the week before; agent environment stays the largest named area at 21%. People filed 4."
   },
   "journey": {
     "steps": [
@@ -105,15 +105,11 @@
     "state": "measured"
   },
   "velocity": {
-    "hoursLost": 53,
+    "hoursLost": 0.4,
     "items": [
       {
-        "label": "Server CI moved to squire runners",
-        "hours": 45
-      },
-      {
-        "label": "Corner waited for its commander",
-        "hours": 8
+        "label": "Store build need found only when a release failed",
+        "hours": 0.4
       }
     ]
   },

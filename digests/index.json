@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-10-28",
+    "title": "Release with an Android store build is running; banter onboarding goes live",
+    "findings": 1,
+    "proposals": 0,
+    "path": "digests/2026-10-28.md"
+  },
+  {
     "date": "2026-10-27",
     "title": "No release since Monday; CI runner switch halved Monday's merges",
     "findings": 2,
