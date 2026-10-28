@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T23:08:27.783Z",
+  "generatedAt": "2026-10-28T00:11:08.874Z",
   "insights": {
     "generatedAt": "2026-10-27T13:15:00.000Z",
     "window": {
@@ -132,6 +132,41 @@
   },
   "experiments": [
     {
+      "id": "next-day-checkin",
+      "title": "Starter team checks in the next morning",
+      "source": {
+        "section": "journey",
+        "text": "Of 16 outside people who wrote a first message in the 28 days to 2026-10-27 and were old enough to return, 1 came back on the next Eastern day. 15 of 17 got an agent reply in session one."
+      },
+      "change": "The morning after a new person's first message, their starter agent posts one check-in that picks up where they left off and offers one next step. Once per person; push where registered.",
+      "metric": {
+        "label": "New people who come back the next day",
+        "numerator": "usage:day1-returned",
+        "denominator": "usage:day1-eligible-writers"
+      },
+      "before": {
+        "value": 0.0625,
+        "samples": 16,
+        "from": "2026-09-30",
+        "through": "2026-10-27"
+      },
+      "predict": {
+        "value": 0.25,
+        "direction": "up"
+      },
+      "guardrail": "Starter agents removed or Rooms left by new people do not rise above the 28 days before.",
+      "decideAt": {
+        "samples": 16,
+        "date": "2026-11-25"
+      },
+      "ifUnclear": "undo",
+      "status": "proposed",
+      "approval": null,
+      "startedOn": null,
+      "progress": null,
+      "verdict": null
+    },
+    {
       "id": "capabilities-stated",
       "theme": "surface-capabilities-unstated",
       "title": "Tell each agent what works in the place it is in",
@@ -165,7 +200,7 @@
       "approval": {
         "messageId": "ffe1644c6d995c86daa64ae0bd179b0652c4924679fd5a70e00b85dfe8014d90"
       },
-      "startedOn": "2026-10-27",
+      "startedOn": "2026-10-28",
       "progress": null,
       "verdict": null
     },
@@ -205,8 +240,8 @@
       },
       "startedOn": "2026-10-26",
       "progress": {
-        "value": 0.0654,
-        "samples": 107,
+        "value": 0.144,
+        "samples": 243,
         "asOf": "2026-10-27"
       },
       "verdict": null
