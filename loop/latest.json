@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T16:52:25.191Z",
-  "date": "2026-10-26",
-  "snapshotDate": "2026-10-26",
-  "snapshot": "2026-10-26.json",
+  "generatedAt": "2026-10-28T16:45:29.815Z",
+  "date": "2026-10-28",
+  "snapshotDate": "2026-10-28",
+  "snapshot": "2026-10-28.json",
   "headline": "firstReply/signups",
   "method": "median +/- 2 MAD; prior 28 calendar days",
   "minSamples": 10,
   "minHistory": 7,
   "metrics": {
     "firstReply/signups": {
-      "value": null,
-      "samples": 0,
+      "value": 2,
+      "samples": 1,
       "reason": null,
       "normal": null,
       "historySamples": 0,
@@ -24,8 +24,8 @@
       "smallSample": true
     },
     "signups": {
-      "value": 0,
-      "samples": 0,
+      "value": 1,
+      "samples": 1,
       "reason": null,
       "normal": {
         "low": 0,
@@ -42,8 +42,8 @@
       "smallSample": true
     },
     "dau": {
-      "value": 2,
-      "samples": 2,
+      "value": 4,
+      "samples": 4,
       "reason": null,
       "normal": {
         "low": 1,
@@ -77,17 +77,17 @@
     },
     "retention7": {
       "value": 0,
-      "samples": 17,
+      "samples": 16,
       "reason": null,
-      "from": "2026-09-28",
-      "through": "2026-10-18",
+      "from": "2026-09-30",
+      "through": "2026-10-20",
       "normal": {
         "low": 0,
         "high": 0,
         "median": 0,
         "mad": 0
       },
-      "historySamples": 3,
+      "historySamples": 4,
       "flags": [
         "insufficient history"
       ],

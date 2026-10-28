@@ -79,11 +79,11 @@
     "steps": [
       {
         "label": "Signed up",
-        "count": 17
+        "count": 15
       },
       {
         "label": "Joined a workspace",
-        "count": 16
+        "count": 15
       },
       {
         "label": "Sent a first message",
@@ -100,7 +100,7 @@
     ],
     "biggestDrop": {
       "label": "Sent a first message",
-      "lost": 6
+      "lost": 5
     },
     "state": "measured"
   },
