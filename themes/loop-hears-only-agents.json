@@ -42,6 +42,10 @@
     {
       "source": "snapshot",
       "text": "Of 17 people who signed up in the 7 days to 2026-10-25, 10 sent a message within 24 hours and 2 came back the next day (12%, up from 6%). Still no human reports since 2026-10-22, against about 1,500 agent reports in 7 days."
+    },
+    {
+      "source": "snapshot",
+      "text": "Of 18 people who signed up in the 7 days to 2026-10-26, 10 sent a message within 24 hours and 2 came back the next day (11%). The value loop's fixed SQL puts the biggest 28-day loss at the first message: 12 of 21 new outside people never wrote within 24 hours."
     }
   ],
   "against": [
@@ -51,7 +55,7 @@
   "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-27",
+  "lastReviewed": "2026-10-28",
   "status": "open",
   "track": {
     "label": "New people who send a first message within 24 hours",
@@ -223,6 +227,11 @@
         "date": "2026-10-26",
         "value": 0.5882,
         "samples": 17
+      },
+      {
+        "date": "2026-10-27",
+        "value": 0.5556,
+        "samples": 18
       }
     ]
   }

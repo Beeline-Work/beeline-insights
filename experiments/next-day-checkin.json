@@ -27,9 +27,12 @@
     "date": "2026-11-25"
   },
   "ifUnclear": "undo",
-  "status": "proposed",
-  "approval": null,
-  "startedOn": null,
+  "status": "running",
+  "approval": {
+    "messageId": "cf834fabced4215a83bd7900090a2ec4842e95825a868199d5588b1b4ee1ec00"
+  },
+  "startedOn": "2026-10-28",
   "progress": null,
-  "verdict": null
+  "verdict": null,
+  "theme": "loop-hears-only-agents"
 }

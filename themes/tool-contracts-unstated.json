@@ -47,7 +47,7 @@
   "falsifiedIf": "In a sample of 50 mismatch reports, most limits were already stated in the schema.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-27",
+  "lastReviewed": "2026-10-28",
   "status": "open",
   "track": {
     "label": "Share of reports about unstated tool limits",
@@ -219,6 +219,11 @@
         "date": "2026-10-26",
         "value": 0.1352,
         "samples": 1502
+      },
+      {
+        "date": "2026-10-27",
+        "value": 0.1426,
+        "samples": 1466
       }
     ]
   }
