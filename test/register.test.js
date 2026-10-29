@@ -9,6 +9,8 @@ import { buildFeed } from '../scripts/build-feed.mjs';
 
 const running = JSON.parse(await readFile(new URL('fixtures/v3/experiments/fix-notices.json', import.meta.url), 'utf8'));
 const problem = { id: 'agent-start', kind: 'regression', rank: 1, date: '2026-10-24', title: 'Agent does not start', peoplePerDay: 3, trend: 'up', cause: 'connection', stage: 'first-reply', source: 'Daily triage aggregate', regression: { causedByPr: 'https://github.com/Beeline-Work/beeline/pull/123', report: 'Repeated connection failures' } };
+const bigProblem = { ...problem, id: 'agent-silent', kind: 'problem', scope: 'people', lastHit: '2026-10-28', fixHeldSince: '2026-10-27', whatHappens: 'A new person sends a first message and the agent never replies.', fixes: [{ date: '2026-10-25', text: 'Retry the agent start once', state: 'failed' }, { date: '2026-10-27', text: 'Restart stalled agents', state: 'holding' }], observations: [{ date: '2026-10-28', text: 'Two people hit it after signup' }] };
+delete bigProblem.regression;
 const walk = { date: '2026-10-24', source: 'Daily walk aggregate', counts: [{ goal: 'start-agent', friction: 'no-reply', count: 4 }] };
 const retention = { generatedAt: '2026-10-24T12:00:00.000Z', source: 'Admin retention grouped by first agent source', day: 7, cohort: 40, retained: 9, window: { from: '2026-10-01', through: '2026-10-07' }, groups: { addedOwnAgent: { cohort: 12, retained: 4 }, freeAgent: { cohort: 20, retained: 3 }, noAgent: { cohort: 8, retained: 2 } } };
 
@@ -75,6 +77,31 @@ test('feed CLI publishes ranked problems, anonymous counts, retention split and 
   assert.equal(await readFile(join(root, 'feed/latest.json'), 'utf8'), before);
 });
 
+test('big problems accept scope, hit and fix dates, what happens, fixes and observations; bad values fail', async (t) => {
+  assert.deepEqual(aggregateErrors(bigProblem, 'problem'), []);
+  const bad = [
+    [{ scope: 'agents' }, /scope: expected one of people, single/],
+    [{ lastHit: '2026-13-01' }, /lastHit: expected date/],
+    [{ fixHeldSince: 'yesterday' }, /fixHeldSince: expected date/],
+    [{ whatHappens: ' ' }, /whatHappens: expected nonempty text/],
+    [{ whatHappens: 'x'.repeat(301) }, /whatHappens: longer than 300/],
+    [{ fixes: [{ ...bigProblem.fixes[0], state: 'done' }] }, /fixes\[0\].state: expected one of/],
+    [{ fixes: [{ ...bigProblem.fixes[0], owner: 'ruby' }] }, /fixes\[0\].owner: unknown field/],
+    [{ fixes: [{ ...bigProblem.fixes[0], date: '2026-02-30' }] }, /fixes\[0\].date: expected date/],
+    [{ fixes: [{ ...bigProblem.fixes[0], text: '' }] }, /fixes\[0\].text: expected nonempty text/],
+    [{ observations: [{ ...bigProblem.observations[0], people: 2 }] }, /observations\[0\].people: unknown field/],
+    [{ observations: [{ date: 'today', text: 'Seen' }] }, /observations\[0\].date: expected date/],
+    [{ observations: [{ date: '2026-10-28', text: '' }] }, /observations\[0\].text: expected nonempty text/],
+  ];
+  for (const [change, error] of bad) assert.match(aggregateErrors({ ...bigProblem, ...change }, 'problem').join('\n'), error);
+  const root = await mkdtemp(join(tmpdir(), 'big-problem-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await mkdir(join(root, 'problems'));
+  await writeFile(join(root, 'problems', `${bigProblem.id}.json`), JSON.stringify(bigProblem));
+  const built = spawnSync(process.execPath, [new URL('../scripts/build-feed.mjs', import.meta.url).pathname, '--root', root, '--today', '2026-10-29'], { encoding: 'utf8' });
+  assert.equal(built.status, 0, built.stderr);
+  assert.deepEqual(JSON.parse(await readFile(join(root, 'feed/latest.json'), 'utf8')).problems, [bigProblem]);
+});
 
 test('regressions require the causing PR and retention rejects impossible counts', () => {
   const missing = { ...problem };
