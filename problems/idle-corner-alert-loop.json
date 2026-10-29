@@ -1,16 +1,16 @@
 {
   "id": "idle-corner-alert-loop",
   "kind": "regression",
-  "rank": 3,
-  "date": "2026-10-28",
-  "title": "The idle-corner alert fires on corners that are waiting for a reviewer or checks, and wakes the lead agent again and again",
+  "title": "The idle-corner alert fires on corners that are waiting for a reviewer or checks",
   "peoplePerDay": 0,
-  "trend": "up",
+  "trend": "flat",
   "cause": "server",
   "stage": "daily-use",
   "source": "feedback",
   "regression": {
     "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3000",
-    "report": "The backoff fix shipped, but corners waiting on pending checks still trigger the alert"
-  }
+    "report": "Alerts kept firing during pending checks; a further fix shipped today and needs a day to confirm"
+  },
+  "date": "2026-10-29",
+  "rank": 4
 }

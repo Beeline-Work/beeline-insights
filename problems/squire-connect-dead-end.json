@@ -1,0 +1,12 @@
+{
+  "id": "squire-connect-dead-end",
+  "kind": "problem",
+  "title": "A new person asked agents to connect a store and outside AI tools, but no Trusty Squire connect card appeared, so setup stopped",
+  "peoplePerDay": 1,
+  "trend": "up",
+  "cause": "server",
+  "stage": "connect-service",
+  "source": "feedback",
+  "date": "2026-10-29",
+  "rank": 1
+}

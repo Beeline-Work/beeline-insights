@@ -1,12 +1,12 @@
 {
   "id": "booking-outside-limits",
   "kind": "problem",
-  "rank": 2,
-  "date": "2026-10-28",
   "title": "An agent booked outside the person's time and price limits and could not cancel",
-  "peoplePerDay": 1,
-  "trend": "flat",
+  "peoplePerDay": 0,
+  "trend": "down",
   "cause": "unknown",
   "stage": "daily-use",
-  "source": "walk"
+  "source": "walk",
+  "date": "2026-10-29",
+  "rank": 10
 }

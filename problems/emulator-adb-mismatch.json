@@ -1,0 +1,12 @@
+{
+  "id": "emulator-adb-mismatch",
+  "kind": "problem",
+  "title": "In corners, the Android emulator port and the adb server do not match, so agents see no device or the wrong one",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "feedback",
+  "date": "2026-10-29",
+  "rank": 5
+}

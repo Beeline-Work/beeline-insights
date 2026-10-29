@@ -1,12 +1,12 @@
 {
   "id": "onboarding-peer-check",
   "kind": "problem",
-  "rank": 1,
-  "date": "2026-10-28",
-  "title": "Onboarding promised two agents would check each other's work, but the first agent built an app alone and a button did not work",
+  "title": "Onboarding promises two agents check each other, but one agent works alone and the second is not involved",
   "peoplePerDay": 1,
-  "trend": "up",
+  "trend": "flat",
   "cause": "prompt",
   "stage": "first-reply",
-  "source": "feedback"
+  "source": "feedback",
+  "date": "2026-10-29",
+  "rank": 2
 }

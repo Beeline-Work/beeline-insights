@@ -1,0 +1,12 @@
+{
+  "id": "model-capacity-no-retry",
+  "kind": "problem",
+  "title": "When the model is at capacity, the turn ends with no retry and the corner sits idle",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "feedback",
+  "date": "2026-10-29",
+  "rank": 8
+}

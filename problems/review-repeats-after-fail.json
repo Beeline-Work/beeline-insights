@@ -1,16 +1,16 @@
 {
   "id": "review-repeats-after-fail",
   "kind": "regression",
-  "rank": 6,
-  "date": "2026-10-28",
-  "title": "A reviewer is woken again for the same unchanged head after its verdict",
+  "title": "A reviewer is woken again for the same unchanged head after reporting FAIL or blocked",
   "peoplePerDay": 0,
   "trend": "flat",
   "cause": "server",
   "stage": "daily-use",
   "source": "feedback",
   "regression": {
-    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2944",
-    "report": "Repeats continued after the first fix shipped; a second fix shipped last night and is under watch"
-  }
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2994",
+    "report": "The same-head fix shipped, but repeats continue after FAIL and blocked reports"
+  },
+  "date": "2026-10-29",
+  "rank": 3
 }

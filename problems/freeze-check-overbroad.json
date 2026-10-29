@@ -1,12 +1,16 @@
 {
   "id": "freeze-check-overbroad",
-  "kind": "problem",
-  "rank": 10,
-  "date": "2026-10-28",
-  "title": "A check on system message wording fails on unrelated changes",
+  "kind": "regression",
+  "title": "A check on System message wording still fails on changes that do not touch any wording",
   "peoplePerDay": 0,
   "trend": "flat",
-  "cause": "ci",
+  "cause": "server",
   "stage": "daily-use",
-  "source": "feedback"
+  "source": "feedback",
+  "regression": {
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3027",
+    "report": "The narrowing fix merged, but four refactors were flagged after it"
+  },
+  "date": "2026-10-29",
+  "rank": 6
 }

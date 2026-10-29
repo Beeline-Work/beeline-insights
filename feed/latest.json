@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T19:08:14.127Z",
+  "generatedAt": "2026-10-29T11:09:36.942Z",
   "insights": {
     "generatedAt": "2026-10-28T13:10:00.000Z",
     "window": {
@@ -371,140 +371,136 @@
   ],
   "problems": [
     {
-      "id": "onboarding-peer-check",
+      "id": "squire-connect-dead-end",
       "kind": "problem",
-      "rank": 1,
-      "date": "2026-10-28",
-      "title": "Onboarding promised two agents would check each other's work, but the first agent built an app alone and a button did not work",
+      "title": "A new person asked agents to connect a store and outside AI tools, but no Trusty Squire connect card appeared, so setup stopped",
       "peoplePerDay": 1,
       "trend": "up",
-      "cause": "prompt",
-      "stage": "first-reply",
-      "source": "feedback"
+      "cause": "server",
+      "stage": "connect-service",
+      "source": "feedback",
+      "date": "2026-10-29",
+      "rank": 1
     },
     {
-      "id": "booking-outside-limits",
+      "id": "onboarding-peer-check",
       "kind": "problem",
-      "rank": 2,
-      "date": "2026-10-28",
-      "title": "An agent booked outside the person's time and price limits and could not cancel",
+      "title": "Onboarding promises two agents check each other, but one agent works alone and the second is not involved",
       "peoplePerDay": 1,
       "trend": "flat",
-      "cause": "unknown",
+      "cause": "prompt",
+      "stage": "first-reply",
+      "source": "feedback",
+      "date": "2026-10-29",
+      "rank": 2
+    },
+    {
+      "id": "review-repeats-after-fail",
+      "kind": "regression",
+      "title": "A reviewer is woken again for the same unchanged head after reporting FAIL or blocked",
+      "peoplePerDay": 0,
+      "trend": "flat",
+      "cause": "server",
       "stage": "daily-use",
-      "source": "walk"
+      "source": "feedback",
+      "regression": {
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2994",
+        "report": "The same-head fix shipped, but repeats continue after FAIL and blocked reports"
+      },
+      "date": "2026-10-29",
+      "rank": 3
     },
     {
       "id": "idle-corner-alert-loop",
       "kind": "regression",
-      "rank": 3,
-      "date": "2026-10-28",
-      "title": "The idle-corner alert fires on corners that are waiting for a reviewer or checks, and wakes the lead agent again and again",
+      "title": "The idle-corner alert fires on corners that are waiting for a reviewer or checks",
       "peoplePerDay": 0,
-      "trend": "up",
+      "trend": "flat",
       "cause": "server",
       "stage": "daily-use",
       "source": "feedback",
       "regression": {
         "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3000",
-        "report": "The backoff fix shipped, but corners waiting on pending checks still trigger the alert"
-      }
+        "report": "Alerts kept firing during pending checks; a further fix shipped today and needs a day to confirm"
+      },
+      "date": "2026-10-29",
+      "rank": 4
     },
     {
-      "id": "history-search-arguments",
-      "kind": "regression",
-      "rank": 4,
-      "date": "2026-10-28",
-      "title": "Tool descriptions allow less or more than the tools accept, so agents' calls get refused",
-      "peoplePerDay": 0,
-      "trend": "down",
-      "cause": "skill",
-      "stage": "daily-use",
-      "source": "feedback",
-      "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2991",
-        "report": "Most refusals stopped after release; read limits are still refused"
-      }
-    },
-    {
-      "id": "reviewer-no-verdict",
+      "id": "emulator-adb-mismatch",
       "kind": "problem",
-      "rank": 5,
-      "date": "2026-10-28",
-      "title": "A reviewer's turn is marked finished with no verdict, and tagging it again says it is unavailable",
+      "title": "In corners, the Android emulator port and the adb server do not match, so agents see no device or the wrong one",
       "peoplePerDay": 0,
       "trend": "up",
       "cause": "server",
       "stage": "daily-use",
-      "source": "feedback"
+      "source": "feedback",
+      "date": "2026-10-29",
+      "rank": 5
     },
     {
-      "id": "review-repeats-after-fail",
+      "id": "freeze-check-overbroad",
       "kind": "regression",
-      "rank": 6,
-      "date": "2026-10-28",
-      "title": "A reviewer is woken again for the same unchanged head after its verdict",
+      "title": "A check on System message wording still fails on changes that do not touch any wording",
       "peoplePerDay": 0,
       "trend": "flat",
       "cause": "server",
       "stage": "daily-use",
       "source": "feedback",
       "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2944",
-        "report": "Repeats continued after the first fix shipped; a second fix shipped last night and is under watch"
-      }
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3027",
+        "report": "The narrowing fix merged, but four refactors were flagged after it"
+      },
+      "date": "2026-10-29",
+      "rank": 6
     },
     {
-      "id": "review-screenshots-missing",
-      "kind": "regression",
-      "rank": 7,
-      "date": "2026-10-28",
-      "title": "A reviewer passes work and says screenshots are attached when none exist, and the merge gate accepts it",
+      "id": "shared-browser-android-input",
+      "kind": "problem",
+      "title": "On Android, typing in the shared browser does not reach the page, and the activity log credits the owner wrongly",
       "peoplePerDay": 0,
       "trend": "up",
-      "cause": "prompt",
-      "stage": "daily-use",
+      "cause": "client",
+      "stage": "connect-service",
       "source": "feedback",
-      "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2971",
-        "report": "The attachment fix did not cover review verdicts"
-      }
+      "date": "2026-10-29",
+      "rank": 7
     },
     {
-      "id": "emulator-no-kvm",
+      "id": "model-capacity-no-retry",
       "kind": "problem",
-      "rank": 8,
-      "date": "2026-10-28",
-      "title": "The Android emulator cannot start on one team machine because corners there have no access to the hardware it needs",
+      "title": "When the model is at capacity, the turn ends with no retry and the corner sits idle",
       "peoplePerDay": 0,
-      "trend": "flat",
+      "trend": "up",
       "cause": "server",
       "stage": "daily-use",
-      "source": "feedback"
+      "source": "feedback",
+      "date": "2026-10-29",
+      "rank": 8
     },
     {
       "id": "revise-corner-schema",
       "kind": "problem",
-      "rank": 9,
-      "date": "2026-10-28",
-      "title": "Revising a corner's brief fails because the tool hides the shape the brief must have",
+      "title": "Revising a corner brief fails because the tool hides required fields and the commander order id",
       "peoplePerDay": 0,
       "trend": "flat",
-      "cause": "skill",
+      "cause": "server",
       "stage": "daily-use",
-      "source": "feedback"
+      "source": "feedback",
+      "date": "2026-10-29",
+      "rank": 9
     },
     {
-      "id": "freeze-check-overbroad",
+      "id": "booking-outside-limits",
       "kind": "problem",
-      "rank": 10,
-      "date": "2026-10-28",
-      "title": "A check on system message wording fails on unrelated changes",
+      "title": "An agent booked outside the person's time and price limits and could not cancel",
       "peoplePerDay": 0,
-      "trend": "flat",
-      "cause": "ci",
+      "trend": "down",
+      "cause": "unknown",
       "stage": "daily-use",
-      "source": "feedback"
+      "source": "walk",
+      "date": "2026-10-29",
+      "rank": 10
     }
   ],
   "walk": [

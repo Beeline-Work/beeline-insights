@@ -1,12 +1,12 @@
 {
   "id": "revise-corner-schema",
   "kind": "problem",
-  "rank": 9,
-  "date": "2026-10-28",
-  "title": "Revising a corner's brief fails because the tool hides the shape the brief must have",
+  "title": "Revising a corner brief fails because the tool hides required fields and the commander order id",
   "peoplePerDay": 0,
   "trend": "flat",
-  "cause": "skill",
+  "cause": "server",
   "stage": "daily-use",
-  "source": "feedback"
+  "source": "feedback",
+  "date": "2026-10-29",
+  "rank": 9
 }
