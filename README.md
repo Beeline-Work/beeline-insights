@@ -150,6 +150,13 @@ include the three fields; missing input folders produce empty arrays/null.
   `title`, `peoplePerDay`, `trend` (`up`, `flat`, `down`), `cause`, `stage`,
   `source`. A regression also requires `regression {causedByPr, report}`;
   `causedByPr` is the full GitHub pull request URL that caused it.
+  Optional fields for big problems (the feed copies them unchanged):
+  - `scope`: `people` for a problem that costs us people; `single` for one bug or agent fault.
+  - `lastHit`: the last Eastern day a person hit it, not the write date.
+  - `fixHeldSince`: the day the current fix shipped with no person hit after it.
+  - `whatHappens`: one sentence (1–300 characters) on what the person sees.
+  - `fixes[{date, text, state}]`: each fix tried; `state` is `tried`, `shipped`, `holding` or `failed`.
+  - `observations[{date, text}]`: dated notes on what was seen.
 - `walk/<YYYY-MM-DD>.json`: `date`, `source`, `counts[{goal, friction, count}]`.
   Goals and friction codes are lowercase slugs. Each pair appears once per day;
   counts are anonymous totals, never individual events or message transcripts.
