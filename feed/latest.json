@@ -1,42 +1,30 @@
 {
-  "generatedAt": "2026-10-29T11:09:36.942Z",
+  "generatedAt": "2026-10-29T13:07:03.361Z",
   "insights": {
-    "generatedAt": "2026-10-28T13:10:00.000Z",
+    "generatedAt": "2026-10-29T13:10:00.000Z",
     "window": {
-      "from": "2026-10-21",
-      "through": "2026-10-27"
+      "from": "2026-10-22",
+      "through": "2026-10-28"
     },
     "errors": {
-      "total": 2529,
-      "changePct": 49.7,
+      "total": 97,
+      "changePct": -97.7,
       "areas": [
         {
-          "area": "Agent machines",
-          "count": 2184
-        },
-        {
-          "area": "GitHub",
-          "count": 208
-        },
-        {
-          "area": "Database",
-          "count": 41
-        },
-        {
           "area": "Other",
-          "count": 31
+          "count": 35
         },
         {
           "area": "Phone and web app",
-          "count": 24
+          "count": 22
         },
         {
-          "area": "Voice",
-          "count": 14
+          "area": "Database",
+          "count": 12
         },
         {
-          "area": "Agents and corners",
-          "count": 11
+          "area": "GitHub",
+          "count": 9
         },
         {
           "area": "Notifications",
@@ -45,37 +33,45 @@
         {
           "area": "Connected apps",
           "count": 7
+        },
+        {
+          "area": "Voice",
+          "count": 3
         }
       ],
-      "lead": "The helper restart loop that stopped on 2026-10-22 is still 2,179 of 2,529 events; without it, errors fell from 1,679 to 350."
+      "lead": "Errors fell to 97 from 4,134 the week before, because the helper restart loop ended on 2026-10-22; aborted requests are the largest single issue at 32."
     },
     "feedback": {
-      "total": 1466,
-      "people": 4,
-      "agents": 1462,
+      "total": 1471,
+      "people": 5,
+      "agents": 1466,
       "areas": [
         {
-          "area": "Agent environment",
-          "count": 314
+          "area": "Corner tools",
+          "count": 89
         },
         {
-          "area": "Corners and wakes",
-          "count": 265
+          "area": "Commands and grants",
+          "count": 47
         },
         {
-          "area": "Tool limits",
-          "count": 146
+          "area": "Reading and search",
+          "count": 46
         },
         {
-          "area": "PR and check state",
-          "count": 61
+          "area": "Connected apps",
+          "count": 19
+        },
+        {
+          "area": "Android emulator",
+          "count": 10
         },
         {
           "area": "Other",
-          "count": 680
+          "count": 1260
         }
       ],
-      "lead": "Reports rose to 1,466 from 945 the week before; agent environment stays the largest named area at 21%. People filed 4."
+      "lead": "Reports rose to 1,471 from 1,067 the week before; corner tools are the largest named area at 89. People filed 5."
     },
     "journey": {
       "steps": [
@@ -107,11 +103,11 @@
       "state": "measured"
     },
     "velocity": {
-      "hoursLost": 0.4,
+      "hoursLost": 27,
       "items": [
         {
-          "label": "Store build need found only when a release failed",
-          "hours": 0.4
+          "label": "PRs waited overnight for a person after their last commit",
+          "hours": 27
         }
       ]
     },
@@ -333,6 +329,13 @@
     ]
   },
   "digests": [
+    {
+      "date": "2026-10-29",
+      "title": "Store release v0.1.117 is live; the first next-morning check-in reached nobody",
+      "findings": 1,
+      "proposals": 0,
+      "path": "digests/2026-10-29.md"
+    },
     {
       "date": "2026-10-28",
       "title": "Banter onboarding and 7 more fixes are live; 9 open problems now have fix work",

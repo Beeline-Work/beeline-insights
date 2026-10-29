@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-10-29",
+    "title": "Store release v0.1.117 is live; the first next-morning check-in reached nobody",
+    "findings": 1,
+    "proposals": 0,
+    "path": "digests/2026-10-29.md"
+  },
+  {
     "date": "2026-10-28",
     "title": "Banter onboarding and 7 more fixes are live; 9 open problems now have fix work",
     "findings": 1,
