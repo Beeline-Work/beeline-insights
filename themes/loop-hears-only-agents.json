@@ -46,6 +46,10 @@
     {
       "source": "snapshot",
       "text": "Of 18 people who signed up in the 7 days to 2026-10-26, 10 sent a message within 24 hours and 2 came back the next day (11%). The value loop's fixed SQL puts the biggest 28-day loss at the first message: 12 of 21 new outside people never wrote within 24 hours."
+    },
+    {
+      "source": "snapshot",
+      "text": "Of 16 people who signed up in the 7 days to 2026-10-27, 9 sent a message within 24 hours and 1 came back the next day (6%, down from 11%). Upstream of this, 21 of 29 outside installs that tapped sign-in in 28 days never got in, so the loop hears from even fewer people than the signup count suggests."
     }
   ],
   "against": [
@@ -55,7 +59,7 @@
   "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-28",
+  "lastReviewed": "2026-10-29",
   "status": "open",
   "track": {
     "label": "New people who send a first message within 24 hours",
@@ -232,6 +236,11 @@
         "date": "2026-10-27",
         "value": 0.5556,
         "samples": 18
+      },
+      {
+        "date": "2026-10-28",
+        "value": 0.5625,
+        "samples": 16
       }
     ]
   }

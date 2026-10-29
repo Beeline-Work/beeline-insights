@@ -55,7 +55,7 @@
   "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
   "confidence": "high",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-28",
+  "lastReviewed": "2026-10-29",
   "status": "open",
   "track": {
     "label": "Share of reports about wakes and dispatch",
@@ -232,6 +232,11 @@
         "date": "2026-10-27",
         "value": 0.206,
         "samples": 1466
+      },
+      {
+        "date": "2026-10-28",
+        "value": 0.1883,
+        "samples": 1471
       }
     ]
   }

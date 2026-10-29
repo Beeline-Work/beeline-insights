@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T17:01:46.162Z",
+  "generatedAt": "2026-10-29T19:10:58.761Z",
   "insights": {
     "generatedAt": "2026-10-29T13:10:00.000Z",
     "window": {
@@ -248,27 +248,15 @@
   ],
   "reach": {
     "month": "2026-10",
-    "spent": 1457.1,
+    "spent": 1514.37,
     "cap": 3100,
-    "costPerSignup": null,
+    "costPerSignup": 252.4,
     "recommendations": [
       {
         "kind": "stop",
         "channel": "X",
-        "title": "Hold new spend until clicks are seen landing",
-        "detail": "Only 1,300 of 9,907 October link clicks show up as X-referred page loads on the site"
-      },
-      {
-        "kind": "boost",
-        "channel": "X",
-        "title": "Keep budget on the Grok demo",
-        "detail": "0.51% click rate (1,739 of 337,795) at 4.5 cents a click, 3x Ad 1's 0.17%"
-      },
-      {
-        "kind": "boost",
-        "channel": "X",
-        "title": "Give the subscriptions walkthrough 2 more days",
-        "detail": "First day: 0.46% click rate (146 of 31,652) at 4.4 cents a click"
+        "title": "Keep X spend paused until phone sign-in returns people",
+        "detail": "All 5 recent campaigns are paused or expired. 6 outside installs reached the app in 28 days, about $252 each, and all 6 phone sign-ins in the last 48 hours never came back"
       }
     ],
     "posts": [
@@ -508,6 +496,27 @@
   ],
   "walk": [
     {
+      "date": "2026-10-29",
+      "source": "workspace walk 9c55b3df",
+      "counts": [
+        {
+          "goal": "run-task",
+          "friction": "tool-refused",
+          "count": 1
+        },
+        {
+          "goal": "first-message",
+          "friction": "blank-page",
+          "count": 1
+        },
+        {
+          "goal": "other",
+          "friction": "crash",
+          "count": 1
+        }
+      ]
+    },
+    {
       "date": "2026-10-27",
       "source": "workspace walk 973d72c2",
       "counts": [
@@ -606,6 +615,10 @@
         {
           "source": "snapshot",
           "text": "Of 18 people who signed up in the 7 days to 2026-10-26, 10 sent a message within 24 hours and 2 came back the next day (11%). The value loop's fixed SQL puts the biggest 28-day loss at the first message: 12 of 21 new outside people never wrote within 24 hours."
+        },
+        {
+          "source": "snapshot",
+          "text": "Of 16 people who signed up in the 7 days to 2026-10-27, 9 sent a message within 24 hours and 1 came back the next day (6%, down from 11%). Upstream of this, 21 of 29 outside installs that tapped sign-in in 28 days never got in, so the loop hears from even fewer people than the signup count suggests."
         }
       ],
       "against": [
@@ -615,7 +628,7 @@
       "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-28",
+      "lastReviewed": "2026-10-29",
       "status": "open",
       "track": {
         "label": "New people who send a first message within 24 hours",
@@ -792,6 +805,11 @@
             "date": "2026-10-27",
             "value": 0.5556,
             "samples": 18
+          },
+          {
+            "date": "2026-10-28",
+            "value": 0.5625,
+            "samples": 16
           }
         ]
       }
@@ -846,7 +864,7 @@
       "falsifiedIf": "Identical-failure repeats are under 5% of reports once the watchdog setup is fixed.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-28",
+      "lastReviewed": "2026-10-29",
       "status": "open",
       "track": {
         "label": "Share of reports that repeat the same failure",
@@ -1023,6 +1041,11 @@
             "date": "2026-10-27",
             "value": 0,
             "samples": 1466
+          },
+          {
+            "date": "2026-10-28",
+            "value": 0.002,
+            "samples": 1471
           }
         ]
       }
@@ -1077,7 +1100,7 @@
       "falsifiedIf": "Fewer than 20 of 50 sampled reports trace to a stored value that differs from GitHub.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-28",
+      "lastReviewed": "2026-10-29",
       "status": "open",
       "track": {
         "label": "Share of reports about stale PR and check state",
@@ -1254,6 +1277,11 @@
             "date": "2026-10-27",
             "value": 0.0628,
             "samples": 1466
+          },
+          {
+            "date": "2026-10-28",
+            "value": 0.0687,
+            "samples": 1471
           }
         ]
       }
@@ -1316,7 +1344,7 @@
       "falsifiedIf": "Most sampled environment reports are infrastructure faults that a capability list would not prevent.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-28",
+      "lastReviewed": "2026-10-29",
       "status": "open",
       "track": {
         "label": "Share of reports about what a place allows",
@@ -1493,6 +1521,11 @@
             "date": "2026-10-27",
             "value": 0.2142,
             "samples": 1466
+          },
+          {
+            "date": "2026-10-28",
+            "value": 0.2325,
+            "samples": 1471
           }
         ]
       }
@@ -1546,7 +1579,7 @@
       "falsifiedIf": "In a sample of 50 mismatch reports, most limits were already stated in the schema.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-28",
+      "lastReviewed": "2026-10-29",
       "status": "open",
       "track": {
         "label": "Share of reports about unstated tool limits",
@@ -1723,6 +1756,11 @@
             "date": "2026-10-27",
             "value": 0.1426,
             "samples": 1466
+          },
+          {
+            "date": "2026-10-28",
+            "value": 0.1434,
+            "samples": 1471
           }
         ]
       }
@@ -1784,7 +1822,7 @@
       "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-28",
+      "lastReviewed": "2026-10-29",
       "status": "open",
       "track": {
         "label": "Share of reports about wakes and dispatch",
@@ -1961,6 +1999,11 @@
             "date": "2026-10-27",
             "value": 0.206,
             "samples": 1466
+          },
+          {
+            "date": "2026-10-28",
+            "value": 0.1883,
+            "samples": 1471
           }
         ]
       }

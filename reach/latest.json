@@ -1,26 +1,14 @@
 {
   "month": "2026-10",
-  "spent": 1457.1,
+  "spent": 1514.37,
   "cap": 3100,
-  "costPerSignup": null,
+  "costPerSignup": 252.4,
   "recommendations": [
     {
       "kind": "stop",
       "channel": "X",
-      "title": "Hold new spend until clicks are seen landing",
-      "detail": "Only 1,300 of 9,907 October link clicks show up as X-referred page loads on the site"
-    },
-    {
-      "kind": "boost",
-      "channel": "X",
-      "title": "Keep budget on the Grok demo",
-      "detail": "0.51% click rate (1,739 of 337,795) at 4.5 cents a click, 3x Ad 1's 0.17%"
-    },
-    {
-      "kind": "boost",
-      "channel": "X",
-      "title": "Give the subscriptions walkthrough 2 more days",
-      "detail": "First day: 0.46% click rate (146 of 31,652) at 4.4 cents a click"
+      "title": "Keep X spend paused until phone sign-in returns people",
+      "detail": "All 5 recent campaigns are paused or expired. 6 outside installs reached the app in 28 days, about $252 each, and all 6 phone sign-ins in the last 48 hours never came back"
     }
   ],
   "posts": [
