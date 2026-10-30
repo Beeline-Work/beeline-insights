@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T16:46:49.805Z",
+  "generatedAt": "2026-10-30T23:11:16.039Z",
   "insights": {
     "generatedAt": "2026-10-30T13:10:00.000Z",
     "window": {
@@ -159,9 +159,9 @@
       },
       "startedOn": "2026-10-28",
       "progress": {
-        "value": 0.2368,
-        "samples": 76,
-        "asOf": "2026-10-28"
+        "value": 0.2206,
+        "samples": 476,
+        "asOf": "2026-10-29"
       },
       "verdict": null
     },
@@ -239,9 +239,9 @@
       },
       "startedOn": "2026-10-26",
       "progress": {
-        "value": 0.1532,
-        "samples": 359,
-        "asOf": "2026-10-28"
+        "value": 0.1502,
+        "samples": 759,
+        "asOf": "2026-10-29"
       },
       "verdict": null
     }
@@ -372,7 +372,7 @@
       "id": "signin-lost",
       "kind": "problem",
       "rank": 1,
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "title": "New phone users tap Google or GitHub but never get signed in",
       "peoplePerDay": 2,
       "trend": "flat",
@@ -420,6 +420,14 @@
         {
           "date": "2026-10-29",
           "text": "29 Oct: 18 installs tapped, 4 got in. This day may include our own emulator sign-up tests."
+        },
+        {
+          "date": "2026-10-30",
+          "text": "Sign-in log, outside, 30 Oct: 1 install tapped and got in on the third tap (Google cancelled, GitHub cancelled, Google worked, all in 1 minute), then wrote. 2 more opened sign-in 18 min apart and never tapped; likely Play test robots. Corroborates."
+        },
+        {
+          "date": "2026-10-30",
+          "text": "Sign-in log, outside, 22-30 Oct: 13 installs logged a cancel; 11 tapped again and 2 got in. A cancel is mostly a failed return that people retry, not a choice to leave. 29 Oct (23 tapped) includes our own emulator tests. Changes."
         }
       ]
     },
@@ -427,10 +435,10 @@
       "id": "next-day-return",
       "kind": "problem",
       "rank": 2,
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "title": "New people who write to an agent do not come back the next day",
       "peoplePerDay": 1,
-      "trend": "flat",
+      "trend": "up",
       "cause": "product",
       "stage": "return-day-1",
       "source": "funnel",
@@ -465,6 +473,14 @@
         {
           "date": "2026-10-29",
           "text": "First next-morning check-in run sent 0 of 3. The server refused each post. The fix is live; the next run is 30 Oct 09:00."
+        },
+        {
+          "date": "2026-10-30",
+          "text": "Value SQL through 30 Oct, outside: 0 of 5 new writers (23-29 Oct) came back the next day; the week before 1 of 11. Check-in table: none was due 30 Oct, so the fix is untested; first test 31 Oct 09:00 for 1 person. Changes."
+        },
+        {
+          "date": "2026-10-30",
+          "text": "Walk 30 Oct: 2 of 3 new signups in the window were team test accounts the team filter misses, so outside counts here may be high. The 1 real new person came back 3 hours later the same day after a game was built."
         }
       ]
     },
@@ -767,6 +783,11 @@
   ],
   "walk": [
     {
+      "date": "2026-10-30",
+      "source": "workspace walk 484ddfcb",
+      "counts": []
+    },
+    {
       "date": "2026-10-29",
       "source": "workspace walk 9c55b3df",
       "counts": [
@@ -890,6 +911,10 @@
         {
           "source": "snapshot",
           "text": "Of 16 people who signed up in the 7 days to 2026-10-27, 9 sent a message within 24 hours and 1 came back the next day (6%, down from 11%). Upstream of this, 21 of 29 outside installs that tapped sign-in in 28 days never got in, so the loop hears from even fewer people than the signup count suggests."
+        },
+        {
+          "source": "snapshot",
+          "text": "Of 14 people who signed up in the 7 days to 2026-10-29, 8 sent a message within 24 hours and 1 came back the next day (7%, from 6% on 2026-10-27)."
         }
       ],
       "against": [
@@ -899,7 +924,7 @@
       "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-29",
+      "lastReviewed": "2026-10-30",
       "status": "open",
       "track": {
         "label": "New people who send a first message within 24 hours",
@@ -1081,6 +1106,11 @@
             "date": "2026-10-28",
             "value": 0.5625,
             "samples": 16
+          },
+          {
+            "date": "2026-10-29",
+            "value": 0.5714,
+            "samples": 14
           }
         ]
       }
@@ -1135,7 +1165,7 @@
       "falsifiedIf": "Identical-failure repeats are under 5% of reports once the watchdog setup is fixed.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-29",
+      "lastReviewed": "2026-10-30",
       "status": "open",
       "track": {
         "label": "Share of reports that repeat the same failure",
@@ -1317,6 +1347,11 @@
             "date": "2026-10-28",
             "value": 0.002,
             "samples": 1471
+          },
+          {
+            "date": "2026-10-29",
+            "value": 0.0019,
+            "samples": 1576
           }
         ]
       }
@@ -1371,7 +1406,7 @@
       "falsifiedIf": "Fewer than 20 of 50 sampled reports trace to a stored value that differs from GitHub.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-29",
+      "lastReviewed": "2026-10-30",
       "status": "open",
       "track": {
         "label": "Share of reports about stale PR and check state",
@@ -1553,6 +1588,11 @@
             "date": "2026-10-28",
             "value": 0.0687,
             "samples": 1471
+          },
+          {
+            "date": "2026-10-29",
+            "value": 0.0666,
+            "samples": 1576
           }
         ]
       }
@@ -1615,7 +1655,7 @@
       "falsifiedIf": "Most sampled environment reports are infrastructure faults that a capability list would not prevent.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-29",
+      "lastReviewed": "2026-10-30",
       "status": "open",
       "track": {
         "label": "Share of reports about what a place allows",
@@ -1797,6 +1837,11 @@
             "date": "2026-10-28",
             "value": 0.2325,
             "samples": 1471
+          },
+          {
+            "date": "2026-10-29",
+            "value": 0.2284,
+            "samples": 1576
           }
         ]
       }
@@ -1850,7 +1895,7 @@
       "falsifiedIf": "In a sample of 50 mismatch reports, most limits were already stated in the schema.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-29",
+      "lastReviewed": "2026-10-30",
       "status": "open",
       "track": {
         "label": "Share of reports about unstated tool limits",
@@ -2032,6 +2077,11 @@
             "date": "2026-10-28",
             "value": 0.1434,
             "samples": 1471
+          },
+          {
+            "date": "2026-10-29",
+            "value": 0.1485,
+            "samples": 1576
           }
         ]
       }
@@ -2093,7 +2143,7 @@
       "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-29",
+      "lastReviewed": "2026-10-30",
       "status": "open",
       "track": {
         "label": "Share of reports about wakes and dispatch",
@@ -2275,6 +2325,11 @@
             "date": "2026-10-28",
             "value": 0.1883,
             "samples": 1471
+          },
+          {
+            "date": "2026-10-29",
+            "value": 0.1796,
+            "samples": 1576
           }
         ]
       }

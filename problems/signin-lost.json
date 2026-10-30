@@ -2,7 +2,7 @@
   "id": "signin-lost",
   "kind": "problem",
   "rank": 1,
-  "date": "2026-10-29",
+  "date": "2026-10-30",
   "title": "New phone users tap Google or GitHub but never get signed in",
   "peoplePerDay": 2,
   "trend": "flat",
@@ -13,15 +13,51 @@
   "lastHit": "2026-10-29",
   "whatHappens": "The person taps Google or GitHub, leaves for the provider's page, and never comes back to Beeline signed in.",
   "fixes": [
-    { "date": "2026-10-28", "text": "Sign-in recovers after a failure, and Android gets the Google account picker", "state": "failed" },
-    { "date": "2026-10-29", "text": "Android Google sign-in works after leaving the app and returning", "state": "shipped" },
-    { "date": "2026-10-29", "text": "GitHub sign-in is freed when the person leaves the GitHub page", "state": "shipped" },
-    { "date": "2026-10-29", "text": "Prove on an Android emulator that brand-new Google and GitHub users finish sign-up on production", "state": "tried" }
+    {
+      "date": "2026-10-28",
+      "text": "Sign-in recovers after a failure, and Android gets the Google account picker",
+      "state": "failed"
+    },
+    {
+      "date": "2026-10-29",
+      "text": "Android Google sign-in works after leaving the app and returning",
+      "state": "shipped"
+    },
+    {
+      "date": "2026-10-29",
+      "text": "GitHub sign-in is freed when the person leaves the GitHub page",
+      "state": "shipped"
+    },
+    {
+      "date": "2026-10-29",
+      "text": "Prove on an Android emulator that brand-new Google and GitHub users finish sign-up on production",
+      "state": "tried"
+    }
   ],
   "observations": [
-    { "date": "2026-10-29", "text": "28 days: 29 outside installs tapped Google or GitHub; 8 got in and 6 reached the app." },
-    { "date": "2026-10-29", "text": "Last 48 hours: 6 outside phone attempts on 5 installs; none came back from the provider. The account-picker fix did not help." },
-    { "date": "2026-10-29", "text": "22-28 Oct: 20 outside installs tapped, 6 got in (14 lost, 2 a day). The log starts 22 Oct, so there is no prior week to compare." },
-    { "date": "2026-10-29", "text": "29 Oct: 18 installs tapped, 4 got in. This day may include our own emulator sign-up tests." }
+    {
+      "date": "2026-10-29",
+      "text": "28 days: 29 outside installs tapped Google or GitHub; 8 got in and 6 reached the app."
+    },
+    {
+      "date": "2026-10-29",
+      "text": "Last 48 hours: 6 outside phone attempts on 5 installs; none came back from the provider. The account-picker fix did not help."
+    },
+    {
+      "date": "2026-10-29",
+      "text": "22-28 Oct: 20 outside installs tapped, 6 got in (14 lost, 2 a day). The log starts 22 Oct, so there is no prior week to compare."
+    },
+    {
+      "date": "2026-10-29",
+      "text": "29 Oct: 18 installs tapped, 4 got in. This day may include our own emulator sign-up tests."
+    },
+    {
+      "date": "2026-10-30",
+      "text": "Sign-in log, outside, 30 Oct: 1 install tapped and got in on the third tap (Google cancelled, GitHub cancelled, Google worked, all in 1 minute), then wrote. 2 more opened sign-in 18 min apart and never tapped; likely Play test robots. Corroborates."
+    },
+    {
+      "date": "2026-10-30",
+      "text": "Sign-in log, outside, 22-30 Oct: 13 installs logged a cancel; 11 tapped again and 2 got in. A cancel is mostly a failed return that people retry, not a choice to leave. 29 Oct (23 tapped) includes our own emulator tests. Changes."
+    }
   ]
 }

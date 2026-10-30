@@ -48,7 +48,7 @@
   "falsifiedIf": "Identical-failure repeats are under 5% of reports once the watchdog setup is fixed.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-29",
+  "lastReviewed": "2026-10-30",
   "status": "open",
   "track": {
     "label": "Share of reports that repeat the same failure",
@@ -230,6 +230,11 @@
         "date": "2026-10-28",
         "value": 0.002,
         "samples": 1471
+      },
+      {
+        "date": "2026-10-29",
+        "value": 0.0019,
+        "samples": 1576
       }
     ]
   }

@@ -56,7 +56,7 @@
   "falsifiedIf": "Most sampled environment reports are infrastructure faults that a capability list would not prevent.",
   "confidence": "high",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-29",
+  "lastReviewed": "2026-10-30",
   "status": "open",
   "track": {
     "label": "Share of reports about what a place allows",
@@ -238,6 +238,11 @@
         "date": "2026-10-28",
         "value": 0.2325,
         "samples": 1471
+      },
+      {
+        "date": "2026-10-29",
+        "value": 0.2284,
+        "samples": 1576
       }
     ]
   }

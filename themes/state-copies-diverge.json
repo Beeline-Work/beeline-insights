@@ -48,7 +48,7 @@
   "falsifiedIf": "Fewer than 20 of 50 sampled reports trace to a stored value that differs from GitHub.",
   "confidence": "high",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-29",
+  "lastReviewed": "2026-10-30",
   "status": "open",
   "track": {
     "label": "Share of reports about stale PR and check state",
@@ -230,6 +230,11 @@
         "date": "2026-10-28",
         "value": 0.0687,
         "samples": 1471
+      },
+      {
+        "date": "2026-10-29",
+        "value": 0.0666,
+        "samples": 1576
       }
     ]
   }
