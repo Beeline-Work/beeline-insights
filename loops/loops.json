@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-30T13:18:51.795Z",
+ "updatedAt": "2026-10-30T14:01:44.880Z",
  "loops": [
   {
    "slug": "ci",
@@ -290,8 +290,39 @@
      ]
     }
    ],
-   "fixes": [],
-   "log": []
+   "fixes": [
+    {
+     "date": "2026-10-29",
+     "title": "Keep structured app refusals out of server monitoring",
+     "url": "https://github.com/Beeline-Work/beeline/pull/3056"
+    },
+    {
+     "date": "2026-10-29",
+     "title": "Keep expected GitHub check refusals out of Sentry",
+     "url": "https://github.com/Beeline-Work/beeline/pull/3057"
+    },
+    {
+     "date": "2026-10-29",
+     "title": "Keep video preview refusals out of server alerts",
+     "url": "https://github.com/Beeline-Work/beeline/pull/3066"
+    },
+    {
+     "date": "2026-10-29",
+     "title": "Keep release provenance refusals out of server alerts",
+     "url": "https://github.com/Beeline-Work/beeline/pull/3068"
+    },
+    {
+     "date": "2026-10-30",
+     "title": "Keep workflow role refusals out of Sentry",
+     "url": "https://github.com/Beeline-Work/beeline/pull/3100"
+    }
+   ],
+   "log": [
+    {
+     "date": "2026-10-30",
+     "text": "Collection is running. The first full 24-hour window closes Oct 31 03:05 UTC, so the first point comes from the Oct 31 morning log walk."
+    }
+   ]
   },
   {
    "slug": "triage",
@@ -518,9 +549,28 @@
      "date": "2026-10-29",
      "title": "Fix Android Google sign-in after leaving and returning",
      "url": "https://github.com/Beeline-Work/beeline/pull/3054"
+    },
+    {
+     "date": "2026-10-29",
+     "title": "Free GitHub sign-in when the person leaves the GitHub page",
+     "url": "https://github.com/Beeline-Work/beeline/pull/3061"
+    },
+    {
+     "date": "2026-10-29",
+     "title": "Fix duplicate-key error for new GitHub users on Android",
+     "url": "https://github.com/Beeline-Work/beeline/pull/3082"
+    },
+    {
+     "date": "2026-10-30",
+     "title": "Recover a first workspace timeout before the sign-up error",
+     "url": "https://github.com/Beeline-Work/beeline/pull/3102"
     }
    ],
    "log": [
+    {
+     "date": "2026-10-29",
+     "text": "2 new outside people signed up; their next day is today, so the reading lands tomorrow."
+    },
     {
      "date": "2026-10-28",
      "text": "2 new outside people signed up; 0 came back the next day. 7-day rolling: 1 of 12."
@@ -558,7 +608,7 @@
    "metric": "",
    "unit": "ms",
    "direction": "lower",
-   "note": "No measurement yet: both runs so far stopped before timing anything. Limits: every action under 150 ms, every page open under 450 ms.",
+   "note": "No full measurement yet: every run so far stopped before giving a result. Limits: every action under 150 ms, every page open under 450 ms.",
    "limits": [
     {
      "series": "actions",
@@ -617,7 +667,7 @@
    "log": [
     {
      "date": "2026-10-30",
-     "text": "00:05 run stopped before measuring: the phone clock calibration was too uncertain. A fix for that merged at 00:59. The 03:00 run started but has not reported a result."
+     "text": "The 03:00 run passed setup and timed 95 samples across 4 cases, then stopped at 07:18 UTC with no result. Cause: a Beeline guard ends a turn after 5 identical tool calls, and the identical progress checks tripped it. A fix for the guard is in progress; a manual rerun started this morning."
     }
    ]
   }
