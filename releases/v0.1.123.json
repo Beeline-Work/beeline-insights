@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "version": "v0.1.123",
+  "sourceSha": "20b57da54c53bb8fbb74d4af67343ba350a713a3",
+  "previousVersion": "v0.1.122",
+  "previousSha": "f80d5ab0184d75752e730261316cfe467df60c64",
+  "runId": 41070446048,
+  "attempt": 2,
+  "outcome": "success",
+  "failureClass": null,
+  "merges": [
+    {
+      "sha": "e7b7986a8f0712a2647b6bf79ad40220e9e1c71d",
+      "committedAt": "2026-10-30T06:29:27+00:00",
+      "subject": "Target OTA releases from published store runtimes (#3104)"
+    },
+    {
+      "sha": "4faae4a5dfb7671386ef7989606232c613123bcc",
+      "committedAt": "2026-10-30T10:59:27+00:00",
+      "subject": "Let the nightly prompt replay call OpenRouter through a Squire grant (#3106)"
+    },
+    {
+      "sha": "e20fb93ade55d09b4a75f6c309e7c3c170b16119",
+      "committedAt": "2026-10-30T13:23:27+00:00",
+      "subject": "Give connected AI apps the Beeline agent tools, except wallet spending and host grants (#3095)"
+    },
+    {
+      "sha": "d673be8c99dc1ab0c3723e27bea85e66b3822571",
+      "committedAt": "2026-10-30T14:01:19+00:00",
+      "subject": "Protect corner checkout ownership and preserve adb launcher routing (#3109)"
+    },
+    {
+      "sha": "288e78a52eb039240051840b1fb464b3708553c2",
+      "committedAt": "2026-10-30T14:06:08+00:00",
+      "subject": "Fix dictation fallback when native recognition returns no text (#3112)"
+    },
+    {
+      "sha": "20b57da54c53bb8fbb74d4af67343ba350a713a3",
+      "committedAt": "2026-10-30T14:06:29+00:00",
+      "subject": "Keep changing command polls out of the repeated-call guard (#3110)"
+    }
+  ],
+  "ota": {
+    "branch": "production",
+    "targets": [],
+    "promotedAt": null,
+    "fixToPhoneSeconds": null
+  },
+  "ownerReceipt": {
+    "state": "not-configured"
+  },
+  "stages": [
+    {
+      "job": "initialize",
+      "conclusion": "success",
+      "startedAt": "2026-10-30T14:17:33Z",
+      "completedAt": "2026-10-30T14:18:06Z",
+      "seconds": 33
+    },
+    {
+      "job": "server",
+      "conclusion": "success",
+      "startedAt": "2026-10-30T14:18:08Z",
+      "completedAt": "2026-10-30T14:24:37Z",
+      "seconds": 389
+    },
+    {
+      "job": "HELPER BUILD (darwin-arm64)",
+      "conclusion": "success",
+      "startedAt": "2026-10-30T14:18:24Z",
+      "completedAt": "2026-10-30T14:27:56Z",
+      "seconds": 572
+    },
+    {
+      "job": "HELPER BUILD (darwin-x64)",
+      "conclusion": "success",
+      "startedAt": "2026-10-30T14:23:12Z",
+      "completedAt": "2026-10-30T14:33:41Z",
+      "seconds": 629
+    },
+    {
+      "job": "website",
+      "conclusion": "success",
+      "startedAt": "2026-10-30T14:24:05Z",
+      "completedAt": "2026-10-30T14:27:16Z",
+      "seconds": 191
+    },
+    {
+      "job": "helper",
+      "conclusion": "success",
+      "startedAt": "2026-10-30T14:33:46Z",
+      "completedAt": "2026-10-30T14:39:44Z",
+      "seconds": 358
+    },
+    {
+      "job": "mobile_ota",
+      "conclusion": "success",
+      "startedAt": "2026-10-30T17:49:24Z",
+      "completedAt": "2026-10-30T17:51:43Z",
+      "seconds": 139
+    },
+    {
+      "job": "release_result",
+      "conclusion": "success",
+      "startedAt": "2026-10-30T17:51:47Z",
+      "completedAt": "2026-10-30T17:53:30Z",
+      "seconds": 103
+    },
+    {
+      "job": "mobile_native_android",
+      "conclusion": "skipped",
+      "startedAt": "2026-10-30T17:57:39Z",
+      "completedAt": "2026-10-30T14:18:06Z",
+      "seconds": 0
+    },
+    {
+      "job": "release_proof",
+      "conclusion": "skipped",
+      "startedAt": "2026-10-30T17:57:44Z",
+      "completedAt": "2026-10-30T14:18:06Z",
+      "seconds": 0
+    },
+    {
+      "job": "mobile_native_ios",
+      "conclusion": "skipped",
+      "startedAt": "2026-10-30T17:58:20Z",
+      "completedAt": "2026-10-30T14:18:06Z",
+      "seconds": 0
+    },
+    {
+      "job": "mobile_ota_after_native",
+      "conclusion": "skipped",
+      "startedAt": "2026-10-30T17:58:27Z",
+      "completedAt": "2026-10-30T14:18:06Z",
+      "seconds": 0
+    },
+    {
+      "job": "desktop_installers",
+      "conclusion": "skipped",
+      "startedAt": "2026-10-30T17:58:54Z",
+      "completedAt": "2026-10-30T17:49:22Z",
+      "seconds": 0
+    }
+  ],
+  "recordedAt": "2026-10-30T18:52:26.115Z"
+}
