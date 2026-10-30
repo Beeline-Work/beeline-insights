@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-30T03:50:19.571Z",
+ "updatedAt": "2026-10-30T13:18:51.795Z",
  "loops": [
   {
    "slug": "ci",
@@ -102,7 +102,7 @@
         },
         {
          "date": "2026-10-21",
-         "value": 2.4
+         "value": 1.1
         },
         {
          "date": "2026-10-22",
@@ -185,43 +185,43 @@
    ],
    "log": [
     {
-     "date": "2026-10-23",
-     "text": "50 PRs merged, average 1.5 h from open to merge; median 0.7 h."
-    },
-    {
-     "date": "2026-10-24",
-     "text": "42 PRs merged, average 1.9 h from open to merge; median 1.5 h."
-    },
-    {
-     "date": "2026-10-25",
-     "text": "40 PRs merged, average 1.6 h from open to merge; median 1.0 h."
-    },
-    {
-     "date": "2026-10-26",
-     "text": "21 PRs merged, average 4.2 h from open to merge; median 3.2 h."
-    },
-    {
-     "date": "2026-10-27",
-     "text": "28 PRs merged, average 2.1 h from open to merge; median 1.1 h."
+     "date": "2026-10-29",
+     "text": "53 PRs merged, average 1.5 h from open to merge; median 0.5 h."
     },
     {
      "date": "2026-10-28",
      "text": "24 PRs merged, average 1.4 h from open to merge; median 1.1 h."
     },
     {
-     "date": "2026-10-29",
-     "text": "52 PRs merged, average 1.5 h from open to merge; median 0.6 h."
+     "date": "2026-10-27",
+     "text": "28 PRs merged, average 2.1 h from open to merge; median 1.1 h."
+    },
+    {
+     "date": "2026-10-26",
+     "text": "21 PRs merged, average 4.2 h from open to merge; median 3.2 h."
+    },
+    {
+     "date": "2026-10-25",
+     "text": "40 PRs merged, average 1.6 h from open to merge; median 1.0 h."
+    },
+    {
+     "date": "2026-10-24",
+     "text": "42 PRs merged, average 1.9 h from open to merge; median 1.5 h."
+    },
+    {
+     "date": "2026-10-23",
+     "text": "50 PRs merged, average 1.5 h from open to merge; median 0.7 h."
     }
    ]
   },
   {
    "slug": "prompt",
    "name": "Prompt loop",
-   "what": "Replays the saved cases weekly (Sundays 04:00) and tries removing one prompt paragraph without losing passes.",
+   "what": "Replays the saved cases nightly on two models, audits the failures, and keeps one targeted prompt fix only when it raises the pass rate.",
    "metric": "Median tokens per agent turn, thousands (weekly replay)",
    "unit": "k",
    "direction": "lower",
-   "note": "Saved-case pass rate 53% (39 of 73) on Oct 25. Pass-rate floor not decided yet.",
+   "note": "Target: both models (gpt-6-luna and gpt-6.1-sol) pass at least 90% of saved cases. Last measured: 53% (39 of 73) on Oct 25. Runs nightly until both reach 90%, then weekly.",
    "charts": [
     {
      "series": [
@@ -243,8 +243,23 @@
      ]
     }
    ],
-   "fixes": [],
+   "fixes": [
+    {
+     "date": "2026-10-30",
+     "title": "Run the prompt replay nightly on two models with audited fixes",
+     "url": "https://github.com/Beeline-Work/beeline/pull/3103"
+    },
+    {
+     "date": "2026-10-30",
+     "title": "Let the nightly replay call OpenRouter through a capped key pass",
+     "url": "https://github.com/Beeline-Work/beeline/pull/3106"
+    }
+   ],
    "log": [
+    {
+     "date": "2026-10-30",
+     "text": "First nightly run (04:00) audited the failing cases and wrote one prompt fix, but the replay stopped after about 60 calls, so no pass rate. The fix that lets the replay finish on its own merged at 06:59; tonight's 04:00 run is the first full one."
+    },
     {
      "date": "2026-10-25",
      "text": "Weekly replay: 39 of 73 cases passed (53%), median 8.9k tokens per turn. Removal of one paragraph rejected: 6 cases got worse."
@@ -262,7 +277,7 @@
    "metric": "Error lines per 1,000 server requests",
    "unit": "",
    "direction": "lower",
-   "note": "No data yet: log collection began Oct 30 03:05 UTC. The first point comes from the first log walk.",
+   "note": "Log collection began Oct 30 03:05 UTC. The first full 24-hour window closes Oct 31 03:05 UTC, so the first point comes from the Oct 31 morning log walk.",
    "charts": [
     {
      "series": [
@@ -285,7 +300,6 @@
    "metric": "New P0 bugs per day, 7-day average",
    "unit": "",
    "direction": "lower",
-   "note": "No data yet: past triage runs did not mark P0. Counting starts with the next 07:00 triage run.",
    "charts": [
     {
      "series": [
@@ -293,13 +307,23 @@
        "key": "value",
        "label": "P0 per day",
        "style": "solid",
-       "points": []
+       "points": [
+        {
+         "date": "2026-10-30",
+         "value": 0.0
+        }
+       ]
       }
      ]
     }
    ],
    "fixes": [],
-   "log": []
+   "log": [
+    {
+     "date": "2026-10-30",
+     "text": "First P0 count: 0 new P0 bugs today. The 07:00 run put 9 agent-reported problems on the card (none blocks a person) and the owner approved all; 4 fix corners opened."
+    }
+   ]
   },
   {
    "slug": "workspace-walk",
@@ -317,6 +341,22 @@
        "label": "Day 2 retention",
        "style": "solid",
        "points": [
+        {
+         "date": "2026-09-26",
+         "value": 0.0
+        },
+        {
+         "date": "2026-09-27",
+         "value": 50.0
+        },
+        {
+         "date": "2026-09-28",
+         "value": 25.0
+        },
+        {
+         "date": "2026-09-29",
+         "value": 20.0
+        },
         {
          "date": "2026-09-30",
          "value": 16.7
@@ -483,7 +523,7 @@
    "log": [
     {
      "date": "2026-10-28",
-     "text": "2 new people signed up; 0 came back the next day. 7-day rolling: 1 of 12."
+     "text": "2 new outside people signed up; 0 came back the next day. 7-day rolling: 1 of 12."
     },
     {
      "date": "2026-10-26",
@@ -518,7 +558,7 @@
    "metric": "",
    "unit": "ms",
    "direction": "lower",
-   "note": "No data yet: the nightly run moved to Jellybean in the latency-rig corner. Its first result fills these charts.",
+   "note": "No measurement yet: both runs so far stopped before timing anything. Limits: every action under 150 ms, every page open under 450 ms.",
    "limits": [
     {
      "series": "actions",
@@ -567,8 +607,19 @@
      ]
     }
    ],
-   "fixes": [],
-   "log": []
+   "fixes": [
+    {
+     "date": "2026-10-30",
+     "title": "Reuse one adb shell for latency clock calibration",
+     "url": "https://github.com/Beeline-Work/beeline/pull/3105"
+    }
+   ],
+   "log": [
+    {
+     "date": "2026-10-30",
+     "text": "00:05 run stopped before measuring: the phone clock calibration was too uncertain. A fix for that merged at 00:59. The 03:00 run started but has not reported a result."
+    }
+   ]
   }
  ]
 }
