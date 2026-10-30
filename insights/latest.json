@@ -75,23 +75,23 @@
     "steps": [
       {
         "label": "Signed up",
-        "count": 14
+        "count": 11
       },
       {
         "label": "Joined a workspace",
-        "count": 14
+        "count": 11
       },
       {
         "label": "Sent a first message",
-        "count": 9
+        "count": 6
       },
       {
         "label": "Got an agent reply",
-        "count": 9
+        "count": 6
       },
       {
         "label": "Active in the last 7 days",
-        "count": 9
+        "count": 6
       }
     ],
     "biggestDrop": {
