@@ -1,0 +1,25 @@
+{
+  "id": "next-day-return",
+  "kind": "problem",
+  "rank": 2,
+  "date": "2026-10-29",
+  "title": "New people who write to an agent do not come back the next day",
+  "peoplePerDay": 1,
+  "trend": "flat",
+  "cause": "product",
+  "stage": "return-day-1",
+  "source": "funnel",
+  "scope": "people",
+  "lastHit": "2026-10-29",
+  "whatHappens": "A new person signs up, writes to an agent and gets a reply, then does not open Beeline again the next day.",
+  "fixes": [
+    { "date": "2026-10-28", "text": "Starter agent sends one check-in the next morning", "state": "failed" },
+    { "date": "2026-10-29", "text": "Next-morning check-in is no longer refused as more than one plain message", "state": "shipped" }
+  ],
+  "observations": [
+    { "date": "2026-10-27", "text": "1 of 16 new people who wrote came back the next day over 28 days." },
+    { "date": "2026-10-28", "text": "0 of 8 new people who wrote last week came back the next day; the week before 1 of 7." },
+    { "date": "2026-10-29", "text": "1 of 8 came back the next day this week; the week before 1 of 9." },
+    { "date": "2026-10-29", "text": "First next-morning check-in run sent 0 of 3. The server refused each post. The fix is live; the next run is 30 Oct 09:00." }
+  ]
+}
