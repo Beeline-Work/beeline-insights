@@ -1,0 +1,20 @@
+{
+  "id": "fixes-without-live-repro",
+  "kind": "problem",
+  "rank": 13,
+  "date": "2026-10-30",
+  "title": "Fixes merge without reproducing the real reported event, so the problem comes back and is fixed again",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "process",
+  "stage": "build",
+  "source": "velocity",
+  "scope": "single",
+  "whatHappens": "A fix merges on unit tests alone, the same agent reports arrive after release, and a new corner redoes the fix.",
+  "fixes": [
+    {"date": "2026-10-30", "text": "Briefs for problems that came back require a failing test built from the real reported event (corner-gate-fixes, corner-checkout-emulator)", "state": "tried"}
+  ],
+  "observations": [
+    {"date": "2026-10-30", "text": "Velocity, 29-30 Oct: 3 fixes merged on 29 Oct (#3059, #3060, #3077) failed within 12 h; repeat reviews are on a third fix, idle alerts on a second. About 10 PR-hours of redo."}
+  ]
+}
