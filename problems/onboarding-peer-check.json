@@ -1,12 +1,22 @@
 {
   "id": "onboarding-peer-check",
   "kind": "problem",
+  "rank": 4,
+  "date": "2026-10-30",
   "title": "Onboarding promises two agents check each other, but one agent works alone and the second is not involved",
-  "peoplePerDay": 1,
+  "peoplePerDay": 0,
   "trend": "flat",
   "cause": "prompt",
   "stage": "first-reply",
   "source": "feedback",
-  "date": "2026-10-29",
-  "rank": 2
+  "scope": "people",
+  "lastHit": "2026-10-28",
+  "whatHappens": "Onboarding tells the person a second agent will check the work, then only one agent works and nothing checks it.",
+  "fixes": [],
+  "observations": [
+    {
+      "date": "2026-10-30",
+      "text": "Feedback and walk: no new reports in the last 24 hours. No fix on main or in an open PR; still waiting for the 09:00 card."
+    }
+  ]
 }

@@ -1,0 +1,21 @@
+{
+  "id": "report-poisoned-by-failed-uploads",
+  "kind": "problem",
+  "rank": 12,
+  "date": "2026-10-30",
+  "title": "An earlier failed upload keeps blocking later reports",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "feedback",
+  "scope": "single",
+  "whatHappens": "An agent's report is refused again and again because an upload it tried earlier from a temp folder failed.",
+  "fixes": [],
+  "observations": [
+    {
+      "date": "2026-10-30",
+      "text": "Feedback: 5 reports from 3 agents. Uploads from temp paths fail, and the failed attempt stays in the report check after later good uploads."
+    }
+  ]
+}

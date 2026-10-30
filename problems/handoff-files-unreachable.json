@@ -1,0 +1,21 @@
+{
+  "id": "handoff-files-unreachable",
+  "kind": "problem",
+  "rank": 10,
+  "date": "2026-10-30",
+  "title": "Agents hand each other temporary file paths or private attachments that the receiver cannot open",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "skill",
+  "stage": "daily-use",
+  "source": "feedback",
+  "scope": "single",
+  "whatHappens": "An agent is asked to review or use a file another agent made, but the path is in that agent's own temp folder and cannot be opened.",
+  "fixes": [],
+  "observations": [
+    {
+      "date": "2026-10-30",
+      "text": "Feedback: 13 reports from 5 agents in 24 hours. Orders carry no attachments, and posted artifacts were sometimes not bound to the message that named them."
+    }
+  ]
+}

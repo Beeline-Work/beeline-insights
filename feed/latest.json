@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T03:11:30.174Z",
+  "generatedAt": "2026-10-30T11:12:02.674Z",
   "insights": {
     "generatedAt": "2026-10-29T13:10:00.000Z",
     "window": {
@@ -417,18 +417,6 @@
       ]
     },
     {
-      "id": "squire-connect-dead-end",
-      "kind": "problem",
-      "title": "A new person asked agents to connect a store and outside AI tools, but no Trusty Squire connect card appeared, so setup stopped",
-      "peoplePerDay": 1,
-      "trend": "up",
-      "cause": "server",
-      "stage": "connect-service",
-      "source": "feedback",
-      "date": "2026-10-29",
-      "rank": 1
-    },
-    {
       "id": "next-day-return",
       "kind": "problem",
       "rank": 2,
@@ -474,124 +462,273 @@
       ]
     },
     {
+      "id": "squire-connect-dead-end",
+      "kind": "problem",
+      "rank": 3,
+      "date": "2026-10-30",
+      "title": "A new person asked agents to connect a store and outside AI tools, but no Trusty Squire connect card appeared, so setup stopped",
+      "peoplePerDay": 0,
+      "trend": "down",
+      "cause": "server",
+      "stage": "connect-service",
+      "source": "feedback",
+      "scope": "people",
+      "lastHit": "2026-10-28",
+      "fixHeldSince": "2026-10-29",
+      "whatHappens": "The person asks an agent to connect a tool; the agent says Trusty Squire is missing but no card to connect it appears, so setup stops.",
+      "fixes": [
+        {
+          "date": "2026-10-29",
+          "text": "Offer one Connect Squire card and the Rooms connector steps (#3036), released in v0.1.118",
+          "state": "shipped"
+        },
+        {
+          "date": "2026-10-29",
+          "text": "Fix the Trusty Squire connect flow on Android (#3062), released in v0.1.118",
+          "state": "shipped"
+        }
+      ],
+      "observations": [
+        {
+          "date": "2026-10-30",
+          "text": "Feedback: no new human or agent reports since v0.1.118 (29 Oct 18:41 UTC). The 12 earlier items were closed as fixed. The person has not tried again, so the fix is not yet proven by use."
+        }
+      ]
+    },
+    {
       "id": "onboarding-peer-check",
       "kind": "problem",
+      "rank": 4,
+      "date": "2026-10-30",
       "title": "Onboarding promises two agents check each other, but one agent works alone and the second is not involved",
-      "peoplePerDay": 1,
+      "peoplePerDay": 0,
       "trend": "flat",
       "cause": "prompt",
       "stage": "first-reply",
       "source": "feedback",
-      "date": "2026-10-29",
-      "rank": 2
+      "scope": "people",
+      "lastHit": "2026-10-28",
+      "whatHappens": "Onboarding tells the person a second agent will check the work, then only one agent works and nothing checks it.",
+      "fixes": [],
+      "observations": [
+        {
+          "date": "2026-10-30",
+          "text": "Feedback and walk: no new reports in the last 24 hours. No fix on main or in an open PR; still waiting for the 09:00 card."
+        }
+      ]
+    },
+    {
+      "id": "idle-corner-alert-loop",
+      "kind": "regression",
+      "rank": 5,
+      "date": "2026-10-30",
+      "title": "The idle-corner alert fires on corners that are waiting for a reviewer or checks",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "server",
+      "stage": "daily-use",
+      "source": "feedback",
+      "scope": "single",
+      "whatHappens": "An agent working in a corner is told its corner is idle and blocked while its pull request checks are still running.",
+      "regression": {
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3077",
+        "report": "Idle alerts and stale not-green wakes continue after the fix; the gate keeps stale check state"
+      },
+      "fixes": [
+        {
+          "date": "2026-10-29",
+          "text": "Suppress idle alerts on pending heads and queued reviews (#3028)",
+          "state": "failed"
+        },
+        {
+          "date": "2026-10-30",
+          "text": "Show held corners as review while checks run (#3077), released v0.1.121",
+          "state": "failed"
+        }
+      ],
+      "observations": [
+        {
+          "date": "2026-10-30",
+          "text": "Feedback: 17 agent reports from 5 agents in 24 hours, 6 after v0.1.121 (30 Oct 02:21 UTC). Two show the gate keeping a check as pending after GitHub finished it; review wakes also cite a stale not-green head (4 reports)."
+        }
+      ]
     },
     {
       "id": "review-repeats-after-fail",
       "kind": "regression",
+      "rank": 6,
+      "date": "2026-10-30",
       "title": "A reviewer is woken again for the same unchanged head after reporting FAIL or blocked",
       "peoplePerDay": 0,
       "trend": "flat",
       "cause": "server",
       "stage": "daily-use",
       "source": "feedback",
+      "scope": "single",
+      "whatHappens": "A reviewer who already failed a pull request is asked to review the same unchanged head again.",
       "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2994",
-        "report": "The same-head fix shipped, but repeats continue after FAIL and blocked reports"
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3059",
+        "report": "Same-head review dispatch still follows a FAIL report after the fix shipped"
       },
-      "date": "2026-10-29",
-      "rank": 3
-    },
-    {
-      "id": "idle-corner-alert-loop",
-      "kind": "regression",
-      "title": "The idle-corner alert fires on corners that are waiting for a reviewer or checks",
-      "peoplePerDay": 0,
-      "trend": "flat",
-      "cause": "server",
-      "stage": "daily-use",
-      "source": "feedback",
-      "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3000",
-        "report": "Alerts kept firing during pending checks; a further fix shipped today and needs a day to confirm"
-      },
-      "date": "2026-10-29",
-      "rank": 4
+      "fixes": [
+        {
+          "date": "2026-10-29",
+          "text": "Stop repeated blocked reviews (#3059), released v0.1.118",
+          "state": "failed"
+        }
+      ],
+      "observations": [
+        {
+          "date": "2026-10-30",
+          "text": "Feedback: 5 reports from 2 agents; a same-head redispatch after FAIL at 19:24 UTC came after v0.1.118, and a dispatch arrived while the PR still listed required proof as incomplete."
+        }
+      ]
     },
     {
       "id": "emulator-adb-mismatch",
-      "kind": "problem",
-      "title": "In corners, the Android emulator port and the adb server do not match, so agents see no device or the wrong one",
-      "peoplePerDay": 0,
-      "trend": "up",
-      "cause": "server",
-      "stage": "daily-use",
-      "source": "feedback",
-      "date": "2026-10-29",
-      "rank": 5
-    },
-    {
-      "id": "freeze-check-overbroad",
       "kind": "regression",
-      "title": "A check on System message wording still fails on changes that do not touch any wording",
+      "rank": 7,
+      "date": "2026-10-30",
+      "title": "In corners, the Android emulator port and the adb server do not match, so agents see no device or the wrong one",
       "peoplePerDay": 0,
       "trend": "flat",
       "cause": "server",
       "stage": "daily-use",
       "source": "feedback",
+      "scope": "single",
+      "whatHappens": "An agent boots the corner emulator, but adb lists no device, or a different port than the brief names.",
       "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3027",
-        "report": "The narrowing fix merged, but four refactors were flagged after it"
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3060",
+        "report": "Port and adb server still disagree after the lease fix shipped"
       },
-      "date": "2026-10-29",
-      "rank": 6
-    },
-    {
-      "id": "shared-browser-android-input",
-      "kind": "problem",
-      "title": "On Android, typing in the shared browser does not reach the page, and the activity log credits the owner wrongly",
-      "peoplePerDay": 0,
-      "trend": "up",
-      "cause": "client",
-      "stage": "connect-service",
-      "source": "feedback",
-      "date": "2026-10-29",
-      "rank": 7
+      "fixes": [
+        {
+          "date": "2026-10-29",
+          "text": "Point corner adb at its lease (#3060), released v0.1.118",
+          "state": "failed"
+        }
+      ],
+      "observations": [
+        {
+          "date": "2026-10-30",
+          "text": "Feedback: 9 reports from 4 agents; 5 after v0.1.118, including a private adb server port the tooling never reports."
+        }
+      ]
     },
     {
       "id": "model-capacity-no-retry",
-      "kind": "problem",
+      "kind": "regression",
+      "rank": 8,
+      "date": "2026-10-30",
       "title": "When the model is at capacity, the turn ends with no retry and the corner sits idle",
-      "peoplePerDay": 0,
-      "trend": "up",
-      "cause": "server",
-      "stage": "daily-use",
-      "source": "feedback",
-      "date": "2026-10-29",
-      "rank": 8
-    },
-    {
-      "id": "revise-corner-schema",
-      "kind": "problem",
-      "title": "Revising a corner brief fails because the tool hides required fields and the commander order id",
       "peoplePerDay": 0,
       "trend": "flat",
       "cause": "server",
       "stage": "daily-use",
       "source": "feedback",
-      "date": "2026-10-29",
-      "rank": 9
+      "scope": "single",
+      "whatHappens": "A reviewer turn ends on a model-at-capacity error with no verdict, and the corner is flagged idle.",
+      "regression": {
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3059",
+        "report": "Reviewer turns still end on capacity with no retry after the fix shipped"
+      },
+      "fixes": [
+        {
+          "date": "2026-10-29",
+          "text": "Retry model capacity failures (#3059), released v0.1.118",
+          "state": "failed"
+        }
+      ],
+      "observations": [
+        {
+          "date": "2026-10-30",
+          "text": "Feedback: 3 reports from 3 agents on the reviewer path, 30 Oct 03:23 to 04:07 UTC, all after v0.1.118."
+        }
+      ]
     },
     {
-      "id": "booking-outside-limits",
+      "id": "merge-handoff-after-merge",
       "kind": "problem",
-      "title": "An agent booked outside the person's time and price limits and could not cancel",
+      "rank": 9,
+      "date": "2026-10-30",
+      "title": "Merge gate and ready-to-land handoffs still offer landing for pull requests already merged",
       "peoplePerDay": 0,
-      "trend": "down",
-      "cause": "unknown",
+      "trend": "flat",
+      "cause": "server",
       "stage": "daily-use",
-      "source": "walk",
-      "date": "2026-10-29",
-      "rank": 10
+      "source": "feedback",
+      "scope": "single",
+      "whatHappens": "An agent is told a pull request is ready to land, then the merge tool says it is already merged or the corner is closed.",
+      "fixes": [],
+      "observations": [
+        {
+          "date": "2026-10-30",
+          "text": "Feedback: 7 reports from 2 agents, 29 Oct 12:26 to 30 Oct 03:48 UTC. No fix on main or in an open PR."
+        }
+      ]
+    },
+    {
+      "id": "handoff-files-unreachable",
+      "kind": "problem",
+      "rank": 10,
+      "date": "2026-10-30",
+      "title": "Agents hand each other temporary file paths or private attachments that the receiver cannot open",
+      "peoplePerDay": 0,
+      "trend": "flat",
+      "cause": "skill",
+      "stage": "daily-use",
+      "source": "feedback",
+      "scope": "single",
+      "whatHappens": "An agent is asked to review or use a file another agent made, but the path is in that agent's own temp folder and cannot be opened.",
+      "fixes": [],
+      "observations": [
+        {
+          "date": "2026-10-30",
+          "text": "Feedback: 13 reports from 5 agents in 24 hours. Orders carry no attachments, and posted artifacts were sometimes not bound to the message that named them."
+        }
+      ]
+    },
+    {
+      "id": "workflow-timeout-required-fields",
+      "kind": "problem",
+      "rank": 11,
+      "date": "2026-10-30",
+      "title": "Workflow steps refuse their own timeout outcome because they demand the success fields",
+      "peoplePerDay": 0,
+      "trend": "flat",
+      "cause": "server",
+      "stage": "daily-use",
+      "source": "feedback",
+      "scope": "single",
+      "whatHappens": "An agent tries to end a stuck workflow step with timeout, and the step refuses because success-only fields are missing.",
+      "fixes": [],
+      "observations": [
+        {
+          "date": "2026-10-30",
+          "text": "Feedback: 5 reports from 2 agents, 30 Oct 01:26 to 03:54 UTC. Rebind also cannot recover a role while the run waits on a gate."
+        }
+      ]
+    },
+    {
+      "id": "report-poisoned-by-failed-uploads",
+      "kind": "problem",
+      "rank": 12,
+      "date": "2026-10-30",
+      "title": "An earlier failed upload keeps blocking later reports",
+      "peoplePerDay": 0,
+      "trend": "flat",
+      "cause": "server",
+      "stage": "daily-use",
+      "source": "feedback",
+      "scope": "single",
+      "whatHappens": "An agent's report is refused again and again because an upload it tried earlier from a temp folder failed.",
+      "fixes": [],
+      "observations": [
+        {
+          "date": "2026-10-30",
+          "text": "Feedback: 5 reports from 3 agents. Uploads from temp paths fail, and the failed attempt stays in the report check after later good uploads."
+        }
+      ]
     }
   ],
   "walk": [

@@ -1,0 +1,21 @@
+{
+  "id": "workflow-timeout-required-fields",
+  "kind": "problem",
+  "rank": 11,
+  "date": "2026-10-30",
+  "title": "Workflow steps refuse their own timeout outcome because they demand the success fields",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "feedback",
+  "scope": "single",
+  "whatHappens": "An agent tries to end a stuck workflow step with timeout, and the step refuses because success-only fields are missing.",
+  "fixes": [],
+  "observations": [
+    {
+      "date": "2026-10-30",
+      "text": "Feedback: 5 reports from 2 agents, 30 Oct 01:26 to 03:54 UTC. Rebind also cannot recover a role while the run waits on a gate."
+    }
+  ]
+}

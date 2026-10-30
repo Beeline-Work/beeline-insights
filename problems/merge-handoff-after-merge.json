@@ -1,0 +1,21 @@
+{
+  "id": "merge-handoff-after-merge",
+  "kind": "problem",
+  "rank": 9,
+  "date": "2026-10-30",
+  "title": "Merge gate and ready-to-land handoffs still offer landing for pull requests already merged",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "feedback",
+  "scope": "single",
+  "whatHappens": "An agent is told a pull request is ready to land, then the merge tool says it is already merged or the corner is closed.",
+  "fixes": [],
+  "observations": [
+    {
+      "date": "2026-10-30",
+      "text": "Feedback: 7 reports from 2 agents, 29 Oct 12:26 to 30 Oct 03:48 UTC. No fix on main or in an open PR."
+    }
+  ]
+}

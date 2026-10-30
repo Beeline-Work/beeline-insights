@@ -1,16 +1,36 @@
 {
   "id": "idle-corner-alert-loop",
   "kind": "regression",
+  "rank": 5,
+  "date": "2026-10-30",
   "title": "The idle-corner alert fires on corners that are waiting for a reviewer or checks",
   "peoplePerDay": 0,
-  "trend": "flat",
+  "trend": "up",
   "cause": "server",
   "stage": "daily-use",
   "source": "feedback",
+  "scope": "single",
+  "whatHappens": "An agent working in a corner is told its corner is idle and blocked while its pull request checks are still running.",
   "regression": {
-    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3000",
-    "report": "Alerts kept firing during pending checks; a further fix shipped today and needs a day to confirm"
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3077",
+    "report": "Idle alerts and stale not-green wakes continue after the fix; the gate keeps stale check state"
   },
-  "date": "2026-10-29",
-  "rank": 4
+  "fixes": [
+    {
+      "date": "2026-10-29",
+      "text": "Suppress idle alerts on pending heads and queued reviews (#3028)",
+      "state": "failed"
+    },
+    {
+      "date": "2026-10-30",
+      "text": "Show held corners as review while checks run (#3077), released v0.1.121",
+      "state": "failed"
+    }
+  ],
+  "observations": [
+    {
+      "date": "2026-10-30",
+      "text": "Feedback: 17 agent reports from 5 agents in 24 hours, 6 after v0.1.121 (30 Oct 02:21 UTC). Two show the gate keeping a check as pending after GitHub finished it; review wakes also cite a stale not-green head (4 reports)."
+    }
+  ]
 }
