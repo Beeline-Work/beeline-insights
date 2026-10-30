@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-10-29T13:10:00.000Z",
+  "generatedAt": "2026-10-30T13:10:00.000Z",
   "window": {
-    "from": "2026-10-22",
-    "through": "2026-10-28"
+    "from": "2026-10-23",
+    "through": "2026-10-29"
   },
   "errors": {
-    "total": 97,
-    "changePct": -97.7,
+    "total": 101,
+    "changePct": -97.6,
     "areas": [
       {
         "area": "Other",
-        "count": 35
+        "count": 37
       },
       {
         "area": "Phone and web app",
@@ -18,58 +18,58 @@
       },
       {
         "area": "Database",
-        "count": 12
+        "count": 14
       },
       {
         "area": "GitHub",
         "count": 9
       },
       {
-        "area": "Notifications",
+        "area": "Connected apps",
         "count": 9
       },
       {
-        "area": "Connected apps",
-        "count": 7
+        "area": "Notifications",
+        "count": 8
       },
       {
         "area": "Voice",
-        "count": 3
+        "count": 2
       }
     ],
-    "lead": "Errors fell to 97 from 4,134 the week before, because the helper restart loop ended on 2026-10-22; aborted requests are the largest single issue at 32."
+    "lead": "Errors stayed low at 101, against 4,138 the week before, which still included the helper restart loop that ended on 2026-10-22. Aborted requests are the largest single issue at 31."
   },
   "feedback": {
-    "total": 1471,
+    "total": 1576,
     "people": 5,
-    "agents": 1466,
+    "agents": 1571,
     "areas": [
       {
         "area": "Corner tools",
-        "count": 89
-      },
-      {
-        "area": "Commands and grants",
-        "count": 47
-      },
-      {
-        "area": "Reading and search",
-        "count": 46
-      },
-      {
-        "area": "Connected apps",
-        "count": 19
+        "count": 718
       },
       {
         "area": "Android emulator",
-        "count": 10
+        "count": 114
+      },
+      {
+        "area": "Connected apps",
+        "count": 107
+      },
+      {
+        "area": "Commands and grants",
+        "count": 85
+      },
+      {
+        "area": "Reading and search",
+        "count": 64
       },
       {
         "area": "Other",
-        "count": 1260
+        "count": 488
       }
     ],
-    "lead": "Reports rose to 1,471 from 1,067 the week before; corner tools are the largest named area at 89. People filed 5."
+    "lead": "Reports rose to 1,576 from 1,179 the week before. Corner tools are the largest area at 718. People filed 5."
   },
   "journey": {
     "steps": [
@@ -101,11 +101,11 @@
     "state": "measured"
   },
   "velocity": {
-    "hoursLost": 27,
+    "hoursLost": 10,
     "items": [
       {
-        "label": "PRs waited overnight for a person after their last commit",
-        "hours": 27
+        "label": "Fixes merged without reproducing the live problem and had to be redone",
+        "hours": 10
       }
     ]
   },
