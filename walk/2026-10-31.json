@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-31",
+  "source": "workspace walk 259675fb",
+  "counts": [
+    {
+      "goal": "run-task",
+      "friction": "gave-up",
+      "count": 1
+    }
+  ]
+}

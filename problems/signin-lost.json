@@ -2,7 +2,7 @@
   "id": "signin-lost",
   "kind": "problem",
   "rank": 1,
-  "date": "2026-10-30",
+  "date": "2026-10-31",
   "title": "New phone users tap Google or GitHub but never get signed in",
   "peoplePerDay": 2,
   "trend": "flat",
@@ -58,6 +58,10 @@
     {
       "date": "2026-10-30",
       "text": "Sign-in log, outside, 22-30 Oct: 13 installs logged a cancel; 11 tapped again and 2 got in. A cancel is mostly a failed return that people retry, not a choice to leave. 29 Oct (23 tapped) includes our own emulator tests. Changes."
+    },
+    {
+      "date": "2026-10-31",
+      "text": "Sign-in log, outside, 31 Oct (through 23:00 UTC): 0 installs opened sign-in or tapped a provider. The 29 Oct fixes saw only 1 outside sign-in (30 Oct) since they shipped, so they stay untested. Says nothing new about the cause."
     }
   ]
 }

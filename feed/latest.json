@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T23:07:44.759Z",
+  "generatedAt": "2026-10-31T23:09:04.713Z",
   "insights": {
     "generatedAt": "2026-10-31T13:15:00.000Z",
     "window": {
@@ -401,7 +401,7 @@
       "id": "signin-lost",
       "kind": "problem",
       "rank": 1,
-      "date": "2026-10-30",
+      "date": "2026-10-31",
       "title": "New phone users tap Google or GitHub but never get signed in",
       "peoplePerDay": 2,
       "trend": "flat",
@@ -457,6 +457,10 @@
         {
           "date": "2026-10-30",
           "text": "Sign-in log, outside, 22-30 Oct: 13 installs logged a cancel; 11 tapped again and 2 got in. A cancel is mostly a failed return that people retry, not a choice to leave. 29 Oct (23 tapped) includes our own emulator tests. Changes."
+        },
+        {
+          "date": "2026-10-31",
+          "text": "Sign-in log, outside, 31 Oct (through 23:00 UTC): 0 installs opened sign-in or tapped a provider. The 29 Oct fixes saw only 1 outside sign-in (30 Oct) since they shipped, so they stay untested. Says nothing new about the cause."
         }
       ]
     },
@@ -496,7 +500,7 @@
       "id": "next-day-return",
       "kind": "problem",
       "rank": 2,
-      "date": "2026-10-30",
+      "date": "2026-10-31",
       "title": "New people who write to an agent do not come back the next day",
       "peoplePerDay": 1,
       "trend": "up",
@@ -542,6 +546,14 @@
         {
           "date": "2026-10-30",
           "text": "Walk 30 Oct: 2 of 3 new signups in the window were team test accounts the team filter misses, so outside counts here may be high. The 1 real new person came back 3 hours later the same day after a game was built."
+        },
+        {
+          "date": "2026-10-31",
+          "text": "Check-in table and walk 259675fb, outside, 31 Oct: first check-in went to the 1 due writer (30 Oct) at 13:00 UTC by Android push; email status unconfigured (production has no email key). 0 messages in the next 10 hours. Changes: first test, no return yet."
+        },
+        {
+          "date": "2026-10-31",
+          "text": "Walk 259675fb: after the check-in posted, its turn ended failed because the closing reply hit the one-check-in guard, leaving a Working placeholder in progress. Bug for 07:00 triage; the message itself was delivered."
         }
       ]
     },
@@ -842,6 +854,17 @@
     }
   ],
   "walk": [
+    {
+      "date": "2026-10-31",
+      "source": "workspace walk 259675fb",
+      "counts": [
+        {
+          "goal": "run-task",
+          "friction": "gave-up",
+          "count": 1
+        }
+      ]
+    },
     {
       "date": "2026-10-30",
       "source": "workspace walk 484ddfcb",

@@ -2,7 +2,7 @@
   "id": "next-day-return",
   "kind": "problem",
   "rank": 2,
-  "date": "2026-10-30",
+  "date": "2026-10-31",
   "title": "New people who write to an agent do not come back the next day",
   "peoplePerDay": 1,
   "trend": "up",
@@ -48,6 +48,14 @@
     {
       "date": "2026-10-30",
       "text": "Walk 30 Oct: 2 of 3 new signups in the window were team test accounts the team filter misses, so outside counts here may be high. The 1 real new person came back 3 hours later the same day after a game was built."
+    },
+    {
+      "date": "2026-10-31",
+      "text": "Check-in table and walk 259675fb, outside, 31 Oct: first check-in went to the 1 due writer (30 Oct) at 13:00 UTC by Android push; email status unconfigured (production has no email key). 0 messages in the next 10 hours. Changes: first test, no return yet."
+    },
+    {
+      "date": "2026-10-31",
+      "text": "Walk 259675fb: after the check-in posted, its turn ended failed because the closing reply hit the one-check-in guard, leaving a Working placeholder in progress. Bug for 07:00 triage; the message itself was delivered."
     }
   ]
 }
