@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30T14:57:44.561Z",
+  "updatedAt": "2026-10-31T07:43:09.020Z",
   "loops": [
     {
       "slug": "ci",
@@ -801,7 +801,7 @@
       "metric": "Emulator nightly set: Room opens (4 new-message cases and a warm open) and sending a message. Average = typical time across cases; slowest = slowest case at its slow end (95th percentile).",
       "unit": "ms",
       "direction": "lower",
-      "note": "Measured 6 local emulator cases on 2026-10-30; FAIL. Per-case p50/p95 are measured native-frame timings, not production phone timings.",
+      "note": "No usable capture on 2026-10-31; no latency point added. Next measurement: the next scheduled 03:00 Eastern run.",
       "limits": [
         {
           "series": "actions",
@@ -1091,6 +1091,10 @@
         }
       ],
       "log": [
+        {
+          "date": "2026-10-31",
+          "text": "No usable capture on 2026-10-31; no latency point added. Next measurement: the next scheduled 03:00 Eastern run. Run night-2026-10-31-CBaLRW. Capture skipped or produced no measured cases"
+        },
         {
           "date": "2026-10-30",
           "text": "Measured 6 local emulator cases on 2026-10-30; FAIL. Per-case p50/p95 are measured native-frame timings, not production phone timings. Run night-2026-10-30-EG85he. route//beeline/chat/[channelId]/push-unseen-1: budget exceeded (553 ms; budget <450 ms); route//beeline/chat/[channelId]/push-unseen-5: budget exceeded (734 ms; budget <450 ms); route//beeline/chat/[channelId]/room-list-unseen-1: budget exceeded (428 ms; budget <450 ms); route//beeline/chat/[channelId]/room-list-unseen-5: budget exceeded (558 ms; budget <450 ms); route//beeline/chat/[channelId]/warm: budget exceeded (506 ms; budget <450 ms); tap/send-text/warm: budget exceeded (178 ms; budget <150 ms)"
