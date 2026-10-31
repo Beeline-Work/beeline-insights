@@ -34,9 +34,9 @@
   },
   "startedOn": "2026-10-26",
   "progress": {
-    "value": 0.1502,
-    "samples": 759,
-    "asOf": "2026-10-29"
+    "value": 0.1456,
+    "samples": 1236,
+    "asOf": "2026-10-31"
   },
   "verdict": null
 }

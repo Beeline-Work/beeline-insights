@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T15:49:41.631Z",
+  "generatedAt": "2026-10-31T23:07:44.759Z",
   "insights": {
     "generatedAt": "2026-10-31T13:15:00.000Z",
     "window": {
@@ -159,9 +159,9 @@
       },
       "startedOn": "2026-10-28",
       "progress": {
-        "value": 0.2206,
-        "samples": 476,
-        "asOf": "2026-10-29"
+        "value": 0.234,
+        "samples": 953,
+        "asOf": "2026-10-31"
       },
       "verdict": null
     },
@@ -239,9 +239,9 @@
       },
       "startedOn": "2026-10-26",
       "progress": {
-        "value": 0.1502,
-        "samples": 759,
-        "asOf": "2026-10-29"
+        "value": 0.1456,
+        "samples": 1236,
+        "asOf": "2026-10-31"
       },
       "verdict": null
     }
@@ -975,6 +975,10 @@
         {
           "source": "snapshot",
           "text": "Of 14 people who signed up in the 7 days to 2026-10-29, 8 sent a message within 24 hours and 1 came back the next day (7%, from 6% on 2026-10-27)."
+        },
+        {
+          "source": "snapshot",
+          "text": "Of 10 people who signed up in the 7 days to 2026-10-30, 5 sent a message within 24 hours and 1 came back the next day (10%). The first next-morning check-in was delivered by push on 2026-10-31; no reply within 10 hours."
         }
       ],
       "against": [
@@ -984,7 +988,7 @@
       "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-30",
+      "lastReviewed": "2026-10-31",
       "status": "open",
       "track": {
         "label": "New people who send a first message within 24 hours",
@@ -1171,6 +1175,11 @@
             "date": "2026-10-29",
             "value": 0.5714,
             "samples": 14
+          },
+          {
+            "date": "2026-10-30",
+            "value": 0.5,
+            "samples": 10
           }
         ]
       }
@@ -1225,7 +1234,7 @@
       "falsifiedIf": "Identical-failure repeats are under 5% of reports once the watchdog setup is fixed.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-30",
+      "lastReviewed": "2026-10-31",
       "status": "open",
       "track": {
         "label": "Share of reports that repeat the same failure",
@@ -1412,6 +1421,11 @@
             "date": "2026-10-29",
             "value": 0.0019,
             "samples": 1576
+          },
+          {
+            "date": "2026-10-30",
+            "value": 0.002,
+            "samples": 1491
           }
         ]
       }
@@ -1466,7 +1480,7 @@
       "falsifiedIf": "Fewer than 20 of 50 sampled reports trace to a stored value that differs from GitHub.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-30",
+      "lastReviewed": "2026-10-31",
       "status": "open",
       "track": {
         "label": "Share of reports about stale PR and check state",
@@ -1653,6 +1667,11 @@
             "date": "2026-10-29",
             "value": 0.0666,
             "samples": 1576
+          },
+          {
+            "date": "2026-10-30",
+            "value": 0.0523,
+            "samples": 1491
           }
         ]
       }
@@ -1715,7 +1734,7 @@
       "falsifiedIf": "Most sampled environment reports are infrastructure faults that a capability list would not prevent.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-30",
+      "lastReviewed": "2026-10-31",
       "status": "open",
       "track": {
         "label": "Share of reports about what a place allows",
@@ -1902,6 +1921,11 @@
             "date": "2026-10-29",
             "value": 0.2284,
             "samples": 1576
+          },
+          {
+            "date": "2026-10-30",
+            "value": 0.2294,
+            "samples": 1491
           }
         ]
       }
@@ -1946,6 +1970,10 @@
         {
           "source": "problems",
           "text": "History and memory search still refuse arguments without naming the allowed values: 7 reports from 3 agents, after a fix that covered only one field. Keyword class at 13.5% in the 7 days to 2026-10-26, flat."
+        },
+        {
+          "source": "feedback",
+          "text": "Keyword class at 17.0% of 1,491 reports in the 7 days to 2026-10-30, up from 14.9% on 2026-10-29. Strengthens."
         }
       ],
       "against": [
@@ -1955,7 +1983,7 @@
       "falsifiedIf": "In a sample of 50 mismatch reports, most limits were already stated in the schema.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-30",
+      "lastReviewed": "2026-10-31",
       "status": "open",
       "track": {
         "label": "Share of reports about unstated tool limits",
@@ -2142,6 +2170,11 @@
             "date": "2026-10-29",
             "value": 0.1485,
             "samples": 1576
+          },
+          {
+            "date": "2026-10-30",
+            "value": 0.1697,
+            "samples": 1491
           }
         ]
       }
@@ -2197,13 +2230,14 @@
         }
       ],
       "against": [
-        "Some reports may be one bug reported many times by the same corner."
+        "Some reports may be one bug reported many times by the same corner.",
+        "Keyword class fell to 16.0% of 1,491 reports in the 7 days to 2026-10-30, from 18.0% on 2026-10-29, after the 31 Oct 02:33 deploy of per-case wake fixes. Still above the 12% prediction line."
       ],
       "prediction": "Per-case fixes will not lower the share of wake reports below 12% in the next 14 days.",
       "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-30",
+      "lastReviewed": "2026-10-31",
       "status": "open",
       "track": {
         "label": "Share of reports about wakes and dispatch",
@@ -2390,6 +2424,11 @@
             "date": "2026-10-29",
             "value": 0.1796,
             "samples": 1576
+          },
+          {
+            "date": "2026-10-30",
+            "value": 0.1596,
+            "samples": 1491
           }
         ]
       }
