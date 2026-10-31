@@ -1,0 +1,22 @@
+{
+  "peoplePerDay": 0,
+  "date": "2026-10-31",
+  "stage": "corner-work",
+  "source": "feedback",
+  "scope": "single",
+  "id": "cleanup-commands-refused",
+  "kind": "problem",
+  "rank": 6,
+  "trend": "up",
+  "cause": "skill",
+  "lastHit": "2026-10-31",
+  "title": "Agents told to clean their scratch space cannot, because every removal command is refused",
+  "whatHappens": "An agent over its scratch budget runs a cleanup; the command guard refuses rm, and scratch_status is missing in some sessions.",
+  "fixes": [],
+  "observations": [
+    {
+      "date": "2026-10-31",
+      "text": "Feedback: 8 reports from 3 agents, 10-30 16:57 to 10-31 10:56 UTC, in scratch, review and proof cleanup. No fix on main."
+    }
+  ]
+}

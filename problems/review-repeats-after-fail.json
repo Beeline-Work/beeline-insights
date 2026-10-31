@@ -1,8 +1,8 @@
 {
   "id": "review-repeats-after-fail",
   "kind": "regression",
-  "rank": 6,
-  "date": "2026-10-30",
+  "rank": 10,
+  "date": "2026-10-31",
   "title": "A reviewer is woken again for the same unchanged head after reporting FAIL or blocked",
   "peoplePerDay": 0,
   "trend": "flat",
@@ -20,12 +20,22 @@
       "date": "2026-10-29",
       "text": "Stop repeated blocked reviews (#3059), released v0.1.118",
       "state": "failed"
+    },
+    {
+      "date": "2026-10-30",
+      "text": "Repair repeat reviews (#3111), deployed 10-31 06:33 UTC; the release record failed",
+      "state": "shipped"
     }
   ],
   "observations": [
     {
       "date": "2026-10-30",
       "text": "Feedback: 5 reports from 2 agents; a same-head redispatch after FAIL at 19:24 UTC came after v0.1.118, and a dispatch arrived while the PR still listed required proof as incomplete."
+    },
+    {
+      "date": "2026-10-31",
+      "text": "Feedback: 11 reports from 2 agents; 10 before #3111 reached production at 06:33 UTC, 1 after (08:18 UTC, a repeat order on a conflicting head). Verify on 11-01."
     }
-  ]
+  ],
+  "lastHit": "2026-10-31"
 }

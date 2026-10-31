@@ -1,8 +1,8 @@
 {
   "id": "onboarding-peer-check",
   "kind": "problem",
-  "rank": 4,
-  "date": "2026-10-30",
+  "rank": 1,
+  "date": "2026-10-31",
   "title": "Onboarding promises two agents check each other, but one agent works alone and the second is not involved",
   "peoplePerDay": 0,
   "trend": "flat",

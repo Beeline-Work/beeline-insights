@@ -1,0 +1,32 @@
+{
+  "peoplePerDay": 0,
+  "date": "2026-10-31",
+  "stage": "corner-work",
+  "source": "feedback",
+  "scope": "single",
+  "id": "corner-checkout-busy",
+  "kind": "regression",
+  "rank": 2,
+  "trend": "up",
+  "cause": "server",
+  "lastHit": "2026-10-31",
+  "title": "A reviewer or worker cannot start because another agent holds the corner checkout",
+  "whatHappens": "A review wake or an order fails with checkout in use by another agent, instead of using a separate review tree or waiting its turn.",
+  "regression": {
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3109",
+    "report": "Checkout ownership shipped in v0.1.123, and review wakes and orders now fail while another agent holds the checkout"
+  },
+  "fixes": [
+    {
+      "date": "2026-10-30",
+      "text": "Protect corner checkout ownership (#3109), released v0.1.123; it caused this refusal",
+      "state": "failed"
+    }
+  ],
+  "observations": [
+    {
+      "date": "2026-10-31",
+      "text": "Feedback: 14 reports from 4 agents, 10-30 18:30 to 10-31 10:36 UTC, all after v0.1.123; 3 after the 06:33 deploy. Orders to the worker fail outright while the reviewer finishes its turn."
+    }
+  ]
+}

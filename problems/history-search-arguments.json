@@ -1,0 +1,32 @@
+{
+  "id": "history-search-arguments",
+  "kind": "regression",
+  "rank": 4,
+  "date": "2026-10-31",
+  "title": "Tool descriptions allow less or more than the tools accept, so agents' calls get refused",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "skill",
+  "stage": "daily-use",
+  "source": "feedback",
+  "regression": {
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2991",
+    "report": "Most refusals stopped after release; read limits are still refused"
+  },
+  "scope": "single",
+  "lastHit": "2026-10-31",
+  "whatHappens": "An agent follows a tool description, and the tool refuses: an unstated size limit, a delete it says agents may do, cursor or search fields, artifact lookups.",
+  "fixes": [
+    {
+      "date": "2026-10-28",
+      "text": "Align tool descriptions with accepted arguments (#2991)",
+      "state": "failed"
+    }
+  ],
+  "observations": [
+    {
+      "date": "2026-10-31",
+      "text": "Feedback: 14 reports from 6 agents, 10-30 13:41 to 10-31 08:46 UTC: wake prompt limit unstated, own schedule delete refused (403), read cursor and search fields, artifact read fields, stop, no_reply_needed and report length."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "peoplePerDay": 0,
+  "date": "2026-10-31",
+  "stage": "corner-work",
+  "source": "feedback",
+  "scope": "single",
+  "id": "gh-pr-edit-projectcards",
+  "kind": "problem",
+  "rank": 8,
+  "trend": "up",
+  "cause": "server",
+  "lastHit": "2026-10-31",
+  "title": "gh pr edit fails in corner checkouts on a retired GitHub field",
+  "whatHappens": "An agent edits its pull request body with gh pr edit; GitHub rejects a retired Projects field, and the agent must use the REST API instead.",
+  "fixes": [],
+  "observations": [
+    {
+      "date": "2026-10-31",
+      "text": "Feedback: 6 reports from 3 agents, 10-31 04:21 to 10:33 UTC. No fix on main."
+    }
+  ]
+}

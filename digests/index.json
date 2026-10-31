@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-10-31",
+    "title": "Overnight fixes reached production, but the release did not record itself",
+    "findings": 0,
+    "proposals": 0,
+    "path": "digests/2026-10-31.md"
+  },
+  {
     "date": "2026-10-30",
     "title": "51 changes went live overnight; 3 of yesterday's fixes did not hold",
     "findings": 1,

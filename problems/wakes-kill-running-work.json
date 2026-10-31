@@ -1,0 +1,32 @@
+{
+  "id": "wakes-kill-running-work",
+  "kind": "regression",
+  "rank": 3,
+  "date": "2026-10-31",
+  "title": "Background work started in a turn is killed or lost when the turn ends, the brief changes or the work is handed on",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "feedback",
+  "regression": {
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2892",
+    "report": "Reports continue after v0.1.108, which shipped this fix"
+  },
+  "scope": "single",
+  "lastHit": "2026-10-31",
+  "whatHappens": "An agent starts a long capture or test in the background; at turn end or a brief update the process, its /tmp files or installed packages are gone, with no result recorded.",
+  "fixes": [
+    {
+      "date": "2026-10-25",
+      "text": "Stop repeated wakes from killing a running turn (#2892), released v0.1.108",
+      "state": "failed"
+    }
+  ],
+  "observations": [
+    {
+      "date": "2026-10-31",
+      "text": "Feedback: 14 reports from 4 agents, 10-30 13:21 to 10-31 06:49 UTC: detached processes, /tmp evidence, command handles and installed dependencies lost across turn ends and brief updates. No fix on main."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "freeze-check-overbroad",
+  "kind": "regression",
+  "title": "A check on System message wording still fails on changes that do not touch any wording",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "feedback",
+  "regression": {
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3027",
+    "report": "The narrowing fix merged, but four refactors were flagged after it"
+  },
+  "date": "2026-10-31",
+  "rank": 7,
+  "scope": "single",
+  "lastHit": "2026-10-31",
+  "whatHappens": "A refactor that changes no System wording fails the wording guard, and the agent must update the lock or rework the change.",
+  "fixes": [
+    {
+      "date": "2026-10-29",
+      "text": "Narrow the System wording check (#3027)",
+      "state": "failed"
+    },
+    {
+      "date": "2026-10-31",
+      "text": "Cache the guard's source analysis (#3148); speed only, not a fix for false failures",
+      "state": "shipped"
+    }
+  ],
+  "observations": [
+    {
+      "date": "2026-10-31",
+      "text": "Feedback: 6 reports from 2 agents, 10-30 15:46 to 10-31 06:35 UTC; one after the 06:33 deploy. Moving code or adding a call changes the fingerprint with no wording change."
+    }
+  ]
+}

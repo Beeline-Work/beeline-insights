@@ -1,0 +1,22 @@
+{
+  "peoplePerDay": 0,
+  "date": "2026-10-31",
+  "stage": "corner-work",
+  "source": "feedback",
+  "scope": "single",
+  "id": "stale-order-redelivery",
+  "kind": "problem",
+  "rank": 5,
+  "trend": "up",
+  "cause": "server",
+  "lastHit": "2026-10-31",
+  "title": "Old orders, stale blocked reports and already-answered messages arrive again after the work moved on",
+  "whatHappens": "An agent is woken by an order or report that a newer order, a push or a reply already settled, and acts on the stale one.",
+  "fixes": [],
+  "observations": [
+    {
+      "date": "2026-10-31",
+      "text": "Feedback: 9 reports from 3 agents, 10-30 14:33 to 10-31 07:51 UTC; 2 after the 06:33 deploy that carried the wake-storm fix (#3001). Two were owner messages delivered again after a reply."
+    }
+  ]
+}
