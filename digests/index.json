@@ -1,9 +1,9 @@
 [
   {
     "date": "2026-10-31",
-    "title": "Overnight fixes reached production, but the release did not record itself",
-    "findings": 0,
-    "proposals": 0,
+    "title": "The phone now talks over one live connection; 5 earlier fixes did not hold",
+    "findings": 1,
+    "proposals": 9,
     "path": "digests/2026-10-31.md"
   },
   {

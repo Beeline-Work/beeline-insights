@@ -1,60 +1,60 @@
 {
-  "generatedAt": "2026-10-30T13:10:00.000Z",
+  "generatedAt": "2026-10-31T13:15:00.000Z",
   "window": {
-    "from": "2026-10-23",
-    "through": "2026-10-29"
+    "from": "2026-10-24",
+    "through": "2026-10-30"
   },
   "errors": {
-    "total": 101,
-    "changePct": -97.6,
+    "total": 111,
+    "changePct": -97.3,
     "areas": [
       {
         "area": "Other",
-        "count": 37
-      },
-      {
-        "area": "Phone and web app",
-        "count": 22
-      },
-      {
-        "area": "Database",
-        "count": 14
+        "count": 55
       },
       {
         "area": "GitHub",
-        "count": 9
+        "count": 23
       },
       {
-        "area": "Connected apps",
-        "count": 9
-      },
-      {
-        "area": "Notifications",
-        "count": 8
+        "area": "Database",
+        "count": 12
       },
       {
         "area": "Voice",
-        "count": 2
-      }
-    ],
-    "lead": "Errors stayed low at 101, against 4,138 the week before, which still included the helper restart loop that ended on 2026-10-22. Aborted requests are the largest single issue at 31."
-  },
-  "feedback": {
-    "total": 1576,
-    "people": 5,
-    "agents": 1571,
-    "areas": [
-      {
-        "area": "Corner tools",
-        "count": 718
-      },
-      {
-        "area": "Android emulator",
-        "count": 114
+        "count": 8
       },
       {
         "area": "Connected apps",
-        "count": 107
+        "count": 7
+      },
+      {
+        "area": "Notifications",
+        "count": 4
+      },
+      {
+        "area": "Phone and web app",
+        "count": 2
+      }
+    ],
+    "lead": "Errors stayed low at 111, against 4,071 the week before, which still had the helper restart loop. Aborted requests lead at 30; GitHub outages added 23."
+  },
+  "feedback": {
+    "total": 1491,
+    "people": 5,
+    "agents": 1486,
+    "areas": [
+      {
+        "area": "Corner tools",
+        "count": 622
+      },
+      {
+        "area": "Connected apps",
+        "count": 108
+      },
+      {
+        "area": "Android emulator",
+        "count": 98
       },
       {
         "area": "Commands and grants",
@@ -62,14 +62,14 @@
       },
       {
         "area": "Reading and search",
-        "count": 64
+        "count": 63
       },
       {
         "area": "Other",
-        "count": 488
+        "count": 515
       }
     ],
-    "lead": "Reports rose to 1,576 from 1,179 the week before. Corner tools are the largest area at 718. People filed 5."
+    "lead": "Reports rose to 1,491 from 1,397 the week before. Corner tools are the largest area at 622. People filed 5."
   },
   "journey": {
     "steps": [
@@ -101,11 +101,11 @@
     "state": "measured"
   },
   "velocity": {
-    "hoursLost": 10,
+    "hoursLost": 15,
     "items": [
       {
-        "label": "Fixes merged without reproducing the live problem and had to be redone",
-        "hours": 10
+        "label": "Reviews stalled on a busy corner checkout or repeated on unchanged code",
+        "hours": 15
       }
     ]
   },

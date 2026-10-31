@@ -1,0 +1,28 @@
+{
+  "id": "review-stall-busy-checkout",
+  "rank": 11,
+  "date": "2026-10-31",
+  "title": "Reviews stall for hours because reviewer wakes fail on a busy corner checkout or repeat on unchanged code",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "build",
+  "source": "velocity",
+  "kind": "problem",
+  "scope": "single",
+  "lastHit": "2026-10-30",
+  "whatHappens": "A corner's PR gets no commits for 3-6 hours while reviewer wakes fail with checkout in use or ask again for a verdict on an unchanged head.",
+  "fixes": [
+    {
+      "date": "2026-10-31",
+      "text": "Reviewer gets its own checkout copy and orders wait their turn (morning card item 1, bundled with corner-checkout-busy); needs owner yes",
+      "state": "tried"
+    }
+  ],
+  "observations": [
+    {
+      "date": "2026-10-31",
+      "text": "Velocity 30-31 Oct: 3 PRs (#3115, #3118, #3119) had 3-6 h commit gaps 16:39-21:59 UTC, about 15 PR-hours (7% of 214). 10 feedback reports in that window: checkout in use and same-head re-review."
+    }
+  ]
+}
