@@ -17,12 +17,21 @@
       "date": "2026-10-31",
       "text": "Reviewer gets its own checkout copy and orders wait their turn (morning card item 1, bundled with corner-checkout-busy); needs owner yes",
       "state": "tried"
+    },
+    {
+      "date": "2026-11-01",
+      "text": "Per-agent checkouts merged (#3190, #3207); not live until the next successful release",
+      "state": "tried"
     }
   ],
   "observations": [
     {
       "date": "2026-10-31",
       "text": "Velocity 30-31 Oct: 3 PRs (#3115, #3118, #3119) had 3-6 h commit gaps 16:39-21:59 UTC, about 15 PR-hours (7% of 214). 10 feedback reports in that window: checkout in use and same-head re-review."
+    },
+    {
+      "date": "2026-11-01",
+      "text": "No new stall pattern in the 31 Oct-1 Nov window; fix waits on a release."
     }
   ]
 }

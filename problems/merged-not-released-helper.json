@@ -1,0 +1,28 @@
+{
+  "id": "merged-not-released-helper",
+  "rank": 12,
+  "date": "2026-11-01",
+  "title": "Merged changes sit unreleased for most of a day because releases fail at the helper step",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "process",
+  "stage": "build",
+  "source": "velocity",
+  "kind": "problem",
+  "scope": "single",
+  "lastHit": "2026-11-01",
+  "whatHappens": "Two release attempts in a row fail at the helper step for different causes, so every change merged after the last good release waits for the next nightly.",
+  "fixes": [
+    {
+      "date": "2026-11-01",
+      "text": "Release main now that both helper fixes have merged (morning card item 1); needs owner yes",
+      "state": "tried"
+    }
+  ],
+  "observations": [
+    {
+      "date": "2026-11-01",
+      "text": "31 Oct-1 Nov: 40 merges, 36 not live. 03:07 UTC release hung in the helper smoke test (fix 06:05 UTC). 07:00 UTC release failed the Linux helper build on a new Rust (fix 13:45 UTC). Server, web and phone-update steps passed."
+    }
+  ]
+}

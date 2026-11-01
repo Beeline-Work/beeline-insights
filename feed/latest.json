@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-31T23:09:04.713Z",
+  "generatedAt": "2026-11-01T14:05:15.179Z",
   "insights": {
-    "generatedAt": "2026-10-31T13:15:00.000Z",
+    "generatedAt": "2026-11-01T14:10:00.000Z",
     "window": {
       "from": "2026-10-24",
       "through": "2026-10-30"
@@ -103,11 +103,11 @@
       "state": "measured"
     },
     "velocity": {
-      "hoursLost": 15,
+      "hoursLost": 17,
       "items": [
         {
-          "label": "Reviews stalled on a busy corner checkout or repeated on unchanged code",
-          "hours": 15
+          "label": "Merged changes waited for a release because two release attempts failed at the helper step",
+          "hours": 17
         }
       ]
     },
@@ -317,6 +317,13 @@
     ]
   },
   "digests": [
+    {
+      "date": "2026-11-01",
+      "title": "Nothing new went live: both overnight releases failed at the helper step",
+      "findings": 1,
+      "proposals": 3,
+      "path": "digests/2026-11-01.md"
+    },
     {
       "date": "2026-10-31",
       "title": "The phone now talks over one live connection; 5 earlier fixes did not hold",
@@ -816,12 +823,49 @@
           "date": "2026-10-31",
           "text": "Reviewer gets its own checkout copy and orders wait their turn (morning card item 1, bundled with corner-checkout-busy); needs owner yes",
           "state": "tried"
+        },
+        {
+          "date": "2026-11-01",
+          "text": "Per-agent checkouts merged (#3190, #3207); not live until the next successful release",
+          "state": "tried"
         }
       ],
       "observations": [
         {
           "date": "2026-10-31",
           "text": "Velocity 30-31 Oct: 3 PRs (#3115, #3118, #3119) had 3-6 h commit gaps 16:39-21:59 UTC, about 15 PR-hours (7% of 214). 10 feedback reports in that window: checkout in use and same-head re-review."
+        },
+        {
+          "date": "2026-11-01",
+          "text": "No new stall pattern in the 31 Oct-1 Nov window; fix waits on a release."
+        }
+      ]
+    },
+    {
+      "id": "merged-not-released-helper",
+      "rank": 12,
+      "date": "2026-11-01",
+      "title": "Merged changes sit unreleased for most of a day because releases fail at the helper step",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "process",
+      "stage": "build",
+      "source": "velocity",
+      "kind": "problem",
+      "scope": "single",
+      "lastHit": "2026-11-01",
+      "whatHappens": "Two release attempts in a row fail at the helper step for different causes, so every change merged after the last good release waits for the next nightly.",
+      "fixes": [
+        {
+          "date": "2026-11-01",
+          "text": "Release main now that both helper fixes have merged (morning card item 1); needs owner yes",
+          "state": "tried"
+        }
+      ],
+      "observations": [
+        {
+          "date": "2026-11-01",
+          "text": "31 Oct-1 Nov: 40 merges, 36 not live. 03:07 UTC release hung in the helper smoke test (fix 06:05 UTC). 07:00 UTC release failed the Linux helper build on a new Rust (fix 13:45 UTC). Server, web and phone-update steps passed."
         }
       ]
     },

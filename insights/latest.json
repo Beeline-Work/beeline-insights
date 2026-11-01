@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T13:15:00.000Z",
+  "generatedAt": "2026-11-01T14:10:00.000Z",
   "window": {
     "from": "2026-10-24",
     "through": "2026-10-30"
@@ -101,11 +101,11 @@
     "state": "measured"
   },
   "velocity": {
-    "hoursLost": 15,
+    "hoursLost": 17,
     "items": [
       {
-        "label": "Reviews stalled on a busy corner checkout or repeated on unchanged code",
-        "hours": 15
+        "label": "Merged changes waited for a release because two release attempts failed at the helper step",
+        "hours": 17
       }
     ]
   },
