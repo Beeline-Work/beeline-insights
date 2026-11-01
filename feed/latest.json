@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T16:48:14.357Z",
+  "generatedAt": "2026-11-01T16:53:25.138Z",
   "insights": {
     "generatedAt": "2026-11-01T14:10:00.000Z",
     "window": {
@@ -2417,12 +2417,12 @@
     }
   ],
   "retention": {
-    "generatedAt": "2026-10-31T15:49:38.587Z",
+    "generatedAt": "2026-11-01T16:53:21.942Z",
     "source": "GET /v1/admin/dashboard overview.retention.data.byFirstAgentSource",
     "day": 7,
     "window": {
-      "from": "2026-10-03",
-      "through": "2026-10-23"
+      "from": "2026-10-04",
+      "through": "2026-10-24"
     },
     "cohort": 22,
     "retained": 0,
