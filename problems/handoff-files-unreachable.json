@@ -20,6 +20,11 @@
       "date": "2026-10-31",
       "text": "Make attachments on forwarded reports readable (#3107), released v0.1.126",
       "state": "failed"
+    },
+    {
+      "date": "2026-11-01",
+      "text": "Deliver proof files cited in review handoffs; fix corner opened 1 Nov",
+      "state": "tried"
     }
   ],
   "date": "2026-11-01",

@@ -18,5 +18,11 @@
       "text": "Feedback, 1 Nov 03:44-15:57 UTC: 126 reports from 3 agents, all on helper 0.1.129-0.1.130, none yet on 0.1.132. No fix on main or open PR. New."
     }
   ],
-  "fixes": []
+  "fixes": [
+    {
+      "date": "2026-11-01",
+      "text": "Make silent turn ends succeed and stop re-wakes; fix corner opened 1 Nov",
+      "state": "tried"
+    }
+  ]
 }

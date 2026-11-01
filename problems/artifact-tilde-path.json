@@ -18,5 +18,11 @@
       "text": "Friction and feedback, outside, 1 Nov: 1 person, 2 reports at 10:46 UTC; the attach path resolver never expands ~/. Not fixed on main; no open PR. New."
     }
   ],
-  "fixes": []
+  "fixes": [
+    {
+      "date": "2026-11-01",
+      "text": "Expand the home shortcut in attachment paths; fix corner opened 1 Nov",
+      "state": "tried"
+    }
+  ]
 }

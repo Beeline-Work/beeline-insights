@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T16:53:25.138Z",
+  "generatedAt": "2026-11-01T20:24:05.808Z",
   "insights": {
     "generatedAt": "2026-11-01T14:10:00.000Z",
     "window": {
@@ -402,7 +402,13 @@
           "text": "Friction and feedback, outside, 1 Nov: 1 person, 2 reports at 10:46 UTC; the attach path resolver never expands ~/. Not fixed on main; no open PR. New."
         }
       ],
-      "fixes": []
+      "fixes": [
+        {
+          "date": "2026-11-01",
+          "text": "Expand the home shortcut in attachment paths; fix corner opened 1 Nov",
+          "state": "tried"
+        }
+      ]
     },
     {
       "id": "signin-lost",
@@ -574,7 +580,13 @@
           "text": "Feedback, 1 Nov 03:44-15:57 UTC: 126 reports from 3 agents, all on helper 0.1.129-0.1.130, none yet on 0.1.132. No fix on main or open PR. New."
         }
       ],
-      "fixes": []
+      "fixes": [
+        {
+          "date": "2026-11-01",
+          "text": "Make silent turn ends succeed and stop re-wakes; fix corner opened 1 Nov",
+          "state": "tried"
+        }
+      ]
     },
     {
       "id": "review-deps-install-refused",
@@ -600,7 +612,13 @@
           "text": "Feedback, 31 Oct 18:57 to 1 Nov 16:21 UTC: 19 reports from 2 agents, repeating on helper 0.1.133. Came with shared dependency mounts (#3188, #3192). No fix on main or open PR."
         }
       ],
-      "fixes": []
+      "fixes": [
+        {
+          "date": "2026-11-01",
+          "text": "Reuse or install review dependencies on shared mounts; fix corner opened 1 Nov",
+          "state": "tried"
+        }
+      ]
     },
     {
       "id": "revise-corner-schema",
@@ -630,6 +648,11 @@
           "date": "2026-10-31",
           "text": "Accept copied briefs in revise_corner (#3172)",
           "state": "failed"
+        },
+        {
+          "date": "2026-11-01",
+          "text": "Accept forwarded human messages and commander orders as revision approval; fix corner opened 1 Nov",
+          "state": "tried"
         }
       ],
       "observations": [
@@ -665,6 +688,11 @@
           "date": "2026-10-31",
           "text": "Make attachments on forwarded reports readable (#3107), released v0.1.126",
           "state": "failed"
+        },
+        {
+          "date": "2026-11-01",
+          "text": "Deliver proof files cited in review handoffs; fix corner opened 1 Nov",
+          "state": "tried"
         }
       ],
       "date": "2026-11-01",
@@ -776,6 +804,11 @@
           "date": "2026-10-31",
           "text": "REST fallback for gh pr edit (#3177)",
           "state": "failed"
+        },
+        {
+          "date": "2026-11-01",
+          "text": "Repair the gh pr edit REST fallback (PR number, stdin body, private temp files); fix corner opened 1 Nov",
+          "state": "tried"
         }
       ],
       "observations": [
@@ -809,7 +842,13 @@
           "text": "Sentry BEELINE-MOBILE-R, 1 Nov: 13 events in 24h, 28 lifetime, 0 users. Expected refusal: stop sending it, keep the user message."
         }
       ],
-      "fixes": []
+      "fixes": [
+        {
+          "date": "2026-11-01",
+          "text": "Stop sending expected dictation refusals to Sentry; fix corner opened 1 Nov",
+          "state": "tried"
+        }
+      ]
     }
   ],
   "walk": [

@@ -17,6 +17,11 @@
       "date": "2026-10-31",
       "text": "REST fallback for gh pr edit (#3177)",
       "state": "failed"
+    },
+    {
+      "date": "2026-11-01",
+      "text": "Repair the gh pr edit REST fallback (PR number, stdin body, private temp files); fix corner opened 1 Nov",
+      "state": "tried"
     }
   ],
   "observations": [

@@ -26,6 +26,11 @@
       "date": "2026-10-31",
       "text": "Accept copied briefs in revise_corner (#3172)",
       "state": "failed"
+    },
+    {
+      "date": "2026-11-01",
+      "text": "Accept forwarded human messages and commander orders as revision approval; fix corner opened 1 Nov",
+      "state": "tried"
     }
   ],
   "observations": [
