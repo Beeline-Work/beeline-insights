@@ -7,10 +7,10 @@
   "cause": "server",
   "stage": "daily-use",
   "source": "feedback",
-  "date": "2026-10-31",
-  "rank": 9,
+  "date": "2026-11-01",
+  "rank": 5,
   "scope": "single",
-  "lastHit": "2026-10-31",
+  "lastHit": "2026-11-01",
   "whatHappens": "An agent passes back the brief that read returns, or cites a private commander order, and revise_corner refuses it.",
   "regression": {
     "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3024",
@@ -21,12 +21,21 @@
       "date": "2026-10-29",
       "text": "Expose revise_corner's required fields (#3024), released v0.1.117",
       "state": "failed"
+    },
+    {
+      "date": "2026-10-31",
+      "text": "Accept copied briefs in revise_corner (#3172)",
+      "state": "failed"
     }
   ],
   "observations": [
     {
       "date": "2026-10-31",
       "text": "Feedback: 5 reports from 3 agents, 10-30 13:49 to 10-31 06:35 UTC; one after the 06:33 deploy."
+    },
+    {
+      "date": "2026-11-01",
+      "text": "Feedback, 31 Oct 18:51 to 1 Nov 16:16 UTC: 12 reports from 4 agents. #3172 (merged 31 Oct 21:05) fixed copied briefs; reports continue after it, so a citation path remains (forwarded human message, commander order)."
     }
   ]
 }

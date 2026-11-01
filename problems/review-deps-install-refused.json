@@ -1,0 +1,26 @@
+{
+  "id": "review-deps-install-refused",
+  "rank": 4,
+  "kind": "regression",
+  "scope": "single",
+  "title": "Exact-head reviews start without dependencies because installs are refused on shared mounts",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "feedback",
+  "lastHit": "2026-11-01",
+  "regression": {
+    "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3188",
+    "report": "Shared read-only dependency mounts refuse the npm ci the review helper always runs"
+  },
+  "whatHappens": "A reviewer checks a pull request head, the dependency install is refused, and tests cannot run.",
+  "date": "2026-11-01",
+  "observations": [
+    {
+      "date": "2026-11-01",
+      "text": "Feedback, 31 Oct 18:57 to 1 Nov 16:21 UTC: 19 reports from 2 agents, repeating on helper 0.1.133. Came with shared dependency mounts (#3188, #3192). No fix on main or open PR."
+    }
+  ],
+  "fixes": []
+}

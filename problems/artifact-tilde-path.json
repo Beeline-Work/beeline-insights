@@ -1,0 +1,22 @@
+{
+  "id": "artifact-tilde-path",
+  "rank": 1,
+  "kind": "problem",
+  "scope": "people",
+  "title": "An agent cannot post a file whose path starts with the home shortcut",
+  "peoplePerDay": 0,
+  "trend": "flat",
+  "cause": "client",
+  "stage": "daily-use",
+  "source": "friction",
+  "lastHit": "2026-11-01",
+  "whatHappens": "A person asks their agent for a file; the agent saves it under ~/ and the post fails as file not found, so the person gets no file.",
+  "date": "2026-11-01",
+  "observations": [
+    {
+      "date": "2026-11-01",
+      "text": "Friction and feedback, outside, 1 Nov: 1 person, 2 reports at 10:46 UTC; the attach path resolver never expands ~/. Not fixed on main; no open PR. New."
+    }
+  ],
+  "fixes": []
+}

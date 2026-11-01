@@ -1,0 +1,22 @@
+{
+  "id": "silent-end-rewakes",
+  "rank": 3,
+  "kind": "problem",
+  "scope": "single",
+  "title": "Ending a turn silently fails and wakes the agent again with nothing to do",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "client",
+  "stage": "daily-use",
+  "source": "feedback",
+  "lastHit": "2026-11-01",
+  "whatHappens": "An agent with nothing to say ends its turn silently; the call fails when run in the background, and the agent is woken again in a loop.",
+  "date": "2026-11-01",
+  "observations": [
+    {
+      "date": "2026-11-01",
+      "text": "Feedback, 1 Nov 03:44-15:57 UTC: 126 reports from 3 agents, all on helper 0.1.129-0.1.130, none yet on 0.1.132. No fix on main or open PR. New."
+    }
+  ],
+  "fixes": []
+}

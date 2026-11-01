@@ -1,6 +1,6 @@
 {
   "id": "merged-not-released-helper",
-  "rank": 12,
+  "rank": 8,
   "date": "2026-11-01",
   "title": "Merged changes sit unreleased for most of a day because releases fail at the helper step",
   "peoplePerDay": 0,
@@ -17,12 +17,21 @@
       "date": "2026-11-01",
       "text": "Release main now that both helper fixes have merged (morning card item 1); needs owner yes",
       "state": "tried"
+    },
+    {
+      "date": "2026-11-01",
+      "text": "Smoke the built helper package before publish; slow npm listing only warns",
+      "state": "tried"
     }
   ],
   "observations": [
     {
       "date": "2026-11-01",
       "text": "31 Oct-1 Nov: 40 merges, 36 not live. 03:07 UTC release hung in the helper smoke test (fix 06:05 UTC). 07:00 UTC release failed the Linux helper build on a new Rust (fix 13:45 UTC). Server, web and phone-update steps passed."
+    },
+    {
+      "date": "2026-11-01",
+      "text": "Release issues 3203, 3208, 3210, 3216, 3217: helper step fails on npm listing wait, Rust toolchain and native runtime compare. Helper 0.1.132 published but npm listed it 17 minutes late. Fix in flight (helper-smoke-tarball corner)."
     }
   ]
 }

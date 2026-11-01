@@ -1,8 +1,8 @@
 {
   "id": "review-repeats-after-fail",
   "kind": "regression",
-  "rank": 10,
-  "date": "2026-10-31",
+  "rank": 7,
+  "date": "2026-11-01",
   "title": "A reviewer is woken again for the same unchanged head after reporting FAIL or blocked",
   "peoplePerDay": 0,
   "trend": "flat",
@@ -35,7 +35,11 @@
     {
       "date": "2026-10-31",
       "text": "Feedback: 11 reports from 2 agents; 10 before #3111 reached production at 06:33 UTC, 1 after (08:18 UTC, a repeat order on a conflicting head). Verify on 11-01."
+    },
+    {
+      "date": "2026-11-01",
+      "text": "Verify 1 Nov: repeat reviews of an unchanged head had 0 hits since v0.1.126. The idle-corner alert while CI or orders are live still fires: 12 reports, last 16:05 UTC, after #3200 (released 1 Nov 07:00). Idle path failed."
     }
   ],
-  "lastHit": "2026-10-31"
+  "lastHit": "2026-11-01"
 }
