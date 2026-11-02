@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T20:24:05.808Z",
+  "generatedAt": "2026-11-02T00:08:43.597Z",
   "insights": {
     "generatedAt": "2026-11-01T14:10:00.000Z",
     "window": {
@@ -159,9 +159,9 @@
       },
       "startedOn": "2026-10-28",
       "progress": {
-        "value": 0.234,
-        "samples": 953,
-        "asOf": "2026-10-31"
+        "value": 0.1925,
+        "samples": 1382,
+        "asOf": "2026-11-01"
       },
       "verdict": null
     },
@@ -239,9 +239,9 @@
       },
       "startedOn": "2026-10-26",
       "progress": {
-        "value": 0.1456,
-        "samples": 1236,
-        "asOf": "2026-10-31"
+        "value": 0.2691,
+        "samples": 1665,
+        "asOf": "2026-11-01"
       },
       "verdict": null
     }
@@ -474,6 +474,10 @@
         {
           "date": "2026-10-31",
           "text": "Sign-in log, outside, 31 Oct (through 23:00 UTC): 0 installs opened sign-in or tapped a provider. The 29 Oct fixes saw only 1 outside sign-in (30 Oct) since they shipped, so they stay untested. Says nothing new about the cause."
+        },
+        {
+          "date": "2026-11-01",
+          "text": "Sign-in log and accounts, outside, 31 Oct-1 Nov: 0 new outside accounts; 2 new phone installs opened, 1 saw sign-in, 0 tapped. 21 sign-in attempts with no install or platform made no account. The 29 Oct fixes stay untested; the loss is now before sign-in. Changes."
         }
       ]
     },
@@ -484,12 +488,12 @@
       "date": "2026-10-31",
       "title": "New people who write to an agent do not come back the next day",
       "peoplePerDay": 1,
-      "trend": "up",
+      "trend": "down",
       "cause": "product",
       "stage": "return-day-1",
       "source": "funnel",
       "scope": "people",
-      "lastHit": "2026-10-29",
+      "lastHit": "2026-10-31",
       "whatHappens": "A new person signs up, writes to an agent and gets a reply, then does not open Beeline again the next day.",
       "fixes": [
         {
@@ -535,6 +539,10 @@
         {
           "date": "2026-10-31",
           "text": "Walk 259675fb: after the check-in posted, its turn ended failed because the closing reply hit the one-check-in guard, leaving a Working placeholder in progress. Bug for 07:00 triage; the message itself was delivered."
+        },
+        {
+          "date": "2026-11-01",
+          "text": "Value SQL 9998086, outside: 0 of 5 new writers (25-31 Oct) came back the next day; week before 1 of 10. The first check-in recipient did not come back on 31 Oct, a full day after the push. Fewer people lost only because fewer people wrote. Corroborates."
         }
       ]
     },
@@ -585,6 +593,43 @@
           "date": "2026-11-01",
           "text": "Make silent turn ends succeed and stop re-wakes; fix corner opened 1 Nov",
           "state": "tried"
+        }
+      ]
+    },
+    {
+      "id": "squire-connect-dead-end",
+      "kind": "problem",
+      "rank": 3,
+      "date": "2026-11-01",
+      "title": "A new person asked agents to connect a store and outside AI tools, but no Trusty Squire connect card appeared, so setup stopped",
+      "peoplePerDay": 0,
+      "trend": "flat",
+      "cause": "server",
+      "stage": "connect-service",
+      "source": "feedback",
+      "scope": "people",
+      "lastHit": "2026-11-01",
+      "whatHappens": "The person asks an agent to connect a tool; the agent says Trusty Squire is missing but no card to connect it appears, so setup stops.",
+      "fixes": [
+        {
+          "date": "2026-10-29",
+          "text": "Offer one Connect Squire card and the Rooms connector steps (#3036), released in v0.1.118",
+          "state": "shipped"
+        },
+        {
+          "date": "2026-10-29",
+          "text": "Fix the Trusty Squire connect flow on Android (#3062), released in v0.1.118",
+          "state": "shipped"
+        }
+      ],
+      "observations": [
+        {
+          "date": "2026-10-30",
+          "text": "Feedback: no new human or agent reports since v0.1.118 (29 Oct 18:41 UTC). The 12 earlier items were closed as fixed. The person has not tried again, so the fix is not yet proven by use."
+        },
+        {
+          "date": "2026-11-01",
+          "text": "Walk e9a085a4, outside, 1 Nov: a returning person's welcome video needed Trusty Squire. The install card appeared (fix held) but was not tapped. Both agents blocked on that tap, the run used up its roles in 22 s and went stuck at 10 min. New stage: welcome video. Changes."
         }
       ]
     },
@@ -852,6 +897,27 @@
     }
   ],
   "walk": [
+    {
+      "date": "2026-11-01",
+      "source": "workspace walk e9a085a4",
+      "counts": [
+        {
+          "goal": "connect-service",
+          "friction": "gave-up",
+          "count": 1
+        },
+        {
+          "goal": "run-task",
+          "friction": "wrong-answer",
+          "count": 1
+        },
+        {
+          "goal": "first-message",
+          "friction": "no-reply",
+          "count": 1
+        }
+      ]
+    },
     {
       "date": "2026-10-31",
       "source": "workspace walk 259675fb",
@@ -1201,6 +1267,11 @@
             "date": "2026-10-30",
             "value": 0.5,
             "samples": 10
+          },
+          {
+            "date": "2026-10-31",
+            "value": 0.5,
+            "samples": 10
           }
         ]
       }
@@ -1447,6 +1518,11 @@
             "date": "2026-10-30",
             "value": 0.002,
             "samples": 1491
+          },
+          {
+            "date": "2026-10-31",
+            "value": 0.002,
+            "samples": 1498
           }
         ]
       }
@@ -1693,6 +1769,11 @@
             "date": "2026-10-30",
             "value": 0.0523,
             "samples": 1491
+          },
+          {
+            "date": "2026-10-31",
+            "value": 0.0521,
+            "samples": 1498
           }
         ]
       }
@@ -1947,6 +2028,11 @@
             "date": "2026-10-30",
             "value": 0.2294,
             "samples": 1491
+          },
+          {
+            "date": "2026-10-31",
+            "value": 0.2243,
+            "samples": 1498
           }
         ]
       }
@@ -2196,6 +2282,11 @@
             "date": "2026-10-30",
             "value": 0.1697,
             "samples": 1491
+          },
+          {
+            "date": "2026-10-31",
+            "value": 0.1742,
+            "samples": 1498
           }
         ]
       }
@@ -2450,6 +2541,11 @@
             "date": "2026-10-30",
             "value": 0.1596,
             "samples": 1491
+          },
+          {
+            "date": "2026-10-31",
+            "value": 0.1562,
+            "samples": 1498
           }
         ]
       }

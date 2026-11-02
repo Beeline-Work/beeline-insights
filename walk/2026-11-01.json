@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-01",
+  "source": "workspace walk e9a085a4",
+  "counts": [
+    {
+      "goal": "connect-service",
+      "friction": "gave-up",
+      "count": 1
+    },
+    {
+      "goal": "run-task",
+      "friction": "wrong-answer",
+      "count": 1
+    },
+    {
+      "goal": "first-message",
+      "friction": "no-reply",
+      "count": 1
+    }
+  ]
+}

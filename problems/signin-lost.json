@@ -62,6 +62,10 @@
     {
       "date": "2026-10-31",
       "text": "Sign-in log, outside, 31 Oct (through 23:00 UTC): 0 installs opened sign-in or tapped a provider. The 29 Oct fixes saw only 1 outside sign-in (30 Oct) since they shipped, so they stay untested. Says nothing new about the cause."
+    },
+    {
+      "date": "2026-11-01",
+      "text": "Sign-in log and accounts, outside, 31 Oct-1 Nov: 0 new outside accounts; 2 new phone installs opened, 1 saw sign-in, 0 tapped. 21 sign-in attempts with no install or platform made no account. The 29 Oct fixes stay untested; the loss is now before sign-in. Changes."
     }
   ]
 }

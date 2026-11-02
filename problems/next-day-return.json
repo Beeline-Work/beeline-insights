@@ -5,12 +5,12 @@
   "date": "2026-10-31",
   "title": "New people who write to an agent do not come back the next day",
   "peoplePerDay": 1,
-  "trend": "up",
+  "trend": "down",
   "cause": "product",
   "stage": "return-day-1",
   "source": "funnel",
   "scope": "people",
-  "lastHit": "2026-10-29",
+  "lastHit": "2026-10-31",
   "whatHappens": "A new person signs up, writes to an agent and gets a reply, then does not open Beeline again the next day.",
   "fixes": [
     {
@@ -56,6 +56,10 @@
     {
       "date": "2026-10-31",
       "text": "Walk 259675fb: after the check-in posted, its turn ended failed because the closing reply hit the one-check-in guard, leaving a Working placeholder in progress. Bug for 07:00 triage; the message itself was delivered."
+    },
+    {
+      "date": "2026-11-01",
+      "text": "Value SQL 9998086, outside: 0 of 5 new writers (25-31 Oct) came back the next day; week before 1 of 10. The first check-in recipient did not come back on 31 Oct, a full day after the push. Fewer people lost only because fewer people wrote. Corroborates."
     }
   ]
 }
