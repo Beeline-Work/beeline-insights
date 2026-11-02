@@ -1,75 +1,71 @@
 {
-  "generatedAt": "2026-11-01T14:10:00.000Z",
+  "generatedAt": "2026-11-02T14:05:00.000Z",
   "window": {
-    "from": "2026-10-24",
-    "through": "2026-10-30"
+    "from": "2026-10-26",
+    "through": "2026-11-01"
   },
   "errors": {
-    "total": 111,
-    "changePct": -97.3,
+    "total": 81,
+    "changePct": 55.8,
     "areas": [
       {
-        "area": "Other",
-        "count": 55
-      },
-      {
-        "area": "GitHub",
-        "count": 23
-      },
-      {
         "area": "Database",
-        "count": 12
-      },
-      {
-        "area": "Voice",
-        "count": 8
+        "count": 50
       },
       {
         "area": "Connected apps",
-        "count": 7
-      },
-      {
-        "area": "Notifications",
-        "count": 4
+        "count": 10
       },
       {
         "area": "Phone and web app",
-        "count": 2
-      }
-    ],
-    "lead": "Errors stayed low at 111, against 4,071 the week before, which still had the helper restart loop. Aborted requests lead at 30; GitHub outages added 23."
-  },
-  "feedback": {
-    "total": 1491,
-    "people": 5,
-    "agents": 1486,
-    "areas": [
-      {
-        "area": "Corner tools",
-        "count": 622
+        "count": 5
       },
       {
-        "area": "Connected apps",
-        "count": 108
+        "area": "GitHub",
+        "count": 3
       },
       {
-        "area": "Android emulator",
-        "count": 98
-      },
-      {
-        "area": "Commands and grants",
-        "count": 85
-      },
-      {
-        "area": "Reading and search",
-        "count": 63
+        "area": "Voice",
+        "count": 1
       },
       {
         "area": "Other",
-        "count": 515
+        "count": 12
       }
     ],
-    "lead": "Reports rose to 1,491 from 1,397 the week before. Corner tools are the largest area at 622. People filed 5."
+    "lead": "Errors rose to 81 from 52 the week before. Database lock timeouts and deadlocks lead at 50; their fixes went live on 2 Nov."
+  },
+  "feedback": {
+    "total": 1666,
+    "people": 5,
+    "agents": 1661,
+    "areas": [
+      {
+        "area": "Corner tools",
+        "count": 339
+      },
+      {
+        "area": "Commands and grants",
+        "count": 64
+      },
+      {
+        "area": "Connected apps",
+        "count": 47
+      },
+      {
+        "area": "Reading and search",
+        "count": 31
+      },
+      {
+        "area": "Android emulator",
+        "count": 8
+      },
+      {
+        "area": "Other",
+        "count": 1177
+      }
+    ],
+    "lead": "Reports rose to 1,666 from 1,592 the week before. Silent turn endings drove most of them; that fix went live on 2 Nov. People filed 5."
   },
   "journey": {
     "steps": [
@@ -101,11 +97,11 @@
     "state": "measured"
   },
   "velocity": {
-    "hoursLost": 17,
+    "hoursLost": 61,
     "items": [
       {
-        "label": "Merged changes waited for a release because two release attempts failed at the helper step",
-        "hours": 17
+        "label": "Finished PRs waited to merge after their last commit",
+        "hours": 61
       }
     ]
   },

@@ -1,77 +1,73 @@
 {
-  "generatedAt": "2026-11-02T00:08:43.597Z",
+  "generatedAt": "2026-11-02T14:05:44.055Z",
   "insights": {
-    "generatedAt": "2026-11-01T14:10:00.000Z",
+    "generatedAt": "2026-11-02T14:05:00.000Z",
     "window": {
-      "from": "2026-10-24",
-      "through": "2026-10-30"
+      "from": "2026-10-26",
+      "through": "2026-11-01"
     },
     "errors": {
-      "total": 111,
-      "changePct": -97.3,
+      "total": 81,
+      "changePct": 55.8,
       "areas": [
         {
-          "area": "Other",
-          "count": 55
-        },
-        {
-          "area": "GitHub",
-          "count": 23
-        },
-        {
           "area": "Database",
-          "count": 12
-        },
-        {
-          "area": "Voice",
-          "count": 8
+          "count": 50
         },
         {
           "area": "Connected apps",
-          "count": 7
-        },
-        {
-          "area": "Notifications",
-          "count": 4
+          "count": 10
         },
         {
           "area": "Phone and web app",
-          "count": 2
-        }
-      ],
-      "lead": "Errors stayed low at 111, against 4,071 the week before, which still had the helper restart loop. Aborted requests lead at 30; GitHub outages added 23."
-    },
-    "feedback": {
-      "total": 1491,
-      "people": 5,
-      "agents": 1486,
-      "areas": [
-        {
-          "area": "Corner tools",
-          "count": 622
+          "count": 5
         },
         {
-          "area": "Connected apps",
-          "count": 108
+          "area": "GitHub",
+          "count": 3
         },
         {
-          "area": "Android emulator",
-          "count": 98
-        },
-        {
-          "area": "Commands and grants",
-          "count": 85
-        },
-        {
-          "area": "Reading and search",
-          "count": 63
+          "area": "Voice",
+          "count": 1
         },
         {
           "area": "Other",
-          "count": 515
+          "count": 12
         }
       ],
-      "lead": "Reports rose to 1,491 from 1,397 the week before. Corner tools are the largest area at 622. People filed 5."
+      "lead": "Errors rose to 81 from 52 the week before. Database lock timeouts and deadlocks lead at 50; their fixes went live on 2 Nov."
+    },
+    "feedback": {
+      "total": 1666,
+      "people": 5,
+      "agents": 1661,
+      "areas": [
+        {
+          "area": "Corner tools",
+          "count": 339
+        },
+        {
+          "area": "Commands and grants",
+          "count": 64
+        },
+        {
+          "area": "Connected apps",
+          "count": 47
+        },
+        {
+          "area": "Reading and search",
+          "count": 31
+        },
+        {
+          "area": "Android emulator",
+          "count": 8
+        },
+        {
+          "area": "Other",
+          "count": 1177
+        }
+      ],
+      "lead": "Reports rose to 1,666 from 1,592 the week before. Silent turn endings drove most of them; that fix went live on 2 Nov. People filed 5."
     },
     "journey": {
       "steps": [
@@ -103,11 +99,11 @@
       "state": "measured"
     },
     "velocity": {
-      "hoursLost": 17,
+      "hoursLost": 61,
       "items": [
         {
-          "label": "Merged changes waited for a release because two release attempts failed at the helper step",
-          "hours": 17
+          "label": "Finished PRs waited to merge after their last commit",
+          "hours": 61
         }
       ]
     },
@@ -317,6 +313,13 @@
     ]
   },
   "digests": [
+    {
+      "date": "2026-11-02",
+      "title": "71 changes went live, but every release still ends without a release record",
+      "findings": 1,
+      "proposals": 5,
+      "path": "digests/2026-11-02.md"
+    },
     {
       "date": "2026-11-01",
       "title": "Nothing new went live: both overnight releases failed at the helper step",
@@ -796,7 +799,7 @@
     {
       "id": "merged-not-released-helper",
       "rank": 8,
-      "date": "2026-11-01",
+      "date": "2026-11-02",
       "title": "Merged changes sit unreleased for most of a day because releases fail at the helper step",
       "peoplePerDay": 0,
       "trend": "up",
@@ -805,7 +808,7 @@
       "source": "velocity",
       "kind": "problem",
       "scope": "single",
-      "lastHit": "2026-11-01",
+      "lastHit": "2026-11-02",
       "whatHappens": "Two release attempts in a row fail at the helper step for different causes, so every change merged after the last good release waits for the next nightly.",
       "fixes": [
         {
@@ -827,6 +830,38 @@
         {
           "date": "2026-11-01",
           "text": "Release issues 3203, 3208, 3210, 3216, 3217: helper step fails on npm listing wait, Rust toolchain and native runtime compare. Helper 0.1.132 published but npm listed it 17 minutes late. Fix in flight (helper-smoke-tarball corner)."
+        },
+        {
+          "date": "2026-11-02",
+          "text": "Helper fixes held: 01:57 and 08:50 ET releases delivered server, web, helper and phone updates. New cause: the final release step fails on missing release metadata, so no release record is written and client notices are skipped (5 attempts since v0.1.127). Morning card item 2."
+        }
+      ]
+    },
+    {
+      "id": "finished-prs-wait-to-merge",
+      "rank": 9,
+      "date": "2026-11-02",
+      "title": "Finished PRs wait hours to merge after their last commit",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "process",
+      "stage": "build",
+      "source": "velocity",
+      "kind": "problem",
+      "scope": "single",
+      "lastHit": "2026-11-02",
+      "whatHappens": "PRs with one finished commit sit 1.5 to 3.3 hours, then merge together in a burst, so idle time is 43% of all PR-hours.",
+      "fixes": [
+        {
+          "date": "2026-11-02",
+          "text": "Split each waiting PR's idle time into checks time and review time from check-run timestamps, then target the larger part",
+          "state": "tried"
+        }
+      ],
+      "observations": [
+        {
+          "date": "2026-11-02",
+          "text": "1-2 Nov 09:00-09:00 ET: 71 merges, 140 PR-hours, 61 idle after the last commit. 10 one-commit PRs merged 03:06-03:58 ET after waiting 1.5-3.3 h. Cause not verified."
         }
       ]
     },

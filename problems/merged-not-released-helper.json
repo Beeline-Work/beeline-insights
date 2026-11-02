@@ -1,7 +1,7 @@
 {
   "id": "merged-not-released-helper",
   "rank": 8,
-  "date": "2026-11-01",
+  "date": "2026-11-02",
   "title": "Merged changes sit unreleased for most of a day because releases fail at the helper step",
   "peoplePerDay": 0,
   "trend": "up",
@@ -10,7 +10,7 @@
   "source": "velocity",
   "kind": "problem",
   "scope": "single",
-  "lastHit": "2026-11-01",
+  "lastHit": "2026-11-02",
   "whatHappens": "Two release attempts in a row fail at the helper step for different causes, so every change merged after the last good release waits for the next nightly.",
   "fixes": [
     {
@@ -32,6 +32,10 @@
     {
       "date": "2026-11-01",
       "text": "Release issues 3203, 3208, 3210, 3216, 3217: helper step fails on npm listing wait, Rust toolchain and native runtime compare. Helper 0.1.132 published but npm listed it 17 minutes late. Fix in flight (helper-smoke-tarball corner)."
+    },
+    {
+      "date": "2026-11-02",
+      "text": "Helper fixes held: 01:57 and 08:50 ET releases delivered server, web, helper and phone updates. New cause: the final release step fails on missing release metadata, so no release record is written and client notices are skipped (5 attempts since v0.1.127). Morning card item 2."
     }
   ]
 }

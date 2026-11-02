@@ -1,0 +1,28 @@
+{
+  "id": "finished-prs-wait-to-merge",
+  "rank": 9,
+  "date": "2026-11-02",
+  "title": "Finished PRs wait hours to merge after their last commit",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "process",
+  "stage": "build",
+  "source": "velocity",
+  "kind": "problem",
+  "scope": "single",
+  "lastHit": "2026-11-02",
+  "whatHappens": "PRs with one finished commit sit 1.5 to 3.3 hours, then merge together in a burst, so idle time is 43% of all PR-hours.",
+  "fixes": [
+    {
+      "date": "2026-11-02",
+      "text": "Split each waiting PR's idle time into checks time and review time from check-run timestamps, then target the larger part",
+      "state": "tried"
+    }
+  ],
+  "observations": [
+    {
+      "date": "2026-11-02",
+      "text": "1-2 Nov 09:00-09:00 ET: 71 merges, 140 PR-hours, 61 idle after the last commit. 10 one-commit PRs merged 03:06-03:58 ET after waiting 1.5-3.3 h. Cause not verified."
+    }
+  ]
+}

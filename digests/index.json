@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-11-02",
+    "title": "71 changes went live, but every release still ends without a release record",
+    "findings": 1,
+    "proposals": 5,
+    "path": "digests/2026-11-02.md"
+  },
+  {
     "date": "2026-11-01",
     "title": "Nothing new went live: both overnight releases failed at the helper step",
     "findings": 1,
