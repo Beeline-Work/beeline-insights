@@ -58,6 +58,10 @@
     {
       "source": "snapshot",
       "text": "Of 10 people who signed up in the 7 days to 2026-10-30, 5 sent a message within 24 hours and 1 came back the next day (10%). The first next-morning check-in was delivered by push on 2026-10-31; no reply within 10 hours."
+    },
+    {
+      "source": "snapshot",
+      "text": "Of 9 people who signed up in the 7 days to 2026-11-01, 1 came back the next day (11%, from 10% on 2026-10-30). Fewer sign-ups, same single return."
     }
   ],
   "against": [
@@ -67,7 +71,7 @@
   "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
   "confidence": "medium",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-10-31",
+  "lastReviewed": "2026-11-02",
   "status": "open",
   "track": {
     "label": "New people who send a first message within 24 hours",
@@ -264,6 +268,11 @@
         "date": "2026-10-31",
         "value": 0.5,
         "samples": 10
+      },
+      {
+        "date": "2026-11-01",
+        "value": 0.5556,
+        "samples": 9
       }
     ]
   }

@@ -32,6 +32,10 @@
     {
       "date": "2026-11-01",
       "text": "Walk e9a085a4, outside, 1 Nov: a returning person's welcome video needed Trusty Squire. The install card appeared (fix held) but was not tapped. Both agents blocked on that tap, the run used up its roles in 22 s and went stuck at 10 min. New stage: welcome video. Changes."
+    },
+    {
+      "date": "2026-11-02",
+      "text": "Walk 51058b84, outside, 2 Nov: the welcome-video run that waited on the Squire tap ended failed by its 24 h abandon at 02:02 UTC; the person has not come back since 1 Nov 10:59 UTC. Corroborates."
     }
   ]
 }

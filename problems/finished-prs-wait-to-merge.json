@@ -26,7 +26,11 @@
     },
     {
       "date": "2026-11-02",
-      "text": "Split of 11 waiting PRs (#3278 #3299 #3289 #3305 #3304 #3302 #3300 #3298 #3290 #3288 #3319) from GitHub check-run and merge times: 21.8 h idle after the last commit = 19.8 h until the last pre-merge check finished + 2.0 h waiting after green (median 5 min per PR). Inside the checks span, jobs ran only 4.3 h; for 15.6 h no job was running (jobs waiting to start). No PR had a review; lunchboxfortwo merged all 11; 9 of 11 within 12 min of green. Larger part: CI jobs waiting to start, not review."
+      "text": "Split of 11 waiting PRs (#3278 #3299 #3289 #3305 #3304 #3302 #3300 #3298 #3290 #3288 #3319) from GitHub check-run and merge times: 21.8 h idle after the last commit = 19.8 h until the last pre-merge check finished + 2.0 h waiting after green (median 5 min per PR)."
+    },
+    {
+      "date": "2026-11-02",
+      "text": "Inside the checks span, jobs ran only 4.3 h; for 15.6 h no job was running (jobs waiting to start). No PR had a review; lunchboxfortwo merged all 11; 9 of 11 within 12 min of green. Larger part: CI jobs waiting to start, not review."
     }
   ]
 }

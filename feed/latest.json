@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T14:05:44.055Z",
+  "generatedAt": "2026-11-03T00:11:34.365Z",
   "insights": {
     "generatedAt": "2026-11-02T14:05:00.000Z",
     "window": {
@@ -155,9 +155,9 @@
       },
       "startedOn": "2026-10-28",
       "progress": {
-        "value": 0.1925,
-        "samples": 1382,
-        "asOf": "2026-11-01"
+        "value": 0.1934,
+        "samples": 1608,
+        "asOf": "2026-11-02"
       },
       "verdict": null
     },
@@ -235,9 +235,9 @@
       },
       "startedOn": "2026-10-26",
       "progress": {
-        "value": 0.2691,
-        "samples": 1665,
-        "asOf": "2026-11-01"
+        "value": 0.3009,
+        "samples": 1891,
+        "asOf": "2026-11-02"
       },
       "verdict": null
     }
@@ -419,13 +419,13 @@
       "rank": 1,
       "date": "2026-10-31",
       "title": "New phone users tap Google or GitHub but never get signed in",
-      "peoplePerDay": 2,
-      "trend": "flat",
+      "peoplePerDay": 1,
+      "trend": "down",
       "cause": "client",
       "stage": "signup",
       "source": "funnel",
       "scope": "people",
-      "lastHit": "2026-10-29",
+      "lastHit": "2026-11-02",
       "whatHappens": "The person taps Google or GitHub, leaves for the provider's page, and never comes back to Beeline signed in.",
       "fixes": [
         {
@@ -436,12 +436,12 @@
         {
           "date": "2026-10-29",
           "text": "Android Google sign-in works after leaving the app and returning",
-          "state": "shipped"
+          "state": "failed"
         },
         {
           "date": "2026-10-29",
           "text": "GitHub sign-in is freed when the person leaves the GitHub page",
-          "state": "shipped"
+          "state": "failed"
         },
         {
           "date": "2026-10-29",
@@ -481,6 +481,14 @@
         {
           "date": "2026-11-01",
           "text": "Sign-in log and accounts, outside, 31 Oct-1 Nov: 0 new outside accounts; 2 new phone installs opened, 1 saw sign-in, 0 tapped. 21 sign-in attempts with no install or platform made no account. The 29 Oct fixes stay untested; the loss is now before sign-in. Changes."
+        },
+        {
+          "date": "2026-11-02",
+          "text": "Sign-in log, outside, Android 0.2.22, 2 Nov: first phone test of the 29 Oct fixes. 2 installs, 8 attempts (6 GitHub, 2 Google), 0 got in; none reached the provider callback. 4 GitHub tries ended cancelled on return, 2 Google never closed. Web attempts did finish. Changes: both fixes failed."
+        },
+        {
+          "date": "2026-11-02",
+          "text": "Sign-in log, outside, 27 Oct-2 Nov: 31 installs tapped, 10 got in; 6 lost outside 29 Oct (our emulator tests that day), 1 a day. Prior week 12 lost, 2 a day. Fewer people arrive since ads paused. Corroborates."
         }
       ]
     },
@@ -490,7 +498,7 @@
       "rank": 2,
       "date": "2026-10-31",
       "title": "New people who write to an agent do not come back the next day",
-      "peoplePerDay": 1,
+      "peoplePerDay": 0,
       "trend": "down",
       "cause": "product",
       "stage": "return-day-1",
@@ -546,6 +554,10 @@
         {
           "date": "2026-11-01",
           "text": "Value SQL 9998086, outside: 0 of 5 new writers (25-31 Oct) came back the next day; week before 1 of 10. The first check-in recipient did not come back on 31 Oct, a full day after the push. Fewer people lost only because fewer people wrote. Corroborates."
+        },
+        {
+          "date": "2026-11-02",
+          "text": "Value SQL 9ef5f05, outside: 0 of 3 new writers (26 Oct-1 Nov) came back the next day; week before 1 of 11. No check-in was sent 1-2 Nov. Fewer writers, same result. Corroborates."
         }
       ]
     },
@@ -633,6 +645,10 @@
         {
           "date": "2026-11-01",
           "text": "Walk e9a085a4, outside, 1 Nov: a returning person's welcome video needed Trusty Squire. The install card appeared (fix held) but was not tapped. Both agents blocked on that tap, the run used up its roles in 22 s and went stuck at 10 min. New stage: welcome video. Changes."
+        },
+        {
+          "date": "2026-11-02",
+          "text": "Walk 51058b84, outside, 2 Nov: the welcome-video run that waited on the Squire tap ended failed by its 24 h abandon at 02:02 UTC; the person has not come back since 1 Nov 10:59 UTC. Corroborates."
         }
       ]
     },
@@ -862,6 +878,14 @@
         {
           "date": "2026-11-02",
           "text": "1-2 Nov 09:00-09:00 ET: 71 merges, 140 PR-hours, 61 idle after the last commit. 10 one-commit PRs merged 03:06-03:58 ET after waiting 1.5-3.3 h. Cause not verified."
+        },
+        {
+          "date": "2026-11-02",
+          "text": "Split of 11 waiting PRs (#3278 #3299 #3289 #3305 #3304 #3302 #3300 #3298 #3290 #3288 #3319) from GitHub check-run and merge times: 21.8 h idle after the last commit = 19.8 h until the last pre-merge check finished + 2.0 h waiting after green (median 5 min per PR)."
+        },
+        {
+          "date": "2026-11-02",
+          "text": "Inside the checks span, jobs ran only 4.3 h; for 15.6 h no job was running (jobs waiting to start). No PR had a review; lunchboxfortwo merged all 11; 9 of 11 within 12 min of green. Larger part: CI jobs waiting to start, not review."
         }
       ]
     },
@@ -932,6 +956,17 @@
     }
   ],
   "walk": [
+    {
+      "date": "2026-11-02",
+      "source": "workspace walk 51058b84",
+      "counts": [
+        {
+          "goal": "connect-service",
+          "friction": "gave-up",
+          "count": 1
+        }
+      ]
+    },
     {
       "date": "2026-11-01",
       "source": "workspace walk e9a085a4",
@@ -1101,6 +1136,10 @@
         {
           "source": "snapshot",
           "text": "Of 10 people who signed up in the 7 days to 2026-10-30, 5 sent a message within 24 hours and 1 came back the next day (10%). The first next-morning check-in was delivered by push on 2026-10-31; no reply within 10 hours."
+        },
+        {
+          "source": "snapshot",
+          "text": "Of 9 people who signed up in the 7 days to 2026-11-01, 1 came back the next day (11%, from 10% on 2026-10-30). Fewer sign-ups, same single return."
         }
       ],
       "against": [
@@ -1110,7 +1149,7 @@
       "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-31",
+      "lastReviewed": "2026-11-02",
       "status": "open",
       "track": {
         "label": "New people who send a first message within 24 hours",
@@ -1307,6 +1346,11 @@
             "date": "2026-10-31",
             "value": 0.5,
             "samples": 10
+          },
+          {
+            "date": "2026-11-01",
+            "value": 0.5556,
+            "samples": 9
           }
         ]
       }
@@ -1558,6 +1602,11 @@
             "date": "2026-10-31",
             "value": 0.002,
             "samples": 1498
+          },
+          {
+            "date": "2026-11-01",
+            "value": 0.0017,
+            "samples": 1744
           }
         ]
       }
@@ -1809,6 +1858,11 @@
             "date": "2026-10-31",
             "value": 0.0521,
             "samples": 1498
+          },
+          {
+            "date": "2026-11-01",
+            "value": 0.0401,
+            "samples": 1744
           }
         ]
       }
@@ -2068,6 +2122,11 @@
             "date": "2026-10-31",
             "value": 0.2243,
             "samples": 1498
+          },
+          {
+            "date": "2026-11-01",
+            "value": 0.1921,
+            "samples": 1744
           }
         ]
       }
@@ -2322,6 +2381,11 @@
             "date": "2026-10-31",
             "value": 0.1742,
             "samples": 1498
+          },
+          {
+            "date": "2026-11-01",
+            "value": 0.1422,
+            "samples": 1744
           }
         ]
       }
@@ -2374,6 +2438,10 @@
         {
           "source": "feedback",
           "text": "Keyword class at 20.7% in the 7 days to 2026-10-26, down from 21.6%. Since the stale-wake-drop change went live, 6.5% of 107 reports are about wakes; the review handoff on an unchanged head came back again on 2026-10-27 after its third per-case fix."
+        },
+        {
+          "source": "walk",
+          "text": "Share rose to 28.0% of 1,744 reports in the 7 days to 2026-11-01, from 15.6% on 2026-10-31, driven by the 1 Nov silent-end re-wake reports. Walk 2026-11-02: one absent person's free agent was re-woken 82 times in about 2 hours on a corner waiting for that person's merge yes."
         }
       ],
       "against": [
@@ -2384,7 +2452,7 @@
       "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-10-31",
+      "lastReviewed": "2026-11-02",
       "status": "open",
       "track": {
         "label": "Share of reports about wakes and dispatch",
@@ -2581,6 +2649,11 @@
             "date": "2026-10-31",
             "value": 0.1562,
             "samples": 1498
+          },
+          {
+            "date": "2026-11-01",
+            "value": 0.2804,
+            "samples": 1744
           }
         ]
       }

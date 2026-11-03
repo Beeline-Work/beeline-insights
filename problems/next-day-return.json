@@ -4,7 +4,7 @@
   "rank": 2,
   "date": "2026-10-31",
   "title": "New people who write to an agent do not come back the next day",
-  "peoplePerDay": 1,
+  "peoplePerDay": 0,
   "trend": "down",
   "cause": "product",
   "stage": "return-day-1",
@@ -60,6 +60,10 @@
     {
       "date": "2026-11-01",
       "text": "Value SQL 9998086, outside: 0 of 5 new writers (25-31 Oct) came back the next day; week before 1 of 10. The first check-in recipient did not come back on 31 Oct, a full day after the push. Fewer people lost only because fewer people wrote. Corroborates."
+    },
+    {
+      "date": "2026-11-02",
+      "text": "Value SQL 9ef5f05, outside: 0 of 3 new writers (26 Oct-1 Nov) came back the next day; week before 1 of 11. No check-in was sent 1-2 Nov. Fewer writers, same result. Corroborates."
     }
   ]
 }

@@ -4,13 +4,13 @@
   "rank": 1,
   "date": "2026-10-31",
   "title": "New phone users tap Google or GitHub but never get signed in",
-  "peoplePerDay": 2,
-  "trend": "flat",
+  "peoplePerDay": 1,
+  "trend": "down",
   "cause": "client",
   "stage": "signup",
   "source": "funnel",
   "scope": "people",
-  "lastHit": "2026-10-29",
+  "lastHit": "2026-11-02",
   "whatHappens": "The person taps Google or GitHub, leaves for the provider's page, and never comes back to Beeline signed in.",
   "fixes": [
     {
@@ -21,12 +21,12 @@
     {
       "date": "2026-10-29",
       "text": "Android Google sign-in works after leaving the app and returning",
-      "state": "shipped"
+      "state": "failed"
     },
     {
       "date": "2026-10-29",
       "text": "GitHub sign-in is freed when the person leaves the GitHub page",
-      "state": "shipped"
+      "state": "failed"
     },
     {
       "date": "2026-10-29",
@@ -66,6 +66,14 @@
     {
       "date": "2026-11-01",
       "text": "Sign-in log and accounts, outside, 31 Oct-1 Nov: 0 new outside accounts; 2 new phone installs opened, 1 saw sign-in, 0 tapped. 21 sign-in attempts with no install or platform made no account. The 29 Oct fixes stay untested; the loss is now before sign-in. Changes."
+    },
+    {
+      "date": "2026-11-02",
+      "text": "Sign-in log, outside, Android 0.2.22, 2 Nov: first phone test of the 29 Oct fixes. 2 installs, 8 attempts (6 GitHub, 2 Google), 0 got in; none reached the provider callback. 4 GitHub tries ended cancelled on return, 2 Google never closed. Web attempts did finish. Changes: both fixes failed."
+    },
+    {
+      "date": "2026-11-02",
+      "text": "Sign-in log, outside, 27 Oct-2 Nov: 31 installs tapped, 10 got in; 6 lost outside 29 Oct (our emulator tests that day), 1 a day. Prior week 12 lost, 2 a day. Fewer people arrive since ads paused. Corroborates."
     }
   ]
 }
