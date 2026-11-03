@@ -1,62 +1,58 @@
 {
-  "generatedAt": "2026-11-03T12:13:57.093Z",
+  "generatedAt": "2026-11-03T14:08:01.932Z",
   "insights": {
-    "generatedAt": "2026-11-02T14:05:00.000Z",
+    "generatedAt": "2026-11-03T14:08:00.000Z",
     "window": {
-      "from": "2026-10-26",
-      "through": "2026-11-01"
+      "from": "2026-10-27",
+      "through": "2026-11-02"
     },
     "errors": {
-      "total": 81,
-      "changePct": 55.8,
+      "total": 69,
+      "changePct": -34.3,
       "areas": [
         {
           "area": "Database",
-          "count": 50
-        },
-        {
-          "area": "Connected apps",
-          "count": 10
+          "count": 31
         },
         {
           "area": "Phone and web app",
-          "count": 5
+          "count": 15
         },
         {
           "area": "GitHub",
-          "count": 3
-        },
-        {
-          "area": "Voice",
-          "count": 1
-        },
-        {
-          "area": "Other",
-          "count": 12
-        }
-      ],
-      "lead": "Errors rose to 81 from 52 the week before. Database lock timeouts and deadlocks lead at 50; their fixes went live on 2 Nov."
-    },
-    "feedback": {
-      "total": 1666,
-      "people": 5,
-      "agents": 1661,
-      "areas": [
-        {
-          "area": "Corner tools",
-          "count": 339
-        },
-        {
-          "area": "Commands and grants",
-          "count": 64
+          "count": 6
         },
         {
           "area": "Connected apps",
-          "count": 47
+          "count": 4
+        },
+        {
+          "area": "Other",
+          "count": 13
+        }
+      ],
+      "lead": "Errors fell to 69 from 105 the week before. Database errors still lead at 31, and most come during production rollouts."
+    },
+    "feedback": {
+      "total": 1812,
+      "people": 5,
+      "agents": 1807,
+      "areas": [
+        {
+          "area": "Corner tools",
+          "count": 86
+        },
+        {
+          "area": "Commands and grants",
+          "count": 56
         },
         {
           "area": "Reading and search",
-          "count": 31
+          "count": 34
+        },
+        {
+          "area": "Connected apps",
+          "count": 27
         },
         {
           "area": "Android emulator",
@@ -64,10 +60,10 @@
         },
         {
           "area": "Other",
-          "count": 1177
+          "count": 1601
         }
       ],
-      "lead": "Reports rose to 1,666 from 1,592 the week before. Silent turn endings drove most of them; that fix went live on 2 Nov. People filed 5."
+      "lead": "Reports rose to 1,812 from 1,548 the week before. Agents filed nearly all of them; people filed 5."
     },
     "journey": {
       "steps": [
@@ -99,11 +95,11 @@
       "state": "measured"
     },
     "velocity": {
-      "hoursLost": 61,
+      "hoursLost": 151,
       "items": [
         {
-          "label": "Finished PRs waited to merge after their last commit",
-          "hours": 61
+          "label": "PR-hours from open to merge (39 PRs, median 2.3 h)",
+          "hours": 151
         }
       ]
     },
@@ -315,9 +311,9 @@
   "digests": [
     {
       "date": "2026-11-03",
-      "title": "Triage: an agent woken 83 times on one message, and every rollout breaks agent calls for minutes",
+      "title": "Rollouts break agent calls for minutes; the 07:25 release skipped the helper",
       "findings": 10,
-      "proposals": 6,
+      "proposals": 8,
       "path": "digests/2026-11-03.md"
     },
     {
@@ -842,6 +838,10 @@
         {
           "date": "2026-11-02",
           "text": "Inside the checks span, jobs ran only 4.3 h; for 15.6 h no job was running (jobs waiting to start). No PR had a review; lunchboxfortwo merged all 11; 9 of 11 within 12 min of green. Larger part: CI jobs waiting to start, not review."
+        },
+        {
+          "date": "2026-11-03",
+          "text": "2-3 Nov 09:00-09:00 ET: 39 merges (71 day before), median open to merge 2.3 h (1.1 h), 151 PR-hours (140). Two CI-queue fixes merged in the window (#3344, #3380); effect measured next day."
         }
       ]
     },

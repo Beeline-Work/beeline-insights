@@ -1,9 +1,9 @@
 [
   {
     "date": "2026-11-03",
-    "title": "Triage: an agent woken 83 times on one message, and every rollout breaks agent calls for minutes",
+    "title": "Rollouts break agent calls for minutes; the 07:25 release skipped the helper",
     "findings": 10,
-    "proposals": 6,
+    "proposals": 8,
     "path": "digests/2026-11-03.md"
   },
   {

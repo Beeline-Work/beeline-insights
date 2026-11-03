@@ -31,6 +31,10 @@
     {
       "date": "2026-11-02",
       "text": "Inside the checks span, jobs ran only 4.3 h; for 15.6 h no job was running (jobs waiting to start). No PR had a review; lunchboxfortwo merged all 11; 9 of 11 within 12 min of green. Larger part: CI jobs waiting to start, not review."
+    },
+    {
+      "date": "2026-11-03",
+      "text": "2-3 Nov 09:00-09:00 ET: 39 merges (71 day before), median open to merge 2.3 h (1.1 h), 151 PR-hours (140). Two CI-queue fixes merged in the window (#3344, #3380); effect measured next day."
     }
   ]
 }
