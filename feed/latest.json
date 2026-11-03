@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T00:35:17.560Z",
+  "generatedAt": "2026-11-03T12:13:57.093Z",
   "insights": {
     "generatedAt": "2026-11-02T14:05:00.000Z",
     "window": {
@@ -314,6 +314,13 @@
   },
   "digests": [
     {
+      "date": "2026-11-03",
+      "title": "Triage: an agent woken 83 times on one message, and every rollout breaks agent calls for minutes",
+      "findings": 10,
+      "proposals": 6,
+      "path": "digests/2026-11-03.md"
+    },
+    {
       "date": "2026-11-02",
       "title": "71 changes went live, but every release still ends without a release record",
       "findings": 1,
@@ -386,32 +393,26 @@
   ],
   "problems": [
     {
-      "id": "artifact-tilde-path",
+      "id": "friction-wake-storm",
       "rank": 1,
-      "kind": "problem",
-      "scope": "people",
-      "title": "An agent cannot post a file whose path starts with the home shortcut",
-      "peoplePerDay": 0,
-      "trend": "flat",
-      "cause": "client",
-      "stage": "daily-use",
-      "source": "friction",
-      "lastHit": "2026-11-01",
-      "whatHappens": "A person asks their agent for a file; the agent saves it under ~/ and the post fails as file not found, so the person gets no file.",
-      "date": "2026-11-01",
+      "date": "2026-11-03",
       "observations": [
         {
-          "date": "2026-11-01",
-          "text": "Friction and feedback, outside, 1 Nov: 1 person, 2 reports at 10:46 UTC; the attach path resolver never expands ~/. Not fixed on main; no open PR. New."
+          "date": "2026-11-03",
+          "text": "Friction and walk 51058b84: one outside person's free agent ran 83 turns with no reply on a single trigger message, 2 Nov 21:36 to 3 Nov 07:11 UTC (last turn failed). Corner restore reads were refused during the run. Same area as the 27 Oct storm; changes."
         }
       ],
-      "fixes": [
-        {
-          "date": "2026-11-01",
-          "text": "Expand the home shortcut in attachment paths; fix corner opened 1 Nov",
-          "state": "tried"
-        }
-      ]
+      "fixes": [],
+      "kind": "problem",
+      "scope": "people",
+      "title": "An agent is woken again and again on one message and never answers",
+      "peoplePerDay": 1,
+      "trend": "up",
+      "cause": "server",
+      "stage": "daily-use",
+      "source": "friction",
+      "lastHit": "2026-11-03",
+      "whatHappens": "A person asks once and leaves. Their agent is woken dozens of times on that same message, only re-reads status, and never posts a reply."
     },
     {
       "id": "signin-lost",
@@ -567,81 +568,9 @@
       ]
     },
     {
-      "id": "onboarding-peer-check",
-      "kind": "problem",
-      "rank": 2,
-      "date": "2026-11-01",
-      "title": "Onboarding promises two agents check each other, but one agent works alone and the second is not involved",
-      "peoplePerDay": 0,
-      "trend": "flat",
-      "cause": "prompt",
-      "stage": "first-reply",
-      "source": "feedback",
-      "scope": "people",
-      "lastHit": "2026-10-28",
-      "whatHappens": "Onboarding tells the person a second agent will check the work, then only one agent works and nothing checks it.",
-      "fixes": [],
-      "observations": [
-        {
-          "date": "2026-10-30",
-          "text": "Feedback and walk: no new reports in the last 24 hours. No fix on main or in an open PR; still waiting for the 09:00 card."
-        }
-      ]
-    },
-    {
-      "id": "silent-end-rewakes",
-      "rank": 3,
-      "kind": "problem",
-      "scope": "single",
-      "title": "Ending a turn silently fails and wakes the agent again with nothing to do",
-      "peoplePerDay": 0,
-      "trend": "up",
-      "cause": "client",
-      "stage": "daily-use",
-      "source": "feedback",
-      "lastHit": "2026-11-01",
-      "whatHappens": "An agent with nothing to say ends its turn silently; the call fails when run in the background, and the agent is woken again in a loop.",
-      "date": "2026-11-01",
-      "observations": [
-        {
-          "date": "2026-11-01",
-          "text": "Feedback, 1 Nov 03:44-15:57 UTC: 126 reports from 3 agents, all on helper 0.1.129-0.1.130, none yet on 0.1.132. No fix on main or open PR. New."
-        }
-      ],
-      "fixes": [
-        {
-          "date": "2026-11-01",
-          "text": "Make silent turn ends succeed and stop re-wakes; fix corner opened 1 Nov",
-          "state": "tried"
-        }
-      ]
-    },
-    {
       "id": "squire-connect-dead-end",
-      "kind": "problem",
-      "rank": 3,
-      "date": "2026-11-01",
-      "title": "A new person asked agents to connect a store and outside AI tools, but no Trusty Squire connect card appeared, so setup stopped",
-      "peoplePerDay": 0,
-      "trend": "flat",
-      "cause": "server",
-      "stage": "connect-service",
-      "source": "feedback",
-      "scope": "people",
-      "lastHit": "2026-11-01",
-      "whatHappens": "The person asks an agent to connect a tool; the agent says Trusty Squire is missing but no card to connect it appears, so setup stops.",
-      "fixes": [
-        {
-          "date": "2026-10-29",
-          "text": "Offer one Connect Squire card and the Rooms connector steps (#3036), released in v0.1.118",
-          "state": "shipped"
-        },
-        {
-          "date": "2026-10-29",
-          "text": "Fix the Trusty Squire connect flow on Android (#3062), released in v0.1.118",
-          "state": "shipped"
-        }
-      ],
+      "rank": 2,
+      "date": "2026-11-03",
       "observations": [
         {
           "date": "2026-10-30",
@@ -654,168 +583,168 @@
         {
           "date": "2026-11-02",
           "text": "Walk 51058b84, outside, 2 Nov: the welcome-video run that waited on the Squire tap ended failed by its 24 h abandon at 02:02 UTC; the person has not come back since 1 Nov 10:59 UTC. Corroborates."
-        }
-      ]
-    },
-    {
-      "id": "review-deps-install-refused",
-      "rank": 4,
-      "kind": "regression",
-      "scope": "single",
-      "title": "Exact-head reviews start without dependencies because installs are refused on shared mounts",
-      "peoplePerDay": 0,
-      "trend": "up",
-      "cause": "server",
-      "stage": "daily-use",
-      "source": "feedback",
-      "lastHit": "2026-11-01",
-      "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3188",
-        "report": "Shared read-only dependency mounts refuse the npm ci the review helper always runs"
-      },
-      "whatHappens": "A reviewer checks a pull request head, the dependency install is refused, and tests cannot run.",
-      "date": "2026-11-01",
-      "observations": [
+        },
         {
-          "date": "2026-11-01",
-          "text": "Feedback, 31 Oct 18:57 to 1 Nov 16:21 UTC: 19 reports from 2 agents, repeating on helper 0.1.133. Came with shared dependency mounts (#3188, #3192). No fix on main or open PR."
+          "date": "2026-11-03",
+          "text": "Feedback, 3 Nov: 3 agents on free-agent v0.1.137 report that Squire connect says its card is ready but no card is posted; a traced turn got reconnect_required because an old install is not bound to an account. No cross-account vault listing seen in that traced tool call."
         }
       ],
-      "fixes": [
-        {
-          "date": "2026-11-01",
-          "text": "Reuse or install review dependencies on shared mounts; fix corner opened 1 Nov",
-          "state": "tried"
-        }
-      ]
-    },
-    {
-      "id": "revise-corner-schema",
-      "kind": "regression",
-      "title": "Revising a corner brief fails because the tool hides required fields and the commander order id",
-      "peoplePerDay": 0,
-      "trend": "up",
-      "cause": "server",
-      "stage": "daily-use",
-      "source": "feedback",
-      "date": "2026-11-01",
-      "rank": 5,
-      "scope": "single",
-      "lastHit": "2026-11-01",
-      "whatHappens": "An agent passes back the brief that read returns, or cites a private commander order, and revise_corner refuses it.",
-      "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3024",
-        "report": "Brief attachment objects and private order citations are still refused after the schema fix shipped"
-      },
       "fixes": [
         {
           "date": "2026-10-29",
-          "text": "Expose revise_corner's required fields (#3024), released v0.1.117",
-          "state": "failed"
-        },
-        {
-          "date": "2026-10-31",
-          "text": "Accept copied briefs in revise_corner (#3172)",
-          "state": "failed"
-        },
-        {
-          "date": "2026-11-01",
-          "text": "Accept forwarded human messages and commander orders as revision approval; fix corner opened 1 Nov",
-          "state": "tried"
-        }
-      ],
-      "observations": [
-        {
-          "date": "2026-10-31",
-          "text": "Feedback: 5 reports from 3 agents, 10-30 13:49 to 10-31 06:35 UTC; one after the 06:33 deploy."
-        },
-        {
-          "date": "2026-11-01",
-          "text": "Feedback, 31 Oct 18:51 to 1 Nov 16:16 UTC: 12 reports from 4 agents. #3172 (merged 31 Oct 21:05) fixed copied briefs; reports continue after it, so a citation path remains (forwarded human message, commander order)."
-        }
-      ]
-    },
-    {
-      "id": "handoff-files-unreachable",
-      "rank": 6,
-      "kind": "regression",
-      "scope": "single",
-      "title": "Reviewer handoffs cite proof files the receiving agent cannot open",
-      "peoplePerDay": 0,
-      "trend": "flat",
-      "cause": "server",
-      "stage": "daily-use",
-      "source": "feedback",
-      "lastHit": "2026-11-01",
-      "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3107",
-        "report": "Forwarded attachments became readable, but handoffs citing local proof paths still fail"
-      },
-      "whatHappens": "A worker hands a review over with proof logs or screenshots, and the reviewer cannot open them, so the review stalls.",
-      "fixes": [
-        {
-          "date": "2026-10-31",
-          "text": "Make attachments on forwarded reports readable (#3107), released v0.1.126",
-          "state": "failed"
-        },
-        {
-          "date": "2026-11-01",
-          "text": "Deliver proof files cited in review handoffs; fix corner opened 1 Nov",
-          "state": "tried"
-        }
-      ],
-      "date": "2026-11-01",
-      "observations": [
-        {
-          "date": "2026-11-01",
-          "text": "Verify and feedback, 31 Oct 19:00 to 1 Nov 14:44 UTC: 8 reports from 4 agents, 3 after the v0.1.126 release. Fix marked failed."
-        }
-      ]
-    },
-    {
-      "id": "review-repeats-after-fail",
-      "kind": "regression",
-      "rank": 7,
-      "date": "2026-11-01",
-      "title": "A reviewer is woken again for the same unchanged head after reporting FAIL or blocked",
-      "peoplePerDay": 0,
-      "trend": "flat",
-      "cause": "server",
-      "stage": "daily-use",
-      "source": "feedback",
-      "scope": "single",
-      "whatHappens": "A reviewer who already failed a pull request is asked to review the same unchanged head again.",
-      "regression": {
-        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3059",
-        "report": "Same-head review dispatch still follows a FAIL report after the fix shipped"
-      },
-      "fixes": [
-        {
-          "date": "2026-10-29",
-          "text": "Stop repeated blocked reviews (#3059), released v0.1.118",
-          "state": "failed"
-        },
-        {
-          "date": "2026-10-30",
-          "text": "Repair repeat reviews (#3111), deployed 10-31 06:33 UTC; the release record failed",
+          "text": "Offer one Connect Squire card and the Rooms connector steps (#3036), released in v0.1.118",
           "state": "shipped"
+        },
+        {
+          "date": "2026-10-29",
+          "text": "Fix the Trusty Squire connect flow on Android (#3062), released in v0.1.118",
+          "state": "shipped"
+        },
+        {
+          "date": "2026-11-03",
+          "text": "Recover legacy Squire setup on free-agent hosts (#3370), merged 3 Nov, not yet released",
+          "state": "tried"
         }
       ],
+      "kind": "problem",
+      "scope": "people",
+      "title": "A new person asked agents to connect a store and outside AI tools, but no Trusty Squire connect card appeared, so setup stopped",
+      "peoplePerDay": 0,
+      "trend": "flat",
+      "cause": "server",
+      "stage": "connect-service",
+      "source": "feedback",
+      "lastHit": "2026-11-03",
+      "whatHappens": "The person asks an agent to connect a tool; the agent says Trusty Squire is missing but no card to connect it appears, so setup stops."
+    },
+    {
+      "id": "release-rollout-errors",
+      "rank": 3,
+      "date": "2026-11-03",
       "observations": [
         {
-          "date": "2026-10-30",
-          "text": "Feedback: 5 reports from 2 agents; a same-head redispatch after FAIL at 19:24 UTC came after v0.1.118, and a dispatch arrived while the PR still listed required proof as incomplete."
-        },
-        {
-          "date": "2026-10-31",
-          "text": "Feedback: 11 reports from 2 agents; 10 before #3111 reached production at 06:33 UTC, 1 after (08:18 UTC, a repeat order on a conflicting head). Verify on 11-01."
-        },
-        {
-          "date": "2026-11-01",
-          "text": "Verify 1 Nov: repeat reviews of an unchanged head had 0 hits since v0.1.126. The idle-corner alert while CI or orders are live still fires: 12 reports, last 16:05 UTC, after #3200 (released 1 Nov 07:00). Idle path failed."
+          "date": "2026-11-03",
+          "text": "Log walk 2-3 Nov: errors cluster in the 13:50, 21:06 and 07:01 UTC rollouts: about 900 missing-column errors in 4 minutes on 3 Nov, 2,200 connect timeouts and 190 lock timeouts on 2 Nov. Sentry: 7 server issues, 12 events. One scheduled report failed to post."
         }
       ],
-      "lastHit": "2026-11-01"
+      "fixes": [],
+      "kind": "problem",
+      "scope": "single",
+      "title": "Each production rollout breaks agent calls for several minutes",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "release",
+      "stage": "daily-use",
+      "source": "log",
+      "lastHit": "2026-11-03",
+      "whatHappens": "During each deploy, agents cannot list corners or fetch commands for minutes: missing-column errors, database connect timeouts and lock timeouts. Posts can fail."
+    },
+    {
+      "id": "silent-end-rewakes",
+      "rank": 4,
+      "date": "2026-11-03",
+      "observations": [
+        {
+          "date": "2026-11-01",
+          "text": "Feedback, 1 Nov 03:44-15:57 UTC: 126 reports from 3 agents, all on helper 0.1.129-0.1.130, none yet on 0.1.132. No fix on main or open PR. New."
+        },
+        {
+          "date": "2026-11-03",
+          "text": "Feedback, 2 Nov 13:03-21:25 UTC: 63 reports from 1 agent on helper 0.1.133 and 0.1.135, which both contain the fix. No reports since 0.1.137."
+        }
+      ],
+      "fixes": [
+        {
+          "date": "2026-11-01",
+          "text": "Make silent turn ends succeed and stop re-wakes; fix corner opened 1 Nov",
+          "state": "tried"
+        },
+        {
+          "date": "2026-11-03",
+          "text": "Silent turn fix (#3229) shipped in helper 0.1.133 and 0.1.135, but one agent was still re-woken about 60 times on 2 Nov",
+          "state": "failed"
+        }
+      ],
+      "kind": "problem",
+      "scope": "single",
+      "title": "Ending a turn silently fails and wakes the agent again with nothing to do",
+      "peoplePerDay": 0,
+      "trend": "down",
+      "cause": "server",
+      "stage": "daily-use",
+      "source": "feedback",
+      "lastHit": "2026-11-02",
+      "whatHappens": "An agent with nothing to say ends its turn silently, and it is woken again in a loop."
+    },
+    {
+      "id": "background-watcher-liveness",
+      "rank": 5,
+      "date": "2026-11-03",
+      "observations": [
+        {
+          "date": "2026-11-03",
+          "text": "Feedback, 3 Nov 09:27-11:54 UTC: 52 near-identical reports from 1 agent in one corner. The watcher output kept updating, so the job was alive. Temp files from earlier turns were also missing on 3 wakes. New."
+        }
+      ],
+      "fixes": [],
+      "kind": "problem",
+      "scope": "single",
+      "title": "Agents think their background job died between wakes and restart it",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "skill",
+      "stage": "corner-work",
+      "source": "feedback",
+      "lastHit": "2026-11-03",
+      "whatHappens": "An agent starts a background watcher. On the next wake its process id is not visible, so it restarts the job and files a report every few minutes, though the job still runs."
+    },
+    {
+      "id": "missing-attachments",
+      "rank": 6,
+      "date": "2026-11-03",
+      "regression": {
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/2905",
+        "report": "The attachment fix missed completion messages and report attachments; reports came after it shipped"
+      },
+      "observations": [
+        {
+          "date": "2026-11-03",
+          "text": "Feedback, 2-3 Nov: 7 reports from 2 agents: empty activity bodies in message reads, cited attachments missing, and a report that refused an uploaded proof filename."
+        }
+      ],
+      "fixes": [],
+      "kind": "regression",
+      "scope": "single",
+      "title": "Files named in a completion or report never arrive as readable attachments",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback",
+      "lastHit": "2026-11-03",
+      "whatHappens": "A handoff names a proof file or activity, but the reader sees an empty activity row or no attachment."
+    },
+    {
+      "id": "report-commander-refused",
+      "rank": 7,
+      "date": "2026-11-03",
+      "observations": [
+        {
+          "date": "2026-11-03",
+          "text": "Feedback, 2 Nov: 3 reports from 1 agent: report refused twice with no commander return address, and a tag to the corner owner was refused."
+        }
+      ],
+      "fixes": [],
+      "kind": "problem",
+      "scope": "single",
+      "title": "Agents cannot send reports to an agent commander; the report is refused",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback",
+      "lastHit": "2026-11-02",
+      "whatHappens": "An agent tries to send a decision up from a standing corner, and report refuses because the order has no return address."
     },
     {
       "id": "merged-not-released-helper",
@@ -859,6 +788,28 @@
       ]
     },
     {
+      "id": "post-dedupe-wrong-id",
+      "rank": 8,
+      "date": "2026-11-03",
+      "observations": [
+        {
+          "date": "2026-11-03",
+          "text": "Feedback, 2 Nov: 2 agents saw a new post return an earlier message id; one direct reply was delivered three times. New."
+        }
+      ],
+      "fixes": [],
+      "kind": "problem",
+      "scope": "single",
+      "title": "A new post returns an older message id and is dropped",
+      "peoplePerDay": 0,
+      "trend": "up",
+      "cause": "server",
+      "stage": "daily-use",
+      "source": "feedback",
+      "lastHit": "2026-11-02",
+      "whatHappens": "An agent posts new text, but the receipt names its earlier message and the new text never appears."
+    },
+    {
       "id": "finished-prs-wait-to-merge",
       "rank": 9,
       "date": "2026-11-02",
@@ -895,69 +846,62 @@
       ]
     },
     {
-      "peoplePerDay": 0,
-      "date": "2026-11-01",
-      "stage": "corner-work",
-      "source": "feedback",
-      "scope": "single",
-      "id": "gh-pr-edit-projectcards",
-      "kind": "problem",
+      "id": "personal-github-proxy-502",
       "rank": 9,
-      "trend": "up",
-      "cause": "server",
-      "lastHit": "2026-10-31",
-      "title": "gh pr edit fails in corner checkouts on a retired GitHub field",
-      "whatHappens": "An agent edits its pull request body with gh pr edit; GitHub rejects a retired Projects field, and the agent must use the REST API instead.",
-      "fixes": [
-        {
-          "date": "2026-10-31",
-          "text": "REST fallback for gh pr edit (#3177)",
-          "state": "failed"
-        },
-        {
-          "date": "2026-11-01",
-          "text": "Repair the gh pr edit REST fallback (PR number, stdin body, private temp files); fix corner opened 1 Nov",
-          "state": "tried"
-        }
-      ],
+      "date": "2026-11-03",
       "observations": [
         {
-          "date": "2026-10-31",
-          "text": "Feedback: 6 reports from 3 agents, 10-31 04:21 to 10:33 UTC. No fix on main."
-        },
-        {
-          "date": "2026-11-01",
-          "text": "Feedback 31 Oct 19:26-20:42 UTC: 5 reports, 2 agents. The REST fallback from #3177 misreads numeric title/body flags as PR numbers, refuses body from stdin, and leaves piped bodies in predictable temp files (privacy risk)."
+          "date": "2026-11-03",
+          "text": "Feedback, 2-3 Nov: 3 reports from 1 agent over two days. The public GitHub API worked as a fallback. New."
         }
-      ]
-    },
-    {
-      "id": "dictation-client-error",
-      "rank": 10,
+      ],
+      "fixes": [],
       "kind": "problem",
       "scope": "single",
-      "title": "An expected Android dictation refusal is logged to Sentry as an error",
+      "title": "The personal GitHub route for gh fails with 502",
       "peoplePerDay": 0,
       "trend": "flat",
-      "cause": "client",
-      "stage": "daily-use",
-      "source": "sentry",
-      "lastHit": "2026-11-01",
-      "whatHappens": "The phone speech recognizer refuses, the person sees the right message, but Sentry records an error each time.",
-      "date": "2026-11-01",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback",
+      "lastHit": "2026-11-03",
+      "whatHappens": "An agent runs gh through the personal GitHub route and every call fails with 502, so it cannot read pull requests."
+    },
+    {
+      "id": "corner-checkout-busy",
+      "rank": 10,
+      "date": "2026-11-03",
       "observations": [
         {
-          "date": "2026-11-01",
-          "text": "Sentry BEELINE-MOBILE-R, 1 Nov: 13 events in 24h, 28 lifetime, 0 users. Expected refusal: stop sending it, keep the user message."
+          "date": "2026-10-31",
+          "text": "Feedback: 14 reports from 4 agents, 10-30 18:30 to 10-31 10:36 UTC, all after v0.1.123; 3 after the 06:33 deploy. Orders to the worker fail outright while the reviewer finishes its turn."
+        },
+        {
+          "date": "2026-11-03",
+          "text": "Feedback, 2-3 Nov: 2 agents found a scheduled corner checkout read-only or holding a stale git index lock, so they had to clone fresh."
         }
       ],
       "fixes": [
         {
-          "date": "2026-11-01",
-          "text": "Stop sending expected dictation refusals to Sentry; fix corner opened 1 Nov",
-          "state": "tried"
+          "date": "2026-10-30",
+          "text": "Protect corner checkout ownership (#3109), released v0.1.123; it caused this refusal",
+          "state": "failed"
         }
-      ]
+      ],
+      "regression": {
+        "causedByPr": "https://github.com/Beeline-Work/beeline/pull/3109",
+        "report": "Checkout ownership shipped in v0.1.123, and review wakes and orders now fail while another agent holds the checkout"
+      },
+      "kind": "regression",
+      "scope": "single",
+      "title": "A reviewer or worker cannot start because another agent holds the corner checkout",
+      "peoplePerDay": 0,
+      "trend": "flat",
+      "cause": "server",
+      "stage": "corner-work",
+      "source": "feedback",
+      "lastHit": "2026-11-03",
+      "whatHappens": "A review wake or an order fails with checkout in use by another agent, instead of using a separate review tree or waiting its turn."
     }
   ],
   "walk": [

@@ -1,0 +1,22 @@
+{
+  "id": "release-rollout-errors",
+  "rank": 3,
+  "date": "2026-11-03",
+  "observations": [
+    {
+      "date": "2026-11-03",
+      "text": "Log walk 2-3 Nov: errors cluster in the 13:50, 21:06 and 07:01 UTC rollouts: about 900 missing-column errors in 4 minutes on 3 Nov, 2,200 connect timeouts and 190 lock timeouts on 2 Nov. Sentry: 7 server issues, 12 events. One scheduled report failed to post."
+    }
+  ],
+  "fixes": [],
+  "kind": "problem",
+  "scope": "single",
+  "title": "Each production rollout breaks agent calls for several minutes",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "release",
+  "stage": "daily-use",
+  "source": "log",
+  "lastHit": "2026-11-03",
+  "whatHappens": "During each deploy, agents cannot list corners or fetch commands for minutes: missing-column errors, database connect timeouts and lock timeouts. Posts can fail."
+}

@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-11-03",
+    "title": "Triage: an agent woken 83 times on one message, and every rollout breaks agent calls for minutes",
+    "findings": 10,
+    "proposals": 6,
+    "path": "digests/2026-11-03.md"
+  },
+  {
     "date": "2026-11-02",
     "title": "71 changes went live, but every release still ends without a release record",
     "findings": 1,

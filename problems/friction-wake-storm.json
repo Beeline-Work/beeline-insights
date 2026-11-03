@@ -1,0 +1,22 @@
+{
+  "id": "friction-wake-storm",
+  "rank": 1,
+  "date": "2026-11-03",
+  "observations": [
+    {
+      "date": "2026-11-03",
+      "text": "Friction and walk 51058b84: one outside person's free agent ran 83 turns with no reply on a single trigger message, 2 Nov 21:36 to 3 Nov 07:11 UTC (last turn failed). Corner restore reads were refused during the run. Same area as the 27 Oct storm; changes."
+    }
+  ],
+  "fixes": [],
+  "kind": "problem",
+  "scope": "people",
+  "title": "An agent is woken again and again on one message and never answers",
+  "peoplePerDay": 1,
+  "trend": "up",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "friction",
+  "lastHit": "2026-11-03",
+  "whatHappens": "A person asks once and leaves. Their agent is woken dozens of times on that same message, only re-reads status, and never posts a reply."
+}

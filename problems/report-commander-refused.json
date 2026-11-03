@@ -1,0 +1,22 @@
+{
+  "id": "report-commander-refused",
+  "rank": 7,
+  "date": "2026-11-03",
+  "observations": [
+    {
+      "date": "2026-11-03",
+      "text": "Feedback, 2 Nov: 3 reports from 1 agent: report refused twice with no commander return address, and a tag to the corner owner was refused."
+    }
+  ],
+  "fixes": [],
+  "kind": "problem",
+  "scope": "single",
+  "title": "Agents cannot send reports to an agent commander; the report is refused",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "feedback",
+  "lastHit": "2026-11-02",
+  "whatHappens": "An agent tries to send a decision up from a standing corner, and report refuses because the order has no return address."
+}
