@@ -32,6 +32,11 @@
       "date": "2026-10-29",
       "text": "Prove on an Android emulator that brand-new Google and GitHub users finish sign-up on production",
       "state": "tried"
+    },
+    {
+      "date": "2026-11-02",
+      "text": "Keep Android sign-in alive when the sign-in tab closes during an app switch for a 2FA code (GitHub and Google); reproduce first; fix corner opened 2 Nov",
+      "state": "tried"
     }
   ],
   "observations": [
