@@ -10,7 +10,7 @@
   "stage": "signup",
   "source": "funnel",
   "scope": "people",
-  "lastHit": "2026-11-02",
+  "lastHit": "2026-11-03",
   "whatHappens": "The person taps Google or GitHub, leaves for the provider's page, and never comes back to Beeline signed in.",
   "fixes": [
     {
@@ -79,6 +79,10 @@
     {
       "date": "2026-11-02",
       "text": "Sign-in log, outside, 27 Oct-2 Nov: 31 installs tapped, 10 got in; 6 lost outside 29 Oct (our emulator tests that day), 1 a day. Prior week 12 lost, 2 a day. Fewer people arrive since ads paused. Corroborates."
+    },
+    {
+      "date": "2026-11-03",
+      "text": "Sign-in log, outside, iOS 0.2.22, 3 Nov: first iOS try since 28 Oct. 1 install tapped 13 times in 97 s (8 GitHub, 5 Google); each closed as cancelled 3-5 s later. The server logged no start for any, and no iOS start since its log began 29 Oct. Changes: iOS fails before the provider page."
     }
   ]
 }

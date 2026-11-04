@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T17:58:31.609Z",
+  "generatedAt": "2026-11-04T00:11:45.676Z",
   "insights": {
     "generatedAt": "2026-11-03T14:08:00.000Z",
     "window": {
@@ -151,9 +151,9 @@
       },
       "startedOn": "2026-10-28",
       "progress": {
-        "value": 0.1934,
-        "samples": 1608,
-        "asOf": "2026-11-02"
+        "value": 0.2235,
+        "samples": 1776,
+        "asOf": "2026-11-03"
       },
       "verdict": null
     },
@@ -231,9 +231,9 @@
       },
       "startedOn": "2026-10-26",
       "progress": {
-        "value": 0.3009,
-        "samples": 1891,
-        "asOf": "2026-11-02"
+        "value": 0.323,
+        "samples": 2059,
+        "asOf": "2026-11-03"
       },
       "verdict": null
     }
@@ -396,9 +396,19 @@
         {
           "date": "2026-11-03",
           "text": "Friction and walk 51058b84: one outside person's free agent ran 83 turns with no reply on a single trigger message, 2 Nov 21:36 to 3 Nov 07:11 UTC (last turn failed). Corner restore reads were refused during the run. Same area as the 27 Oct storm; changes."
+        },
+        {
+          "date": "2026-11-03",
+          "text": "Walk f0f5f3d2, outside, 3 Nov: the storm went on after the morning report. 149 more turns on 149 separate wakes, 07:11-17:01 UTC, 119 empty posts; 231 turns since 2 Nov 21:36. It stopped after the 16:34 v0.1.141 release; #3414 is not merged. Changes."
         }
       ],
-      "fixes": [],
+      "fixes": [
+        {
+          "date": "2026-11-03",
+          "text": "Stop re-waking an agent after repeated silent turns on one message and tell the person (#3414); fix corner opened 3 Nov, PR open",
+          "state": "tried"
+        }
+      ],
       "kind": "problem",
       "scope": "people",
       "title": "An agent is woken again and again on one message and never answers",
@@ -422,7 +432,7 @@
       "stage": "signup",
       "source": "funnel",
       "scope": "people",
-      "lastHit": "2026-11-02",
+      "lastHit": "2026-11-03",
       "whatHappens": "The person taps Google or GitHub, leaves for the provider's page, and never comes back to Beeline signed in.",
       "fixes": [
         {
@@ -491,6 +501,10 @@
         {
           "date": "2026-11-02",
           "text": "Sign-in log, outside, 27 Oct-2 Nov: 31 installs tapped, 10 got in; 6 lost outside 29 Oct (our emulator tests that day), 1 a day. Prior week 12 lost, 2 a day. Fewer people arrive since ads paused. Corroborates."
+        },
+        {
+          "date": "2026-11-03",
+          "text": "Sign-in log, outside, iOS 0.2.22, 3 Nov: first iOS try since 28 Oct. 1 install tapped 13 times in 97 s (8 GitHub, 5 Google); each closed as cancelled 3-5 s later. The server logged no start for any, and no iOS start since its log began 29 Oct. Changes: iOS fails before the provider page."
         }
       ]
     },
@@ -560,6 +574,10 @@
         {
           "date": "2026-11-02",
           "text": "Value SQL 9ef5f05, outside: 0 of 3 new writers (26 Oct-1 Nov) came back the next day; week before 1 of 11. No check-in was sent 1-2 Nov. Fewer writers, same result. Corroborates."
+        },
+        {
+          "date": "2026-11-03",
+          "text": "Value SQL 8f4f178, outside: 0 of 2 new writers (27 Oct-2 Nov) came back the next day; week before 1 of 10. Signup cohort to 2 Nov: 0 of 7 came back (theme track). Corroborates."
         }
       ]
     },
@@ -906,6 +924,11 @@
   ],
   "walk": [
     {
+      "date": "2026-11-03",
+      "source": "workspace walk f0f5f3d2",
+      "counts": []
+    },
+    {
       "date": "2026-11-02",
       "source": "workspace walk 51058b84",
       "counts": [
@@ -1089,6 +1112,10 @@
         {
           "source": "snapshot",
           "text": "Of 9 people who signed up in the 7 days to 2026-11-01, 1 came back the next day (11%, from 10% on 2026-10-30). Fewer sign-ups, same single return."
+        },
+        {
+          "source": "snapshot",
+          "text": "Of 7 people who signed up in the 7 days to 2026-11-02, 3 sent a message within 24 hours and 0 came back the next day (0%, from 11% on 2026-11-01)."
         }
       ],
       "against": [
@@ -1098,7 +1125,7 @@
       "falsifiedIf": "The 5 sessions show 5 unrelated causes, or all send a first message.",
       "confidence": "medium",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-11-02",
+      "lastReviewed": "2026-11-03",
       "status": "open",
       "track": {
         "label": "New people who send a first message within 24 hours",
@@ -1300,6 +1327,11 @@
             "date": "2026-11-01",
             "value": 0.5556,
             "samples": 9
+          },
+          {
+            "date": "2026-11-02",
+            "value": 0.4286,
+            "samples": 7
           }
         ]
       }
@@ -1556,6 +1588,11 @@
             "date": "2026-11-01",
             "value": 0.0017,
             "samples": 1744
+          },
+          {
+            "date": "2026-11-02",
+            "value": 0.0017,
+            "samples": 1801
           }
         ]
       }
@@ -1812,6 +1849,11 @@
             "date": "2026-11-01",
             "value": 0.0401,
             "samples": 1744
+          },
+          {
+            "date": "2026-11-02",
+            "value": 0.0378,
+            "samples": 1801
           }
         ]
       }
@@ -2076,6 +2118,11 @@
             "date": "2026-11-01",
             "value": 0.1921,
             "samples": 1744
+          },
+          {
+            "date": "2026-11-02",
+            "value": 0.1877,
+            "samples": 1801
           }
         ]
       }
@@ -2335,6 +2382,11 @@
             "date": "2026-11-01",
             "value": 0.1422,
             "samples": 1744
+          },
+          {
+            "date": "2026-11-02",
+            "value": 0.136,
+            "samples": 1801
           }
         ]
       }
@@ -2391,6 +2443,10 @@
         {
           "source": "walk",
           "text": "Share rose to 28.0% of 1,744 reports in the 7 days to 2026-11-01, from 15.6% on 2026-10-31, driven by the 1 Nov silent-end re-wake reports. Walk 2026-11-02: one absent person's free agent was re-woken 82 times in about 2 hours on a corner waiting for that person's merge yes."
+        },
+        {
+          "source": "walk",
+          "text": "Share rose to 31.3% of 1,801 reports in the 7 days to 2026-11-02, from 28.0%. Walk 2026-11-03: the absent person's free agent kept being woken until 17:01 UTC, 231 turns on separate wakes since 2 Nov 21:36."
         }
       ],
       "against": [
@@ -2401,7 +2457,7 @@
       "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
       "confidence": "high",
       "firstSeen": "2026-10-24",
-      "lastReviewed": "2026-11-02",
+      "lastReviewed": "2026-11-03",
       "status": "open",
       "track": {
         "label": "Share of reports about wakes and dispatch",
@@ -2603,6 +2659,11 @@
             "date": "2026-11-01",
             "value": 0.2804,
             "samples": 1744
+          },
+          {
+            "date": "2026-11-02",
+            "value": 0.3132,
+            "samples": 1801
           }
         ]
       }

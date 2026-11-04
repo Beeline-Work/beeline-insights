@@ -50,6 +50,10 @@
     {
       "source": "walk",
       "text": "Share rose to 28.0% of 1,744 reports in the 7 days to 2026-11-01, from 15.6% on 2026-10-31, driven by the 1 Nov silent-end re-wake reports. Walk 2026-11-02: one absent person's free agent was re-woken 82 times in about 2 hours on a corner waiting for that person's merge yes."
+    },
+    {
+      "source": "walk",
+      "text": "Share rose to 31.3% of 1,801 reports in the 7 days to 2026-11-02, from 28.0%. Walk 2026-11-03: the absent person's free agent kept being woken until 17:01 UTC, 231 turns on separate wakes since 2 Nov 21:36."
     }
   ],
   "against": [
@@ -60,7 +64,7 @@
   "falsifiedIf": "The wake-report share falls below 8% by 2026-11-07 with only per-case fixes merged.",
   "confidence": "high",
   "firstSeen": "2026-10-24",
-  "lastReviewed": "2026-11-02",
+  "lastReviewed": "2026-11-03",
   "status": "open",
   "track": {
     "label": "Share of reports about wakes and dispatch",
@@ -262,6 +266,11 @@
         "date": "2026-11-01",
         "value": 0.2804,
         "samples": 1744
+      },
+      {
+        "date": "2026-11-02",
+        "value": 0.3132,
+        "samples": 1801
       }
     ]
   }
