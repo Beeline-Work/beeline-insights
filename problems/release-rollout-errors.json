@@ -1,19 +1,29 @@
 {
   "id": "release-rollout-errors",
-  "rank": 3,
-  "date": "2026-11-03",
+  "rank": 7,
+  "date": "2026-11-04",
   "observations": [
     {
       "date": "2026-11-03",
       "text": "Log walk 2-3 Nov: errors cluster in the 13:50, 21:06 and 07:01 UTC rollouts: about 900 missing-column errors in 4 minutes on 3 Nov, 2,200 connect timeouts and 190 lock timeouts on 2 Nov. Sentry: 7 server issues, 12 events. One scheduled report failed to post."
+    },
+    {
+      "date": "2026-11-04",
+      "text": "4 Nov: no successful rollout since v0.1.142 at 00:39 UTC, so the fix cannot be checked yet. Lock timeouts outside rollouts moved to db-lock-contention."
     }
   ],
-  "fixes": [],
+  "fixes": [
+    {
+      "date": "2026-11-04",
+      "text": "Keep agent calls working through database schema rollouts (#3419), merged 4 Nov, not yet released",
+      "state": "tried"
+    }
+  ],
   "kind": "problem",
   "scope": "single",
   "title": "Each production rollout breaks agent calls for several minutes",
   "peoplePerDay": 0,
-  "trend": "up",
+  "trend": "flat",
   "cause": "release",
   "stage": "daily-use",
   "source": "log",

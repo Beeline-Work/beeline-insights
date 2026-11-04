@@ -1,0 +1,22 @@
+{
+  "id": "tool-result-capped",
+  "kind": "problem",
+  "rank": 10,
+  "date": "2026-11-04",
+  "title": "Large API results through the vault reach agents as a file notice, not data",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "feedback",
+  "scope": "single",
+  "lastHit": "2026-11-04",
+  "whatHappens": "A vault HTTP call with a large response returns a saved-file notice instead of structured data, and a large request body is refused at 64 KB, so agents fall back to shell parsing.",
+  "fixes": [],
+  "observations": [
+    {
+      "date": "2026-11-04",
+      "text": "Feedback, 3-4 Nov: 7 reports from 1 agent (Sentry and GitHub reads, one insights publish over the request limit)."
+    }
+  ]
+}

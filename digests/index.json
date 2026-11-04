@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-11-04",
+    "title": "Triage: releases are blocked since 07:00 UTC, and database lock contention hits workers all day",
+    "findings": 10,
+    "proposals": 5,
+    "path": "digests/2026-11-04.md"
+  },
+  {
     "date": "2026-11-03",
     "title": "Rollouts break agent calls for minutes; the 07:25 release skipped the helper",
     "findings": 10,

@@ -1,14 +1,24 @@
 {
   "id": "background-watcher-liveness",
   "rank": 5,
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "observations": [
     {
       "date": "2026-11-03",
       "text": "Feedback, 3 Nov 09:27-11:54 UTC: 52 near-identical reports from 1 agent in one corner. The watcher output kept updating, so the job was alive. Temp files from earlier turns were also missing on 3 wakes. New."
+    },
+    {
+      "date": "2026-11-04",
+      "text": "Feedback, 3 Nov 12:10 to 4 Nov 08:45 UTC: 28 reports from 2 agents. Several show the process really exited at turn cleanup, not only a misread PID; #3408 changes the check, not process lifetime."
     }
   ],
-  "fixes": [],
+  "fixes": [
+    {
+      "date": "2026-11-04",
+      "text": "Check background job output before restarting after a wake (#3408), merged 4 Nov, not yet released",
+      "state": "tried"
+    }
+  ],
   "kind": "problem",
   "scope": "single",
   "title": "Agents think their background job died between wakes and restart it",
@@ -17,6 +27,6 @@
   "cause": "skill",
   "stage": "corner-work",
   "source": "feedback",
-  "lastHit": "2026-11-03",
-  "whatHappens": "An agent starts a background watcher. On the next wake its process id is not visible, so it restarts the job and files a report every few minutes, though the job still runs."
+  "lastHit": "2026-11-04",
+  "whatHappens": "A long watcher an agent starts in a turn is gone at the next wake, with no exit result, so the agent restarts it or loses the watch."
 }

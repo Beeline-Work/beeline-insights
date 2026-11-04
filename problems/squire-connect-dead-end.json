@@ -1,7 +1,7 @@
 {
   "id": "squire-connect-dead-end",
   "rank": 2,
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "observations": [
     {
       "date": "2026-10-30",
@@ -18,6 +18,10 @@
     {
       "date": "2026-11-03",
       "text": "Feedback, 3 Nov: 3 agents on free-agent v0.1.137 report that Squire connect says its card is ready but no card is posted; a traced turn got reconnect_required because an old install is not bound to an account. No cross-account vault listing seen in that traced tool call."
+    },
+    {
+      "date": "2026-11-04",
+      "text": "Feedback, 3-4 Nov: no new reports after the v0.1.141 release. Walk f0f5f3d2 saw one more stop at the Squire card, likely a team test account, so not counted."
     }
   ],
   "fixes": [
@@ -33,15 +37,15 @@
     },
     {
       "date": "2026-11-03",
-      "text": "Recover legacy Squire setup on free-agent hosts (#3370), merged 3 Nov, not yet released",
-      "state": "tried"
+      "text": "Recover legacy Squire setup on free-agent hosts (#3370), released in v0.1.141 on 3 Nov",
+      "state": "shipped"
     }
   ],
   "kind": "problem",
   "scope": "people",
   "title": "A new person asked agents to connect a store and outside AI tools, but no Trusty Squire connect card appeared, so setup stopped",
   "peoplePerDay": 0,
-  "trend": "flat",
+  "trend": "down",
   "cause": "server",
   "stage": "connect-service",
   "source": "feedback",

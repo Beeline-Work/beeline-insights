@@ -1,0 +1,22 @@
+{
+  "id": "ci-browser-test-flakes",
+  "kind": "problem",
+  "rank": 9,
+  "date": "2026-11-04",
+  "title": "Unrelated CI tests fail and block pull requests",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "corner-work",
+  "source": "feedback",
+  "scope": "single",
+  "lastHit": "2026-11-04",
+  "whatHappens": "A PR fails on a test it did not touch (reconnect presence, mobile browser proof, Rooms MCP timeouts), and its worker is woken to repair it.",
+  "fixes": [],
+  "observations": [
+    {
+      "date": "2026-11-04",
+      "text": "Feedback, 3-4 Nov: 11 reports from 2 agents; a reconnect presence test also fails on main."
+    }
+  ]
+}

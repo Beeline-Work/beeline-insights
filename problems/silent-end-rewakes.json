@@ -1,7 +1,7 @@
 {
   "id": "silent-end-rewakes",
-  "rank": 4,
-  "date": "2026-11-03",
+  "rank": 6,
+  "date": "2026-11-04",
   "observations": [
     {
       "date": "2026-11-01",
@@ -10,6 +10,10 @@
     {
       "date": "2026-11-03",
       "text": "Feedback, 2 Nov 13:03-21:25 UTC: 63 reports from 1 agent on helper 0.1.133 and 0.1.135, which both contain the fix. No reports since 0.1.137."
+    },
+    {
+      "date": "2026-11-04",
+      "text": "Feedback, 3 Nov 13:18-21:18 UTC: 22 reports from 1 other agent, after v0.1.137, so the 3 Nov note of no reports since 0.1.137 no longer holds. None after v0.1.142 so far."
     }
   ],
   "fixes": [
@@ -22,16 +26,21 @@
       "date": "2026-11-03",
       "text": "Silent turn fix (#3229) shipped in helper 0.1.133 and 0.1.135, but one agent was still re-woken about 60 times on 2 Nov",
       "state": "failed"
+    },
+    {
+      "date": "2026-11-04",
+      "text": "Stop repeated silent wakes (#3414), released in v0.1.142 on 4 Nov",
+      "state": "shipped"
     }
   ],
   "kind": "problem",
   "scope": "single",
   "title": "Ending a turn silently fails and wakes the agent again with nothing to do",
   "peoplePerDay": 0,
-  "trend": "down",
+  "trend": "flat",
   "cause": "server",
   "stage": "daily-use",
   "source": "feedback",
-  "lastHit": "2026-11-02",
+  "lastHit": "2026-11-03",
   "whatHappens": "An agent with nothing to say ends its turn silently, and it is woken again in a loop."
 }

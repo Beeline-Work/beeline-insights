@@ -1,0 +1,33 @@
+{
+  "id": "release-missed",
+  "kind": "problem",
+  "rank": 4,
+  "date": "2026-11-04",
+  "title": "Production releases fail, so merged fixes have not reached people",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "release",
+  "stage": "daily-use",
+  "source": "release",
+  "scope": "single",
+  "lastHit": "2026-11-04",
+  "whatHappens": "Every production release since 07:00 UTC on 4 Nov stopped at the server step, so fixes merged after v0.1.142 (including #3419 and #3408) are not live.",
+  "fixes": [
+    {
+      "date": "2026-11-04",
+      "text": "Release repairs merged (#3492, #3494, #3503, #3505); the next attempt still failed at a migration lock timeout",
+      "state": "failed"
+    },
+    {
+      "date": "2026-11-04",
+      "text": "Skip drops and NOT NULL changes already done (#3529) and run the router schemas the shipped code reads (#3530); open",
+      "state": "tried"
+    }
+  ],
+  "observations": [
+    {
+      "date": "2026-11-04",
+      "text": "Release issues 3493, 3502, 3504, 3516, 3528: 5 attempts from 07:00 to 11:12 UTC; the first failed on the previous server source lookup, the last at migration 152 on a lock timeout behind a long agent command query."
+    }
+  ]
+}

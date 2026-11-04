@@ -1,0 +1,22 @@
+{
+  "id": "db-lock-contention",
+  "kind": "problem",
+  "rank": 3,
+  "date": "2026-11-04",
+  "title": "Database lock timeouts and deadlocks hit background workers all day, not only during rollouts",
+  "peoplePerDay": 0,
+  "trend": "up",
+  "cause": "server",
+  "stage": "daily-use",
+  "source": "sentry",
+  "scope": "single",
+  "lastHit": "2026-11-04",
+  "whatHappens": "Background jobs (skill anchoring, Sentry wakes, check refresh, push clear, cleanup) stop on lock timeouts or deadlocks and retry later; the same contention stops the release migration.",
+  "fixes": [],
+  "observations": [
+    {
+      "date": "2026-11-04",
+      "text": "Sentry, 3-4 Nov: 12 issues (lock timeouts, deadlocks, connect timeouts), 1-3 events each, 0 users, spread from 12:49 to 10:06 UTC. Log walk: 270 skill-anchor lock timeouts, 17 Sentry-wake and 14 check re-read failures; about 72,000 slow-query lines, mostly one agent command recovery query."
+    }
+  ]
+}
