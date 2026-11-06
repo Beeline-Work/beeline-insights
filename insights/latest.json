@@ -71,7 +71,7 @@
       },
       {
         "label": "Joined a workspace",
-        "count": 5
+        "count": 4
       },
       {
         "label": "Sent a first message",
@@ -87,7 +87,7 @@
       }
     ],
     "biggestDrop": {
-      "label": "Sent a first message",
+      "label": "Joined a workspace",
       "lost": 2
     },
     "state": "measured"

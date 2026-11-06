@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T18:11:22.517Z",
+  "generatedAt": "2026-11-06T17:39:08.034Z",
   "insights": {
     "generatedAt": "2026-11-03T14:08:00.000Z",
     "window": {
@@ -73,7 +73,7 @@
         },
         {
           "label": "Joined a workspace",
-          "count": 5
+          "count": 4
         },
         {
           "label": "Sent a first message",
@@ -89,7 +89,7 @@
         }
       ],
       "biggestDrop": {
-        "label": "Sent a first message",
+        "label": "Joined a workspace",
         "lost": 2
       },
       "state": "measured"
@@ -2711,14 +2711,14 @@
     }
   ],
   "retention": {
-    "generatedAt": "2026-11-05T18:11:16.587Z",
+    "generatedAt": "2026-11-06T17:39:01.976Z",
     "source": "GET /v1/admin/dashboard overview.retention.data.byFirstAgentSource",
     "day": 7,
     "window": {
-      "from": "2026-10-08",
-      "through": "2026-10-28"
+      "from": "2026-10-09",
+      "through": "2026-10-29"
     },
-    "cohort": 28,
+    "cohort": 27,
     "retained": 0,
     "groups": {
       "addedOwnAgent": {
@@ -2726,7 +2726,7 @@
         "retained": 0
       },
       "freeAgent": {
-        "cohort": 26,
+        "cohort": 25,
         "retained": 0
       },
       "noAgent": {
