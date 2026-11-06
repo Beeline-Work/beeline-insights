@@ -1,1 +1,59 @@
-{"schemaVersion":1,"entries":[]}
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "key": "prompts/grader-truthfulness-false-pass",
+      "lastPresentedAt": "2026-11-06T14:12:00Z",
+      "sourceSha": "abf9cb0500e60c8cfadbd2fb60417b0d23e421bf",
+      "evidence": [
+        "https://github.com/Beeline-Work/beeline/blob/abf9cb0500e60c8cfadbd2fb60417b0d23e421bf/scripts/prompt-nightly.mjs#L395-L406"
+      ],
+      "impact": "False restart claim scores pass overall; offline proof on live SHA",
+      "cardRunId": "94627ce88d5d003b14681f7c26127c1898fd4c42bba672ae877942c45df7166d",
+      "cardMessageId": "d560377b679431a1f253196636e19953123fb12f4bd0badbbddb0556cd1d4c17",
+      "status": "reported",
+      "cornerAddress": null,
+      "fixSha": null,
+      "lastFollowUp": null
+    },
+    {
+      "key": "release/destructive-migration-before-deploy",
+      "lastPresentedAt": "2026-11-06T14:12:00Z",
+      "sourceSha": "abf9cb0500e60c8cfadbd2fb60417b0d23e421bf",
+      "evidence": [
+        "https://github.com/Beeline-Work/beeline/actions/runs/42193165122"
+      ],
+      "impact": "Push delivery stopped 09:22-13:46 UTC 6 Nov; 42 notifications expired",
+      "cardRunId": "94627ce88d5d003b14681f7c26127c1898fd4c42bba672ae877942c45df7166d",
+      "cardMessageId": "d560377b679431a1f253196636e19953123fb12f4bd0badbbddb0556cd1d4c17",
+      "status": "reported",
+      "cornerAddress": null,
+      "fixSha": null,
+      "lastFollowUp": null
+    },
+    {
+      "key": "release/owned-turn-dispatch-refused",
+      "lastPresentedAt": "2026-11-06T14:12:00Z",
+      "sourceSha": "abf9cb0500e60c8cfadbd2fb60417b0d23e421bf",
+      "evidence": [
+        "https://github.com/Beeline-Work/beeline/blob/abf9cb0500e60c8cfadbd2fb60417b0d23e421bf/apps/server/src/production-release-dispatch.ts#L36-L37"
+      ],
+      "impact": "02:00 nightly release refused 6 Nov; recovery dispatch refused",
+      "cardRunId": "94627ce88d5d003b14681f7c26127c1898fd4c42bba672ae877942c45df7166d",
+      "cardMessageId": "d560377b679431a1f253196636e19953123fb12f4bd0badbbddb0556cd1d4c17",
+      "status": "reported",
+      "cornerAddress": null,
+      "fixSha": null,
+      "lastFollowUp": null
+    }
+  ],
+  "scores": [
+    {
+      "runDate": "2026-11-06",
+      "card": "morning",
+      "releaseSha": "abf9cb0500e60c8cfadbd2fb60417b0d23e421bf",
+      "shown": 3,
+      "approved": 0
+    }
+  ]
+}
