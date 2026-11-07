@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T17:39:08.034Z",
+  "generatedAt": "2026-11-07T16:35:07.357Z",
   "insights": {
     "generatedAt": "2026-11-03T14:08:00.000Z",
     "window": {
@@ -69,27 +69,27 @@
       "steps": [
         {
           "label": "Signed up",
-          "count": 6
+          "count": 10
         },
         {
           "label": "Joined a workspace",
-          "count": 4
+          "count": 8
         },
         {
           "label": "Sent a first message",
-          "count": 3
+          "count": 6
         },
         {
           "label": "Got an agent reply",
-          "count": 3
+          "count": 6
         },
         {
           "label": "Active in the last 7 days",
-          "count": 3
+          "count": 6
         }
       ],
       "biggestDrop": {
-        "label": "Joined a workspace",
+        "label": "Sent a first message",
         "lost": 2
       },
       "state": "measured"
@@ -2711,23 +2711,23 @@
     }
   ],
   "retention": {
-    "generatedAt": "2026-11-06T17:39:01.976Z",
+    "generatedAt": "2026-11-07T16:35:05.125Z",
     "source": "GET /v1/admin/dashboard overview.retention.data.byFirstAgentSource",
     "day": 7,
     "window": {
-      "from": "2026-10-09",
-      "through": "2026-10-29"
+      "from": "2026-10-10",
+      "through": "2026-10-30"
     },
-    "cohort": 27,
-    "retained": 0,
+    "cohort": 29,
+    "retained": 1,
     "groups": {
       "addedOwnAgent": {
         "cohort": 1,
         "retained": 0
       },
       "freeAgent": {
-        "cohort": 25,
-        "retained": 0
+        "cohort": 27,
+        "retained": 1
       },
       "noAgent": {
         "cohort": 1,
